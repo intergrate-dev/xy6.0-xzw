@@ -1,0 +1,81 @@
+<script type="text/javascript" src="../ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="../ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="../ueditor/ueditor.custom.js"></script>
+<script type="text/javascript" src="../ueditor/wordimport.js"></script>
+
+<link type="text/css" rel="stylesheet" href="../ueditor/themes/iframe.css"/>
+<style type="text/css">
+    .editContainer {
+        width: 100%;
+        height: 276px;
+        margin-left: -8px;
+    }
+
+    td.edui-editor-bottombar {
+        display: none;
+    }
+
+    td.edui-editor-wordcount {
+        display: none;
+    }
+
+    td.edui-editor-scale {
+        display: none;
+    }
+
+    #simpleEditor {
+        width: 99.5%;
+        margin: 0 12px;
+    }
+</style>
+<script type="text/javascript">
+    //default editor size
+    if(typeof ueditor_size == "undefined"){
+        ueditor_size = {width: 600, height: 200}
+    }
+    UE.getEditor('simpleEditor', {
+        toolbars: [['source', '|', 'bold','italic', 'link', 'underline', 'forecolor', 'fontfamily', 'fontsize']]
+        , maximumWords: 500
+        , wordCount: false
+        , initialFrameWidth: ueditor_size.width
+        , initialFrameHeight: ueditor_size.height
+        , minFrameHeight: 80
+        , elementPathEnabled: false//关闭elementPa
+    });
+
+    /**
+     * 添加的方法：
+     * 设置内容（做html化处理）。
+     * 编辑器id可以指定，默认是simpleEditor
+     */
+    UE.setOuterContent = function(content, editorName){
+        if(!editorName){
+            editorName = "simpleEditor";
+        }
+
+        var editor = UE.getEditor(editorName);
+        editor.ready(function(){
+            content = content.replace(/&amp;/g, "&");
+            content = content.replace(/&lt;/g, "<");
+            content = content.replace(/&gt;/g, ">");
+            //content = content.replace(/&quot;/g, "\"");
+            content = content.replace(/&#034;/g, "\"");
+            content = content.replace(/&nbsp;/g, " ");
+
+            editor.setContent(content);
+        });
+
+    }
+    $(function(){
+        var editor = UE.getEditor("simpleEditor");
+        editor.ready(function(){
+            var bb = document.getElementById('ueditor_0').contentWindow.document.body;
+            bb.style.fontSize = "16px";
+        });
+    });
+</script>
+<div id="editContainer" class="editContainer">
+    <script id="simpleEditor" type="text/plain">
+    </script>
+</div>

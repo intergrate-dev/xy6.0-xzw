@@ -1,0 +1,25 @@
+#prompt {
+	background:#FFCC66;
+	width:20px;
+	height:10px;
+	font-family:arial;
+	font-weight : bold;
+	color:black;
+	display:none;
+}
+#ShowFolderDiv,
+#ShowViewDiv,
+#CreateFolderDiv,
+#ViewFormDiv{
+	display:none;
+}
+.labelTD {
+	width:80px;
+	color:#0066ff;
+}
+#LeftDiv {
+	height: 580px;
+}
+.field {width:200px;}
+select.field {height:auto;}
+.largefield{width:430px;}

@@ -1,0 +1,53 @@
+#contentDiv{
+	border:1px solid #ddd;
+	width:400px;
+	height:200px;
+	overflow: auto;
+	background-color: #E0F4FB;
+	margin-top: 5px;
+}
+
+select{
+	min-width:100px;
+}
+
+#contentDiv span{
+	display:inline-block;
+	padding:2px 6px;
+}
+#contentDiv>span{
+	display: block;
+}
+
+#contentDiv .siteSpan{
+	padding-right:25px;
+	min-width:80px;
+}
+#contentDiv .roleSpan{
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.rowSpan{
+	width:388px;
+	cursor : pointer;
+}
+.rowSpan:hover{
+	/*background-color: #C0EFFF;*/
+	color: black;
+}
+
+.handleSpan{
+	/*float:right;*/
+}
+#siteAndRoleDiv{
+	/*
+	margin-top: 9px;
+    display: inline-block;
+    color: #000;
+	*/
+    font-size: 13px;
+}
+#siteID,#roleID{
+	width:60px;
+}

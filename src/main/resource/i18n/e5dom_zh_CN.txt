@@ -1,0 +1,543 @@
+e5dom.Author=张凯峰
+
+#DocType-------------------------------------------
+e5dom.DocType.title=文档类型管理
+
+e5dom.DocType.createDocTypeRelation=创建文档类型关联
+e5dom.DocType.createDocType=创建文档类型
+e5dom.DocType.createDocType.Custom=创建文档类型_平台字段可定制
+e5dom.DocType.createDocType.CustomDesc=如果不选择流程相关字段，则流程中只能做非流程操作，流程操作不可用。
+e5dom.DocType.createDocType.Simple=创建简单文档类型
+e5dom.DocType.createDocTypeField=创建文档类型字段
+e5dom.DocType.alterDocLib=更新文档库
+
+e5dom.DocType.TypeID=ID：
+e5dom.DocType.TypeName=名称：
+e5dom.DocType.TypeDesc=描述：
+e5dom.DocType.TypeApp=子系统：
+e5dom.DocType.TypeDefaultFlow=缺省流程：
+e5dom.DocType.TypeRelated=关联类型：
+e5dom.DocType.BelongApp=所属子系统：
+e5dom.DocType.BelongApp.DefaultValue=--请选择--
+
+e5dom.DocType.FieldID=ID
+e5dom.DocType.FieldColumnName=列名
+e5dom.DocType.FieldColumnCode=列码
+e5dom.DocType.FieldDataType=数据类型
+e5dom.DocType.FieldLength=数据长度
+e5dom.DocType.EditType = 填写方式
+e5dom.DocType.FieldScale=精度
+e5dom.DocType.FieldNullable=可空?
+e5dom.DocType.FieldStatus=状态
+e5dom.DocType.FieldAttr=字段级别
+e5dom.DocType.FieldDefaultValue=缺省值
+
+e5dom.DocType.CreateTypeRelation=创建关联
+
+e5dom.DocType.promptInfo.DocTypeLoaded=所有文档类型已加载
+e5dom.DocType.promptInfo.DocTypeSelected=您选择了文档类型
+e5dom.DocType.promptInfo.DocTypeRelationCreated=文档类型关联创建成功
+
+e5dom.DocType.CreateField.Title = 请输入字段属性
+e5dom.DocType.CreateField.ColumnName = 显示名
+e5dom.DocType.CreateField.ColumnCode = 英文名
+e5dom.DocType.CreateField.DataType = 数据类型
+e5dom.DocType.CreateField.DataLength = 长度
+e5dom.DocType.CreateField.Scale = 精度
+e5dom.DocType.CreateField.Nullable = 可空?
+e5dom.DocType.CreateField.Attribute = 字段级别
+e5dom.DocType.CreateField.DefaultValue = 缺省值
+e5dom.DocType.CreateField.EditType = 填写方式
+e5dom.DocType.CreateField.Readonly = 只读?
+e5dom.DocType.CreateField.CatType = 对应分类
+
+e5dom.DocType.CreateField.Create = 创建
+e5dom.DocType.CreateField.Cancel = 取消
+e5dom.DocType.CreateField.Update = 更新
+
+e5dom.DocType.CreateField.DataType.CHAR = 字符型
+e5dom.DocType.CreateField.DataType.VARCHAR = 变长字符型
+e5dom.DocType.CreateField.DataType.INTEGER = 整数
+e5dom.DocType.CreateField.DataType.BIGINT = 长整数
+e5dom.DocType.CreateField.DataType.REAL = 实数
+e5dom.DocType.CreateField.DataType.NUMERIC = 双精度实数
+e5dom.DocType.CreateField.DataType.BLOB = 二进制大字段
+e5dom.DocType.CreateField.DataType.CLOB = 文本大字段
+e5dom.DocType.CreateField.DataType.DATE = 日期
+e5dom.DocType.CreateField.DataType.TIME = 时间
+e5dom.DocType.CreateField.DataType.TIMESTAMP = 日期时间
+e5dom.DocType.CreateField.DataType.EXTFILE = 外部文件
+
+e5dom.DocType.CreateField.Attribute.System=平台级
+e5dom.DocType.CreateField.Attribute.Application=应用级
+e5dom.DocType.CreateField.Attribute.User = 用户级
+
+e5dom.DocType.CreateField.EditType.Free = 任意填写
+e5dom.DocType.CreateField.EditType.Enum = 枚举值
+e5dom.DocType.CreateField.EditType.EnumName = 显示名称
+e5dom.DocType.CreateField.EditType.Boolean = 布尔值
+e5dom.DocType.CreateField.EditType.Complex = 复杂控件
+e5dom.DocType.CreateField.EditType.Enum.Title = 添加枚举值
+
+e5dom.DocType.FieldMenu.Modify = 修改字段
+e5dom.DocType.FieldMenu.Delete = 删除字段
+
+e5dom.DocType.FieldMenu.orderByID = 按照ID排正序
+e5dom.DocType.FieldMenu.orderByIDDesc = 按照ID排倒序
+e5dom.DocType.FieldMenu.orderByColumnCode = 按照列码排序
+e5dom.DocType.FieldMenu.orderByColumnName = 按照列名排序
+e5dom.DocType.FieldMenu.orderByDataType = 按照数据类型排序
+e5dom.DocType.FieldMenu.orderByAttribute = 按照字段属性排序
+
+e5dom.DocType.FieldMenu.confirmDeleteField = 您确定删除字段
+e5dom.DocType.FieldMenu.confirmDeleteFieldEnd = 吗？
+
+e5dom.DocType.PleaseChooseDocType = 请选择文档类型：
+e5dom.DocType.DocTypeProperty = 文档类型属性
+e5dom.DocType.DocTypeRelation = 文档类型关联
+e5dom.DocType.NewDocType = 新文档类型
+e5dom.DocType.FieldCount = 文档字段个数:
+e5dom.DocType.RightClick = 点击右键管理文档类型字段
+
+e5dom.DocType.CreateDocTypeOK=创建文档类型成功
+e5dom.DocType.CreateDocTypeNo=创建文档类型失败
+
+e5dom.DocType.FieldExisted = 对不起，相同英文名的字段已经存在！
+
+e5dom.DocType.exportDocType = 导出
+
+e5dom.DocType.DeleteField.DeleteOK=删除成功
+e5dom.DocType.DeleteField.DeleteNo=删除失败
+e5dom.DocType.DeleteField.DeleteSysField=系统平台字段不允许删除
+e5dom.DocType.DeleteField.DeleteAppField=应用系统字段不允许删除
+
+e5dom.DocType.FieldLengthLimit=（变长）字符的字段长度必须大于0
+
+e5dom.DocType.apptitle=添加子系统
+
+################
+e5dom.DocType.Report.updateTypeRelation = 更新文档类型关联
+e5dom.DocType.Report.updateTypeRelationDesc =更新文档类型关联 [源文档类型ID:{0}]
+
+e5dom.DocType.Report.deleteDocTypeField = 删除文档类型字段
+e5dom.DocType.Report.deleteDocTypeFieldDesc = 删除文档类型字段 [文档类型字段ID:{0}]
+
+e5dom.DocType.Report.createField = 创建文档类型字段
+e5dom.DocType.Report.createFieldDesc = 创建文档类型字段 [文档类型字段ID:{0}]
+
+e5dom.DocType.Report.updateField = 更新文档类型字段
+e5dom.DocType.Report.updateFieldDesc = 更新文档类型字段 [文档类型字段ID:{0}]
+
+e5dom.DocType.Report.CreateDocType = 创建文档类型
+e5dom.DocType.Report.CreateDocTypeDesc = 创建文档类型 [DocTypeID:{0}]
+
+#-- DocLib --------------------------------------------------
+e5dom.DocLib.title = 文档库管理
+e5dom.DocLib.createDocLib = 创建文档库
+e5dom.DocLib.DocLibList = 文档库列表
+
+e5dom.DocLib.DocLibName = 文档库名称
+e5dom.DocLib.DocLibTable = 数据库表名
+e5dom.DocLib.DocLibTableDesc = 可以指定表名，注意不要使用数据库中已存在的表名。<br/>如不指定，系统将默认为DOM_X_DOCLIB。
+e5dom.DocLib.ShareRecordTable = 共用流程表
+e5dom.DocLib.ShareRecordTableDesc = 若选中，则本库数据的操作记录放在共用表中 。<br/>不选中，则本库数据的操作记录放在单独的表中。
+
+e5dom.DocLib.DocLibDescription = 文档库描述
+e5dom.DocLib.attachDevName = 存储设备
+
+e5dom.DocLib.libDB = 数据库名称
+e5dom.DocLib.libServer = 服务器名称
+e5dom.DocLib.libTable = 对应表名
+
+e5dom.DocLib.FlowTable = 流程表名
+
+e5dom.DocLib.DeleteDocLib = 删除文档库
+
+e5dom.DocLib.confirmDeleteDocLib = 你确定删除该文档库
+e5dom.DocLib.confirmDeleteDocLibEnd = 吗？
+
+e5dom.DocLib.Confirm = 确认
+e5dom.DocLib.DocLibKeepDay = 保存天数
+e5dom.DocLib.CreateDocLib = 创建文档库
+
+e5dom.DocLib.PleaseChooseDataSource = 请选择数据源
+e5dom.DocLib.RightClick = 右键点击可以删除该文档库
+e5dom.DocLib.ClickToModify = （*点击文档库名称或描述可以修改）
+
+e5dom.DocLib.DocLibID=文档库ID
+e5dom.DocLib.Action=操作
+e5dom.DocLib.updateDocLib = 更新
+e5dom.DocLib.UpdateDocLib=修改文档库
+
+e5dom.DocLib.Reset=清除
+
+e5dom.DocLib.DeleteOK=删除成功
+e5dom.DocLib.DeleteNO=删除失败
+e5dom.DocLib.DeleteFieldsMgr=已删除字段管理
+
+e5dom.DocLib.DocLibPropts=文档库属性
+
+e5dom.DocLib.CreateDocLibStep1=第一步：输入文档库名称、自定义数据库表名
+e5dom.DocLib.CreateDocLibStep2=第二步：生成创建DDL
+e5dom.DocLib.CreateDocLibStep3=第三步：修改创建DDL
+
+##############
+e5dom.DocLib.Report.alterDocLib = 在添加文档类型字段后更新文档库
+e5dom.DocLib.Report.alterDocLibDesc = 在添加文档类型字段后更新文档库 [文档库ID:{0}]
+
+e5dom.DocLib.Report.alterDocLib = 创建文档库
+e5dom.DocLib.Report.alterDocLibDesc = 创建文档库 [文档库ID:{0}]
+
+e5dom.DocLib.Report.deleteDocLib = 删除文档库
+e5dom.DocLib.Report.deleteDocLibDesc = 删除文档库 [文档库ID:{0}]
+
+e5dom.DocLib.Report.updateDocLib = 更新文档库
+e5dom.DocLib.Report.updateDocLibDesc = 更新文档库 [文档库ID:{0}]
+
+e5dom.DocLib.Report.createDocLib=创建文档库
+e5dom.DocLib.Report.createDocLibDesc=创建文档库 [文档库ID:{0}]
+#----------------------------------------------------------------
+e5dom.Folder.title = 文件夹视图管理
+
+e5dom.Folder.FolderTree = 文件夹视图管理
+e5dom.Folder.FolderName = 文件夹名称
+
+e5dom.Folder.FVFilters = 过滤器
+e5dom.Folder.FVRules = 规则
+e5dom.Folder.FVListPages = 列表方式
+
+e5dom.Folder.AssignFilters = 修改过滤器
+e5dom.Folder.DelFilters = 删除过滤器
+e5dom.Folder.AssignRules = 修改规则
+e5dom.Folder.AssignListPages = 修改列表方式
+
+e5dom.Folder.CreateFolder = 添加文件夹
+e5dom.Folder.ModifyFolder = 修改文件夹
+e5dom.Folder.DeleteFolder = 删除文件夹
+
+e5dom.Folder.Reset = 清除
+
+e5dom.Folder.CreateOK = 创建成功
+e5dom.Folder.CreateNo = 创建失败
+e5dom.Folder.ModifyOK = 修改成功
+e5dom.Folder.ModifyNo = 修改失败
+e5dom.Folder.DeleteOK = 删除成功
+e5dom.Folder.DeleteNo = 删除失败
+
+e5dom.Folder.DeleteConfirm1 = 您确定删除文件夹
+e5dom.Folder.DeleteConfirm2 = 吗？
+
+e5dom.Folder.keepDay=独家时间(小时)
+e5dom.Folder.keepDaySync=把独家时间同步到子文件夹
+e5dom.Folder.keepDayHint=（可不设独家时间）
+e5dom.Folder.keepDayHint1=若新建文件夹时不写天数，则按照父文件夹天数设置
+
+e5dom.Folder.AddFilters = 添加过滤器
+e5dom.Folder.AddRules = 添加规则
+
+e5dom.Folder.MoveConfirm1 = 您确定移动文件夹
+e5dom.Folder.MoveConfirm2 = 吗？
+
+e5dom.Folder.SetPermission = 设置权限
+
+e5dom.View.CreateView = 创建视图
+e5dom.View.ModifyView = 修改视图
+e5dom.View.DeleteView = 删除视图
+
+e5dom.View.ViewName = 视图名称
+e5dom.View.ViewFormula = 视图公式
+
+e5dom.View.DeleteViewConfirm1 = 您确定删除视图
+e5dom.View.DeleteViewConfirm2 = 吗？
+
+e5dom.Folder.PleaseChooseDocLib = 请选择文档库：
+
+e5dom.Folder.RefreshAction = 刷新
+
+e5dom.Folder.ChooseFilters=请选择过滤器（可多选）
+e5dom.Folder.ChooseRules=请选择规则（可多选）
+
+e5dom.Folder.Head=最上
+e5dom.Folder.Up=上移
+e5dom.Folder.Down=下移
+e5dom.Folder.Bottom=最下
+
+e5dom.Folder.Cancel=取消
+
+e5dom.Folder.SortAction=文件夹排序
+
+e5dom.Folder.FVID=文件夹/视图ID
+e5dom.Folder.FVName=文件夹/视图名称
+
+e5dom.Folder.SortNow=确定排序
+
+e5dom.Folder.NotAllowDeleteRoot=不允许删除根文件夹
+
+e5dom.Folder.FolderProps=文件夹属性
+e5dom.View.ViewProps=视图属性
+
+#################
+e5dom.Folder.Report.createFolder = 创建文件夹
+e5dom.Folder.Report.createFolderDesc = 创建文件夹 [文件夹ID:{0}]
+
+e5dom.Folder.Report.deleteFolder = 删除文件夹
+e5dom.Folder.Report.deleteFolderDesc = 删除文件夹 [文件夹ID:{0}]
+
+e5dom.Folder.Report.dragFolder = 移动文件夹
+e5dom.Folder.Report.dragFolderDesc = 移动文件夹 [文件夹ID:{0}]
+
+e5dom.Folder.Report.updateFolder = 更新文件夹
+e5dom.Folder.Report.updateFolderDesc = 更新文件夹 [文件夹ID:{0}]
+
+e5dom.View.Report.createView = 创建视图
+e5dom.View.Report.createViewDesc = 创建视图 [ViewID:{0}]
+
+e5dom.View.Report.deleteView = 删除视图
+e5dom.View.Report.deleteViewDesc = 删除视图 [ViewID:{0}]
+
+e5dom.View.Report.updateView = 更新视图
+e5dom.View.Report.updateViewDesc = 更新视图 [ViewID:{0}]
+#-----------------------------------------------------------------
+e5dom.Rule.title = 规则管理
+e5dom.Rule.CreateRule = 创建规则
+
+e5dom.Rule.RuleList = 规则列表
+
+e5dom.Rule.RuleName = 规则名称
+e5dom.Rule.RuleDesc = 规则描述
+e5dom.Rule.RuleClass = 规则类名
+e5dom.Rule.RuleMethod = 规则方法
+e5dom.Rule.RuleArguments = 规则参数
+e5dom.Rule.RuleFolders = 规则挂载的文件夹
+
+e5dom.Rule.NewRule = 新建规则
+e5dom.Rule.ModifyRule = 修改规则
+e5dom.Rule.DeleteRule = 删除规则
+
+e5dom.Rule.Reset = 清除
+
+e5dom.Rule.Confirm1 = 您确定删除规则
+e5dom.Rule.Confirm2 = 吗？
+
+e5dom.Rule.DeleteOK = 删除成功
+e5dom.Rule.DeleteNo = 删除失败
+
+e5dom.Rule.CreateOK = 创建成功
+e5dom.Rule.CreateNo = 创建失败
+
+e5dom.Rule.ModifyOK = 修改成功
+e5dom.Rule.ModifyNo = 修改失败
+
+e5dom.Rule.RightClick = 点击右键维护该规则
+
+e5dom.Rule.RuleProps=规则属性
+
+##############
+e5dom.Rule.Report.createRule = 创建规则
+e5dom.Rule.Report.createRuleDesc = 创建规则 [规则名称:{0}]
+
+e5dom.Rule.Report.deleteRule = 删除规则
+e5dom.Rule.Report.deleteRuleDesc = 删除规则 [规则ID:{0}]
+
+e5dom.Rule.Report.updateRule = 更新规则
+e5dom.Rule.Report.updateRuleDesc = 更新规则 [规则ID:{0}]
+#-----------------------------------------------------------------
+e5dom.Filter.title = 过滤器管理
+e5dom.Filter.CreateFilter = 新建过滤器
+
+e5dom.Filter.FilterList = 过滤器列表
+
+e5dom.Filter.FilterName = 过滤器名称
+e5dom.Filter.FilterDesc = 过滤器描述
+e5dom.Filter.FilterFomula = 过滤器公式
+e5dom.Filter.FilterFolders = 过滤器挂载的文件夹
+
+e5dom.Filter.NewFilter = 新建过滤器
+e5dom.Filter.ModifyFilter = 修改过滤器
+e5dom.Filter.DeleteFilter = 删除过滤器
+e5dom.Filter.AddFilter = 增加过滤器
+e5dom.Filter.AddFilters = 增加过滤器组
+
+e5dom.Filter.Reset = 清除
+
+e5dom.Filter.Confirm1 = 您确定删除过滤器
+e5dom.Filter.Confirm2 = 吗？
+
+e5dom.Filter.DeleteOK = 删除成功
+e5dom.Filter.DeleteNo = 删除失败
+
+e5dom.Filter.CreateOK = 创建成功
+e5dom.Filter.CreateNo = 创建失败
+
+e5dom.Filter.ModifyOK = 修改成功
+e5dom.Filter.ModifyNo = 修改失败
+
+e5dom.Filter.RightClick = 点击右键维护该过滤器
+
+e5dom.Filter.FilterProperties=过滤器属性
+
+############
+e5dom.Filter.Report.createFilter = 创建过滤器
+e5dom.Filter.Report.createFilterDesc = 创建过滤器 [过滤器名称:{0}]
+
+e5dom.Filter.Report.deleteFilter = 删除过滤器
+e5dom.Filter.Report.deleteFilterDesc = 删除过滤器 [过滤器ID:{0}]
+
+e5dom.Filter.Report.updateFilter = 更新过滤器
+e5dom.Filter.Report.updateFilterDesc = 更新过滤器 [过滤器ID:{0}]
+#----------------docTypeField restore--------------
+e5dom.docTypeFieldRestore.title=已删除字段管理
+e5dom.docTypeFieldRestore.alert.selected=请选择要恢复的字段!
+e5dom.docTypeFieldRestore.confirm.restore=真的要恢复选择的字段吗?
+e5dom.docTypeFieldRestore.button.cancel=取消
+e5dom.docTypeFieldRestore.button.restore=恢复
+e5dom.docTypeFieldRestore.button.quiteDelete=彻底删除
+e5dom.docTypeFieldRestore.alert.quiteDelete=请选择要彻底删除的字段!
+e5dom.docTypeFieldRestore.confirm.quiteDelete=真的要彻底删除选择的字段吗?
+e5dom.docTypeFieldRestore.button.noQuiteDelete=彻底删除失败，该字段已更新到了文档库！
+
+e5dom.form.manager=表单管理
+e5dom.form.docTypeName=文档类型
+e5dom.form.id=ID
+e5dom.form.name=表单名称
+e5dom.form.code=编码
+e5dom.form.button.add=增加
+e5dom.form.button.mod=修改
+e5dom.form.button.del=删除
+e5dom.form.button.clone=复制
+e5dom.form.alert.modify=必须选择一项修改!
+e5dom.form.alert.delete=必须选择一项删除!
+e5dom.form.alert.clone=必须选择一项复制!
+e5dom.form.confirm.delete1=确定要删除当前表单吗？
+e5dom.form.confirm.delete2=确定要删除当前表单吗？\\n注意：表单删除后，引用该表单的操作（操作URL中包含Form.do?code=<表单编码>）\\n将无法正常显示！请谨慎删除！
+e5dom.form.confirm.delete3=确定要删除当前细览吗？
+e5dom.form.confirm.clone=确实复制当前表单吗?
+e5dom.form.add=增加表单
+e5dom.form.adddesc=增加表单成功[用户:{0},RoleID:{1},文档类型:{2},表单ID:{3},表单名称:{4}]
+e5dom.form.del=删除表单
+e5dom.form.deldesc=删除表单成功[用户:{0},RoleID:{1},文档类型:{2},表单ID:{3},表单名称:{4}]
+e5dom.form.mod=修改表单
+
+e5dom.form.moddesc=修改表单成功[用户:{0},RoleID:{1},文档类型:{2},表单ID:{3},表单名称:{4}]
+
+
+tablehandle_addrow_up=插入上面一行
+tablehandle_addrow_down=插入下面一行
+tablehandle_addcol_left=插入左侧列
+tablehandle_addcol_right=插入右侧列
+tablehandle_delrow=删除行
+tablehandle_delcol=删除列
+tablehandle_mergcell=合并单元格
+tablehandle_splitrow=拆分行
+tablehandle_splitcol=拆分单元格
+tablehandle_delcell= 删除单元格
+tablehandle_merg_tiptext=请选择多个单元格。
+tablehandle_celldelall_tiptext=不能删除所有单元格。
+tablehandle_selectcellone_tiptext= 请选择你要删除的单元格。
+tablehandle_dontdelonlycol=不能删除最后一列。
+tablehandle_dontdelonlyrow=不能删除最后一行。
+tablehandle_mergdown=向下合并单元格
+tablehandle_mergright=向右合并单元格
+tablehandle_removefield=清除字段
+
+oper.success=操作成功。
+oper.faield=操作失败。
+
+e5dom.form.modifyfield=字段设置
+e5dom.form.inserttext=插入文本
+e5dom.form.custom.btnselect=选择
+e5dom.form.custom.province=省
+e5dom.form.custom.city=市
+e5dom.form.custom.area=区/县
+e5dom.form.custom.street=街道
+e5dom.form.custom.building=楼
+e5dom.form.custom.demodate=xxxx年xx月xx日
+e5dom.form.custom.selectdept=选择部门
+e5dom.form.custom.selectusers=选择用户
+e5dom.form.custom.selectrole=选择角色
+e5dom.form.custom.selectcatgory=选择分类
+e5dom.form.custom.pleaseinserttext=请插入文本
+e5dom.form.custom.btnsave=保存
+e5dom.form.custom.btnsavesubmit=保存并提交
+e5dom.form.custom.btncancel=取消
+e5dom.form.custom.btnexportjsp=导出为JSP文件
+e5dom.form.custom.btnregistoper=注册为操作
+e5dom.form.custom.formname=表单名称
+e5dom.form.custom.formcode=表单编码
+e5dom.form.custom.inserthr=插入分隔线
+e5dom.form.custom.btndel=删除
+e5dom.form.custom.preview=表单预览
+e5dom.form.custom.predetail=细览预览
+
+e5dom.form.moddesc=修改表单成功[用户:{0},RoleID:{1},文档类型:{2},表单ID:{3},表单名称:{4}]
+info.flow.addop=增加操作模块
+report.flow.addop=在文档类型{0}上增加操作模块{1}
+
+e5dom.form.custom.xmlerror=输入内容不符合xml格式。
+e5dom.form.custom.inserttxtcontent=文本内容
+
+e5dom.custom.existname=该名称已近存在。
+e5dom.custom.btnnext=下一步
+e5dom.custom.btnpre=上一步
+e5dom.custom.doctype=文档类型
+e5dom.custom.readonly=选择后将不能修改
+e5dom.custom.formname=细览名称
+e5dom.custom.formcode=细览编码
+e5dom.custom.csspath=CSS文件路径
+e5dom.custom.jspath=JS文件路径
+
+e5dom.custom.txt.name=名称
+e5dom.custom.txt.isrequired=是否必填项
+e5dom.custom.txt.ischeckdup=是否查重
+e5dom.custom.txt.isshowlabel=是否显示标签
+e5dom.custom.txt.postfixtext=后置文本
+e5dom.custom.txt.width=宽度
+e5dom.custom.txt.height=高度
+e5dom.custom.txt.delete=删除
+e5dom.custom.txt.save=保存
+e5dom.custom.txt.cancle=取消
+e5dom.custom.option1=选项1
+e5dom.custom.option2=选项2
+e5dom.custom.btn.regoption.success=注册为操作成功。
+e5dom.custom.btn.regoption.failed=注册为操作失败
+e5dom.custom.btn.regoption.title=注册为操作
+e5dom.custom.btn.confirm=确定
+e5dom.custom.btn.cancel=取消
+e5dom.custom.btn.preview=预览
+e5dom.custom.form.formcode=表单编码
+e5dom.custom.form.formcode.title=第一次注册为操作时填写，多次注册操作时不允许修改编码。
+e5dom.custom.form.operationname=操作名称
+e5dom.custom.form.operation=请选择操作的类型
+e5dom.custom.form.operation.new=新建类型的表单
+e5dom.custom.form.operation.new.info=实际操作时，不需要先选中记录。这是创建新记录的操作。
+e5dom.custom.form.operation.modify=修改类型的表单
+e5dom.custom.form.operation.modify.info=实际操作时，需要先选中一条记录。
+e5dom.custom.form.clone.failed=复制定制表单失败
+e5dom.custom.form.clone.title=复制定制表单
+e5dom.custom.form.editor.title=表单定制
+e5dom.custom.form.viewdetail.title=细览定制
+e5dom.custom.form.editor.fields=字段选择区
+e5dom.custom.form.editor.fieldedit=操作区
+e5dom.custom.form.hidedivtitle=请将要隐藏的字段拖动到下面区域（双击删除隐藏字段）
+
+e5dom.resource.folder.title=文件夹权限设置
+e5dom.custom.form.fieldtooltip=在下面表格中双击字段可以编辑
+
+
+e5dom.detailView.title=已定制细览的文档类型
+e5dom.detailView.filedlableshow=是/否
+e5dom.detailView.title=已定制细览的文档类型
+e5dom.docTypeView.custom.preview=细览预览
+e5dom.docView.add=细览定制-增加
+e5dom.docView.adddesc=增加细览页[用户:{0},RoleID:{1},文档类型ID:{2},文档类型名称:{3}]
+e5dom.docView.del=细览定制-删除
+e5dom.docView.deldesc=删除细览页[用户:{0},RoleID:{1},文档类型ID:{2},文档类型名称:{3}]
+e5dom.docView.mod=细览定制-修改
+e5dom.docView.moddesc=修改细览页[用户:{0},RoleID:{1},文档类型ID:{2},文档类型名称:{3}]
+
+e5dom.search.tabletitle=查询条件定制
+e5dom.search.help1=一般检索区域（请将字段拖放到下面区域)
+e5dom.search.help2=高级检索区域（请将字段拖放到下面区域)
+e5dom.search.help3=双击检索区域中的字段可以编辑
+e5dom.search.title=定制名称
+e5dom.search.code=定制编码

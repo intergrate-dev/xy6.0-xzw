@@ -1,0 +1,108 @@
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/e5-context.xml, 
+			/WEB-INF/e5-controller.xml,
+			/WEB-INF/e5-web.xml,
+			/WEB-INF/e5-auth.xml,
+			/WEB-INF/e5-workspace.xml,
+			/WEB-INF/classes/xy-template/xy5.0.xml,
+			/WEB-INF/classes/xy-template/activemq.xml
+			/WEB-INF/classes/xy-template/redis.xml
+		</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>URLEntryFilter</filter-name>
+		<filter-class>com.founder.e5.web.filter.URLEntryFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+		<init-param>
+			<!-- if file contains part below, it will not do session check.-->
+			<param-name>session-not-checked</param-name>
+			<param-value>Login.jsp,/sys.jsp,amuc/order/alipayapi.jsp,/login.jsp,/sysAuth.do,/sysLogin.do,/auth.do,/keeplive.do,/api/,/invitecode/,/e5sys/cacheSubmit.do,/SchedulerRemoteCommand.do,/security/,/wxreceiver,/AutoLogin.jsp,/Auto.jsp,/tokenHelp/getUserInfo.do,/tokenHelp/validToken.do,/tokenHelp/getToken.do,/xy/wordList/</param-value>
+		</init-param>
+		<init-param>
+			<!-- extensions of the files not-allow-browser-cache -->
+			<param-name>cache-not-allowed</param-name>  
+			<param-value>.do,.jsp</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>URLEntryFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+    <filter>
+        <filter-name>monitoring</filter-name>
+        <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>monitoring</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>
+        <listener-class>net.bull.javamelody.SessionListener</listener-class>
+    </listener>
+
+    <servlet>
+		<servlet-name>load</servlet-name>
+		<servlet-class>com.founder.e5.load.Load</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>e5-config.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+    </servlet>
+
+	<servlet>
+		<servlet-name>e5</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>e5</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<mime-mapping>
+		<extension>xml</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/*</url-pattern>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>OPTIONS</http-method>
+			<http-method>TRACE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+		</auth-constraint>
+	</security-constraint>
+	<resource-ref>
+		<description>e5 Datasource</description> 
+		<res-ref-name>jdbc/E5NEW</res-ref-name> 
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+</web-app>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- this file contains model objects -->
+	<!--======Log======-->
+	<bean id="permissionLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.permission</value></constructor-arg>
+	</bean>
+	<bean id="sysLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.sys</value></constructor-arg>
+	</bean>
+	<bean id="flowLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.flow</value></constructor-arg>
+	</bean>
+	<bean id="domLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.dom</value></constructor-arg>
+	</bean>
+	<bean id="contextLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.context</value></constructor-arg>
+	</bean>
+	<bean id="workspaceLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.workspace</value></constructor-arg>
+	</bean>
+	<bean id="noteLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.note</value></constructor-arg>
+	</bean>
+	<!--===ContextAware=-->
+	<bean id="ContextAware" class="com.founder.e5.load.ContextAware" init-method="setToContext"/>
+	<!--===Datasource=-->
+	<bean id="DSManager" class="com.founder.e5.context.DSFactory" factory-method="buildDSManager"/>
+	<bean id="DSReader" class="com.founder.e5.context.DSFactory" factory-method="buildDSReader"/>
+	<!--======Category==-->
+	<bean id="CatManager" class="com.founder.e5.cat.Factory" factory-method="buildCatManager"/>
+	<bean id="CatReader" class="com.founder.e5.cat.Factory" factory-method="buildCatReader"/>
+	<bean id="CatExtManager" class="com.founder.e5.cat.Factory" factory-method="buildCatExtManager"/>
+	<bean id="CatExtReader" class="com.founder.e5.cat.Factory" factory-method="buildCatExtReader"/>
+	<!--======Flow======-->
+	<bean id="FlowManager" class="com.founder.e5.flow.Factory" factory-method="buildFlowManager"/>
+	<bean id="FlowReader" class="com.founder.e5.flow.Factory" factory-method="buildFlowReader"/>
+	<bean id="ProcManager" class="com.founder.e5.flow.Factory" factory-method="buildProcManager"/>
+	<bean id="ProcReader" class="com.founder.e5.flow.Factory" factory-method="buildProcReader"/>
+	<bean id="ProcOrderManager" class="com.founder.e5.flow.Factory" factory-method="buildProcOrderManager"/>
+	<bean id="ProcOrderReader" class="com.founder.e5.flow.Factory" factory-method="buildProcOrderReader"/>
+	<bean id="ProcGroupManager" class="com.founder.e5.flow.ProcGroupManagerImpl"></bean>
+	<bean id="ProcGroupReader" class="com.founder.e5.flow.ProcGroupReaderImpl"></bean>
+	<bean id="ProcSuitManager" class="com.founder.e5.flow.ProcSuitManagerImpl"></bean>
+	<bean id="ProcSuitReader" class="com.founder.e5.flow.ProcSuitReaderImpl"></bean>
+	<!--=====Permission==-->
+	<bean id="FVPermissionManager" class="com.founder.e5.permission.Factory" factory-method="buildFVPermissionManager"/>
+	<bean id="FVPermissionReader" class="com.founder.e5.permission.Factory" factory-method="buildFVPermissionReader"/>
+	<bean id="PermissionManager" class="com.founder.e5.permission.Factory" factory-method="buildPermissionManager"/>
+	<bean id="PermissionReader" class="com.founder.e5.permission.Factory" factory-method="buildPermissionReader"/>
+	<bean id="FlowPermissionManager" class="com.founder.e5.permission.Factory" factory-method="buildFlowPermissionManager"/>
+	<bean id="FlowPermissionReader" class="com.founder.e5.permission.Factory" factory-method="buildFlowPermissionReader"/>
+	<bean id="CatPermissionManager" class="com.founder.e5.permission.Factory" factory-method="buildCatPermissionManager"/>
+	<bean id="CatPermissionReader" class="com.founder.e5.permission.Factory" factory-method="buildCatPermissionReader"/>
+
+	<bean id="DomPermissionManager" class="com.founder.e5.permission.Factory" factory-method="buildDomPermissionManager"/>
+	<bean id="DomPermissionReader" class="com.founder.e5.permission.Factory" factory-method="buildDomPermissionReader"/>
+
+	<bean id="FolderProcPermissionReader" class="com.founder.e5.permission.FolderProcPermissionReader"></bean>
+	<bean id="FolderProcPermissionManager" class="com.founder.e5.permission.FolderProcPermissionManager"></bean>
+	<!--======Dom======-->
+	<bean id="DataSourceConfigReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildDataSourceConfigReader"/>
+	<bean id="DataSourceConfigManager" class="com.founder.e5.dom.DomManagerFactory" factory-method="buildDataSourceConfigManager"/>
+	<bean id="DocTypeReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildDocTypeReader"/>
+	<bean id="DocTypeManager" class="com.founder.e5.dom.DomManagerFactory" factory-method="buildDocTypeManager"/>
+	<bean id="DocLibReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildDocLibReader"/>
+	<bean id="DocLibManager" class="com.founder.e5.dom.DomManagerFactory" factory-method="buildDocLibManager"/>
+	<bean id="FolderManager" class="com.founder.e5.dom.DomManagerFactory" factory-method="buildFolderManager"/>
+	<bean id="FolderReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildFolderReader"/>
+	<bean id="ViewManager" class="com.founder.e5.dom.DomManagerFactory" factory-method="buildViewManager"/>
+	<bean id="ViewReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildViewReader"/>
+	<bean id="RuleManager" class="com.founder.e5.dom.DomManagerFactory" factory-method="buildRuleManager"/>
+	<bean id="RuleReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildRuleReader"/>
+	<bean id="FilterManager" class="com.founder.e5.dom.DomManagerFactory" factory-method="buildFilterManager"/>
+	<bean id="FilterReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildFilterReader"/>
+	<bean id="DocTypeFieldInfoReader" class="com.founder.e5.dom.DomReaderFactory" factory-method="buildFieldInfoReader"/>
+	<bean id="DocTypeFieldInfoManager" class="com.founder.e5.dom.DocTypeFieldInfoManager"/>
+	<bean id="DocTypeFieldsInfoManager" class="com.founder.e5.dom.DocTypeFieldsInfoManager"/>
+	<!--======Doc=======-->
+	<bean id="FlowRecordManager" class="com.founder.e5.doc.FlowRecordManagerFactory" factory-method="getInstance"/>
+	<bean id="DocAssociationManager" class="com.founder.e5.doc.DocAssociationManagerFactory" factory-method="getInstance"/>
+	<!--===Rel===========-->
+	<bean id="relTableDAO" class="com.founder.e5.rel.dao.hibernate.RelTableDAOHibernate"/>
+	<bean id="RelTableManager" class="com.founder.e5.rel.service.impl.RelTableManagerImpl">
+		<property name="dao" ref="relTableDAO"/>
+	</bean>
+
+	<bean id="RelTableReader" class="com.founder.e5.rel.service.impl.RelTableReaderImpl"/>
+
+	<bean id="relTableDocLibDAO" class="com.founder.e5.rel.dao.hibernate.RelTableDocLibDAOHibernate"/>
+	<bean id="RelTableDocLibManager" class="com.founder.e5.rel.service.impl.RelTableDocLibManagerImpl">
+		<property name="dao" ref="relTableDocLibDAO"/>
+	</bean>
+
+	<bean id="relTableDocLibFieldsDAO" class="com.founder.e5.rel.dao.hibernate.RelTableDocLibFieldsDAOHibernate"/>
+	<bean id="RelTableDocLibFieldsManager" class="com.founder.e5.rel.service.impl.RelTableDocLibFieldsManagerImpl">
+		<property name="dao" ref="relTableDocLibFieldsDAO"/>
+	</bean>
+
+	<!--======Sys======-->
+	<bean id="OrgTypeReader" class="com.founder.e5.sys.org.OrgImplFactory" factory-method="getOrgTypeReader"/>
+	<bean id="OrgManager" class="com.founder.e5.sys.org.OrgImplFactory" factory-method="getOrgManager"/>
+	<bean id="OrgReader" class="com.founder.e5.sys.org.OrgImplFactory" factory-method="getOrgReader"/>
+	<bean id="RoleManager" class="com.founder.e5.sys.org.OrgImplFactory" factory-method="getRoleManager"/>
+	<bean id="RoleReader" class="com.founder.e5.sys.org.OrgImplFactory" factory-method="getRoleReader"/>
+	<bean id="UserManager" class="com.founder.e5.sys.org.OrgImplFactory" factory-method="getUserManager"/>
+	<bean id="UserReader" class="com.founder.e5.sys.org.OrgImplFactory" factory-method="getUserReader"/>
+	<bean id="LoginUserManager" class="com.founder.e5.sys.SysFactory" factory-method="getLoginUserManager"/>
+	<bean id="AppPermissionManager" class="com.founder.e5.app.AppFactory" factory-method="getAppPermissionManager"/>
+	<bean id="AppWebAddressManager" class="com.founder.e5.app.AppFactory" factory-method="getAppWebAddressManager"/>
+	<bean id="AppManager" class="com.founder.e5.app.AppFactory" factory-method="getAppManager"/>
+	<bean id="OrgExchange" class="com.founder.e5.sys.org.OrgExchange">
+		<property name="orgMgr" ref="OrgManager"/>
+		<property name="roleMgr" ref="RoleManager"/>
+		<property name="userMgr" ref="UserManager"/>
+	</bean>
+	<bean id="sso" class="com.founder.e5.sso.SSOImpl">
+		<property name="loginManager" ref="LoginUserManager"/>
+		<property name="userReader" ref="UserManager"/>
+		<property name="roleReader" ref="RoleManager"/>
+	</bean>
+	<!--======storage manager=======-->
+	<bean id="StorageDeviceManager" class="com.founder.e5.sys.SysFactory" factory-method="getStorageDeviceManager"/>
+	<bean id="StorageDeviceReader" class="com.founder.e5.sys.SysFactory" factory-method="getStorageDeviceReader"/>
+	<bean id="SysConfigManager" class="com.founder.e5.sys.SysFactory" factory-method="getSysConfigManager"/>
+	<bean id="SysConfigReader" class="com.founder.e5.sys.SysFactory" factory-method="getSysConfigReader"/>
+	<bean id="AppTemplateManager" class="com.founder.e5.app.template.AppTemplateManager" />
+	<!--======bfile factory=======-->
+	<bean id="SDBasedOraBfileFactory" class="com.founder.e5.sys.SDBasedOraBfileFactory" init-method="initialize">
+		<property name="reader" ref="StorageDeviceReader"/>
+	</bean>
+	<bean id="SDBasedExtBfileFactory" class="com.founder.e5.sys.SDBasedExtBfileFactory" init-method="initialize">
+		<property name="reader" ref="StorageDeviceReader"/>
+	</bean>
+	<!--======listpage=======-->
+	<bean id="ListPageManager" class="com.founder.e5.listpage.ListPageManagerImpl"/>
+	<bean id="FVListPageManager" class="com.founder.e5.listpage.FVListPageManagerImpl" />
+	<bean id="FVListPageReader" class="com.founder.e5.listpage.FVListPageReaderImpl" />
+	<!-- personal setting -->
+	<bean id="PersonalSettingManager" class="com.founder.e5.personality.PersonalSettingManagerImpl">
+		<property name="folderReader"><ref bean="FolderReader" /></property>
+		<property name="fvpermReader"><ref bean="FVPermissionReader" /></property>
+		<property name="listManager"><ref bean="ListPageManager" /></property>
+	</bean>
+	<bean id="PersonalSettingReader" class="com.founder.e5.personality.PersonalSettingManagerImpl">
+		<property name="folderReader"><ref bean="FolderReader" /></property>
+		<property name="fvpermReader"><ref bean="FVPermissionReader" /></property>
+		<property name="listManager"><ref bean="ListPageManager" /></property>
+	</bean>
+	<!--=======scheduler ======= -->
+	<bean id="SysJobManager" class="com.founder.e5.scheduler.db.SysJobManagerImpl"/>
+	<bean id="SysTriggerManager" class="com.founder.e5.scheduler.db.SysTriggerManagerImpl"/>
+	<bean id="SchedulerLocalServer" class="com.founder.e5.scheduler.SchedulerLocalServer"/>
+	<bean id="NoteManager" class="com.founder.e5.sys.note.NoteManagerImpl"/>
+	<bean id="TenantManager" class="com.founder.amuc.tenant.TenantManager"/>
+	<!--======= V3.0 ======= -->
+	<bean id="ListModeReader" class="com.founder.e5.listpage.cache.ListModeReaderImpl"/>
+	<bean id="FormManager" class="com.founder.e5.dom.form.FormManagerImpl"/>
+	<bean id="FormReader" class="com.founder.e5.dom.form.FormReaderImpl"/>
+	<bean id="DocViewManager" class="com.founder.e5.dom.docView.DocViewManagerImpl"/>
+	<bean id="DocViewReader" class="com.founder.e5.dom.docView.DocViewReaderImpl"/>
+	<bean id="QueryFormManager" class="com.founder.e5.dom.queryForm.QueryFormManagerImpl"/>
+	<bean id="QueryFormReader" class="com.founder.e5.dom.queryForm.QueryFormReaderImpl"/>
+	<bean id="FieldGroupManager" class="com.founder.e5.dom.fieldgroup.FieldGroupManagerImpl">
+		<property name="catManager"><ref bean="CatManager" /></property>
+		<property name="docTypeReader"><ref bean="DocTypeManager" /></property>
+		<property name="catPermissionReader"><ref bean="CatPermissionManager" /></property>
+	</bean>
+	<bean id="FieldGroupReader" class="com.founder.e5.dom.fieldgroup.FieldGroupReaderImpl">
+		<property name="catReader"><ref bean="CatReader" /></property>
+		<property name="docTypeReader"><ref bean="DocTypeReader" /></property>
+		<property name="catPermissionReader"><ref bean="CatPermissionReader" /></property>
+	</bean>
+	
+	<bean id="UserFrozenManager" class="com.founder.e5.sys.org.UserFrozenManagerImpl"/>
+	<bean id="DrawImgManager" class="com.founder.e5.job.DrawImgManagerImpl"/>
+</beans>

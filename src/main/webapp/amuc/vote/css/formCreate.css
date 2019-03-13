@@ -1,0 +1,817 @@
+/* 表单的CSS */
+.formBuilder_main {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	/*bottom: 0px;*/
+	background-color: #FFF;
+	/*border-radius: 4px;*/
+	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.44);
+}
+
+.theForm .formBuilder_main {
+	bottom: 0;
+}
+
+.form_title {
+	padding: 10px 20px;
+	line-height: 17px;
+    font-size: 16px;
+    background-size: 100%;
+    /*border-radius: 3px 3px 0 0;*/
+}
+.form_title div{
+    font-size: 12px;
+}
+
+.form_title .formLogo {
+	height: 40px;
+	max-height: 50px;
+	margin-right: 0;
+	float: left;
+	margin-left: 8px;
+	margin-right: 8px;
+	display: none;
+}
+.form_title .formLogo img{
+	max-height: 40px;
+	vertical-align: middle;
+	max-width: 190px;
+}
+
+.form_title .title h2{
+	font-weight:bold;
+	font-size: 1.6em;
+	line-height: 1.9;
+}
+
+.form_component {
+	padding-bottom: 20px;
+	min-height:390px;
+    /*border-radius: 0 0 6px 6px;*/
+}
+
+.form_component li{
+	padding: 5px 14px;
+    border: 1px solid transparent;
+}
+
+.form_component li .deleteButton {
+    display: none;
+}
+
+.form_component li:hover{
+    border: 1px dashed #ccc;
+}
+
+.form_component li:hover .deleteButton {
+    display: block;
+}
+
+.form_component .clicked .deleteButton {
+    display: block;
+}
+
+.form_component .optionGarden li.optionsLine {
+	/*height: 24px;*/
+	padding: 2px;
+	margin-left: 5px;
+	width: 75%;
+}
+.form_component .optionGarden li.optionsLine input{
+	margin-right: 5px;
+}
+
+.form_component li span.com_required,
+.form_component li span.com_mbvc_required {
+	margin-left: 5px;
+	color: #2976A4;
+}
+
+.form_component .title,
+.form_component .mbvc_title {
+	font-size: 16px;
+	max-width: 90%;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+
+.form_component .instruct,
+.form_component .mbvc_instruct{
+	/*width: 24%;*/
+	/*float: left;*/
+	/*right: 18px;*/
+	/*position: absolute;*/
+	padding: 4px;
+	font-size: 14px;
+	zoom: 1;
+    z-index: 80;
+    margin-bottom: 2px;
+    border-top: 1px dashed #444;
+}
+
+.instruct a,
+.mbvc_instruct a {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.instruct a:hover,
+.mbvc_instruct a:hover {
+    text-decoration:underline;
+}
+
+/**/
+
+.formOption{
+	display: inline-block;
+	width: 34px;
+	height: 30px;
+	float: right;
+	background: url(../images/icon/formOption.png?v=010506)  no-repeat;
+	background-position:  center -4px; 
+}
+.formOption_checkbox{
+	background-position: center -38px;
+}
+.formOption_multiple{
+	background-position: center -73px;
+}
+.formOption_radio{
+	background-position: center -107px;
+}
+.formOption_dropDown{
+	background-position: center -142px;
+}
+.formOption_fileUpload{
+	background-position: center -178px;
+}
+.formOption_data{
+	background-position: center -247px;
+}
+.formOption_section{
+	background-position: center -212px;
+}
+.formOption_star{
+	background-position: center -284px;
+}
+.formOption_shopping{
+	background-position: center -319px;
+}
+.formOption_picture{
+    background-position: center -352px;
+}
+
+.formOption_number {
+    background-position: center -386px;
+}
+
+.formOption_pictureCheckbox{
+    background-position: center -423px;
+}
+
+.formOption_pictureRadio{
+    background-position: center -455px;
+}
+
+.formOption_page{
+    background-position: center -491px;
+}
+
+
+
+/*
+通用的样式
+*/
+.hidden{
+	display: none;
+}
+/*
+控件样式
+*/
+/*.small{
+	width: 30%;
+}
+textarea.small{
+	height: 5.5em;
+}
+.medium{
+	width: 50%;
+
+}
+textarea.medium{
+	height: 10em;
+}
+.large{
+	width: 70%;
+}
+textarea.large{
+	height: 17em;
+}*/
+
+.small{
+	width: 60%;
+}
+textarea.small{
+	height: 5.5em;
+}
+select.small {
+    width:  62%;
+    padding: 4px;
+    padding-left: 0;
+}
+.medium{
+	width: 75%;
+
+}
+textarea.medium{
+	height: 10em;
+}
+select.medium {
+    width:  77%;
+    padding: 4px;
+    padding-left: 0;
+}
+.large{
+	width: 90%;
+}
+textarea.large{
+	height: 17em;
+}
+select.large {
+    width:  92%;
+    padding: 4px;
+    padding-left: 0;
+}
+
+.deleteButton{
+	width: 20px;
+	height: 20px;
+	margin-top: -12px;
+	margin-right: -28px;
+	padding:0 5px;
+	float: right;
+	background: url(../images/formIcon/fromBuilder/delete.png) no-repeat;
+	background-position:left center;
+	cursor: pointer;
+}
+
+.deleteButton:hover{
+	padding:0 5px;
+	float: right;
+	background: url(../images/formIcon/fromBuilder/delete_hover.png) no-repeat;
+	background-position:left center;
+}
+
+.unableDelete{
+	display: none !important;
+}
+
+.addButton{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin:  0 5px 0 5px;
+	background: url(../images/formIcon/fromBuilder/plus.png) no-repeat;
+	background-position:left center;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.addButton:hover{
+	background: url(../images/formIcon/fromBuilder/plus_hover.png) no-repeat;
+	background-position:left center;
+}
+
+.removeButton,.removeOtherButton{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin: 0 2px 0 5px;
+	background: url(../images/formIcon/fromBuilder/minus.png) no-repeat;
+	background-position:left center;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.removeButton:hover{
+	background: url(../images/formIcon/fromBuilder/minus_hover.png) no-repeat;
+	background-position:left center;
+}
+
+#fromEditGroup li{
+	padding: 5px 2px;
+	margin: 15px 8px;
+	border-radius: 3px;
+	width: 85%;
+}
+
+/*#form_componentEdit li .editInfo li{*/
+	/*margin-left: 5px;*/
+	/*margin: 2px 0 0 0;*/
+	/*border: 1px solid transparent;*/
+	/*float: left;*/
+	/*width: 42%;*/
+	/*box-shadow: 0 0 0 #eee;*/
+/*}*/
+
+#form_componentEdit li select{
+	width: 80%;
+}
+
+#form_componentEdit li ul li{
+	margin-left: 5px;
+	margin: 1px 0 0 0;
+	border: 1px solid transparent;
+	box-shadow: 0 0 0 #eee;
+}
+
+#form_componentEdit li ul li input.text{
+	width: 55%;
+	margin-left: 3px;
+}
+
+#form_componentEdit li>label{
+	margin-bottom: 5px;
+	font-weight:bold;
+}
+
+/*#form_componentEdit li div,#formEditGroup li div{*/
+	/*margin-top: 5px;*/
+	/*margin-left: 10px;*/
+/*}*/
+.required input{
+	margin-right: 5px;
+}
+#form_componentEdit li textarea,#fromEditGroup li textarea{
+	margin-top: 5px;
+	margin-left: 10px;
+	width: 90%;
+	height: 6em;
+	overflow: auto;
+}
+
+textarea {
+	resize: none;
+}
+
+.setField_radio {
+	margin-right: 20px;
+}
+
+.star {
+	display: inline-block;
+	height: 28px;
+	width: 24px;
+	background: url(../images/icon/formStar.png);
+	background-position: 0 0;
+}
+
+.item_select {
+    margin-left: 8px;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    z-index: 20;
+}
+
+.item_select .itemnum {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0;
+    outline: 0 none;
+    border: 1px solid #ABABAB;
+    margin-top: 0;
+    text-align: center;
+    font-size: 12px;
+    float: left;
+    display: inline-block;
+}
+
+.item_select .remove{
+    display: inline-block;
+    height: 18px;
+    border: 1px solid #ABABAB;
+    border-radius: 2px 0 0 2px;
+    width: 18px;
+    line-height: 18px;
+    text-align: center;
+    border-right: 0;
+    background: #EEE;
+    vertical-align: top;
+    padding: 0;
+    cursor: pointer;
+    float: left;
+}
+
+.item_select .add {
+    display: inline-block;
+    height: 18px;
+    border: 1px solid #ABABAB;
+    border-radius: 0 2px 2px 0;
+    width: 18px;
+    line-height: 18px;
+    text-align: center;
+    border-left: 0;
+    background: #EEE;
+    vertical-align: top;
+    padding: 0;
+    cursor: pointer;
+}
+
+.form_component .shopping-item .text_place {
+    height: 79px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form_component .shopping-item .text_place .item_name {
+    width: 144px;
+    display: block;
+    margin-left: 8px;
+    color: #333;
+    font-size: 12px;
+    position: absolute;
+    background-color: #FFF;
+    top: 10px;
+    left: 0;
+    max-height: 32px;
+    height: 32px;
+    overflow: hidden;
+}
+
+.form_component .shopping-item .text_place .item_price {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0077B3;
+    margin-right: 5px;
+    position: absolute;
+    background-color: #FFF;
+    text-align: right;
+    top: 49px;
+    right: 0;
+}
+
+.form_component .shopping-item {
+    position: relative;
+    float: left;
+    width: 155px;
+    background-color: #FFF;
+    border: 1px solid #D5D5D5;
+    box-shadow: 0 2px 2px #EBEBEB;
+    margin-bottom: 4px;
+    padding: 0;
+    margin-right: 5px;
+    margin-left: 4px;
+}
+.form_component .shopping-item .pic_place {
+    width: 150px;
+    height: 110px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+.form_component .shopping-item .pic_place img {
+    width: 100%;
+}
+
+.form_component .shoppingList .empty {
+    padding-top: 80px;
+    text-align: center;
+    height: 115px;
+}
+
+.form_component .nopic div.pic_place{
+    height: 0;
+    margin: 0;
+}
+
+.title_field,
+.mbvc_title_field {
+    margin-top: 10px;
+}
+.title_field_block{
+    display: block;
+}
+
+.form_component .optionGarden li.other {
+    width: 55% !important;
+}
+
+.form_component ul.layout-type-two li.optionsLine {
+    float: left;
+    width: 47%;
+}
+
+.form_component ul.layout-type-three li.optionsLine {
+    float: left;
+    width: 30%;
+}
+
+.form_component ul.layout-type-four li.optionsLine {
+    float: left;
+    width: 22%;
+}
+
+.form_component ul.optionGarden li.clearB {
+	border: 0;
+	padding: 0;
+}
+
+.filetype-hint {
+    padding: 4px;
+    font-size: 12px;
+    zoom: 1;
+    z-index: 80;
+    margin-bottom: 2px;
+}
+
+.optionsLine input[type=radio], .optionsLine input[type=checkbox]{
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 4px;
+	margin-top: 2px;
+}
+
+.optionsLine .optionValue {
+	display: inline-block;
+	vertical-align: baseline;
+	padding-top: 0;
+	margin-top: 0;
+	width: 80%;
+}
+
+li.other input[type=radio], li.other input[type=checkbox]{
+	vertical-align: baseline;
+}
+
+.form_title .title {
+	text-align: center;
+}
+
+.form_title .title.haslogo {
+	text-align: left;
+}
+
+.in_pic_upload {
+	display: none;
+}
+
+/* 2014-05-05 new pic */
+
+.pictextcontect {
+	position: relative;
+	display: inline-block;
+	width: 330px;
+	margin-bottom: 8px;
+	margin-left: 10px;
+}
+
+.imgcontect{
+	display: inline-block;
+	position: relative;
+	width: 64px;
+	height: 64px;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px dashed #BEBEBE;
+}
+
+.imgedittext {
+	width: 110px;
+	margin-left: 5px;
+    margin-right:5px;
+	padding: 5px 4px;
+    border:1px solid #D9D9D9;
+}
+
+.form_component .picturecheckbox-item {
+	position: relative;
+	float: left;
+	width: 155px;
+	background-color: #FFF;
+	border: 1px solid #D5D5D5;
+	box-shadow: 0 2px 2px #EBEBEB;
+	margin-bottom: 4px;
+	padding: 0;
+	margin-right: 5px;
+	margin-left: 4px;
+}
+
+.form_component .pictureCheckboxList .empty {
+	padding-top: 80px;
+	text-align: center;
+	height: 115px;
+}
+
+.piccheckbox_contect {
+	text-align: center;
+	margin: 6px;
+}
+
+.piccheckbox_contect input{
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 4px;
+	margin-top: 2px;
+	margin-right: 2px;
+}
+
+.uploadimg{
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 12;
+	cursor: pointer;
+}
+
+.choicePicture {
+	position: absolute;
+	width: 100%;
+	max-height: 100%;
+	z-index: 10;
+	left: 0;
+	top: 0;
+	display: none;
+}
+
+.upload_btn {
+	display: inline-block;
+	padding: 6px;
+	border-radius: 2px;
+	font-size: 12px;
+	color: #6B6B6B;
+	margin-top: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.piccheckbox_img {
+	width: 150px;
+	height: 110px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 2px;
+	margin-bottom: 4px;
+	overflow: hidden;
+	display: none;
+}
+
+.picc_img {
+	width: 100%;
+}
+
+.form_component .pictureradio-item {
+	position: relative;
+	float: left;
+	width: 155px;
+	background-color: #FFF;
+	border: 1px solid #D5D5D5;
+	box-shadow: 0 2px 2px #EBEBEB;
+	margin-bottom: 4px;
+	padding: 0;
+	margin-right: 5px;
+	margin-left: 4px;
+}
+
+.form_component .pictureRadioList .empty {
+	padding-top: 80px;
+	text-align: center;
+	height: 115px;
+}
+
+.picradio_contect {
+	text-align: center;
+	margin: 6px;
+}
+
+.picradio_contect input{
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 4px;
+	margin-top: 2px;
+	margin-right: 2px;
+}
+
+.picradio_img {
+	width: 150px;
+	height: 110px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 2px;
+	margin-bottom: 4px;
+	overflow: hidden;
+	display: none;
+}
+
+
+div.page {
+	height: 50px;
+	position: relative;
+}
+
+div.same-as-break {
+	width: 540px;
+	height: 20px;
+	position: absolute;
+	left: -15px;
+	top: 15px;
+}
+
+.page_pre,.page_next {
+	text-align: center;
+}
+
+.hidden_condition {
+	display: none;
+}
+
+.logic_state {
+	margin: 0 4px;
+	width: 173px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #333;
+}
+
+select.logic_state_min {
+	width: 64px;
+}
+
+.jump_select,.showwith_select {
+	margin: 0 4px;
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #333;
+}
+
+.img_title {
+	text-align: center;
+}
+
+.downloadInfo{
+    position: absolute;
+    width: 120px;
+    top: -42px;
+    left: -30px;
+    line-height: 17px;
+    padding: 3px;
+    padding-left: 10px;
+    color: #767676;
+    background-color: #fff;
+    border:1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 4px #e5e5e5;
+    display: inline-block;
+}
+.downloadInfo .form_bubbleTriangle {
+     display: inline-block;
+     position: absolute;
+     right: 60px;
+     bottom: -7px;
+     width: 13px;
+     height: 7px;
+     background: url(../images/icon/bubble_gray.png) no-repeat;
+ }
+
+.with_mblc input,
+.with_mblc div{
+    vertical-align: top;
+}
+.with_mblc input.small{
+    width: 36%;
+}
+.with_mblc input.medium{
+    width: 51%;
+}
+.with_mblc input.large{
+    width: 66%;
+}
+.mblc_button{
+    font-size: 14px;
+    color: #474747;
+    margin-left: 10px;
+    background-color: #f3f3f3;
+    border: 1px solid #d9d9d9;
+    -moz-box-shadow:inset 0px 2px 2px #fff;
+    -webkit-box-shadow:inset 0px 2px 2px #fff;
+    box-shadow:inset 0px 2px 2px #fff;
+}
+.mobile_vcode_com{
+    padding-top: 5px;
+}

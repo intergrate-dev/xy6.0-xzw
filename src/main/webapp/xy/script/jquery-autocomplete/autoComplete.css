@@ -1,0 +1,28 @@
+.auto_hidden {
+width:204px;border-top: 1px solid transparent;
+border-bottom: 1px solid transparent;
+border-left: 1px solid transparent;
+border-right: 1px solid transparent;
+position:absolute;
+display:none;
+}
+.auto_show {
+width:204px;
+border-top: 1px solid #333;
+border-bottom: 1px solid #333;
+border-left: 1px solid #333;
+border-right: 1px solid #333;
+position:absolute;
+z-index:9999; /* 设置对象的层叠顺序 */
+display:block;
+}
+.auto_onmouseover{
+color:#ffffff;
+background-color:highlight;
+width:100%;
+}
+.auto_onmouseout{
+color:#000000;
+width:100%;
+background-color:#ffffff;
+}

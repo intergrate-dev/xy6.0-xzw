@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.personality">
+	<class name="PersonalSetting" table="FSYS_PERSONSETTING">
+		<composite-id>
+			<key-property
+				column="USERID"
+				name="userID"
+				type="int"
+			 />
+			<key-property
+				column="ROLEID"
+				name="roleID"
+				type="int"
+			 />
+			<key-property
+				column="CONFIGITEM"
+				name="item"
+				type="string"
+			 />
+		</composite-id>
+		<property
+			column="CONFIGVALUE"
+			name="value"
+			type="string"
+		 />
+		<property
+			column="EXT1"
+			name="ext1"
+			type="string"
+		 />
+		<property
+			column="EXT2"
+			name="ext2"
+			type="string"
+		 />
+		<property
+			column="EXT3"
+			name="ext3"
+			type="string"
+		 />
+		<property
+			column="EXT4"
+			name="ext4"
+			type="string"
+		 />
+		<property
+			column="EXT5"
+			name="ext5"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

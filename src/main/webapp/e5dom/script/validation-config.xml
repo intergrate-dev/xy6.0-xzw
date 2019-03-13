@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "validation-config.dtd">
+<validation-config lang="auto">
+	<!--DocType-->
+	<form id="CreateFieldForm" show-error="errorDiv" onfail="" show-type="first">
+		<field name="columnName" display-name="columnName" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="40" />			
+		</field>
+		<field name="columnCode" display-name="columnCode" onfail="">
+			<depend name="required" />
+			<depend name="commonChar" />
+		</field>
+		<field name="dataLength" display-name="dataLength" onfail="">
+			<depend name="integer" />			
+		</field>
+		<field name="scale" display-name="scale" onfail="">
+			<depend name="integer" />
+			<depend name="maxLength" param0="22" />			
+		</field>
+	</form>
+
+	<!--DocLib-->
+	<form id="DocLibProps" show-error="errorDiv" onfail="" show-type="first">
+		<field name="newDocLibName" display-name="docLibName" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="40" />			
+		</field>
+		<field name="newDocLibDesc" display-name="docLibDesc" onfail="">
+			<depend name="maxLength" param0="50" />			
+		</field>
+		<field name="newDocLibKeepDays" display-name="keepDays" onfail="">
+			<depend name="integer" />
+			<depend name="required" />
+		</field>
+	</form>
+	
+	<form id="UpdateDocLibForm" show-error="errorDiv1" onfail="" show-type="first">
+		<field name="docLibName" display-name="docLibName" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="40" />			
+		</field>
+		<field name="docLibDesc" display-name="docLibDesc" onfail="">
+			<depend name="maxLength" param0="50" />			
+		</field>
+
+	</form>
+
+	<!--Folder-->
+	<form id="CreateFolderForm" show-error="errorDiv" onfail="" show-type="first">
+		
+		<field name="folderName" display-name="folderName" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="80" />			
+		</field>
+	</form>
+
+	<!--View-->
+	<form id="ViewForm" show-error="errorDiv1" onfail="" show-type="first">
+		
+		<field name="viewName" display-name="viewName" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="80" />			
+		</field>
+		<field name="viewFormula" display-name="viewFormula" onfail="">
+			<depend name="maxLength" param0="255" />			
+		</field>
+		
+	</form>
+
+	<!--Rule-->
+	<form id="RuleForm" show-error="errorDiv" onfail="" show-type="first">
+		<field name="ruleName" display-name="ruleName" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="32" />			
+		</field>
+		<field name="ruleDesc" display-name="ruleDesc" onfail="">
+			<depend name="maxLength" param0="255" />			
+		</field>
+		<field name="ruleClassName" display-name="ruleClassName" onfail="">
+			<depend name="maxLength" param0="255" />			
+		</field>
+
+		<field name="ruleMethod" display-name="ruleMethod" onfail="">
+			<depend name="commonChar" />
+			<depend name="maxLength" param0="255" />			
+		</field>
+		<field name="ruleArguments" display-name="ruleArguments" onfail="">
+			<depend name="maxLength" param0="255" />			
+		</field>
+	</form>
+
+	<!--Filter-->
+	<form id="FilterForm" show-error="errorDiv" onfail="" show-type="first">
+		<field name="filterName" display-name="filterName" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="60" />			
+		</field>
+		<field name="filterDesc" display-name="filterDesc" onfail="">
+			<depend name="maxLength" param0="64" />			
+		</field>
+		<field name="filterFormula" display-name="filterFormula" onfail="">
+			<depend name="maxLength" param0="255" />			
+		</field>
+
+	</form>
+
+</validation-config>

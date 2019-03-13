@@ -1,0 +1,874 @@
+@charset "utf-8";
+body {
+  font: 12px/1.5 微软雅黑;
+  color: #333;
+}
+
+table,
+p,
+form,
+div,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+#box {
+  position: relative;
+  border: 1px solid #ccc;
+  margin: 0;
+  overflow: hidden;
+}
+
+/*#left,#right{height:100%;overflow:hidden;}*/
+
+#left {
+  background: #fff;
+  float: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#right {
+  background: #fff;
+  padding: 5px 0 0 0px;
+  overflow: hidden;
+  float: right;
+  position: absolute;
+  top: 28px;
+  right: 5px;
+  background-color: #fff;
+}
+
+/*解决粘贴进来的图片有滚动条的问题*/
+
+/* .view img{
+    width:100%;
+} */
+
+.sensitiveWord {
+  background-color: rgb(255, 255, 0);
+}
+
+.illegalWord {
+  background-color: rgb(255, 0, 0);
+}
+
+/*#line{position:absolute;top:0;right:0px;height:100%;width:4px;overflow:hidden;background:#d4d4d4;cursor:w-resize;}*/
+
+/*右侧稿签*/
+
+#phone_preview {
+  position: absolute;
+  right: 35px;
+  top: 100px;
+  background-color: #fa0a1e;
+  color: #f5f50c;
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  top: 280px;
+  font-size: 12px
+}
+
+#previewbox {
+  z-index: 9;
+  display: block;
+  position: fixed;
+  left: 6px;
+  top: 6px;
+  width: 230px;
+  width: 240px\9;
+  height: 608px;
+  background: url('../dialogs/image/images/jizzyoujizz_com.png') no-repeat;
+  padding: 100px 25px 116px 36px;
+  padding: 100px 15px 36px 28px\9;
+}
+
+#iPad_previewbox {
+  z-index: 9;
+  display: block;
+  position: fixed;
+  left: 310px;
+  top: 70px;
+  height: 450px;
+  background: url('../dialogs/image/images/ipadxxx_com.png') no-repeat;
+  padding: 30px 60px 116px 36px;
+  padding: 30px 60px 36px 28px\9;
+}
+
+.f-outer {
+  border: 1px solid #ccc;
+  padding: 5px 5px 0px 0px;
+  background: #ebe8e8;
+  width: 100%;
+}
+
+.f-content {
+  background-color: #f0f0f0;
+  height: auto;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.f-title {
+  width: 100%;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  display: block;
+}
+
+.f-row {
+  width: 100%;
+  height: 30px;
+}
+
+.f-row-txt {
+  text-align: right;
+  width: 28%;
+  line-height: 30px;
+  height: 30px;
+  display: inline-block;
+  float: left;
+}
+
+.form-text {
+  width: 65%;
+  line-height: 22px;
+  height: 22px;
+  margin-left: 5px;
+}
+
+.form-textarea {
+  width: 65%;
+  height: 50px;
+  ;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+/*001添加内容目录样式*/
+
+#directionContainer ul {
+  margin: 0px;
+  padding: 0px 0px 0px 20px;
+}
+
+#directionWrapper {
+  padding: 15px 7px;
+  width: 97%;
+  border: 1px solid #CCC;
+  overflow-x: hidden;
+}
+
+.directionTitle {
+  font-weight: bold;
+  font-size: 14px;
+  padding-bottom: 3px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.sectionItem {
+  height: 20px;
+  padding: 4px;
+}
+
+.sectionItem span {
+  *zoom: 1;
+  display: inline-block;
+}
+
+.itemTitle {
+  _float: left;
+}
+
+.selectIcon,
+.deleteIcon,
+.moveUp,
+.moveDown {
+  float: right;
+  color: red;
+  font-size: 0px;
+  line-height: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.selectIcon,
+.moveUp,
+.moveDown {
+  width: 14px;
+  font-size: 10px;
+}
+
+.selectIcon:hover,
+.moveUp:hover,
+.moveDown:hover {
+  text-decoration: underline;
+}
+
+.deleteIcon {
+  width: 20px;
+  margin-left: 3px;
+  background: url(../themes/default/images/icons-all.gif) 0 -89px;
+}
+
+/*001添加右侧稿签*/
+
+#do-search {
+  width: 40px;
+  border: 1px solid;
+  height: 26px;
+  line-height: 26px;
+  cursor: pointer;
+  background-color: #EBE8E8;
+  display: block;
+  float: left;
+}
+
+#do-search:hover,
+#hight-level-search:hover {
+  background-color: #F0F1F3;
+}
+
+#hight-level-search {
+  width: 30px;
+  border: 1px solid;
+  height: 26px;
+  line-height: 26px;
+  cursor: pointer;
+  background-color: #EBE8E8;
+  display: block;
+  float: left;
+  margin-left: 3px;
+}
+
+.tip-list {
+  background-color: #F0F0F0;
+  width: 100%;
+  height: 35px;
+  margin-left: 2px;
+  display: none;
+  padding-top: 5px;
+}
+
+#f-addmanuscript ul {
+  list-style: none;
+  background-color: #F0F1F3;
+  width: 100%;
+  height: 25px;
+}
+
+#f-addmanuscript .f-addmanuscript-title {
+  background-color: #F0F1F3;
+  border: #CCCCCC solid 1px;
+}
+
+#f-addmanuscript li {
+  float: left;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+}
+
+#f-addmanuscript .f-titile-1 {
+  width: 90px;
+  border-right: #CCCCCC solid 1px;
+}
+
+#f-addmanuscript .f-titile-2 {
+  width: 40px;
+  border-right: #CCCCCC solid 1px;
+}
+
+#f-addmanuscript .f-titile-3 {
+  width: 70px;
+}
+
+#f-addmanuscript-contents {
+  width: 92%;
+  height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #FFF;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+#f-managemanuscript {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#f-managemanuscript ul {
+  list-style: none;
+  background-color: #EBE8E8;
+  width: 100%;
+  height: 25px;
+}
+
+#f-managemanuscript li {
+  float: left;
+  height: 25px;
+  width: 45px;
+  line-height: 25px;
+  text-align: center;
+}
+
+#f-managemanuscript-contents {
+  width: 92%;
+  height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #FFF;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+#f-managemanuscript span {
+  cursor: pointer;
+}
+
+#pre-btn:hover,
+#next-btn:hover {
+  background-color: #68DDDD;
+  height: 25px;
+  width: 45px;
+  display: block;
+  border: #6C9BBE solid 1px;
+}
+
+#f-managemanuscript .f-managemanuscript-title {
+  background-color: #F0F1F3;
+  border: #CCCCCC solid 1px;
+}
+
+#f-managemanuscript .f-managemanuscript-title .f-titile-7 {
+  width: 90px;
+  border-right: #CCCCCC solid 1px;
+}
+
+#f-managemanuscript .f-managemanuscript-title .f-titile-8 {}
+
+#f-content tr:hover {
+  background-color: #68DDDD;
+}
+
+#tab02 span:hover {
+  cursor: pointer;
+  border: #6C9BBE solid 1px;
+  width: 40px;
+  text-align: center;
+}
+
+/*字体大中小*/
+
+#viewSize {
+  height: 26px;
+  float: right;
+  position: absolute;
+  right: 42px;
+  bottom: 4px;
+  z-index: 100
+}
+
+.font_size {
+  width: 14px;
+  height: 14px;
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+  background-image: url(myimages/fontsize.gif);
+  float: left;
+}
+
+.font_size_1 {
+  background-position: 0px 0px;
+  margin-left: 0;
+}
+
+.font_size_2 {
+  background-position: -40px 0px;
+}
+
+.font_size_3 {
+  background-position: -80px 0px;
+}
+
+.font_size_select_1 {
+  background-position: 0px -40px;
+  margin-left: 0;
+}
+
+.font_size_select_2 {
+  background-position: -40px -40px;
+}
+
+.font_size_select_3 {
+  background-position: -80px -40px;
+}
+
+/*修订样式*/
+
+strike.deleted {
+  color: #ff0000;
+}
+
+.tab_other {
+  height: 32px;
+  position: absolute;
+  bottom: 2px;
+  padding-top: 4px;
+  display: none;
+}
+
+.tab_open {
+  /*width: 13px;*/
+  /*height: 37px;*/
+  /*position: absolute;*/
+  /*right: 0px;*/
+  /*padding: 0px 2px;*/
+  /*background-color: rgb(0,155,210);*/
+  /*color: #fff;*/
+  /*border-radius: 2px;*/
+  width: 13px;
+  height: 37px;
+  position: absolute;
+  right: 0px;
+  padding: 1px 2px;
+  background-color: rgb(0, 155, 210);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.tab_openShow {
+  /*height: 60px !important;*/
+  /*padding-top: 19px;*/
+  height: 54px !important;
+  padding-top: 16px;
+}
+
+#tabOpenImage {
+  width: 90px;
+  position: absolute;
+  top: 176px;
+  right: 15px;
+  z-index: 1000;
+  opacity: 0.7;
+}
+
+#tabOpenImage .tab_openImage {
+  width: 90px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  padding: 0;
+  background-color: rgb(0, 155, 210);
+  color: #fff;
+}
+
+#tabOpenImage .tab_openImageList {
+  width: 90px;
+  display: none;
+}
+
+#tabOpenImage .tab_openImageList li {
+  width: 90px;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+#tabOpenImage .tab_openImageList li img {
+  width: 100%;
+}
+
+.tab_openShowImage {
+  display: block !important;
+}
+
+.start_container {
+  height: 38px;
+}
+
+/*菜单头部样式*/
+
+.tab_head {
+  width: 100%;
+  height: 27px;
+  float: left;
+  background: #e2e6e9;
+  border-bottom: 1px solid #b2b7bb;
+}
+
+/* background:#e2e6e9; */
+
+.tab_content {
+  float: left;
+  overflow: hidden;
+  width: 100%;
+  height: 100px;
+  background: url(myimages/tabContentBg.jpg) repeat-x;
+  padding-top: -5px;
+}
+
+.tab_content div {
+  float: left;
+  cursor: pointer;
+}
+
+.tab_split {
+  width: 3px;
+  height: 88px;
+  background: url(myimages/tabSplit.jpg) no-repeat;
+}
+
+.tab_outer {
+  height: 100px;
+  width: 300px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.tab_outer .tab_t {
+  width: 100%;
+  height: 36px;
+  padding-top: 4px;
+}
+
+.tab_outer .tab_b {
+  width: 100%;
+  height: 20px;
+  line-height: 14px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.tab_list {
+  list-style: none;
+  padding: 0px;
+  padding-top: 1px;
+  margin: 0px;
+}
+
+.tab_list li {
+  width: 60px;
+  height: 25px;
+  float: left;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #393939;
+  display: block;
+  text-align: center;
+  line-height: 25px;
+}
+
+.tab_list li.default {
+  cursor: pointer;
+}
+
+.tab_list li.confirm {
+  background: #fff url(myimages/tabConfirmBg.gif) no-repeat;
+}
+
+/*新增按钮样式*/
+
+.edui-default .edui-for-save .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -26px -2px;
+}
+
+/*001添加*/
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-set .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/icons.png);
+  background-image: url(myimages/icons.gif) \9;
+  background-position: 580px -39px;
+}
+
+.edui-default .edui-for-textpreview .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: 0px -28px;
+}
+
+.edui-default .edui-for-ajustment .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -48px -2px;
+}
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-hotword .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: 0px -2px;
+}
+
+.edui-default .edui-for-newversion .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -73px -28px;
+}
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-versionhistory .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -119px -28px;
+}
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-modifytrace .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -96px -28px;
+}
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-insertsummarystyle .edui-button-wrap .edui-button-body .edui-icon {
+  /*height: 16px !important;
+    width: 16px !important;
+    background-image: url(myimages/summarystyle.png);
+    background-image: url(myimages/summarystyle.png) \9;*/
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/summarystyle.png);
+  background-image: url(myimages/summarystyle.png) \9;
+  background-position: 2px;
+  background-repeat: no-repeat;
+}
+
+.edui-default .edui-for-check .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -25px -28px;
+}
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-textcompare .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -49px -28px;
+}
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-kityformula .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/kf-icon.png);
+  background-image: url(myimages/kf-icon.png) \9;
+  vertical-align: middle;
+}
+
+.edui-editor-toolbarboxouter .edui-default .edui-for-countlist .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -95px -2px;
+}
+
+/*大图标*/
+
+.edui-default .edui-toolbar .edui-button .edui-icon-2,
+.edui-default .edui-toolbar .edui-menubutton .edui-icon-2,
+.edui-default .edui-toolbar .edui-splitbutton .edui-icon-2 {
+  height: 30px !important;
+  width: 30px !important;
+  margin-left: 10px;
+  background-image: url(myimages/myicons-big.png);
+  /*TODO*/
+  background-image: url(myimages/myicons-big.gif) \9;
+}
+
+.edui-default .edui-for-drafts .edui-icon-2 {
+  background-position: -842px 0;
+}
+
+.edui-default .edui-for-save .edui-icon-2 {
+  background-position: -1126px -115px;
+}
+
+.edui-default .edui-for-textpreview .edui-icon-2 {
+  background-position: -1089px -152px;
+}
+
+.edui-default .edui-for-preview .edui-icon-2 {
+  background-position: -631px -30px;
+}
+
+.edui-default .edui-for-help .edui-icon-2 {
+  background-position: -511px 0;
+}
+
+.edui-default .edui-for-insertimage .edui-icon-2 {
+  background-position: -1090px -115px;
+}
+
+.edui-default .edui-for-print .edui-icon-2 {
+  background-position: -661px -30px;
+}
+
+/*弹出窗口大小*/
+
+.edui-default .edui-for-countlist .edui-dialog-content {
+  width: 170px;
+  height: 190px;
+}
+
+.edui-default .edui-for-hotword .edui-dialog-content {
+  width: 450px;
+  height: 240px;
+}
+
+.edui-default .edui-for-versionhistory .edui-dialog-content {
+  width: 450px;
+  height: 240px;
+}
+
+.edui-default .edui-for-versioncontent .edui-dialog-content {
+  width: 700px;
+  height: 500px;
+}
+
+.edui-default .edui-for-textcompare .edui-dialog-content {
+  width: 400px;
+  height: 100px;
+}
+
+.edui-default .edui-for-kityformula .edui-dialog-content {
+  width: 783px;
+  height: 386px;
+}
+
+/*批注*/
+
+.edui-default .edui-for-comment_xy .edui-button-wrap .edui-button-body .edui-icon {
+  height: 20px !important;
+  width: 20px !important;
+  background-image: url(myimages/myicons.png);
+  background-image: url(myimages/myicons.gif) \9;
+  background-position: -73px -28px;
+}
+
+.comment-a {
+  color: rgb(197, 191, 191);
+  text-indent: 0 !important;
+  top: -0.5em !important;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.comment-a:hover {
+  color: #f9b552;
+}
+
+.comment-a:focus {
+  color: #f9b552;
+}
+
+.list-group a {
+  color: #333;
+}
+
+.list-group button {
+  background-color: #ffffff;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.list-group-item-2 {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.list-group-item-2:focus {
+  background-color: #ffffff;
+  /*color: #333;*/
+  text-decoration: none;
+}
+
+/***********************引入bootstrap字体图标****************************/
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../../script/bootstrap-3.3.4/fonts/glyphicons-halflings-regular.eot');
+  src: url('../../script/bootstrap-3.3.4/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../script/bootstrap-3.3.4/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../../script/bootstrap-3.3.4/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../script/bootstrap-3.3.4/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../script/bootstrap-3.3.4/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-comment:before {
+  content: "\e111";
+}
+
+/*yb 草稿箱draft的样式*/
+
+.draftShow {
+  display: block;
+}
+
+.draftNone {
+  display: none;
+}
+
+/*工具栏宽度不够*/
+
+.tab_t .edui-toolbar .edui-for-fullscreen {
+  margin-left: 56px;
+}
+
+.tab_t .edui-for-quickinsertion {
+  display: none !important;
+}
+
+/*yb 更新新的样式*/
+
+/*div#tab_other .edui-button {*/
+
+/*padding: 0 0.5px;*/
+
+/*}*/

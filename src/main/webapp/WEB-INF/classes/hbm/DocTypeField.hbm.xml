@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.founder.e5.dom.DocTypeField" table="DOM_DOCTYPEFIELDS">
+		
+		<id column="FIELDID" name="fieldID" type="integer">
+			<generator class="assigned"/>
+		</id>
+		
+		<property column="COLUMNCODE" name="columnCode" type="string"
+			not-null="true"/>
+		
+		<property column="COLUMNNAME" length="40" name="columnName" not-null="true"
+			type="string"/>
+		
+		<property column="DOCTYPEID" name="docTypeID" type="integer"
+			not-null="true"/>
+		
+		<property column="DEFAULTVALUE" length="255" name="defaultValue"
+			not-null="false" type="string"/>
+		
+		<property column="DATATYPE" length="40" name="dataType" not-null="true"
+			type="string"/>
+		
+		<property column="LENGTH" name="dataLength" not-null="false" type="integer"/>
+		
+		<property column="SCALE" length="22" name="scale" not-null="false"
+			type="integer"/>
+		
+		<property column="ISNULL" name="isNull" not-null="false" type="integer"/>
+		
+		<property column="STATUS" length="1" name="status" not-null="false"
+			type="string"/>
+		
+		<property column="ATTRIBUTE" name="attribute" not-null="false"
+			type="integer"/>
+		
+		<property column="READONLY" name="readonly" not-null="false"
+			type="integer"/>
+
+		<property column="EDITTYPE" name="editType" not-null="false"
+			type="integer"/>
+			
+		<property column="URL" name="url" not-null="false"
+			type="string"/>
+
+		<property column="OPTIONS" name="options" not-null="false"
+			type="string"/>
+	</class>
+</hibernate-mapping>

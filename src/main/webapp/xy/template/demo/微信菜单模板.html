@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<body scroll="yes">
+<FOUNDER-XY type="blockarticlelist" data="">
+	<ul id="articleList">
+	<#list articles as article>
+		<li>
+			<a href="${article.url!}" target="_blank">
+				<span>${article.title!}</span>
+				<#if article.picBig?exists>
+				<img src="${article.picBig!}"/>
+				</#if>
+			</a>
+		</li>
+	</#list>
+	</ul>
+</FOUNDER-XY>
+</body>
+</html>

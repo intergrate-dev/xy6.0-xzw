@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.sys.org">
+	<class name="com.founder.e5.sys.org.User" table="FSYS_USER">
+		<id
+			column="USERCODE"
+			name="UserCode"
+			type="string"
+		>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="HANDSETNUMBER"
+			length="20"
+			name="HandSetNumber"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="BPNUMBER"
+			length="20"
+			name="BPNumber"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="USERNAME"
+			length="20"
+			name="UserName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="POSTCODE"
+			length="20"
+			name="PostCode"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="EMAILADDRESS"
+			length="30"
+			name="EmailAddress"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="NUSERID"
+			length="22"
+			name="UserID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="TELHOMENUMBER"
+			length="20"
+			name="TelHomeNumber"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="NODEID"
+			length="22"
+			name="OrgID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="TELOFFNUMBER"
+			length="20"
+			name="TelOffNumber"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="ORDERID"
+			length="22"
+			name="OrderID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="USERPASSWORD"
+			length="254"
+			name="UserPassword"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="ADDRESS"
+			length="254"
+			name="Address"
+			not-null="false"
+			type="string"
+		 />
+		<property column="PROPERTY1" length="255" name="property1" not-null="false" type="string"/>
+		<property column="PROPERTY2" length="255" name="property2" not-null="false" type="string"/>
+		<property column="PROPERTY3" length="255" name="property3" not-null="false" type="string"/>
+		<property column="PROPERTY4" length="255" name="property4" not-null="false" type="string"/>
+		<property column="PROPERTY5" length="255" name="property5" not-null="false" type="string"/>
+		<property column="PROPERTY6" length="255" name="property6" not-null="false" type="string"/>
+		<property column="PROPERTY7" length="255" name="property7" not-null="false" type="string"/>
+	</class>
+</hibernate-mapping>

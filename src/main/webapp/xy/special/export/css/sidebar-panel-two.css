@@ -1,0 +1,288 @@
+/*位置组件样式 样式写到xss文件*/
+
+#css-posAndBs .diy-control.offset > .box,#css-posAndBs-II .diy-control.offset > .box,#css-posAndBs-III .diy-control.offset > .box {
+    width: 160px;
+    height: 107px;
+    margin: 16px auto;
+    position: relative;
+}
+
+#css-posAndBs .diy-control.offset > .box > .handle.top, .diy-control.offset > .box > .handle.bottom, .diy-control.offset > .box > .handle.top:before, .diy-control.offset > .box > .handle.bottom:before,#css-posAndBs-II .diy-control.offset > .box > .handle.top,#css-posAndBs-III .diy-control.offset > .box > .handle.top{
+    width: 149px;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.top,#css-posAndBs-II .diy-control.offset > .box .handle.top,#css-posAndBs-III .diy-control.offset > .box .handle.top {
+    top: 0;
+    border-bottom-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.top, .diy-control.offset > .box .handle.bottom,#css-posAndBs-II .diy-control.offset > .box .handle.top,#css-posAndBs-III .diy-control.offset > .box .handle.top {
+    height: 0;
+    left: 3px;
+    cursor: row-resize;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle,#css-posAndBs-II .diy-control.offset > .box .handle,#css-posAndBs-III .diy-control.offset > .box .handle {
+    position: absolute;
+    display: block;
+    font-size: 0;
+    border: solid 14px transparent;
+}
+
+#css-posAndBs .diy-control,#css-posAndBs-II .diy-control,#css-posAndBs-III .diy-control {
+    vertical-align: middle;
+    line-height: 14px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .handle.left, .diy-control.offset > .box > .handle.right, .diy-control.offset > .box > .handle.left:before, .diy-control.offset > .box > .handle.right:before,#css-posAndBs-II .diy-control.offset > .box > .handle.left,#css-posAndBs-III .diy-control.offset > .box > .handle.left {
+    height: 100px;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.right,#css-posAndBs-II .diy-control.offset > .box .handle.right,#css-posAndBs-III .diy-control.offset > .box .handle.right {
+    right: 0;
+    border-right-color: #575757;
+    border-left-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.left, .diy-control.offset > .box .handle.right,#css-posAndBs-II .diy-control.offset > .box .handle.left,#css-posAndBs-III .diy-control.offset > .box .handle.left{
+    width: 0;
+    top: 3px;
+    cursor: col-resize;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.left,#css-posAndBs-II .diy-control.offset > .box .handle.left,#css-posAndBs-III .diy-control.offset > .box .handle.left {
+    left: 0;
+    border-left-color: #575757;
+    border-right-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.left, .diy-control.offset > .box .handle.right,#css-posAndBs-II .diy-control.offset > .box .handle.left,#css-posAndBs-III .diy-control.offset > .box .handle.left {
+    width: 0;
+    top: 3px;
+    cursor: col-resize;
+}
+
+#css-posAndBs .diy-control.offset > .box > .label.top,#css-posAndBs-II .diy-control.offset > .box > .label.top,#css-posAndBs-III .diy-control.offset > .box > .label.top {
+    top: -17px;
+}
+
+#css-posAndBs .diy-control.offset > .box .label.top, .diy-control.offset > .box .label.bottom,#css-posAndBs-II .diy-control.offset > .box .label.top,#css-posAndBs-III .diy-control.offset > .box .label.top{
+    left: 50%;
+    margin-left: -15px;
+    text-align: center;
+}
+
+#css-posAndBs .diy-control.offset > .box .label,#css-posAndBs-II .diy-control.offset > .box .label,#css-posAndBs-III .diy-control.offset > .box .label {
+    position: absolute;
+    width: 26px;
+    height: 12px;
+    padding: 2px 1px;
+}
+
+#css-posAndBs .diy-control .disable-select,#css-posAndBs-II .diy-control .disable-select,#css-posAndBs-III .diy-control .disable-select {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#css-posAndBs .diy-control.offset > .box > .label.right,#css-posAndBs-II .diy-control.offset > .box > .label.right,#css-posAndBs-III .diy-control.offset > .box > .label.right {
+    right: -34px;
+    text-align: left;
+}
+
+#css-posAndBs .diy-control.offset > .box .label.left, .diy-control.offset > .box .label.right,#css-posAndBs-II .diy-control.offset > .box .label.left,#css-posAndBs-III .diy-control.offset > .box .label.left {
+    top: 50%;
+    margin-top: -8px;
+}
+
+#css-posAndBs .diy-control.offset > .box .label.top, .diy-control.offset > .box .label.bottom,#css-posAndBs-II .diy-control.offset > .box .label.top,#css-posAndBs-III .diy-control.offset > .box .label.top {
+    left: 50%;
+    margin-left: -15px;
+    text-align: center;
+}
+
+#css-posAndBs .diy-control.offset > .box > .label.left,#css-posAndBs-II .diy-control.offset > .box > .label.left,#css-posAndBs-III .diy-control.offset > .box > .label.left {
+    left: -35px;
+    text-align: right;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding,#css-posAndBs-II .diy-control.offset > .box > .padding,#css-posAndBs-III .diy-control.offset > .box > .padding {
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .handle.top, .diy-control.offset > .box > .padding > .handle.bottom, .diy-control.offset > .box > .padding > .handle.top:before, .diy-control.offset > .box > .padding > .handle.bottom:before,#css-posAndBs-II .diy-control.offset > .box > .padding > .handle.top,#css-posAndBs-III .diy-control.offset > .box > .padding > .handle.top{
+    width: 115px;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.top:before,#css-posAndBs-II .diy-control.offset > .box .handle.top:before,#css-posAndBs-III .diy-control.offset > .box .handle.top:before {
+    top: -13px;
+    border-top-color: #575757;
+    border-bottom-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .handle.left, .diy-control.offset > .box > .padding > .handle.right, .diy-control.offset > .box > .padding > .handle.left:before, .diy-control.offset > .box > .padding > .handle.right:before,#css-posAndBs-II .diy-control.offset > .box > .padding > .handle.left,#css-posAndBs-III .diy-control.offset > .box > .padding > .handle.left {
+    height: 64px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .handle.right i,#css-posAndBs-II .diy-control.offset > .box > .padding > .handle.right i,#css-posAndBs-III .diy-control.offset > .box > .padding > .handle.right i {
+    right: -11px;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.bottom,#css-posAndBs-II .diy-control.offset > .box .handle.bottom,#css-posAndBs-III .diy-control.offset > .box .handle.bottom  {
+    bottom: 0;
+    border-top-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.bottom:before,#css-posAndBs-II .diy-control.offset > .box .handle.bottom:before,#css-posAndBs-III .diy-control.offset > .box .handle.bottom:before {
+    bottom: -13px;
+    border-bottom-color: #575757;
+    border-top-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.bottom b,#css-posAndBs-II .diy-control.offset > .box .handle.bottom b,#css-posAndBs-III .diy-control.offset > .box .handle.bottom b {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 12px;
+    right: 0;
+    bottom: -12px;
+    font-size: 12px;
+    color: #333;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.top:before, .diy-control.offset > .box .handle.bottom:before,#css-posAndBs-II .diy-control.offset > .box .handle.top:before,#css-posAndBs-III .diy-control.offset > .box .handle.top:before {
+    height: 0;
+    left: -12px;
+    cursor: row-resize;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle:before,#css-posAndBs-II .diy-control.offset > .box .handle:before,#css-posAndBs-III .diy-control.offset > .box .handle:before {
+    content: '';
+    position: absolute;
+    display: block;
+    font-size: 0;
+    border: solid 12px transparent;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.right:before,#css-posAndBs-II .diy-control.offset > .box .handle.right:before,#css-posAndBs-III .diy-control.offset > .box .handle.right:before{
+    right: -13px;
+    border-right-color: #575757;
+    border-left-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.left:before, .diy-control.offset > .box .handle.right:before,#css-posAndBs-II .diy-control.offset > .box .handle.left:before,#css-posAndBs-III .diy-control.offset > .box .handle.left:before {
+    width: 0;
+    top: -12px;
+    cursor: col-resize;
+}
+
+#css-posAndBs .diy-control.offset > .box > .handle.right i,#css-posAndBs-II .diy-control.offset > .box > .handle.right i,#css-posAndBs-III .diy-control.offset > .box > .handle.right i {
+    right: -12px;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.left i, .diy-control.offset > .box .handle.right i,#css-posAndBs-II .diy-control.offset > .box .handle.left i,#css-posAndBs-III .diy-control.offset > .box .handle.left i {
+    width: 12px;
+    height: 16px;
+    top: 50%;
+    margin-top: -6px;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle i,#css-posAndBs-II .diy-control.offset > .box .handle i,#css-posAndBs-III .diy-control.offset > .box .handle i{
+    position: absolute;
+    display: block;
+    text-align: center;
+    pointer-events: none;
+}
+
+#css-posAndBs .diy-control.offset,#css-posAndBs-II .diy-control.offset,#css-posAndBs-III .diy-control.offset {
+    display: block;
+    position: relative;
+    color: #3d3d3d;
+    font-size: 12px;
+    width: 200px;
+    /*overflow: hidden;*/
+
+}
+
+#css-posAndBs .diy-control,#css-posAndBs-II .diy-control,#css-posAndBs-III .diy-control {
+    vertical-align: middle;
+    line-height: 14px;
+}
+
+#css-posAndBs table,#css-posAndBs-II table,#css-posAndBs-III table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .label.right,#css-posAndBs-II .diy-control.offset > .box > .padding > .label.right,#css-posAndBs-III .diy-control.offset > .box > .padding > .label.right {
+    right: 15px;
+    text-align: right;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .label.bottom,#css-posAndBs-II .diy-control.offset > .box > .padding > .label.bottom,#css-posAndBs-III .diy-control.offset > .box > .padding > .label.bottom {
+    bottom: 15px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .label.left,#css-posAndBs-II .diy-control.offset > .box > .padding > .label.left,#css-posAndBs-III .diy-control.offset > .box > .padding > .label.left {
+    left: 15px;
+    text-align: left;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.top i,#css-posAndBs-II .diy-control.offset > .box .handle.top i,#css-posAndBs-III .diy-control.offset > .box .handle.top i {
+    top: -14px;
+    vertical-align: top;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.top i, .diy-control.offset > .box .handle.bottom i,#css-posAndBs-II .diy-control.offset > .box .handle.top i,#css-posAndBs-III .diy-control.offset > .box .handle.top i {
+    width: 16px;
+    height: 12px;
+    left: 50%;
+    margin-left: -8px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .handle.bottom i:after, .diy-control.offset > .box > .padding > .handle.top i:after,#css-posAndBs-II .diy-control.offset > .box > .handle.bottom i:after,#css-posAndBs-III .diy-control.offset > .box > .handle.bottom i:after {
+    content: "\E615";
+}
+
+#css-posAndBs .diy-control.offset > .box .handle i:after,#css-posAndBs-II .diy-control.offset > .box .handle i:after,#css-posAndBs-III .diy-control.offset > .box .handle i:after {
+    font-family: "icon";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+#css-posAndBs .diy-control.offset > .box .handle.left:before,#css-posAndBs-II .diy-control.offset > .box .handle i:after,#css-posAndBs-III .diy-control.offset > .box .handle i:after {
+    left: -13px;
+    border-left-color: #575757;
+    border-right-width: 0;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .handle.left i,#css-posAndBs-II .diy-control.offset > .box > .padding > .handle.left i,#css-posAndBs-III .diy-control.offset > .box > .padding > .handle.left i {
+    left: -14px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .handle.left i,#css-posAndBs-II .diy-control.offset > .box > .handle.left i,#css-posAndBs-III .diy-control.offset > .box > .handle.left i {
+    left: -15px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .label.bottom,#css-posAndBs-II .diy-control.offset > .box > .label.bottom,#css-posAndBs-III .diy-control.offset > .box > .label.bottom {
+    bottom: -13px;
+}
+
+#css-posAndBs .diy-control.offset > .box > .padding > .label.top,#css-posAndBs-II .diy-control.offset > .box > .padding > .label.top,#css-posAndBs-III .diy-control.offset > .box > .padding > .label.top {
+    top: 15px;
+}
+
+#css-bgDeleteImg,#css-bgDeleteImg-II,#css-bgDeleteImg-III {
+    display: none;
+}

@@ -1,0 +1,44 @@
+﻿body{
+	padding:0;
+	margin:0;
+	font-family: "microsoft yahei";
+}
+.tablecontent{
+	width:auto;
+	margin-top:10px;
+}
+.tablecontent td{
+	padding:0;
+	border:0 none;
+}
+.custview-label{
+	width:100px;
+	margin:0;
+	margin-right:-200px; 
+	color:#3A87AD;
+	text-align: right;
+	float: left;
+    line-height: 24px;
+	font-size: 12px;
+}
+.custview-field{
+	margin:0;
+	margin-left:105px;
+	margin-right:20px;
+	color:#333;
+	display:block;
+    line-height: 24px;
+	font-size: 12px;
+}
+.custview-field textarea.textarea{
+	resize:none;
+	background:#fff;
+	border:0 none;
+	box-shadow: none;
+	font-size: 12px;
+    line-height: 24px;
+	padding:0;
+}
+#pl_mapping {
+	word-break:break-all;
+}

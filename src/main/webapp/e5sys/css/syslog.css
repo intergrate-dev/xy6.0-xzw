@@ -1,0 +1,276 @@
+
+
+/*Describes the properties of the borders*/
+.TOPLEFTRIGHTBORDER 
+{
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC; border-bottom:
+	1px solid #CCCCCC
+}
+
+.WRAP_BORDER 
+{
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC; border-bottom:
+	1px solid #CCCCCC
+}
+
+
+/*Describes the properties of the borders*/
+.TOPBORDER 
+{
+	border-left-width: 1; 
+	border-right-width: 1; 
+	border-top: 1px solid #FF9900; 
+	border-bottom: 1px solid #FF9900
+}
+
+/*Describes the properties of the borders*/
+.TOPLEFTBORDER 
+{
+	border-left: 1px solid #FF9900; 
+	border-right-width: 1; 
+	border-top: 1px solid #FF9900; 
+	border-bottom: 1px solid #FF9900
+}
+
+/*Describes the properties of the borders*/
+.TOPRIGHTBORDER 
+{
+	border-left-width: 1; 
+	border-right: 1px solid #FF9900; 
+	border-top: 1px solid #FF9900; 
+	border-bottom: 1px solid #FF9900
+}
+
+/*Describes the properties of the borders*/
+.BOTTOMBORDER 
+{
+	border-left-width: 1; 
+	border-right-width: 1; 
+	border-top: 1px solid #FF9900; 
+	border-bottom: 1px solid #FF9900;
+}
+
+/*Describes the properties of the borders*/
+.BOTTOMBORDER_ONLY 
+{
+	border-left-width: 1; 
+	border-right-width: 1; 
+	border-top: 1; 
+	border-bottom: 1px solid #006666;
+}
+
+/*Describes the properties of the borders*/
+.BOTTOMLEFTBORDER 
+{
+	border-left: 1px solid #FF9900; 
+	border-right-width: 1; 
+	border-top: 1px solid #FF9900; 
+	border-bottom: 1px solid #FF9900
+}
+
+/*Describes the properties of the borders*/
+.BOTTOMRIGHTBORDER 
+{
+	border-left-width: 1; 
+	border-right: 1px solid #FF9900; 
+	border-top: 1px solid #FF9900; 
+	border-bottom: 1px solid #FF9900
+}
+
+/*Describes the properties of the page header*/
+.PAGEHEADER 
+{
+	font-family: verdana;
+	font-size: 24;
+	color: black
+}
+
+/*Describes the properties of a regular header in a page*/
+.HEADER 
+{
+	font-family: verdana;
+	font-size: 16;
+	font-weight: bold;
+	color: #666666
+}
+
+.LOWER_HEADER 
+{
+	font-family: verdana;
+	font-size: 14;
+	font-weight: bold;
+	color: #666666
+}
+
+/*Describes the properties of regular size text, such as sub headers*/
+.REGULARTEXT
+{
+	font-family: verdana;
+	font-size: 14;
+	color: black
+}
+
+/*Describes the properties of comment texts and examples*/
+.SMALLTEXT 
+{
+	font-family: verdana;
+	font-size: 10;
+	color: black
+}
+
+/*Describes the properties of comment texts and examples*/
+.TEXTBOX 
+{
+	font-family: verdana;
+	font-size: 14;
+	color: black
+}
+
+/*Describes the properties of an important/error message*/
+.ERRORMESSAGE 
+{
+	font-family: verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: red
+}
+
+/*Describes the properties of an 'ok' message*/
+.OKMESSAGE 
+{
+	font-family: verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: green
+}
+
+/*Describes the properties of an information message*/
+.INFORMATIONMESSAGE 
+{
+	font-family: verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: black
+}
+
+/*Describes the font family and the weight of the links*/
+.LINK
+{
+	font-family: verdana;
+	font-size: 14;
+	font-weight: bold
+}
+
+/*Describes the font family,size and the weight of small links*/
+.SMALLLINK
+{
+	font-family: verdana;
+	font-size: 10;
+	font-weight: bold
+}
+
+/*Describes the font family,size and the weight of medium links*/
+.MEDIUMLINK
+{
+	font-family: verdana;
+	font-size: 12;
+	font-weight: bold
+}
+
+/*Describes the properties of the links that use as buttons*/
+.LINKBTN
+{
+	font-family: verdana;
+	font-size: 14;
+	font-weight: bold;
+	border:1px solid #FFFFFF;
+}
+
+/*Describes the properties of the links that use as buttons*/
+.LINKBTNOVER
+{
+	font-family: verdana;
+	font-size: 14;
+	font-weight: bold;
+	border:1px solid #000000;
+	background:#EEEEEE;
+}
+
+
+
+/*Describes the font family,size,weight and the color of license related messages*/
+.LICENSEMESSAGE
+{
+	font-family: verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: red
+}
+
+/*Describes the properties of a header in the logview table */
+.LOGVIEWTABLEHEADER 
+{
+	font-family: verdana;
+	font-size: 14;
+	font-weight: bold;
+	background-color: #FFB13E;
+	color: brown
+}
+
+/*Describes the properties of a header in the logview table */
+.MYLOGVIEWTABLEHEADER 
+{
+	font-family: verdana;
+	font-size: 14;
+	font-weight: bold;
+	background-color: #FFB13E;
+	color: brown
+}
+
+.MENUSEPARATE 
+{	
+	border-right-style:Groove; 
+	border-right-width:2px; 
+	
+}
+
+.SEARCHRESULT
+{
+	background-color: white;
+	border-top: 1px solid black;
+	font-size: 12px
+}
+
+.COLUMNHEADER
+{
+	background-color: #D6EFB6;
+	border-top: 1px solid black;
+	font-weight:bold;
+}
+
+.DISABLEDLINK
+{
+	font-family: verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: #AAAAFF
+}
+.maindiv {
+	border: 1px solid #d5d5d5;
+	width: 98%;
+}
+
+
+/*Describes the properties of the links*/
+a:link {color: blue; text-decoration: none}
+a:visited {color: blue; text-decoration: none}
+a:hover {color: blue; text-decoration: underline}
+a:active {color: blue; text-decoration: none}
+
+input{
+    border: #888888 1px solid;
+}

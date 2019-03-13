@@ -1,0 +1,128 @@
+﻿{
+<FOUNDER-XY type="article" data="">
+	"fileId":"${article.id?c}",
+	"version":"${article.pubTimeReal?string("yyyyMMddHHmmss")}",
+	"title":"${article.title?json_string?replace("\"", "\\\"")}",
+	"attAbstract":"${article.summary?json_string?replace("\"", "\\\"")}",
+	"publishtime":"${article.pubTime?string("yyyy-MM-dd HH:mm:ss")}",
+	"source":"${article.source?json_string?replace("\"", "\\\"")}",
+	"author":"${article.author?json_string?replace("\"", "\\\"")}",
+	"collaborator":"${article.collaborator?json_string?replace("\"", "\\\"")}",
+	"editor":"${article.editor?json_string?replace("\"", "\\\"")}",
+	"subtitle":"${article.subTitle?json_string?replace("\"", "\\\"")}",
+	"columnID":"${article.columnID}",
+	"columnName":"${article.column?json_string?replace("\"", "\\\"")}",
+	"discussClosed":"${article.discussClosed}",
+	"articleType":"${article.type}",
+	"shareUrl":"${article.urlPad!}",
+	
+	<#if article.authorInfo?exists>
+	"author":{
+		"id":"${article.authorInfo.id!}",
+		"name":"${article.authorInfo.name?json_string?replace("\"", "\\\"")}",
+		"url":"${article.authorInfo.url?json_string?replace("\"", "\\\"")}",
+		"duty":"${article.authorInfo.duty?json_string?replace("\"", "\\\"")}",
+		"description":"${article.authorInfo.description?json_string?replace("\"", "\\\"")}"
+	},
+	</#if>
+	"imageUrl":<#if article.picSmall?exists>"${article.picSmall}",
+			<#elseif article.picMiddle?exists>"${article.picMiddle}",
+			<#elseif article.picBig?exists>"${article.picBig}.0.jpg",
+			<#else>"",</#if>
+	"content":"${article.content?json_string?replace("\"", "\\\"")}",
+	"images":[
+		<#list article.attPics as attachment>
+		{
+			"summary":"${attachment.content?json_string?replace("\"", "\\\"")}",
+			"imageUrl":"${attachment.url}"
+		},
+		</#list>
+	],
+	"videos":[
+		<#list article.attVideos as attachment>
+		{
+			"summary":"${attachment.content?json_string?replace("\"", "\\\"")}",
+			"videoUrl":"${attachment.url}",
+			"imageUrl":"${attachment.picUrl}"
+		},
+		</#list>
+	],
+	"widgets":{
+		<#if article.widgets.pic?exists>
+		"pic":{
+			"title":"${article.widgets.pic.title?json_string?replace("\"", "\\\"")}",
+			"content":"${article.widgets.pic.content?json_string?replace("\"", "\\\"")}",
+			"list":[
+				<#if article.widgets.pic.members?exists>
+				<#list article.widgets.pic.members as pic>
+					{
+						"content":"${pic.content?json_string?replace("\"", "\\\"")}",
+						"url":"${pic.url!}"
+					},
+				</#list>
+				</#if>
+			]
+		},
+		</#if>
+		<#if article.widgets.video?exists>
+		"video":{
+			"title":"${article.widgets.video.title?json_string?replace("\"", "\\\"")}",
+			"content":"${article.widgets.video.content?json_string?replace("\"", "\\\"")}",
+			"url":"${article.widgets.video.url!}"
+		},
+		</#if>
+		<#if article.widgets.vote?exists>
+		"vote":{
+			"id":"${article.widgets.vote.id}",
+			"title":"${article.widgets.vote.title?json_string?replace("\"", "\\\"")}",
+			"type":"${article.widgets.vote.type}",
+			"countLimited":"${article.widgets.vote.countLimited}",
+			"endDate":"${article.widgets.vote.endDate}",
+			"options":[
+				<#list article.widgets.vote.options as option>
+				{
+					"index":"${option_index + 1}",
+					"option":"${option.option?json_string?replace("\"", "\\\"")}",
+					"picUrl":"${option.picUrl!}"
+				},
+				</#list>
+			]
+		},
+		</#if>
+		"file":[
+			<#list article.widgets.attachments as attachment>
+				{
+				"title":"${attachment.content?json_string?replace("\"", "\\\"")}",
+				"url":"${attachment.url}"
+				},
+			</#list>
+		]
+	},
+	"related":[
+		<#list article.rels as rel>
+			{
+			"relId":"${rel.id?c}",
+			"title":"${rel.title?json_string?replace("\"", "\\\"")}",
+			"source":"${rel.source?json_string?replace("\"", "\\\"")}",
+			"sourceID":"${rel.sourceID?c}",
+			"publishtime":"${rel.pubTime?string("yyyy-MM-dd HH:mm:ss")}",
+			"articleType":"${rel.type}",
+			"relUrl":"${rel.url}"
+			},
+		</#list>
+	],
+	<#if article.extFields?exists>
+		<#list article.extFields?keys as key> 
+			"${key?json_string?replace("\"", "\\\"")}":"${article.extFields[key]?json_string?replace("\"", "\\\"")}",
+		</#list>
+	</#if>
+</FOUNDER-XY>
+<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'self'}">
+<#list columns as column>
+	"columnDescription":"${column.description?json_string?replace("\"", "\\\"")}",
+	"columnIcon":<#if column.iconSmall?exists>"${column.iconSmall}"
+		<#elseif column.iconBig?exists>"${column.iconBig}"
+		<#else>""</#if>
+</#list>
+</FOUNDER-XY>
+}

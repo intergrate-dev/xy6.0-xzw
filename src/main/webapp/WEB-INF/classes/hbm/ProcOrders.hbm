@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.flow">
+	<class name="ProcOrder" table="E5FLOW_PROCORDERS">
+		<composite-id>
+			<key-property
+				column="DOCTYPEID"
+				name="docTypeID"
+				type="integer"
+			 />
+			<key-property
+				column="FLOWNODEID"
+				name="flowNodeID"
+				type="integer"
+			 />
+			<key-property
+				column="PROCID"
+				name="procID"
+				type="integer"
+			 />
+		</composite-id>
+		<property
+			column="FLOWID"
+			length="22"
+			name="flowID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="PROCORDER"
+			length="22"
+			name="order"
+			not-null="true"
+			type="integer"
+		 />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+#tabs{
+	margin-top:10px;
+	padding-left:10px;
+}
+
+#toolTable{
+	margin-right: 0;
+}
+#contentFrame{
+	border-bottom: 1px solid #cdcdcd;
+}
+
+.goBack {
+	background-color:#eee;
+	text-align:right;
+}

@@ -1,0 +1,366 @@
+/*  
+*@Description: 页面布局  
+*@Author:      Zhuyb 
+*@Update:      Zhuyb(2012-10-23)  
+*/ 
+.clearB{
+	clear:both;
+}
+.pointer{
+	cursor:pointer;
+}
+.fll{
+	float:left;
+}
+.flr{
+	float: right;
+}
+.mgl10{
+	margin-left:10px;
+}
+.mgt5{
+	margin-top: 5px;
+}
+.mgl5{
+	margin-left: 5px;
+}
+.mgr5{
+	margin-right: 5px;
+}
+.padl10{
+	padding-left:10px;
+}
+.label_bold{
+	color:#848484;
+	font-size:14px;
+	font-weight:bold;
+	text-shadow:1px 1px 0 rgba(255, 255, 255, 0.75);
+}
+.show{
+	display: block;
+}
+.hide{
+	display:none;
+}
+
+#header{
+	background: #333 url(../images/bg/HeaderBg.png) repeat-x;
+	height:40px;
+	z-index: 510;
+}
+
+#sidebar{
+	width:60px;
+	position:absolute;
+	left: 0;
+	top:40px;
+	bottom:0;
+	background: #373737;
+	border-right:1px solid #333333;
+	z-index: 500;
+}
+
+#wrapper{
+	position:absolute;
+	bottom: 0;
+	left:60px;
+	right: 0;
+	top:40px;
+	background: #BEC4C5 url(../images/bg/BodyBg.png) repeat;
+	overflow:hidden;
+}
+
+#main{
+	position:absolute;
+	left:10px;
+	right:10px;
+	top:10px;
+	bottom:10px;
+	border:1px solid #BBBCBC;
+	border-radius:5px;
+	box-shadow:0 0 2px rgba(0, 0, 0, 0.2);
+	background:#FFFFFF;
+}
+
+/*表单验证错误样式*/
+input.error { border:1px solid #7A3230; }
+label.error {
+	height: 20px;
+	position: absolute;
+	right: -5px;
+	top: -34px;
+	background: #7A3230;
+	z-index: 10;
+	color: #fff;
+	font-size: 12px;
+	padding: 4px 10px;
+	text-align: center;
+	border-radius: 3px;
+	white-space: nowrap;
+}
+.error_img{
+	display: inline-block;
+	width: 16px;
+	height: 26px;
+	position: absolute;
+	right: 5px;
+	top: -6px;
+	background: url(../images/icon/verify_false.png) no-repeat;
+}
+.checkRight .error_img{
+	background: url(../images/icon/verify_sucess.png) 0 7px no-repeat;
+}
+
+/*弹窗*/
+#bg{
+	background-color: #000; 
+	position: absolute; 
+	left:0; 
+	top:0;
+	opacity: 0.4; /* Standards Compliant Browsers */
+  	filter: alpha(opacity=50); /* IE 7 and Earlier */
+	/* Next 2 lines IE8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+}
+#flagBox {
+	position: absolute;
+	border: 1px solid #B3B3B3;
+	border-radius: 3px;
+	box-shadow: 0 0 1px #000000;
+	background: #FCFCFC;
+	z-index:2000;
+}
+.popwin, .popwin_new{
+	display: none;
+	width: 414px;
+	height: auto;
+	border: 1px solid #B3B3B3;
+	border-radius: 3px;
+	box-shadow: 0 0 1px #000000;
+	background: #FCFCFC;
+	padding: 20px;
+}
+.popwin_title{
+	/*width: 394px;*/
+	height: 50px;
+	text-align: left;
+	font-size: 14px;
+	color: #333;
+	line-height: 50px;
+	background: #F5F5F5;
+	padding-left: 20px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px; 
+	border-bottom: 1px solid #DDDDDD;
+}
+.popwin_close{
+	float: right;
+	margin-right: 20px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+.popwin_content{
+	/*width: 374px;*/
+	height: auto;
+	padding: 20px;
+	text-align: center;
+}
+.popwin_tips{
+	font-size: 16px;
+	color: #2776A4;
+	line-height: 30px;
+	margin-bottom: 20px;
+}
+.popwin_tipsH1{
+	font-size: 16px;
+	color: #2776A4;
+	margin-bottom: 10px;
+}
+.popwin_tipsH2{
+	font-size: 12px;
+	margin-bottom: 15px;
+	color: #B35454;
+}
+.popwin_validateFail{
+	visibility: hidden;
+	font-size: 12px;
+	color: #B35454;
+}
+.popwin_description{
+	font-size: 12px;
+	color: #65A25D;
+	line-height: 25px;
+	margin: 0 30px 20px 30px;
+	background: #D5F5C3;
+	border: 1px solid #B5D6B2;
+	border-radius: 2px;
+}
+.popwin_error{
+	display: none;
+	font-size: 12px;
+	color: #A25D5D;
+	line-height: 25px;
+	margin: 0 30px 10px 30px;
+	background: #FFD3D3;
+	border: 1px solid #D6B2B2;
+	border-radius: 2px;
+}
+.popwin_confirm, .popwin_cancel, .popwin_newForm_confirm, .popwin_newForm_cancel, .popwin_newMail_confirm, .popwin_newMail_cancel{
+	margin: 0 20px;
+}
+
+.video_placeholder {
+	display: block;
+	height: 260px;
+	width: 440px;
+	background:url(../images/video_mail.png) no-repeat;
+	margin: 40px auto;
+}
+.video_placeholder:hover {
+	cursor: pointer;
+}
+.doing_p{
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 60px;
+	line-height: 50px;
+}
+
+.popwin_content .popwin_newForm_input,.popwin_content .popwin_newMail_input{
+	width: 300px;
+	margin-bottom: 20px;
+}
+
+
+
+#blackmask{
+	background: #000;
+}
+#frameless{
+	padding:0;
+}
+.tmask {
+	position:absolute; 
+	display:none; 
+	top: 0; 
+	left: 0; 
+	height:100%; 
+	width:100%; 
+	background:#000; 
+	z-index:800;
+}
+.tbox {
+	position:absolute; 
+	display:none; 
+	padding:14px 17px; 
+	z-index:900;
+}
+.tinner {
+	border-radius: 3px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+	background: #FFFFFF;
+	border: 1px solid #5C5C5C;
+}
+.tclose {
+	position:absolute; 
+	top:35px; 
+	right:20px; 
+	width:30px; 
+	height:30px; 
+	cursor:pointer; 
+	background:url(../images/icon/popwin_close.png) no-repeat;
+}
+.tips_success{
+	display: none;
+}
+.success_tip {
+	color: #19691F;
+	line-height: 30px;
+	text-align: center;
+	background: #E7FFCF; 
+	border: 1px solid #B3E179;
+	border-radius: 3px;
+}
+
+.registerFail{
+	text-align: center;
+	color: #999;
+	font-size: 17px;
+	font-weight: bold;
+	margin-top: 50px;
+}
+
+
+/*新的表单的信息*/
+.popwin_formtype {
+	float: left;
+	width: 159px;
+	margin: 0 10px;
+	padding: 20px 10px 10px 10px;
+	height: 160px;
+	border: 1px solid rgba(0,0,0,0);
+	transition: all 260ms;
+	-webkit-transition: all 260ms;
+	-moz-transition: all 260ms;
+	-o-transition: all 260ms;
+	-moz-box-sizing: border-box;  /*Firefox3.5+*/
+	-webkit-box-sizing: border-box; /*Safari3.2+*/
+	-o-box-sizing: border-box; /*Opera9.6*/
+	-ms-box-sizing: border-box; /*IE8*/
+	box-sizing: border-box;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 40px;
+	margin-top: 10px;
+	border-radius: 4px;
+}
+
+.popwin_formtype img {
+	width: 80px;
+	display: block;
+	text-align: center;
+	margin: 0 auto 4px auto;
+}
+
+.popwin_formtype_normal {
+	color: #56779B;
+}
+
+.popwin_formtype_logic {
+	color: #B4533A;
+}
+
+.popwin_formtype_normal:hover {
+	border-color: #56779B;
+}
+
+.popwin_formtype_logic:hover {
+	border-color: #B4533A;
+}
+
+.popwin_formNameContent {
+	display: none;
+	margin-top: 24px;
+}
+
+.popwin_formTypeContent {
+	width: 360px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*wiki faq*/
+.wiki_faq_help{
+    cursor: pointer;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/icon/wikiHelp_big.png);
+    background-repeat: no-repeat;
+    position: relative;
+}
+.wiki_faq_help:hover {
+    background-image: url(../images/icon/wikiHelp_big_hover.png);
+}

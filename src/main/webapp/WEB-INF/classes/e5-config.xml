@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<e5-config>
+	<restart-config>
+		<action invokeClass="com.founder.e5.context.BaseDAO" invokeMethod="init"/>
+		<action invokeClass="com.founder.e5.context.FactoryManager" invokeMethod="init"/>
+		<action invokeClass="com.founder.e5.context.CacheManager" invokeMethod="init"/>
+		<action invokeClass="com.founder.e5.scheduler.SchedulerLoader" invokeMethod="init" onlyWeb="true"/>
+	</restart-config>
+
+	<database-config>
+		<central-db configFile="/hibernate.cfg.xml"/>
+	</database-config>
+
+	<locale language="zh" country="CN"/>
+
+	<cache-config autoRefresh="false">
+		<group name="部门、用户和角色">
+			<action name="机构、角色、用户" invokeClass="com.founder.e5.sys.org.OrgRoleUserCache"/>
+		</group>
+		<group name="权限管理">
+			<action name="权限" invokeClass="com.founder.e5.permission.merge.PermissionCache"/>
+		</group>
+		<group name="定制、文档类型等">
+			<action name="文档类型、规则、过滤器" invokeClass="com.founder.e5.dom.DocTypeCache"/>
+			<action name="文档库、文件夹、表单" invokeClass="com.founder.e5.dom.FolderViewCache"/>
+			<action name="列表方式" invokeClass="com.founder.e5.listpage.cache.ListModeCache"/>
+		</group>
+		<group name="操作、流程">
+			<action name="操作、流程" invokeClass="com.founder.e5.flow.FlowCache"/>
+		</group>
+		<group name="其它缓存（分类、参数配置等）">
+			<action name="分类" invokeClass="com.founder.e5.cat.CatCache"/>
+			<action name="系统配置（参数、存储设备）" invokeClass="com.founder.e5.sys.SysCache"/>
+			<action name="文档分类关联表对应" invokeClass="com.founder.e5.rel.service.RelTableCache"/>
+			<action name="数据源" invokeClass="com.founder.e5.context.DSCache"/>
+			<action name="数据源对应" invokeClass="com.founder.e5.dom.DataSourceConfigCache"/>
+		</group>
+		<group name="站点相关配置">
+			<action name="站点检索服务缓存" invokeClass="com.founder.xy.system.site.SiteSolrServerCache"/>
+			<action name="站点用户缓存" invokeClass="com.founder.xy.system.site.SiteUserCache"/>
+			
+			<action name="栏目缓存" invokeClass="com.founder.xy.column.ColumnCache"/>
+			<action name="扩展字段缓存" invokeClass="com.founder.xy.set.ExtFieldCache"/>
+			<action name="来源缓存" invokeClass="com.founder.xy.set.SourceCache"/>
+			
+			<action name="发布服务基础数据缓存（站点、发布目录、规则、模板）" invokeClass="com.founder.xy.jpublish.BaseDataCache"/>
+		</group>
+	</cache-config>
+	
+	<!--================================================
+		The fields of platform.
+		文档类型的平台字段 (平台字段没有浮点数，精度都是0)
+		其中name一项在不同的语言环境中需要调整一次，与其他字段的数据库语言一致
+	==================================================-->
+	<platform-field custom="false">
+		<field id="DOCUMENTID"		code="SYS_DOCUMENTID"		name="文档ID"		type="INTEGER"		length="12"		nullable="false"/>
+		<field id="DOCLIBID"		code="SYS_DOCLIBID"			name="文档库ID"		type="INTEGER"		length="6"		nullable="false" defaultValue="0"/>
+		<field id="FOLDERID"		code="SYS_FOLDERID"			name="文件夹ID"		type="INTEGER"		length="6"		nullable="false" defaultValue="0"/>
+		<field id="DELETEFLAG"		code="SYS_DELETEFLAG"		name="是否删除"		type="INTEGER"		length="1"		nullable="false" defaultValue="0"/>
+		<field id="ISLOCKED"		code="SYS_ISLOCKED"			name="是否上锁"		type="INTEGER"		length="1"		nullable="false" defaultValue="0"/>
+		<field id="CURRENTFLOW"		code="SYS_CURRENTFLOW"		name="当前流程"		type="INTEGER"		length="6"		nullable="false" defaultValue="0"/>
+		<field id="CURRENTNODE"		code="SYS_CURRENTNODE"		name="当前流程节点" type="INTEGER"		length="6"		nullable="false" defaultValue="0"/>
+		<field id="CURRENTSTATUS"	code="SYS_CURRENTSTATUS"	name="当前流程状态" type="VARCHAR"		length="255"	nullable="true"/>
+		<field id="CURRENTUSERID"	code="SYS_CURRENTUSERID"	name="当前处理人ID"	type="INTEGER"		length="6"		nullable="true"/>
+		<field id="CURRENTUSERNAME" code="SYS_CURRENTUSERNAME"	name="当前处理人"	type="VARCHAR"		length="255"	nullable="true"/>
+		<field id="CREATED"			code="SYS_CREATED"			name="创建时间"		type="TIMESTAMP"	length="0"		nullable="true"/>
+		<field id="LASTMODIFIED"	code="SYS_LASTMODIFIED"		name="最后修改时间" type="TIMESTAMP"	length="0"		nullable="true"/>
+		<field id="TOPIC"			code="SYS_TOPIC"			name="主题"			type="VARCHAR"		length="1024"	nullable="true"/>
+		<field id="AUTHORS"			code="SYS_AUTHORS"			name="作者"			type="VARCHAR"		length="255"	nullable="true"/>
+		<field id="ISKEEP"			code="SYS_ISKEEP"			name="是否保留"		type="INTEGER"		length="1"		nullable="true"/>
+		<field id="HAVERELATION"	code="SYS_HAVERELATION"		name="有无关联"		type="INTEGER"		length="1"		nullable="true"/>
+		<field id="HAVEATTACH"		code="SYS_HAVEATTACH"		name="有无附件"		type="INTEGER"		length="1"		nullable="true"/>
+	</platform-field>
+	<!--================================================
+		文档库对应流程记录表字段类型定义
+	==================================================-->
+	<flowrecord-field>
+		<field id="FLOWRECORDID"	code="FLOWRECORDID"		name="流程ID"		type="INTEGER"		length="12"		nullable="false"/>
+		<field id="DOCUMENTID"		code="DOCUMENTID"		name="文档ID"		type="INTEGER"		length="12"		nullable="true"/>
+		<field id="DOCLIBID"		code="DOCLIBID"			name="文档库ID"		type="INTEGER"		length="6"		nullable="true" />
+		<field id="OPERATORID"		code="OPERATORID"		name="操作人ID"		type="INTEGER"		length="6"		nullable="true"/>
+		<field id="OPERATOR"		code="OPERATOR"			name="操作人名称"	type="VARCHAR"		length="255"	nullable="true"/>
+		<field id="OPERATION"		code="OPERATION"		name="操作"			type="VARCHAR"		length="255"	nullable="true"/>
+		<field id="STARTTIME"		code="STARTTIME"		name="操作开始时间"		type="TIMESTAMP"	length="0"		nullable="true"/>
+		<field id="ENDTIME"			code="ENDTIME"			name="操作结束时间"		type="TIMESTAMP"	length="0"		nullable="true"/>
+		<field id="FROMPOSITION"	code="FROMPOSITION"		name="操作前所处流程节点"		type="VARCHAR"	length="255"	nullable="true"/>
+		<field id="TOPOSITION" 		code="TOPOSITION"		name="操作后所处流程节点"		type="VARCHAR"	length="255"	nullable="true"/>
+		<field id="LASTFLOWNODE"	code="LASTFLOWNODE"		name="操作前所处流程节点ID"	type="INTEGER"	length="6"		nullable="true"/>
+		<field id="CURFLOWNODE"		code="CURFLOWNODE"		name="操作后所处流程节点ID"	type="INTEGER"	length="6"		nullable="true"/>
+		<field id="DETAIL"			code="DETAIL"			name="操作详细描述信息"		type="VARCHAR"	length="1024"	nullable="true"/>
+	</flowrecord-field>
+
+	<!--=============================================
+		Organization type
+		机构类型
+	=============================================-->
+	<org>
+		<type id="3" name="部门"/>
+	</org>
+
+	<!--================================================
+		多种ID生成
+	==================================================-->
+	<id-config>
+		<id name="DocumentID"	type="normal" />
+		<id name="FlowRecordID" type="normal" />
+		<id name="DocLibID"		type="normal" />
+	</id-config>
+
+	<sys-permission-list>
+		<page id="permission.flowbundle" name="操作权限"	url="permissionFlowBundle.do" />
+	</sys-permission-list>
+	<!--================================================
+		账户登录策略
+		多次输入错误时账户冻结；增加登录时验证码；密码传输过程加密；
+		
+		frozen-enabled：冻结开关。是否启用登录账户冻结策略，值为true/false
+		frozen-period：重试次数用尽后，账户冻结的时间，单位是分钟
+		frozen-retry-count：重试次数
+
+		captcha-enabled：验证码开关。是否启用验证码策略，值为true/false
+		
+		transfer-encrypt：传输加密开关。是否启用密码传输过程加密策略，值为true/false
+	==================================================-->
+	<account-policy>
+		<frozen-enabled>true</frozen-enabled>
+		<frozen-period>10</frozen-period>
+		<frozen-retry-count>5</frozen-retry-count>
+		
+		<captcha-enabled>false</captcha-enabled>
+		<transfer-encrypt>false</transfer-encrypt>
+	</account-policy>
+	
+	<!-- 
+	<server-clone>
+		<server name="server1" url="http://ljgong:8080"/>
+		<server name="server2" url="http://172.19.33.95:8080/xy5.0"/>
+	</server-clone>
+ 	-->
+	
+	<system>
+		<name>方正翔宇</name>
+	</system>
+</e5-config>

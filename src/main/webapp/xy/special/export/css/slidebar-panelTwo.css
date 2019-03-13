@@ -1,0 +1,86 @@
+/***************************************右侧面板列表细节设置******************************************/
+.model-edit{
+    width:240px;
+    padding:10px 0;
+    background:#3D3D3D;
+    color:#fff;
+    position:fixed;
+    top:50px;
+    right: -250px;
+}
+.zindex102{
+    z-index: 102;
+}
+.zindex103{
+    z-index: 103;
+}
+.model-edit-goback{
+    line-height: 25px;
+    cursor: pointer;
+}
+.model-edit-save{
+    width: 100px;
+    background-color: #303030;
+    border: 1px solid #242424;
+    line-height: 23px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+#sidebar-panel-II,#sidebar-panel-III{
+    background: #3d3d3d;
+    width: 240px;
+    height: 655px;
+    min-height:10px;
+    color: #fff;
+    overflow: auto;
+    position:fixed;
+    top: 96px;
+    right: -250px;
+    opacity:1;
+    display: block;
+}
+.removeListItem{
+    display: none;
+}
+.previewListItem{
+    width: 24px;
+    height: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

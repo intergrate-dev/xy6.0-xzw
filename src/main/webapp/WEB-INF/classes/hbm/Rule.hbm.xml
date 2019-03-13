@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.founder.e5.dom.Rule" table="DOM_RULES">
+		<id name="ruleID" type="integer" column="RULEID">
+			<generator class="assigned"/>
+		</id>        
+  
+		<property
+			name="ruleName"
+			column="RULENAME"
+			type="string"
+			not-null="true"
+			length="32"
+		/>
+		<property
+			name="docTypeID"
+			column="DOCTYPEID"
+			type="integer"
+			not-null="true"
+			length="30"
+		/>
+	
+
+		<property
+			name="ruleClassName"
+			column="RULECLASSNAME"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+                
+                
+		<property
+			name="ruleArguments"
+			column="RULEARGUMENTS"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+                
+                
+		<property
+			name="ruleMethod"
+			column="RULEMETHOD"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+	
+		<property
+			name="description"
+			column="DESCRIPTION"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,113 @@
+.body {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 36px 0 88px;
+}
+div {
+  display: block;
+}
+.container_box {
+  border: 1px solid #d9dadc;
+  background-color: #fff;
+  min-height: 700px;
+}
+.container_box.cell_layout .col_main {
+  width:90%;
+  margin:auto;
+  padding:40px;
+  z-index: -20;
+}
+.container_box.cell_layout .col_top {
+  width:90%;
+  height:310px;
+  margin:auto;
+  padding-top:30px;
+}
+.custform-label {
+  width: 65px;
+  float: left;
+  text-align: right;
+  margin-right: -65px;
+  padding-top: 5px;
+  font-size: 12px;
+  line-height: 14px;
+}
+.inner {
+  position: relative;
+  background-color: #e0eaf6;
+  padding: 9px 20px;
+}
+.tip{
+	position:relative;
+	width:16px;
+	height:16px;
+	background:url(../img/duo.png)no-repeat 0 -1102px;
+	display:inline-block; 
+	vertical-align:middle;
+	z-index: 10;
+	margin-left:8px;
+}
+.foot {  
+  padding: 15px 0;
+  color: #f1f1f1;
+  text-align: center;
+  background-color: #b8b9b9;
+}
+ul{
+  padding-left: 0;
+  list-style-type: none;
+}
+.ft .links_item a {
+  color: #f1f1f1;
+}
+.ft.links {
+  font-size: 12px;
+}
+
+.head_box {
+  position: relative;
+  background-color: #fff;
+  border-top: 4px solid #44b549;
+  border-bottom: 1px solid #d9dadc;
+  padding:30px;
+}
+
+.help_content {
+  display: none;
+  position: absolute;
+  top: -15px;
+  right: -29px;
+  color: #333;
+  line-height: 1.6;
+  background: #fff;
+  border-left: 1px solid #bababb;
+  border-bottom: 1px solid #bababb;
+  white-space: normal;
+  margin: 45px 16px 1px 0;
+  width: 320px;
+  border: 1px solid #d9dadc;
+  font-size: 14px;
+  color: #8d8d8d;
+ }
+ .dropdown_arrow {
+  position: absolute;
+  right: 13px;
+  margin-top: -8px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: 8px;
+  border-style: dashed;
+  border-color: transparent;
+  border-top-width: 0;
+  border-bottom-color: #d9dadc;
+  border-bottom-style: solid;
+}
+.dropdown_arrow.in {
+  border-bottom-color: #fff;
+  top: 1px;
+}
+.dropdown_arrow.out {
+  top: 0;
+}

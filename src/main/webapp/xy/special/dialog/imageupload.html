@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../third/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../export/css/navMenuSet.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sliderBar.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/editor.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sidebar-panel.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/model.css"/>
+    <link rel="stylesheet" type="text/css" href="../third/uploadify/uploadify.css"/>
+    <style>
+        .uploadLabel {
+            align-items: flex-start;
+            text-align: center;
+            margin: auto;
+            cursor: pointer;
+            font-family: "microsoft yahei";
+            font-size: 14px;
+            color: #fff;
+            background: #03A8F1;
+            border: none;
+            box-sizing: border-box;
+            font-weight: 300;
+            display: inline-block;
+            width: 205px;
+            height: 45px;
+            border-radius: 0px;
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+<!--上传图片悬浮框设置开始-->
+<div id="picUploadDialog" class="picUpload posAbsolute" style="display:block;">
+    <ul class="tab_menu font14">
+        <li data-ref="#localPic" class="pull-left mgl20 width110 cursor text-center mgt10 selected">上传图片</li>
+        <li data-ref="#urlPic" class="pull-left width110 cursor text-center mgt10">远程图片</li>
+        <img id="pudClose" class="btn-hide pull-right mgr20 mgt15" src="../export/images/navMenu/navMenu1.png"/>
+    </ul>
+    <div class="tab_box tab-box-style">
+        <div id="localPic" class="text-center local-pic">
+            <li class="fmgt25">
+                <img id="previewImage" src="../export/images/navMenu/navMenu7.png"/>
+                <div id="fileQueue" style="margin: 0 auto auto auto;display: inline-block;"></div>
+            </li>
+            <li class="mgt40" style="display: inline-block;">
+                <input id="file_upload" class="factive height45 width205" type="file" value=""/>
+            </li>
+            <!--<li class="mgt10 font14">将图片拖动到此区域快速上传</li>-->
+        </div>
+        <div id="urlPic" class="hide1 pic-url">
+            <div class="font14">
+                请输入图片的链接地址，格式仅限 .JPG, .JPEG, .PNG, .GIF
+            </div>
+            <div class=" mgt10">
+                <input id="picUrlText" class="pic-style mgr10" type="text" value="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg"/>
+                <input id="picUrlBtn" class="factive pic-style-btn" style="width: 80px;" type="button" value="确定"/>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--上传图片悬浮框设置结束-->
+<script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../third/uploadify/jquery.uploadify.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#pudClose").click(function(e){
+            parent.window.LEDialog.closeDialog();
+        });
+        $(".pull-left").click(function(e){
+            var _id = $(this).data("ref");
+            $(this).addClass("selected").siblings().removeClass("selected");
+            $(_id).show().siblings().hide();
+        });
+        $("#picUrlBtn").click(function(e){
+            /*var param = {};
+            param.siteID = parent.window.special.siteID;
+            param.imagePath = $("#picUrlText").val();
+            $.ajax({
+                url: "../../special/uploadOnlinePic.do",
+                type: "post",
+                dataType: "json",
+                data: param,
+                async: false,
+                success: function(json){
+                    console.info(json);
+                    parent.window.LEDialog.dialogConfirm(json.imagePath);
+                }
+            });*/
+            var jsonUploadImg={};
+             jsonUploadImg.imgPath=$("#picUrlText").val();
+             jsonUploadImg.type="online";
+            parent.window.LEDialog.dialogConfirm(jsonUploadImg);
+           // parent.window.LEDialog.dialogConfirm($("#picUrlText").val());
+
+        });
+        $("#picUrlText").keypress(function(e){
+            if(e.keyCode == 13){
+                var jsonUploadImg={};
+                jsonUploadImg.imgPath=$("#picUrlText").val();
+                jsonUploadImg.type="online";
+                parent.window.LEDialog.dialogConfirm(jsonUploadImg);
+                 //parent.window.LEDialog.dialogConfirm($("#picUrlText").val());
+
+            }
+        });
+        $('#file_upload').uploadify({
+            'swf': '../../special/third/uploadify/uploadify.swf',
+            'uploader': '../../special/uploadPic.do',
+            'queueID': 'fileQueue',
+            'buttonText': '从本地选择图片上传',
+            "buttonClass": "uploadLabel",
+            'height': 45,
+            'width': 205,
+            "method": "post",
+            'auto': true,
+            "removeTimeout": 0,
+            'fileObjName': 'file',
+            "formData": parent.window.special,
+            "multi": false,
+            'onUploadProgress': function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal){
+                $("#previewImage").hide();
+            },
+            'onUploadSuccess': function(file, data){
+                    data = eval("(" + data + ")");
+                    var jsonUploadImg={};
+	            jsonUploadImg.imgPath=data.imagePath;
+	            jsonUploadImg.type="local";
+                    parent.window.LEDialog.dialogConfirm(jsonUploadImg);
+                    // parent.window.LEDialog.dialogConfirm(data.imagePath);
+            }
+        });
+
+	        function getQueryString(name){
+		        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		        var r = window.location.search.substr(1).match(reg);
+            if(r != null)return unescape(r[2]);
+            return null;
+        }
+
+    });
+</script>
+</body>
+</html>

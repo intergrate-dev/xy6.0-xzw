@@ -1,0 +1,221 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "微软雅黑 Bold","微软雅黑";
+  font-size: 13px;
+  color: #333;
+}
+.clear {zoom:1;}    /*==for IE6/7 Maxthon2==*/
+.clear :after {clear:both;content:'.';display:block;width: 0;height: 0;visibility:hidden;}   /*==for FF/chrome/opera/IE8==*/
+.base {
+  /*border: rgba(228, 228, 228, 1) solid 1px;*/
+  /*padding-bottom: 20px;*/
+}
+/*头部信息*/
+.head{
+		height: 40px;
+    line-height: 40px;
+    padding-left: 14px;
+    border-bottom: #ddd solid 1px;
+    font-size: 15px;
+    width: 96%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+/*选项标题样式*/
+.title-bar {
+  /*height: 56px;*/
+  /*line-height: 56px;*/
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+ 	border-bottom:1px solid #ddd;
+}
+.title-bar p{
+	  width: 80px;
+    /*border-bottom: 2px solid #1bb8fb;*/
+    /*text-align: center;*/
+    font-size: 15px;
+    margin-left: 15px;
+    height: 35px;
+    line-height: 35px;
+}
+.title-index {
+  float: left;
+  padding: 0 10px;
+}
+.item.active{
+  /*background-color: rgba(255, 204, 153, 0.227);*/
+  /*border-color: rgba(255, 153, 0, 1);*/
+ border: 1px solid #1bb9fa;
+}
+.item {
+    display: inline-block;
+    float: left;
+    width: 43.5%;
+    height: 80px;
+    margin: 10px;
+    padding: 15px;
+    border: solid #ddd 1px;
+    position: relative;
+}
+.sel-package{
+	  border: 1px solid #ddd;
+    width: 97%;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-bottom: none;
+    /*margin-bottom: 10px;*/
+}
+.item .item-top {
+  /*height: 50px;*/
+}
+.item .item-top .package-name {
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+}
+.item .item-top .package-price {
+    /*float: right;*/
+    /*width: 100px;*/
+   padding: 0 15px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 3px;
+    background: #1bb8fb;
+    color: #fff;
+    position: absolute;
+    right: 15px;
+    top: 30px;
+}
+.confirm-msg{
+	    width: 97%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+}
+.item .package-info,.item .package-date {
+  color: #999;
+  font-size: 12px;
+  /*line-height: 30px;*/
+ margin-top: 12px;
+}
+.item .package-date span{
+  /*font-weight: bold;*/
+  /*font-size: 14px;*/
+}
+.confirm-msg .msg-tips {
+  color: #999;
+  margin: 20px 0 0 19px;
+}
+.confirm-msg .msg-item{
+  width: 90%;
+  /*height: 56px;*/
+  margin: 10px 20px;
+  /*padding-left: 20px;*/
+  /*line-height: 56px;*/
+  /*border: 1px rgba(228, 228, 228, 1) solid;*/
+}
+.confirm-msg .msg-item .msg-index {
+  font-weight: bold;
+  padding: 0 20px;
+}
+.confirm-msg .msg-item label {
+  margin-right: 15px;
+}
+.confirm-msg .msg-item input {
+   	height: 26px;
+    width: 150px;
+    margin-right: 35px;
+    border: 1px solid #ddd;
+    margin-top: 15px;
+}
+.confirm-msg .msg-item button {
+  padding: 0 13px;
+	width: 70px;
+	border: none;
+	BACKGROUND: #1bb8fa !important;
+	color: #fff;
+	height: 28px;
+	border-radius: 3px;
+
+}
+.confirm-msg .add-msg {
+    padding: 5px 15px;
+    margin: 20px;
+    background-color: #fff;
+    border: 1px #ddd solid;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+.pay{
+    border: 1px solid #ddd;
+    width: 97%;
+    margin: 0 auto;
+    border-top: none;
+}
+.pay h2{
+	font-size: 15px;
+	/*font-weight: 100;*/
+	background: #f6f6f6;
+	padding: 10px 0 10px 21px;
+	border-bottom: 1px solid #ddd;
+}
+.pay .pay-head {
+  /*height: 56px;
+  padding-left: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 56px;
+  background: rgba(0, 204, 255, 0.227);
+  border: rgba(51, 102, 255, 1) 1px solid;*/
+}
+.pull-left{
+	float: left;
+}
+.pay .pay-way {
+  height: 56px;
+  line-height: 56px;
+  margin-left: 20px;
+}
+.pay .pay-way span {
+  margin-right: 35px;
+}
+.pay-way input[type=radio]{
+		margin-right: 5px;
+    float: left;
+    margin-top: 22px;
+}
+.submit {
+    height: 36px;
+    color: #fff;
+    background: #1bb8fa;
+    border-radius: 3px;
+    border: 0;
+    padding: 0 25px;
+    margin-left: 12px;
+    margin-top: 15px;
+}
+.pay .pay-tips {
+    color: #999;
+    margin-left: 20px;
+    margin: 20px;
+}
+.pay-head{
+	  background: #d2eefb;
+    padding: 20px;
+    font-size: 15px;
+    width: 92.5%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.clearfix:after{
+	display: block;
+	clear: both;
+	content: '.';
+	height: 0;
+	visibility: hidden;
+}

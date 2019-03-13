@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="http://172.19.33.95/template/css/paper.css">
+	<style>
+		li{float:left; min-width:400px; display:inline-block;}
+	</style>
+</head>
+<body scroll="yes">
+	<div>
+		<FOUNDER-XY type="paperhome" data="">
+		<ul>
+			<#list layouts as layout>
+			<li>
+				<a href="${layout.url!}" target="_blank">
+					<img src="${layout.picUrl!}"/>
+					<br/>
+					第${layout.layout}版 ${layout.layoutName!}
+				</a>
+			</li>
+			</#list>
+		</ul>
+		</FOUNDER-XY>
+	</div>
+</body>
+</html>

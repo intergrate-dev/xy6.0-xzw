@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- this file is for system management -->
+	<!-- ================================== SessionAutherization ===============================-->
+	<bean id="SessionAuth" class="com.founder.e5.web.SessionAuthImpl">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="docLibManager"><ref bean="DocLibManager"/></property>
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="catManager"><ref bean="CatManager"/></property>
+	</bean>
+	<!-- ================================== 0. Sys =============================================-->
+	<bean id="sys.SysMenu" class="com.founder.e5.web.sys.SysMenuController">
+		<property name="appPageManager"><ref bean="AppWebAddressManager"/></property>
+		<property name="appManager"><ref bean="AppManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5sysui</value></property>
+		<property name="viewName"><value>e5sys/SysMenu</value></property>
+	</bean>
+	<bean id="sys.Auth" class="com.founder.e5.web.sys.AuthenticationController">
+		<property name="authManager"><ref bean="authManager"/></property>
+		<property name="userManager"><ref bean="UserManager"/></property>
+		<property name="sso"><ref bean="sso"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="sys.Login" class="com.founder.e5.web.sys.LoginController">
+		<property name="authManager"><ref bean="authManager"/></property>
+		<property name="sso"><ref bean="sso"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5sysui</value></property>
+	</bean>
+	<bean id="sys.Logout" class="com.founder.e5.web.sys.LogoutController">
+		<property name="sso"><ref bean="sso"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5sysui</value></property>
+	</bean>
+	<bean id="sys.Cache" class="com.founder.e5.web.sys.CacheController">
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="viewName"><value>e5sys/Cache</value></property>
+	</bean>
+	<bean id="sys.CacheSubmit" class="com.founder.e5.web.sys.CacheSubmitController">
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5context</value></property>
+	</bean>
+	<bean id="sys.SysLog" class="com.founder.e5.web.sys.SysLogQueryController">
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="viewName"><value>e5sys/syslog/logview</value></property>
+	</bean>
+     
+	<bean id="sys.Log4j" class="com.founder.e5.web.sys.log4j.Log4jController">
+	</bean>
+	<bean id="sys.LoginArchive" class="com.founder.e5.web.sys.LoginArchiveController">
+		<property name="bussinessObj"><ref bean="loginArchiveMgr"/></property>
+		<property name="roleReader"><ref bean="RoleReader"/></property>
+		<property name="userReader"><ref bean="UserReader"/></property>
+		<property name="viewName"><value>e5sys/loginmonitor/LoginArchiveView</value></property>
+	</bean>
+	<bean id="loginArchiveMgr" class="com.founder.e5.web.sys.LoginArchiveMgr">
+	</bean>
+    <!--
+	sys.note****************************
+	-->
+	<bean id="sys.Note" class="com.founder.e5.web.sys.note.ShowAllNotesController">
+    <property name="viewName"><value>e5sys/note/ShowAllNotes</value></property>
+	</bean>
+    <bean id="sys.CreateNote" class="com.founder.e5.web.sys.note.NotePubController">
+    <property name="log"><ref bean="noteLog"/></property>
+    <property name="resourceFile"><value>i18n.e5note</value></property>
+	</bean>
+	<bean id="sys.ReadNote" class="com.founder.e5.web.sys.note.NoteReadController">
+    <property name="viewName"><value>e5sys/note/ReadNote</value></property>
+	</bean>
+    <bean id="sys.DeNote" class="com.founder.e5.web.sys.note.NoteDeController">
+    <property name="resourceFile"><value>i18n.e5note</value></property>
+	</bean>
+	<bean id="sys.ClearNote" class="com.founder.e5.web.sys.note.NoteClearController">
+    <property name="resourceFile"><value>i18n.e5note</value></property>
+	</bean>
+     <!--***********************  -->
+	<!-- 0.2 DataSource -->
+	<bean id="sys.DataSourceEdit" class="com.founder.e5.web.sys.DataSourceEditController">
+		<property name="dsManager"><ref bean="DSManager"/></property>
+		<property name="formView"><value>e5sys/DataSourceEdit</value></property>
+		<property name="successView"><value>e5cat/Refresh</value></property>
+	</bean>
+	<bean id="sys.DataSource" class="com.founder.e5.web.sys.DataSourceController">
+		<property name="dsManager"><ref bean="DSManager"/></property>
+		<property name="docLibManager"><ref bean="DocLibManager"/></property>
+		<property name="listView"><value>e5sys/DataSource</value></property>
+		<property name="deleteView"><value>forward:/e5sys/DataSource.do?action=list</value></property>
+	</bean>
+	<bean id="sys.DataSourceBindEdit" class="com.founder.e5.web.sys.DataSourceBindEditController">
+		<property name="dsConfigManager"><ref bean="DataSourceConfigManager"/></property>
+	</bean>
+	<bean id="sys.DataSourceBind" class="com.founder.e5.web.sys.DataSourceBindController">
+		<property name="dsConfigManager"><ref bean="DataSourceConfigManager"/></property>
+		<property name="dsManager"><ref bean="DSManager"/></property>
+		<property name="listView"><value>e5sys/DataSourceBind</value></property>
+	</bean>
+	<!-- ================================== 1. Permission ======================================-->
+	<bean id="permission.Tab" class="com.founder.e5.web.permission.TabController">
+		<property name="appPermissionManager"><ref bean="AppPermissionManager"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/ListPage</value></property>
+	</bean>
+	<!-- 1.0 Permission Flow Bundle-->
+	<bean id="permission.FlowBundle" class="com.founder.e5.web.permission.FlowBundleController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="flowPermissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/FlowBundle</value></property>
+	</bean>
+	<bean id="permission.FlowBundleSubmit" class="com.founder.e5.web.permission.FlowBundleSubmitController">
+		<property name="flowPermissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+	<!-- 1.1 Permission Flow-->
+	<bean id="permission.FlowList" class="com.founder.e5.web.permission.FlowListController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/FlowList</value></property>
+	</bean>
+	<bean id="permission.FlowMain" class="com.founder.e5.web.permission.FlowMainController">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="flowPermissionManager"><ref bean="FlowPermissionManager"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/FlowMain</value></property>
+	</bean>
+	<bean id="permission.FlowSubmit" class="com.founder.e5.web.permission.FlowSubmitController">
+		<property name="flowPermissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+	<bean id="permission.UnflowMain" class="com.founder.e5.web.permission.UnflowMainController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="flowPermissionManager"><ref bean="FlowPermissionManager"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/UnflowMain</value></property>
+	</bean>
+	<bean id="permission.UnflowSubmit" class="com.founder.e5.web.permission.UnflowSubmitController">
+		<property name="flowPermissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+
+	<!-- 1.2 Permission Folder-->
+	<bean id="permission.FolderTreeService" class="com.founder.e5.web.permission.FolderTreeService">
+		<property name="permissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+	</bean>
+	<bean id="permission.FolderList" class="com.founder.e5.web.permission.FolderListController">
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/FolderList</value></property>
+	</bean>
+	<bean id="permission.FolderMain" class="com.founder.e5.web.permission.FolderMainController">
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/FolderMain</value></property>
+	</bean>
+	<bean id="permission.FolderTree" class="com.founder.e5.web.permission.FolderTreeController">
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="service"><ref bean="permission.FolderTreeService"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+	</bean>
+	<bean id="permission.FolderSubmit" class="com.founder.e5.web.permission.FolderSubmitController">
+		<property name="fvPermissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+
+	<!-- 1.3 Permission Category-->
+	<bean id="permission.CatService" class="com.founder.e5.web.permission.CatService">
+		<property name="permissionManager"><ref bean="CatPermissionManager"/></property>
+		<property name="catManager"><ref bean="CatManager"/></property>
+	</bean>
+	<bean id="permission.CatTypeList" class="com.founder.e5.web.permission.CatTypeListController">
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/CatTypeList</value></property>
+	</bean>
+	<bean id="permission.CatTree" class="com.founder.e5.web.permission.CatTreeController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="permissionManager"><ref bean="CatPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+	</bean>
+	<bean id="permission.CatSubmit" class="com.founder.e5.web.permission.CatSubmitController">
+		<property name="catService"><ref bean="permission.CatService"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+	
+	<!-- 1.4 Permission Resource Folder-->
+	<bean id="permission.resource.FolderMain" class="com.founder.e5.web.permission.resource.FolderMainController">
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/ResourceFolderMain</value></property>
+	</bean>
+	<bean id="permission.resource.FolderTree"  class="com.founder.e5.web.permission.resource.FolderTreeController">
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="permissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+	</bean>
+	<bean id="permission.resource.FolderSubmit" class="com.founder.e5.web.permission.resource.FolderSubmitController">
+		<property name="permissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+	<!-- 1.5 Permission Resource Flow-->
+	<bean id="permission.resource.FlowMain" class="com.founder.e5.web.permission.resource.FlowMainController">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/ResourceFlowMain</value></property>
+	</bean>
+	<bean id="permission.resource.FlowTree" class="com.founder.e5.web.permission.resource.FlowTreeController">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="permissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+	</bean>
+	<bean id="permission.resource.FlowSubmit" class="com.founder.e5.web.permission.resource.FlowSubmitController">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="permissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+
+	<bean id="permission.resource.UnflowMain" class="com.founder.e5.web.permission.resource.UnflowMainController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/ResourceUnflowMain</value></property>
+	</bean>
+	<bean id="permission.resource.UnflowTree" class="com.founder.e5.web.permission.resource.UnflowTreeController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="permissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+	</bean>
+	<bean id="permission.resource.UnflowSubmit" class="com.founder.e5.web.permission.resource.UnflowSubmitController">
+		<property name="permissionManager"><ref bean="FlowPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+
+	<bean id="permission.resource.FlowFVUserMain" class="com.founder.e5.web.permission.resource.FlowFVUserMainController">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/ResourceFlowFVUserMain</value></property>
+	</bean>
+	<bean id="permission.resource.FlowFVUserTree" class="com.founder.e5.web.permission.resource.FlowFVUserTreeController">
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="permissionManager"><ref bean="FolderProcPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+	</bean>
+	<bean id="permission.resource.FlowFVUserSubmit" class="com.founder.e5.web.permission.resource.FlowFVUserSubmitController">
+		<property name="permissionManager"><ref bean="FolderProcPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+	<!-- 1.6 Permission Copy-->
+	<bean id="permission.Copy" class="com.founder.e5.web.permission.CopyController">
+		<property name="fvPermissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="permissionManager"><ref bean="PermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5org</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+
+	<!-- 1.7 Filter and Rule Permission -->
+	<bean id="permission.FilterRule" class="com.founder.e5.web.permission.FilterRuleListController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="filterManager"><ref bean="FilterManager"/></property>
+		<property name="ruleManager"><ref bean="RuleManager"/></property>
+		<property name="domPermissionManager"><ref bean="DomPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/FilterRulePermission</value></property>
+	</bean>
+	<bean id="permission.FilterRuleSubmit" class="com.founder.e5.web.permission.FilterRuleSubmitController">
+		<property name="domPermissionManager"><ref bean="DomPermissionManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+
+	<!-- 1.8 Folder Proc Permission -->
+	<bean id="permission.FVProcTree" class="com.founder.e5.web.permission.FVProcTreeController">
+		<property name="folderReader"><ref bean="FolderManager"/></property>
+		<property name="docLibReader"><ref bean="DocLibManager"/></property>
+		<property name="docTypeReader"><ref bean="DocTypeManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+	</bean>
+	<bean id="permission.FVProcPermission" class="com.founder.e5.web.permission.FVProcPermissionController">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="permissionManager"><ref bean="FolderProcPermissionManager"/></property>
+		<property name="fvPermissionManager"><ref bean="FVPermissionManager"/></property>
+		<!--<property name="useLineSelect"><value>true</value></property>-->
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/FVProcPermissionMain</value></property>
+	</bean>
+	<bean id="permission.FVProcPermissionSubmit" class="com.founder.e5.web.permission.FVProcPermissionSubmitController">
+		<property name="permissionManager"><ref bean="FolderProcPermissionManager"/></property>
+		<property name="fvPermissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+	<!-- 1.9 Multiple Code Proc Permission -->
+	<bean id="permission.MultiCodeProc" class="com.founder.e5.web.permission.MultiCodeProcController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="permissionManager"><ref bean="FolderProcPermissionManager"/></property>
+		<property name="fvPermissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/MultiCodeProcMain</value></property>
+	</bean>
+	<bean id="permission.MultiCodeProcSubmit" class="com.founder.e5.web.permission.MultiCodeProcSubmitController">
+		<property name="permissionManager"><ref bean="FolderProcPermissionManager"/></property>
+		<property name="fvPermissionManager"><ref bean="FVPermissionManager"/></property>
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="resourceFile"><value>i18n.e5permission</value></property>
+
+		<property name="log"><ref bean="permissionLog"/></property>
+		<property name="viewName"><value>e5permission/Submit</value></property>
+	</bean>
+	<!-- ================================== 2. dom =============================================-->
+	<bean id="dom.exportDocType" class="com.founder.e5.web.dom.ExportDocTypeController">
+	</bean>
+	<bean id="dom.showFolderTree" class="com.founder.e5.web.dom.ShowFolderTreeController">
+		<property name="folderManager"><ref bean="FolderManager" /></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="log"><ref bean="domLog" /> </property>
+	</bean>
+	<bean id="dom.showSubFolders" class="com.founder.e5.web.dom.ShowSubFoldersController">
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="log"><ref bean="domLog" /></property>
+
+	</bean>
+	<bean id="dom.FolderTree" class="com.founder.e5.web.dom.FolderTreeController">
+		<property name="folderReader"><ref bean="FolderManager"/></property>
+		<property name="docLibReader"><ref bean="DocLibManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.DocTypeFieldsInfo" class="com.founder.e5.web.dom.DocTypeFieldInfoController">
+		<property name="commandClass"><value>com.founder.e5.dom.DocTypeFieldInfo</value></property>
+		<property name="docTypeFieldsInfoManager"><ref bean="DocTypeFieldsInfoManager"/></property>
+		<property name="successView"><value>e5dom/DocTypeInfoSet</value></property>
+		<property name="failView"><value>e5dom/DocTypeInfoSet</value></property>
+	</bean>
+	
+	<bean id="DocTypeFieldInfoService" class="com.founder.e5.web.dom.DocTypeFieldInfoService"/>
+	<!-- ================================== 3. category =============================================-->
+	<!-- 3.1 Category Tree -->
+	<bean id="cat.CatTypeTreeView" class="com.founder.e5.web.cat.CatTypeTreeViewController">
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+	</bean>
+	<bean id="cat.CatTreeView" class="com.founder.e5.web.cat.CatTreeViewController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+	</bean>
+	<bean id="cat.CatTree" class="com.founder.e5.web.cat.CatTreeController">
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="viewName"><value>e5cat/CatTree</value></property>
+	</bean>
+	<!-- 3.2 Category -->
+	<bean id="cat.Cat" class="com.founder.e5.web.cat.CatController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+	</bean>
+	<bean id="cat.CatList" class="com.founder.e5.web.cat.CatController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="listView"><value>e5cat/CatSort</value></property>
+	</bean>
+	<bean id="cat.CatSort" class="com.founder.e5.web.cat.CatSortController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="viewName"><value>e5cat/Refresh</value></property>
+	</bean>
+	<bean id="cat.CatDrag" class="com.founder.e5.web.cat.CatDragController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+	</bean>
+	<bean id="cat.CatEdit" class="com.founder.e5.web.cat.CatEditController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="catExtManager"><ref bean="CatExtManager"/></property>
+		<property name="formView"><value>e5cat/CatEdit</value></property>
+		<property name="successView"><value>e5cat/Refresh</value></property>
+	</bean>
+	<bean id="cat.CatView" class="com.founder.e5.web.cat.CatEditController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="catExtManager"><ref bean="CatExtManager"/></property>
+		<property name="formView"><value>e5cat/CatView</value></property>
+	</bean>
+	<bean id="cat.CatPubEdit" class="com.founder.e5.web.cat.CatEditController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="catExtManager"><ref bean="CatExtManager"/></property>
+		<property name="formView"><value>e5cat/CatPubEdit</value></property>
+		<property name="successView"><value>e5cat/CatPubEdit</value></property>
+		<property name="saveType"><value>pub</value></property>
+	</bean>
+	<bean id="cat.CatLinkEdit" class="com.founder.e5.web.cat.CatEditController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="catExtManager"><ref bean="CatExtManager"/></property>
+		<property name="formView"><value>e5cat/CatLinkEdit</value></property>
+		<property name="successView"><value>e5cat/CatLinkEdit</value></property>
+		<property name="saveType"><value>link</value></property>
+	</bean>
+	<bean id="cat.CatExport" class="com.founder.e5.web.cat.CatExportController">
+	</bean>
+	<bean id="cat.CatRestore" class="com.founder.e5.web.cat.CatRestoreController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="listView"><value>e5cat/CatRestore</value></property>
+		<property name="deleteView"><value>forward:CatRestore.do?action=list</value></property>
+	</bean>
+	<bean id="cat.CatImport" class="com.founder.e5.web.cat.CatImportController">
+		<property name="formView"><value>e5cat/CatImport</value></property>
+		<property name="successView"><value>e5cat/Refresh</value></property>
+	</bean>
+	<!-- 3.3 Category Extend -->
+	<bean id="cat.CatExt" class="com.founder.e5.web.cat.CatExtController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="catExtManager"><ref bean="CatExtManager"/></property>
+		<property name="listView"><value>e5cat/CatExt</value></property>
+	</bean>
+	<bean id="cat.CatExtEdit" class="com.founder.e5.web.cat.CatExtEditController">
+		<property name="catExtManager"><ref bean="CatExtManager"/></property>
+    </bean>
+	<!-- 3.4 Category Type -->
+	<bean id="cat.CatType" class="com.founder.e5.web.cat.CatTypeController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="listView"><value>e5cat/CatType</value></property>
+		<property name="deleteView"><value>forward:CatType.do?action=list</value></property>
+	</bean>
+	<bean id="cat.CatTypeEdit" class="com.founder.e5.web.cat.CatTypeEditController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="formView"><value>e5cat/CatTypeEdit</value></property>
+		<property name="successView"><value>e5cat/Refresh</value></property>
+	</bean>
+	<bean id="cat.CatTypeList" class="com.founder.e5.web.cat.CatTypeController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="listView"><value>e5cat/CatTypeSort</value></property>
+	</bean>
+	<bean id="cat.CatTypeSort" class="com.founder.e5.web.cat.CatTypeSortController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="viewName"><value>e5cat/Refresh</value></property>
+	</bean>
+	<bean id="cat.CatCheck" class="com.founder.e5.web.cat.CatCheckController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	<!-- ================================== 4. organization =============================================-->
+	<!-- 4.1 delegate reflect url-->
+	<bean id="OrgTreeGenerate.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="orgTreeDelegate"/></property>
+	</bean>
+	<bean id="FolderTreeGenerate.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="FolderTreeDelegate"/></property>
+	</bean>
+	<bean id="OrgMgrAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="OrgMgrDelegate"/></property>
+	</bean>
+	<bean id="QueryOrgAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="QueryDelegate"/></property>
+	</bean>
+	<bean id="RoleMgrAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="RoleMgrDelegate"/></property>
+	</bean>
+	<bean id="UserMgrAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="UserMgrDelegate"/></property>
+	</bean>
+	<bean id="RoleMgrUserAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="RoleMgrUserDelegate"/></property>
+	</bean>
+	<bean id="UserMgrFolderAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="UserMgrFolderDelegate"/></property>
+	</bean>
+	<bean id="SortAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="SortDelegate"/></property>
+	</bean>
+	<bean id="StorageDeviceMgrAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="StorageDeviceMgrDelegate"/></property>
+	</bean>
+	<bean id="SysConfigureMgrAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="SysConfigureMgrDelegate"/></property>
+	</bean>
+	<bean id="LoginMonitorAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="LoginMonitorDelegate"/></property>
+	</bean>
+	<bean id="OrgExchangeAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="OrgExchangeDelegate"/></property>
+	</bean>
+	<!-- 4.2 form reflect url-->
+	<bean id="org.UserMgrFormAction" class="com.founder.e5.web.org.controller.UserMgrFormAction">
+		<property name="userMgrActionDelegate"><ref bean="UserMgrDelegate"/></property>
+		<property name="commandClass"><value>com.founder.e5.web.org.controller.UserFormBean</value></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="userMgr"><ref bean="UserManager"/></property>
+		<property name="formView"><value>/e5sys/org/agender</value></property>
+		<property name="roleUserMgr"><ref bean="RoleUserMgr"/></property>
+		<property name="userFolderMgr"><ref bean="UserFolderMgr"/></property>
+		<property name="delegateBase"><ref bean="DelegateBase"/></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="storage.StorgeDeviceFormAction" class="com.founder.e5.web.storage.controller.StorgeDeviceFormAction">
+		<property name="commandClass"><value>com.founder.e5.sys.StorageDevice</value></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="storageForm"><value>/e5sys/storage/StorageForm</value></property>
+		<property name="storageList"><value>/e5sys/storage/StorageList</value></property>
+		<property name="storgeDeviceMgr"><ref bean="StorageDeviceManager"/> </property>
+		<property name="delegateBase"><ref bean="DelegateBase"/></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="app.ApplicationSystemAction" class="com.founder.e5.web.app.controller.ApplicationSystemAction">
+		<property name="appManager"><ref bean="AppManager"/></property>
+		<property name="appTemplateManager"><ref bean="AppTemplateManager"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="uploadForm"><value>/e5app/AppSysForm</value></property>
+		<property name="templateFrom"><value>/e5app/UploadTemplate</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	
+	<bean id="org.RoleValidAction" class="com.founder.e5.web.org.controller.RoleValidAction">
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="formView"><value>/e5sys/org/RoleValidForm</value></property>
+		<property name="roleMgr"><ref bean="RoleManager"/></property>
+		<property name="weekSource"><value>i18n.e5org</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+
+	<bean id="DelegateBase" class="com.founder.e5.web.org.DelegateBase">
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<!-- 4.3 delegate bean-->
+	<bean id="orgTreeDelegate" class="com.founder.e5.web.org.controller.OrgTreeActionDelegate">
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="orgReader"><ref bean="OrgManager"/></property>
+		<property name="userReader"><ref bean="UserManager"/></property>
+		<property name="orgCreater"><ref bean="OrgCreater"/></property>
+		<property name="orgTreeView"><value>/e5sys/org/OrgSrcTree</value></property>
+		<property name="orgRoleTreeView"><value>/e5sys/org/DlgTree</value></property>
+		<property name="orgUserTreeView"><value>/e5sys/org/DlgTree</value></property>
+		<property name="indexView"><value>/e5sys/org/index</value></property>
+		<property name="rootUrl"><value>OrgTreeGenerate.do</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="OrgExchangeDelegate" class="com.founder.e5.web.org.controller.OrgExchangeActionDelegate">
+		<property name="orgExchange"><ref bean="OrgExchange"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="importForm"><value>/e5sys/org/ImportOrg</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="FolderTreeDelegate" class="com.founder.e5.web.org.controller.FolderTreeActionDelegate">
+		<property name="folderReader"><ref bean="FolderManager"/></property>
+		<property name="docTypeReader"><ref bean="DocTypeManager"/></property>
+		<property name="docLibReader"><ref bean="DocLibManager"/></property>
+		<property name="folderTreeView"><value>/e5sys/org/DlgTree</value></property>
+		<property name="folderSelectDlg"><value>/e5sys/org/UserFolderIndex</value></property>
+		<property name="rootUrl"><value>FolderTreeGenerate.do</value></property>
+		<property name="folderIcon"><value>../../images/foldericon.png</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="OrgMgrDelegate" class="com.founder.e5.web.org.controller.OrgMgrActionDelegate">
+		<property name="orgMgr"><ref bean="OrgManager"/></property>
+		<property name="orgTypeReader"><ref bean="OrgTypeReader"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="successView"><value>/e5sys/org/OrgFormList</value></property>
+		<property name="addOrgView"><value>/e5sys/org/OrgForm</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="QueryDelegate" class="com.founder.e5.web.org.controller.QueryActionDelegate">
+		<property name="queryMgr"><ref bean="QueryManager"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="userResultView"><value>/e5sys/org/QueryUserList</value></property>
+		<property name="roleResultView"><value>/e5sys/org/QueryRoleList</value></property>
+		<property name="orgResultView"><value>/e5sys/org/QueryOrgList</value></property>
+		<property name="allResultView"><value>/e5sys/org/QueryAllList</value></property>
+		<property name="queryForm"><value>/e5sys/org/QueryForm</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="RoleMgrDelegate" class="com.founder.e5.web.org.controller.RoleMgrActionDelegate">
+		<property name="roleMgr"><ref bean="RoleManager"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="usrReader"><ref bean="UserManager"/></property>
+		<property name="orgMgrAdditon"><ref bean="OrgMgrAdditon"/></property>
+		<property name="ruMgr"><ref bean="RoleUserMgr"/></property>
+		<property name="addRoleForm"><value>/e5sys/org/RoleForm</value></property>
+		<property name="roleFormView"><value>/e5sys/org/RoleFormList</value></property>
+		<property name="roleListView"><value>/e5sys/org/UserListInRole</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="UserMgrDelegate" class="com.founder.e5.web.org.controller.UserMgrActionDelegate">
+		<property name="orgReader"><ref bean="OrgManager"/></property>
+		<property name="roleMgr"><ref bean="RoleManager"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="userMgr"><ref bean="UserManager"/></property>
+		<property name="formView"><value>/e5sys/org/UserForm</value></property>
+		<property name="userView"><value>/e5sys/org/UserFormList</value></property>
+		<property name="sysAdminFrom"><value>/e5sys/org/SysAdminForm</value></property>
+		<property name="adminUpdateSuccess"><value>/e5sys/org/AdminUpdateSuccess</value></property>
+		<property name="ruMgr"><ref bean="RoleUserMgr"/></property>
+		<property name="ufMgr"><ref bean="UserFolderMgr"/></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="RoleMgrUserDelegate" class="com.founder.e5.web.org.controller.RoleMgrUserActionDelegate">
+		<property name="roleMgr"><ref bean="RoleManager"/></property>
+		<property name="orgReader"><ref bean="OrgManager"/></property>
+		<property name="userReader"><ref bean="UserManager"/></property>
+		<property name="ruMgr"><ref bean="RoleUserMgr"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="userGrantRoleView"><value>/e5sys/org/UserFormList</value></property>
+		<property name="roleAppendUserView"><value>/e5sys/org/RoleFormList</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="UserMgrFolderDelegate" class="com.founder.e5.web.org.controller.UserMgrFolderDelegate">
+		<property name="userMgr"><ref bean="UserManager"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="SortDelegate" class="com.founder.e5.web.org.controller.SortActionDelegate">
+		<property name="orgMgr"><ref bean="OrgManager"/></property>
+		<property name="roleMgr"><ref bean="RoleManager"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="userMgr"><ref bean="UserManager"/></property>
+		<property name="successView"><value>/e5sys/org/SortView</value></property>
+		<property name="formView"><value>/e5sys/org/OrgSort</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="StorageDeviceMgrDelegate" class="com.founder.e5.web.storage.controller.StorageDeviceMgrActionDelegate">
+		<property name="storgeDeviceMgr"><ref bean="StorageDeviceManager"/></property>
+		<property name="storageList"><value>/e5sys/storage/StorageList</value></property>
+		<property name="storageView"><value>/e5sys/storage/StorageView</value></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="SysConfigureMgrDelegate" class="com.founder.e5.web.sysconfig.controller.SysConfigureMgrActionDelegate">
+		<property name="sysConfigMgr"><ref bean="SysConfigManager"/></property>
+		<property name="appMgr"><ref bean="AppManager"/></property>
+		<property name="sysConfigList"><value>/e5sys/sysconfig/SysConfigList</value></property>
+		<property name="sysConfigForm"><value>/e5sys/sysconfig/SysConfigForm</value></property>
+		<property name="sysConfigBar"><value>/e5sys/sysconfig/SysConfigBar</value></property>
+		<property name="indexView"><value>/e5sys/sysconfig/index</value></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="LoginMonitorDelegate" class="com.founder.e5.web.loginmonitor.controller.LoginMonitorActionDelegate">
+		<property name="loginUserMgr"><ref bean="LoginUserManager"/></property>
+		<property name="roleReader"><ref bean="RoleReader"/></property>
+		<property name="userReader"><ref bean="UserReader"/></property>
+		<property name="orgMgrAdditon"><ref bean="OrgReaderAdditon"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+		<property name="loginUserList"><value>/e5sys/loginmonitor/LoginUserList</value></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<!-- 4.4 logic bean-->
+	<bean id="OrgCreater" class="com.founder.e5.web.org.OrgTreeGenerate">
+		<property name="orgReader"><ref bean="OrgManager"/></property>
+		<property name="userReader"><ref bean="UserManager"/></property>
+		<property name="roleIcon"><value>../../images/role.gif</value></property>
+		<property name="userIcon"><value>../../images/user.gif</value></property>
+		<property name="orgIcon"><value>../../images/org.gif</value></property>
+		<property name="openOrgIcon"><value>../../images/org.gif</value></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="OrgReaderAdditon" class="com.founder.e5.web.org.OrgManagerAdditon">
+		<property name="orgReader"><ref bean="OrgReader"/></property>
+		<property name="folderReader"><ref bean="FolderReader"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="OrgMgrAdditon" class="com.founder.e5.web.org.OrgManagerAdditon">
+		<property name="orgReader"><ref bean="OrgManager"/></property>
+		<property name="folderReader"><ref bean="FolderManager"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="QueryManager" class="com.founder.e5.web.org.QueryManager">
+		<property name="orgReader"><ref bean="OrgManager"/></property>
+		<property name="roleReader"><ref bean="RoleManager"/></property>
+		<property name="userReader"><ref bean="UserManager"/></property>
+		<property name="orgMgrAdditon"><ref bean="OrgMgrAdditon"/></property>
+	</bean>
+	<bean id="RoleUserMgr" class="com.founder.e5.web.org.RoleUserManager">
+		<property name="userReader"><ref bean="UserManager"/></property>
+		<property name="roleMgr"><ref bean="RoleManager"/></property>
+		<property name="orgMgrAdditon"><ref bean="OrgMgrAdditon"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="UserFolderMgr" class="com.founder.e5.web.org.UserFolderManager">
+		<property name="userManager"><ref bean="UserManager"/></property>
+		<property name="docTypeReader"><ref bean="DocTypeManager"/></property>
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="orgMgrAdditon"><ref bean="OrgMgrAdditon"/></property>
+		<property name="logger"><ref bean="sysLog"/></property>
+	</bean>
+	<!-- 4.5 DefaultFolder config-->
+	<bean id="org.DefaultFolder" class="com.founder.e5.web.org.controller.DefaultFolderController">
+		<property name="userFolderManager"><ref bean="UserFolderMgr"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="viewName"><value>/e5sys/org/DefaultFolder</value></property>
+	</bean>
+	<bean id="DefaultFolderDelegate" class="com.founder.e5.web.org.controller.DefaultFolderDelegate">
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="resourceFile"><value>i18n.e5org</value></property>
+		<property name="errorView"><value>/e5sys/Error</value></property>
+	</bean>
+	<bean id="DefaultFolderAction.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="DefaultFolderDelegate"/></property>
+	</bean>
+	<!-- 4.6 Org Folder Mapping-->
+	<bean id="org.FolderMapping" class="com.founder.e5.web.org.controller.OrgFolderController">
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="org.LDAPUser" class="com.founder.e5.web.org.controller.LDAPUserController">
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	<!-- ================================== 5. Flow ======================================-->
+	<!-- 5.1 logic bean-->
+	<bean id="FlowTemplateManager" class="com.founder.e5.app.template.FlowTemplateManager"/>
+	<!-- 5.2 icon controller-->
+	<bean id="flow.IconList" class="com.founder.e5.web.flow.controller.IconListController">
+		<property name="procManager" ref="ProcManager"/>
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="successView" value="e5flow/listIcon"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<bean id="flow.IconSubmit" class="com.founder.e5.web.flow.controller.IconSubmitController">
+		<property name="procManager" ref="ProcManager"/>
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="successView" value="forward:/e5flow/listIcon.do" />
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<!-- 5.3 operation controller-->
+	<bean id="flow.Operation" class="com.founder.e5.web.flow.controller.OperationController">
+		<property name="procManager" ref="ProcManager"/>
+		<property name="log" ref="flowLog" />
+		<property name="sessionAuth" ref="SessionAuth" />
+		<property name="viewName" value="e5flow/Operation"/>
+	</bean>
+	<bean id="flow.OpList" class="com.founder.e5.web.flow.controller.OpListController">
+		<property name="procManager" ref="ProcManager"/>
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="successView" value="e5flow/listOperation"/>
+	</bean>
+	<bean id="flow.OpSubmit" class="com.founder.e5.web.flow.controller.OperationSubmitController">
+		<property name="procManager" ref="ProcManager" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="log" ref="flowLog" />
+		<property name="successView" value="forward:/e5flow/listOp.do"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<bean id="flow.OpDocTypeList" class="com.founder.e5.web.flow.controller.OperationDocTypeListController">
+		<property name="auth" ref="SessionAuth"/>
+		<property name="log" ref="flowLog" />
+		<property name="successView" value="e5flow/addFlowNode"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<!-- 5.4 flow tree list controller-->
+	<bean id="flow.DocTypeList" class="com.founder.e5.web.flow.controller.DocTypeListController">
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+	</bean>
+	<bean id="flow.FlowList" class="com.founder.e5.web.flow.controller.FlowListController">
+		<property name="docTypeManager" ref="DocTypeManager" />
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="successView" value="e5flow/listFlow"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<bean id="flow.FlowNodeList" class="com.founder.e5.web.flow.controller.NodeListController">
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="flowManager" ref="FlowManager"/>
+		<property name="successView" value="e5flow/listFlowNode"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<bean id="flow.ProcList" class="com.founder.e5.web.flow.controller.ProcListController">
+		<property name="flowManager" ref="FlowManager" />
+		<property name="procManager" ref="ProcManager" />
+		<property name="sessionAuth" ref="SessionAuth" />
+		<property name="log" ref="flowLog" />
+		<property name="viewName" value="e5flow/listProc"/>
+	</bean>
+	<!-- 5.5 flow controller-->
+	<bean id="flow.Flow" class="com.founder.e5.web.flow.controller.FlowController">
+		<property name="flowManager" ref="FlowManager"/>
+		<property name="log" ref="flowLog" />
+		<property name="sessionAuth" ref="SessionAuth" />
+		<property name="viewName" value="e5flow/Flow" />
+	</bean>
+	<bean id="flow.FlowSubmit" class="com.founder.e5.web.flow.controller.FlowSubmitController">
+		<property name="flowManager" ref="FlowManager"/>
+		<property name="docTypeManager" ref="DocTypeManager"/>
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="successView" value="forward:/e5flow/listFlow.do"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<!-- 5.6 flowNode controller-->
+	<bean id="flow.FlowNode" class="com.founder.e5.web.flow.controller.NodeController">
+		<property name="flowManager" ref="FlowManager"/>
+		<property name="sessionAuth" ref="SessionAuth" />
+		<property name="log" ref="flowLog" />
+		<property name="viewName" value="e5flow/FlowNode" />
+	</bean>
+	<bean id="flow.FlowNodeSubmit" class="com.founder.e5.web.flow.controller.NodeSubmitController">
+		<property name="flowManager" ref="FlowManager"/>
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="successView" value="forward:/e5flow/listNodes.do"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<!-- 5.7 proc controller-->
+	<bean id="flow.Proc" class="com.founder.e5.web.flow.controller.ProcController">
+		<property name="procManager" ref="ProcManager" />
+		<property name="flowManager" ref="FlowManager" />
+		<property name="sessionAuth" ref="SessionAuth" />
+		<property name="log" ref="flowLog" />
+		<property name="viewName" value="e5flow/Proc"/>
+	</bean>
+	<bean id="flow.ProcSubmit" class="com.founder.e5.web.flow.controller.ProcSubmitController">
+		<property name="procManager" ref="ProcManager" />
+		<property name="log" ref="flowLog" />
+		<property name="auth" ref="SessionAuth" />
+		<property name="successView" value="forward:/e5flow/listProc.do"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<bean id="flow.ProcDelete" class="com.founder.e5.web.flow.controller.ProcDeleteController">
+		<property name="procManager" ref="ProcManager"/>
+		<property name="flowPermissionManager" ref="FlowPermissionManager"/>
+		<property name="resourceFile"><value>i18n.e5flow</value></property>
+		<property name="log" ref="flowLog" />
+		<property name="sessionAuth" ref="SessionAuth" />
+		<property name="viewName" value="forward:/e5flow/listProc.do"/>
+	</bean>
+	<!-- 5.8 procOrder controller-->
+	<bean id="flow.ProcOrder" class="com.founder.e5.web.flow.controller.ProcOrderController">
+		<property name="procOrderManager" ref="ProcOrderManager"/>
+		<property name="procManager" ref="ProcManager"/>
+		<property name="auth" ref="SessionAuth" />
+		<property name="log" ref="flowLog" />
+		<property name="successView" value="e5flow/ProcOrder"/>
+		<property name="errView" value="e5flow/err"/>
+	</bean>
+	<!-- 5.9 Proc Group-->
+	<bean id="flow.ProcGroup" class="com.founder.e5.web.flow.controller.ProcGroupController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="procGroupManager"><ref bean="ProcGroupManager"/></property>
+
+		<property name="log"><ref bean="flowLog"/></property>
+		<property name="viewName"><value>e5flow/ProcGroup</value></property>
+	</bean>
+	<bean id="flow.ProcGroupSubmit" class="com.founder.e5.web.flow.controller.ProcGroupSubmitController">
+		<property name="procGroupManager"><ref bean="ProcGroupManager"/></property>
+
+		<property name="log"><ref bean="flowLog"/></property>
+		<property name="viewName"><value>e5flow/ProcGroupSubmit</value></property>
+	</bean>
+	<bean id="flow.ProcSuit" class="com.founder.e5.web.flow.controller.ProcSuitController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="procSuitManager"><ref bean="ProcSuitManager"/></property>
+
+		<property name="log"><ref bean="flowLog"/></property>
+		<property name="viewName"><value>e5flow/ProcSuit</value></property>
+	</bean>
+	<bean id="flow.ProcSuitSubmit" class="com.founder.e5.web.flow.controller.ProcSuitSubmitController">
+		<property name="procSuitManager"><ref bean="ProcSuitManager"/></property>
+
+		<property name="log"><ref bean="flowLog"/></property>
+		<property name="viewName"><value>e5flow/ProcSuitSubmit</value></property>
+	</bean>
+	<!-- ================================== 6. ListPage ======================================-->
+	<bean name="/e5listpage/ListPageInit.do" class="com.founder.e5.web.listpage.ListPageInitController">
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="typeReader"><ref bean="DocTypeManager"/></property>
+		<property name="listManager"><ref bean="ListPageManager"/></property>
+		<property name="resourceFile"><value>i18n.e5listpage</value></property>
+		<property name="viewName"><value>e5listpage/ListPageMain</value></property>
+	</bean>
+	<bean name="/e5listpage/Browser.do" class="com.founder.e5.web.listpage.ListPageBrowserController">
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="listManager"><ref bean="ListPageManager"/></property>
+		<property name="typeReader"><ref bean="DocTypeManager"/></property>
+		<property name="viewName"><value>e5listpage/ListPageBrowser</value></property>
+	</bean>
+	<!-- 6.1 FolderView Listpage-->
+	<bean name="/e5listpage/FVListPage.do" class="com.founder.e5.web.listpage.FVListPageController">
+		<property name="listPageManager"><ref bean="ListPageManager"/></property>
+		<property name="fvListPageManager"><ref bean="FVListPageManager" /></property>
+		<property name="resourceFile"><value>i18n.e5listpage</value></property>
+		<property name="viewName"><value>e5listpage/FVListPageMain</value></property>
+	</bean>
+	<!-- ===========================7.scheduler====================================-->
+	<bean id="scheduler.SysJob" class="com.founder.e5.web.scheduler.SysJobController">
+		<property name="sysJobManager"><ref bean="SysJobManager"/></property>
+		<property name="listView"><value>e5scheduler/SysJob</value></property>
+		<property name="deleteView"><value>redirect:SysJob.do?action=list</value></property>
+	</bean>
+	<bean id="scheduler.SysJobEdit" class="com.founder.e5.web.scheduler.SysJobEditController">
+		<property name="sysJobManager"><ref bean="SysJobManager"/></property>
+		<property name="formView"><value>e5scheduler/SysJobEdit</value></property>
+		<property name="successView"><value>e5scheduler/SysJobEdit</value></property>
+	</bean>
+	<bean id="scheduler.SysTrigger" class="com.founder.e5.web.scheduler.SysTriggerController">
+		<property name="sysTriggerManager"><ref bean="SysTriggerManager"/></property>
+		<property name="listView"><value>e5scheduler/SysTrigger</value></property>
+		<property name="deleteView"><value>forward:SysTrigger.do?action=list</value></property>
+	</bean>
+	<bean id="scheduler.SysTriggerEdit" class="com.founder.e5.web.scheduler.SysTriggerEditController">
+		<property name="sysTriggerManager"><ref bean="SysTriggerManager"/></property>
+		<property name="formView"><value>e5scheduler/SysTriggerEdit</value></property>
+		<property name="successView"><value>forward:SysTrigger.do?action=list</value></property>
+	</bean>
+	<bean id="scheduler.Scheduler" class="com.founder.e5.web.scheduler.SchedulerController">
+		<property name="listView"><value>e5scheduler/Scheduler</value></property>
+	</bean>
+	<bean id="scheduler.SchedulerCommand" class="com.founder.e5.web.scheduler.SchedulerCommandController">
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="scheduler.SchedulerRemoteCommand" class="com.founder.e5.web.scheduler.SchedulerRemoteCommandController">
+		<property name="log"><ref bean="sysLog"/></property>
+		<property name="server"><ref bean="SchedulerLocalServer"/></property>
+	</bean>
+
+	<!--======= V3.0 ======= -->
+	<bean id="listpage.custom.DocType" class="com.founder.e5.web.listpage.custom.DocTypeController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+	</bean>
+	<bean id="listpage.custom.DocCustomBuilder" class="com.founder.e5.web.listpage.custom.DocCustomBuilderController">
+	</bean>
+	<bean id="listpage.custom.IconView" class="com.founder.e5.web.listpage.custom.IconViewController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+	</bean>
+	<bean id="listpage.custom.ListSubmit" class="com.founder.e5.web.listpage.custom.ListSubmitController">
+		<property name="listManager"><ref bean="ListPageManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="resourceFile"><value>i18n.e5listpage</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="flow.custom.FlowNode" class="com.founder.e5.web.flow.custom.FlowNodeController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="log"><ref bean="flowLog"/></property>
+	</bean>
+	<bean id="flow.custom.Submit" class="com.founder.e5.web.flow.custom.FlowSubmitController">
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="log"><ref bean="flowLog"/></property>
+	</bean>
+	<bean id="flow.custom.FlowIconGroup" class="com.founder.e5.web.flow.custom.FlowIconGroupController">
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="procGroupManager"><ref bean="ProcGroupManager"/></property>
+		<property name="procOrderManager"><ref bean="ProcOrderManager"/></property>
+		<property name="log"><ref bean="flowLog"/></property>
+	</bean>
+	<!-- sysConfig -->
+	<bean id="UrlValidate" class="com.founder.e5.web.sysconfig.controller.SysConfigureMgrActionDelegate">
+		<property name="sysConfigMgr"><ref bean="SysConfigManager"/></property>
+		<property name="appMgr"><ref bean="AppManager"/></property>
+		<property name="urlValidate"><value>/e5sys/sysconfig/UrlValidate</value></property>
+	</bean>
+	<bean id="UrlValidate.do" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="UrlValidate"/></property>
+	</bean>
+	<bean id="storage.StorgeDeviceController" class="com.founder.e5.web.storage.controller.StorgeDeviceController">
+		<property name="storgeDeviceMgr"><ref bean="StorageDeviceManager"/></property>
+		<property name="resourceFile"><value>i18n.e5sysreport</value></property>
+	</bean>
+	<!-- DocType -->
+	<bean id="dom.DocTypeFieldRestore" class="com.founder.e5.web.dom.DocTypeFieldRestoreController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="listView"><value>e5dom/DeleteFieldsMgrPage</value></property>
+		<property name="deleteView"><value>forward:DocTypeFieldRestore.do?action=list</value></property>
+	</bean>
+	<bean id="dom.DocTypeController" class="com.founder.e5.web.dom.DocTypeController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="appManager"><ref bean="AppManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.DocLibController" class="com.founder.e5.web.dom.DocLibController">
+		<property name="docLibManager"><ref bean="DocLibManager"/></property>
+		<property name="storageDeviceManager"><ref bean="StorageDeviceManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.FolderController" class="com.founder.e5.web.dom.FolderController">
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="fvListPageManager"><ref bean="FVListPageManager" /></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.ViewController" class="com.founder.e5.web.dom.ViewController">
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="viewManager"><ref bean="ViewManager"/></property>
+		<property name="fvListPageManager"><ref bean="FVListPageManager" /></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.FilterController" class="com.founder.e5.web.dom.FilterController">
+		<property name="filterManager"><ref bean="FilterManager"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.RuleController" class="com.founder.e5.web.dom.RuleController">
+		<property name="ruleManager"><ref bean="RuleManager"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.DocTypeFieldController" class="com.founder.e5.web.dom.DocTypeFieldController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.FormController" class="com.founder.e5.web.dom.custom.FormController">
+		<property name="formManager"><ref bean="FormManager"/></property>
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="procManager"><ref bean="ProcManager"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="dom.DetailViewController" class="com.founder.e5.web.dom.custom.DetailViewController">
+		<property name="docViewManager"><ref bean="DocViewManager"/></property>
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="rel.RelTableController" class="com.founder.e5.web.rel.RelTableController">
+		<property name="relTableMgr"><ref bean="RelTableManager"/></property>
+		<property name="resourceFile"><value>i18n.e5rel</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<bean id="rel.RelTableDocLibController" class="com.founder.e5.web.rel.RelTableDocLibController">
+		<property name="relTableDocLibManager"><ref bean="RelTableDocLibManager"/></property>
+		<property name="relTableDocLibFieldsManager"><ref bean="RelTableDocLibFieldsManager"/></property>
+		<property name="catMgr"><ref bean="CatManager"/></property>
+		<property name="relTableMgr"><ref bean="RelTableManager"/></property>
+		<property name="resourceFile"><value>i18n.e5rel</value></property>
+		<property name="log"><ref bean="domLog"/></property>
+	</bean>
+	<!--query form customize-->
+	<bean id="dom.QueryFormController" class="com.founder.e5.web.dom.custom.QueryFormController">
+		<property name="queryFormManager"><ref bean="QueryFormManager"/></property>
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="resourceFile"><value>i18n.e5dom</value></property>
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="dom.FieldGroup" class="com.founder.e5.web.dom.custom.FieldGroupController">
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="fieldGroupManager"><ref bean="FieldGroupManager"/></property>
+		<property name="viewName"><value>e5dom/FieldGroup</value></property>
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	<bean id="permission.CatOne" class="com.founder.e5.web.permission.CatOneController">
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="viewName"><value>e5permission/CatMain</value></property>
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+	
+	<!-- system data main -->
+	<bean id="sys.DataMain" class="com.founder.e5.web.DataMain">
+		<property name="docTypeReader"><ref bean="DocTypeReader"/></property>
+		<property name="viewName"><value>e5sys/DataMain</value></property>
+		<property name="log"><ref bean="sysLog"/></property>
+	</bean>
+</beans>

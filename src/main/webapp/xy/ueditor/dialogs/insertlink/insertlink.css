@@ -1,0 +1,69 @@
+.wrapper{
+
+    zoom:1;
+    position: relative;
+}
+.tabbody {
+
+    position: relative;
+    top: -1px;
+    margin-left: 1px;
+    margin: 0 auto;
+    border: 1px solid white;
+    display: block;
+}
+.tabhead{
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+.tab-span{
+    margin-left: 1px;
+}
+div{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-size: 100%;
+    display: block;
+}
+.tabhead span{
+    font-family: "microsoft yahei";
+    display: inline-block;
+    padding: 0 2px;
+    height: 31px;
+    border: 1px solid #ccc;
+    background: url("../images/dialog-title-bg.png") repeat-x;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+#code-content{
+    /*border: 1px solid white;*/
+    /*background-color: white;*/
+    height: 212px;
+    width: 499px;
+    background-color: #ccc;
+}
+#code-textarea{
+    /*background-color: #ddd;*/
+    /*height:490px;*/
+    /*width: 768px;;*/
+    /*font-family:宋体;*/
+    /*font-size: 16px;*/
+}
+#code-content h4{
+     margin-top: 2px;
+    padding: 54px 22px;
+    font-size: 16px;
+}
+#code-content li{
+    width: 150px;
+    border: 1px solid;
+    padding: 10px 0px;
+    line-height: 16px;
+    text-align: center;
+    float: left;
+    margin-left: 12px;
+    border-radius: 4px;
+}

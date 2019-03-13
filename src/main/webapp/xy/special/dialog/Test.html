@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   	<link rel="stylesheet" href="../third/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../export/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sliderBar.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/editor.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sidebar-panel.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/modle.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/navMenuSet.css"/>
+</head>
+<body>
+<!--上传图片悬浮框设置开始-->
+<div id="picUploadDialog" class="picUpload posAbsolute" style="display:block;">
+    <ul class="tab_menu font14">
+        <li class="pull-left mgl20 width110 cursor text-center mgt10 selected">上传图片</li>
+        <li class="pull-left width110 cursor text-center mgt10">远程图片</li>
+        <img id="pudClose" class="btn-hide pull-right mgr20 mgt15" src="../export/images/navMenu/navMenu1.png"/>
+    </ul>
+    <div class="tab_box tab-box-style">
+        <div class="text-center local-pic">
+            <li class="fmgt25"><img src="../export/images/navMenu/navMenu7.png"/></li>
+            <li class="mgt40"><input class="factive height45 width205" type="button" value="从本地选择图片上传" /></li>
+            <li class="mgt10 font14">将图片拖动到此区域快速上传</li>
+        </div>
+        <div class="hide1 pic-url">
+            <div class="font14">
+                请输入图片的链接地址，格式仅限 .JPG, .JPEG, .PNG, .GIF
+            </div>
+            <div class=" mgt10">
+                <input id="picUrlText" class="pic-style mgr10" type="text" value="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" />
+                <input id="picUrlBtn" class="factive pic-style-btn" type="button" value="确定" />
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--上传图片悬浮框设置结束-->
+</body>
+</html>

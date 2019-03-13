@@ -1,0 +1,274 @@
+/*form-custom*/
+.tablecontent{
+	border:0 none;
+	color: #666;
+}
+.tablecontent td{
+	border:0 none;
+	padding:5px;
+	margin-left:16px;
+	float:left;
+	position: relative;
+}
+.tablecontent .custform-span,
+.tablecontent .custom-field{
+	margin-left:0;
+	white-space: nowrap;
+}
+.tablecontent .custform-label{
+	
+	text-align:right;
+	margin-right: -80px;
+	font-size:12px;
+	padding-top:5px;
+	line-height: 14px;
+	height:auto;
+	margin-top:0;
+	font-family: "microsoft yahei";
+}
+.tablecontent .custform-label-require{
+	
+	padding-right: 20px;
+	padding-left:0;
+	background-position: right center;
+}
+.tablecontent .custform-from-wrap {
+	*display: inline-block;
+	*padding-left: 5px;
+	margin-left:97px;
+	position: relative;
+
+	/**margin-left: 0;*/
+}
+.tablecontent .custform-from-wrap label{
+	display:inline-block;
+	font-size: 12px;
+	line-height: 14px;
+	margin-right: 10px;
+}
+.tablecontent .custform-from-wrap label input{
+	margin: 0 5px 0 0;
+}
+.tablecontent .input-append {
+	margin-bottom:0;
+}
+.tablecontent .custform-from-wrap .custform-input {
+	margin:0;
+}
+.tablecontent .custform-from-wrap .custform-button{
+	font-size: 12px;
+	line-height: 14px;
+	margin-top:0;
+	margin-bottom:0;
+	height:24px;
+}
+.tablecontent .custform-from-wrap .custform-input-date{
+	
+}
+.tablecontent .custform-from-wrap .custform-select{
+	height:24px;
+	font-size: 12px;
+	margin-top:0;
+	margin-bottom:0;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin-left: -1px;
+}
+.tablecontent .custform-input,
+.tablecontent .custform-input-date{
+	font-size: 12px;
+	line-height: 14px;
+	height:24px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border-radius: 2px;
+}
+.custform-label-checkbox{
+	font-size: 12px;
+	line-height: 20px;
+	height:20px;
+	vertical-align: middle;
+	margin-bottom: 3px;
+}
+.tablecontent .custform-postfix{
+	margin-top:0;
+	margin-bottom:0;
+}
+.radio.inline, .checkbox.inline{
+	padding-left:15px;
+}
+.radio.inline input[type="radio"],
+.checkbox.inline input[type="checkbox"] {
+	margin-top:1px;
+	margin-left:-15px;
+}
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline{
+	margin-left: 5px;
+}
+input.custform-checkbox{
+	margin-left:97px;
+  	vertical-align: middle;
+  	margin-bottom: 3px;
+}
+#baseinfo, #extinfo{
+	font-family:"Microsoft Yahei", Tahoma, Arial, Helvetica, STHeiti;
+	font-size:16px;
+	color:#4f599b;
+}
+
+#btnFormSave,#btnFormSaveSubmit{
+  border-radius: 3px;
+  color: #fff;
+  background:#00a0e6;
+  height: 30px;
+  border: none;
+  margin-left:97px;
+  font-size: 12px;
+  cursor: pointer;
+  text-shadow: none;
+  padding: 0 27px;
+  font-family: "microsoft yahei";
+}
+#btnFormCancel {
+	display: BLOCK;
+	font-family: 'microsoft yahei';
+	height: 25px;
+	margin-left:28px;
+}
+body{font-family: 'microsoft yahei';}
+td.edui-editor-bottombar{ display: none; }  
+td.edui-editor-wordcount{ display: none; } 
+td.edui-editor-scale{ display: none; }
+.custform-label
+{
+	width: 75px;
+	font-family: 'microsoft yahei';
+}
+#topiceditor
+{
+	width:99.5%;
+	margin:0px 5px 0px 5px;	
+}
+#subtitleeditor
+{
+	width:99.5%;
+	margin:0px 5px 0px 5px;
+}
+#ba_pic
+{
+	font-family:'microsoft yahei';
+	line-height: 20px;
+	font-size: 12px;
+}
+
+/* change form style */
+.tablecontent .custform-input,
+.tablecontent .custform-input-date,
+.tablecontent .custform-from-wrap .custform-select{
+ 	height: 35px;
+  	border: 1px solid #ddd;
+  	border-radius: 3px;
+  	font-size: 13px;
+  	font-family:"microsoft yahei";
+}
+.tablecontent .custform-label{
+	/*  padding-top: 13px;*/
+	  font-size: 13px;
+	  color: #000; 
+}
+.tablecontent .custform-from-wrap label{
+	/*margin-top:10px;
+  	font-size: 13px;
+	margin-right:7px;*/
+}
+input[type="file"] {
+	margin-top:10px;
+  	font-size: 12px;
+  	height: 24px;
+}
+
+#btnFormCancel,.btnAdded1{
+	
+	height:30px;
+	background: #b1b1b1;
+	border: none;
+	color: #fff;
+	border-radius: 3px;
+    margin-top: 5px;
+    padding: 0 27px;
+    text-shadow: none;	
+}
+/*button added*/
+.btnAdded0{
+	
+	background: #b1b1b1;
+	border: none;
+	color: #fff;
+	border-radius: 3px;
+	padding: 0px 12px;
+	height: 25px;
+}
+
+#divOptions table tr td:first-child{
+	font-size: 13px;
+    color: #000;
+    margin-left:30px;
+}
+#divOptions table tr td:nth-of-type(2){
+	margin-left: -20px;
+}
+#iconBig,#iconSmall{
+	background-color:gray;
+}
+
+#DIV_col_source label{
+	margin-right: 6px;
+}
+
+.close{
+	position: absolute;
+	left: 320px;
+	top: 10px;
+	cursor: pointer;
+	display: none;
+}
+#a_startTime,#a_endTime{
+	width: 145px !important;
+}
+#picker{
+	display: inline-block;
+	line-height: 1.428571429;
+	vertical-align: middle;
+	margin: 0 12px 0 0;
+}
+#pa_iconBig,#pa_iconSmall{
+	margin-top: 0;
+}
+#col_color_ID{
+	width:200px;
+}
+#DIV_col_color_ID span.custform-postfix{
+	margin-left: 126px;
+}
+/*#SPAN_col_color{*/
+	/*position: relative;*/
+	/*top: -39px;*/
+	/*left: 240px;*/
+/*}*/
+#SPAN_col_color {
+	float: right;
+	position: absolute;
+	top: 0;
+	left: 245px;
+}
+
+#cb_col_color{
+	display:none !important;
+}
+
+
+
+#SPAN_v_isAutoTitle,#SPAN_v_isAutoAbstract{display:inline;}
+#SPAN_v_isAutoTitle input,#SPAN_v_isAutoAbstract input{position:relative;}

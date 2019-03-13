@@ -1,0 +1,192 @@
+drop procedure if exists RelUtil_Collect_%2;
+--==--
+create procedure RelUtil_Collect_%2(DocID integer, out allInfo varchar(4000))
+begin
+	-- 收集修改前的链接标题等针对栏目的属性 --
+	declare colID integer;
+	declare b_linkTitle varchar(1024);
+	declare b_order decimal(19,10);
+	declare b_priority varchar(4);
+	declare b_position integer;
+	declare b_attr integer;
+	
+	declare no_more_departments integer;
+	declare cur cursor for select CLASS_1,a_linkTitle,a_order,a_priority,a_position,a_attr from DOM_REL_%2 where SYS_DOCUMENTID=DocID;
+
+	declare continue handler for not found set no_more_departments=1;
+
+	set no_more_departments=0;
+	set allInfo = '';
+	
+	open cur;
+		fetch cur into colID, b_linkTitle, b_order, b_priority, b_position, b_attr;
+
+		while no_more_departments = 0 do
+			if (length(allInfo) > 0) then
+				set allInfo = CONCAT(allInfo,'\n', CAST(colID as CHAR));
+			else
+				set allInfo = CAST(colID as CHAR);
+			end if;
+			
+			if (b_priority is null) then
+				set b_priority = '';
+			end if;
+			if (b_position is null) then
+				set b_position = 0;
+			end if;
+			if (b_attr is null) then
+				set b_attr = 0;
+			end if;
+			
+			set allInfo = CONCAT(allInfo, '\r', CAST(b_order as CHAR));
+			set allInfo = CONCAT(allInfo, '\r', CAST(b_priority as CHAR));
+			set allInfo = CONCAT(allInfo, '\r', CAST(b_position as CHAR));
+			set allInfo = CONCAT(allInfo, '\r', CAST(b_attr as CHAR));
+			set allInfo = CONCAT(allInfo, '\r', CAST(b_linkTitle as CHAR));
+			
+			-- select allInfo,colID, b_linkTitle, b_order, b_priority, b_position, b_attr;
+			fetch cur into colID, b_linkTitle, b_order, b_priority, b_position, b_attr;
+		end while;
+	close cur;
+end;
+--==--
+create trigger auto_syn_%1_%2_insert after insert on DOM_%1_DOCLIB
+for each row
+begin
+     declare catids varchar(255);
+     declare cat1 int;
+     declare cat2 int;
+     declare cat3 int;
+     declare cat4 int;
+     declare cat5 int;
+     declare cat6 int;
+     declare cat7 int;
+     declare cat8 int;
+     declare cat9 int;
+     declare cat10 int;
+     declare bindex int;
+     declare eindex int;
+     set bindex = 1;
+     set eindex = 1;
+	while (bindex > 0) do
+	   call RelUtil_ParseChar(New.%3,';',bindex,catids,eindex);
+	   call RelUtil_ParseInt(catids,'_',cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9,cat10);
+	   if (cat1 > 0) then
+		  insert into DOM_REL_%2(%4,CLASS_1,CLASS_2,CLASS_3,CLASS_4,CLASS_5,CLASS_6,CLASS_7,CLASS_8,CLASS_9,CLASS_10,solr_id)
+		  values(%5,cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9,cat10,CONCAT(CAST(New.SYS_DOCUMENTID as CHAR),'_',CAST(cat1 as CHAR)));
+	   end if;
+	   if (eindex > 0) then
+		  set bindex = eindex;
+	   else
+		   set bindex = 0;
+	   end if;
+	end while;
+end;
+--==--
+create trigger auto_syn_%1_%2_update after update on DOM_%1_DOCLIB
+for each row
+begin
+	declare catids varchar(255);
+	declare cat1 int;
+	declare cat2 int;
+	declare cat3 int;
+	declare cat4 int;
+	declare cat5 int;
+	declare cat6 int;
+	declare cat7 int;
+	declare cat8 int;
+	declare cat9 int;
+	declare cat10 int;
+	declare bindex int;
+	declare eindex int;
+	
+	declare i int;
+	declare j int;
+	declare colID INTEGER;
+	declare b_linkTitle VARCHAR(1024);
+	declare b_order decimal(19,10);
+	declare b_priority VARCHAR(4);
+	declare b_position INTEGER;
+	declare b_attr INTEGER;
+	declare b_temp VARCHAR(255);
+	declare allInfo varchar(4000);
+	
+	if (Old.a_columnAll = New.a_columnAll) then
+		-- 若栏目没变化，则不需要删了重新加，只需要修改 --
+		if (Old.a_status <> New.a_status or Old.a_pubTime <> New.a_pubTime
+			or Old.SYS_DELETEFLAG <> New.SYS_DELETEFLAG or Old.a_hasTitlePic <> New.a_hasTitlePic) then
+			update DOM_REL_%2 set
+				a_status=New.a_status,
+				a_pubTime=New.a_pubTime,
+				SYS_DELETEFLAG=New.SYS_DELETEFLAG,
+				a_hasTitlePic=New.a_hasTitlePic
+			where SYS_DOCUMENTID=New.SYS_DOCUMENTID;
+		end if;
+	else
+		-- 栏目变化，重新建立关联 --
+		
+		-- 记录原来的链接标题等信息--
+		call RelUtil_Collect_%2(Old.SYS_DOCUMENTID, allInfo);
+		
+		-- 先完成原逻辑：删掉重新加--
+		set bindex = 1;
+		set eindex = 1;
+		delete from DOM_REL_%2 where SYS_DOCUMENTID = Old.SYS_DOCUMENTID;
+		while (bindex > 0) do
+			call RelUtil_ParseChar(New.%3,';',bindex,catids,eindex);
+			call RelUtil_ParseInt(catids,'_',cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9,cat10);
+			if (cat1 > 0) then
+				insert into DOM_REL_%2(%4,CLASS_1,CLASS_2,CLASS_3,CLASS_4,CLASS_5,CLASS_6,CLASS_7,CLASS_8,CLASS_9,CLASS_10,solr_id)
+				values(%5,cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9,cat10,CONCAT(CAST(New.SYS_DOCUMENTID as CHAR),'_',CAST(cat1 as CHAR)));
+			end if;
+			if (eindex > 0) then
+				set bindex = eindex;
+			else
+				set bindex = 0;
+			end if;
+		end while;
+		
+		-- 对每个栏目分别加回链接标题、顺序、优先级、显示位置--
+		set bindex = 1;
+		set eindex = 1;
+		while (bindex > 0) do
+			call RelUtil_ParseChar(allInfo,'\n',bindex,catids,eindex);
+			set i = 1;
+			call RelUtil_ParseChar(catids,'\r',i,b_temp,j);
+			set colID = convert(b_temp, UNSIGNED);
+			
+			set i = j;
+			call RelUtil_ParseChar(catids,'\r',i,b_temp,j);
+			set b_order = cast(b_temp as DECIMAL(19,10));
+			
+			set i = j;
+			call RelUtil_ParseChar(catids,'\r',i,b_priority,j);
+			
+			set i = j;
+			call RelUtil_ParseChar(catids,'\r',i,b_temp,j);
+			set b_position = convert(b_temp, UNSIGNED);
+			
+			set i = j;
+			call RelUtil_ParseChar(catids,'\r',i,b_temp,j);
+			set b_attr = convert(b_temp, UNSIGNED);
+			
+			set i = j;
+			call RelUtil_ParseChar(catids,'\r',i,b_linkTitle,j);
+			
+			update DOM_REL_%2
+				set a_linkTitle=b_linkTitle, a_order=b_order, a_priority=b_priority, a_position=b_position, a_attr=b_attr
+				where SYS_DOCUMENTID=Old.SYS_DOCUMENTID and CLASS_1=colID;
+			if (eindex > 0) then
+				set bindex = eindex;
+			else
+				set bindex = 0;
+			end if;
+		end while;
+	end if;
+end;
+--==--
+create trigger auto_syn_%1_%2_delete after delete on DOM_%1_DOCLIB
+for each row
+begin
+	delete from DOM_REL_%2 where SYS_DOCUMENTID = Old.SYS_DOCUMENTID;
+end;

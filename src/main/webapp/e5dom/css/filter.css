@@ -1,0 +1,31 @@
+#prompt {
+	background:#FFCC66;
+	width:20px;
+	height:10px;
+	font-family:arial;
+	font-weight : bold;
+	color:black;
+	display:none;
+}
+
+
+#jst_ta{
+	display:none;
+}
+
+TD span{
+	cursor:pointer;
+}
+#titleTR{
+	color:"#FFC800";
+}
+
+#titleTR TD{
+	font-weight:bold;
+}
+
+.labelTD {
+	color:#0066ff;
+	width:100px;
+	text-align:right;
+}

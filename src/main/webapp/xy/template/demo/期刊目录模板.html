@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+</head>
+<body scroll="yes">
+	<div class="divArticles">
+	<FOUNDER-XY type="magazine" data="">
+		<div>${magazine.name!} -- ${magazine.date?string("yyyy-MM-dd")}</div>
+		<ul>
+			<#list columns as column>
+				<li>
+					${column.name!}
+					<br/>
+					<ul>
+						<#list column.articles as article>
+							<li><a href="${article.url!}" target="_blank">${article.id?c}.${article.title}</a></li>
+						</#list>
+					</ul>
+				</li>
+			</#list>
+		</ul>
+	</FOUNDER-XY>
+	</div>
+</body>
+</html>

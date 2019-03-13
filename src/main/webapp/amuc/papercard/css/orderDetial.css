@@ -1,0 +1,108 @@
+* {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "微软雅黑 Bold","微软雅黑";
+        font-size: 13px;
+        color: #333;
+      }
+      .clear {zoom:1;}    /*==for IE6/7 Maxthon2==*/
+      .clear :after {clear:both;content:'.';display:block;width: 0;height: 0;visibility:hidden;}   /*==for FF/chrome/opera/IE8==*/
+      .base {
+        border: rgba(228, 228, 228, 1) solid 1px;
+        padding-bottom: 20px;
+      }
+      /*头部信息*/
+      .head{
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+        border-bottom: #333 solid 1px;
+      }
+      .order-details {
+        border-bottom:solid 1px rgba(228, 228, 228, 1);
+      }
+      .order-details .order-info {
+        border:#333 solid 1px;
+        margin-bottom: 10px;
+      }
+      .order-details .order-info p {
+        float: left;
+        width: 23%;
+        height: 56px;
+        padding-left: 10px;
+        line-height: 56px;
+      }
+      .contacts-info, .user-info {
+        width: 47%;
+        display: inline-block;
+        padding: 15px 10px 0 10px;
+        margin: 10px 0;
+        border: solid 1px rgba(228, 228, 228, 1);
+      }
+      .contacts-info p, .user-info p {
+        display: inline-block;
+        width: 40%;
+        margin-top: 10px;
+        /*line-height: 50px;*/
+      }
+      .package-msg {
+        padding-left: 10px;
+        border-bottom:solid 1px rgba(228, 228, 228, 1);
+      }
+      .package-msg .pack-right {
+        float: right;
+        height: 100%;
+      }
+      .package-msg .pack-right .pack-price {
+        color: #ff9900;
+        font-size: 25px;
+        font-weight: bold;
+      }
+      .package-msg .pack-info {
+        line-height: 50px;
+      }
+      .package-msg .pack-money {
+        position: relative;
+        height: 56px;
+      }
+      .package-msg .pack-money p:first-child {
+        position: absolute;
+        top: 33px;
+        right: 260px;
+      }
+      .package-msg .pack-money p:last-child {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      .pay-msg{
+        padding: 10px;
+      }
+      .pay-msg .payment1,.pay-msg .payment2, .pay-msg .payment, .pay-msg .invoice{
+        display: inline-block;
+        height: 106px;
+        width: 47%;
+        padding: 10px;
+        border:solid 1px rgba(228, 228, 228, 1);
+      }
+      .pay-msg .payment1,.pay-msg .payment2, .pay-msg .payment p, .pay-msg .invoice p {
+        float: left;
+        min-width: 45%;
+        line-height: 35px;
+      }
+      .pay-msg .invoice h4:first-child{
+          float: right;
+      }
+      .off-order, .send-msg, .issue-invoice{
+        width: 140px;
+        height: 40px;
+        margin-right: 20px;
+        color: #fff;
+        background: rgba(22, 155, 213, 1);
+        border-radius: 5px;
+        border: 0;
+      }

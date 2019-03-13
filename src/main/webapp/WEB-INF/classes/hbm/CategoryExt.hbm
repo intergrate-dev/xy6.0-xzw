@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.cat">
+	<class name="CatExt" table="CATEGORY_EXT">
+		<composite-id>
+			<key-property
+				column="ENTRY_ID"
+				name="catID"
+				type="integer"
+			 />
+			<key-property
+				column="EXT_TYPE"
+				name="extType"
+				type="integer"
+			 />
+		</composite-id>
+		<property
+			column="EXT_CASCADE_NAME"
+			length="1024"
+			name="cascadeName"
+			not-null="true"			
+			type="string"
+		 />
+		<property
+			column="WT_TYPE"
+			length="3"
+			name="catType"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="EXT_NAME"
+			length="120"
+			name="extName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="PARENT_ID"
+			length="10"
+			name="parentID"
+			not-null="true"
+			type="integer"
+		 />
+	</class>
+</hibernate-mapping>

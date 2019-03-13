@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'self'}">
+<#list columns as column>
+	<title>${column.name}</title>
+	<meta name="keywords" content="${column.keyword}">
+	<meta name="description" content="${column.description}">
+</#list>
+</FOUNDER-XY>
+
+<link rel="stylesheet" type="text/css" href="http://news.sina.com.cn/css/87/20140221/gj2014/index.css">
+<style>
+	body{font-family:"Microsoft YaHei","微软雅黑","SimSun","宋体";}
+
+	.first-nav a{padding-left:19px; padding-right:18px;}
+	.first-nav a.active{color:#990000;}
+
+	.blk12{width:600px;}
+	.blk122 a{overflow:hidden; height:34px}
+
+	.blk112{margin-top:14px;}
+	.blk112_c{margin-top:24px;}
+	.blk112_c .img-news{margin-top:16px; margin-bottom:24px;}
+	.blk112_c .img{width:120px;}
+	.blk112_c p{margin-right:16px;}
+	.blk2_c a span {display: block; height: 19px; width: 160px; overflow: hidden;}
+
+	/*以下是分页按钮的样式*/
+	.pages{clear:both;display:block;}
+	.pages li {float:left; border:1px solid #0088cc;margin:5px;text-align:center;
+			padding:3px 20px; list-style:none;cursor:pointer;}
+	.pages li a {text-decoration:none;}
+	.page-next, .page-previous {background-color:#cccccc;}
+	.page-active {background-color: #0088cc}
+</style>
+</head>
+<body>
+<!-- first-nav -->
+<div class="first-nav" data-sudaclick="first-nav">
+	<div class="wrap">
+		<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'brother'}">
+		<#list columns as column>
+			<#if column_index < 6>
+			<a href="${column.url!}">${column.name}</a>
+			</#if>
+		</#list>
+		</FOUNDER-XY>
+	</div>
+</div>
+<!-- first-nav end -->
+
+<!-- second-nav -->
+<div class="second-nav" data-sudaclick="second-nav">
+	<div class="wrap clearfix">
+		<div class="links">
+		<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'son'}">
+		<#if columns?exists>
+		<#list columns as column>
+			<a href=" ${column.url!}" target="_blank">${column.name}</a>
+		</#list>
+		</#if>
+		</FOUNDER-XY>
+		</div>
+		<div class="site-search">
+		</div>
+	</div>
+</div>
+<!-- second-nav end -->
+<!-- content -->
+<div class="content"><div class="wrap clearfix"><div class="left">
+
+<div class="blk1 clearfix">
+	<div class="blk12" data-sudaclick="blkimp">
+		<div class="blk122">
+		<FOUNDER-XY type="articlelistpage" data="{'columnid':[],'articletype':'all','start':0,'count':5,'showall':'true'}">
+			<div id="articleList">
+			<#list articles as article>
+				<a href="${article.url}" target="_blank">[${article.id?c}].${article.title}</a>
+			</#list>
+			</div>
+			
+			<!-- 
+				这里是翻页区域，可以直接拷贝到实际模板中（修改下面的js引用地址）。
+				在上面style里修改翻页按钮的样式。
+				在page.js里对翻页读到的稿件列表进行显示控制。
+			-->
+			<ul id="pages" class="pages" pages="${pages!}" coID="${coID}" currentColumn="${currentColumn}">
+				<li id="page-previous" class="page-previous" style="display:none;"><a>上一页</a></li>
+				
+				<li class="page page-active" page="1"><a>1</a></li>
+				<li class="page" page="2"><a>2</a></li>
+				<li class="page" page="3"><a>3</a></li>
+				<li class="page" page="4"><a>4</a></li>
+				<li class="page" page="5"><a>5</a></li>
+				
+				<li id="page-next" class="page-next"><a>下一页</a></li>
+			</ul>
+			<script type="text/javascript" src="http://172.19.33.95/template/script/jquery.min.js"></script>
+			<script type="text/javascript" src="http://172.19.33.95/template/script/page.js"></script>
+			<!-- 翻页区域结束.-->
+		</FOUNDER-XY>
+		</div>
+	</div>
+</body>
+</html>

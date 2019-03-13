@@ -1,0 +1,154 @@
+#headerArea{
+	background-color: #333;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	overflow: hidden;
+	border-bottom: 1px solid #000;
+}
+#headerArea .functionalArea{
+	width: 1150px;
+}
+#headerArea .Undo-Redo li{
+	float: left;
+}
+#headerArea .Undo div{
+	background: url(../images/header/icon.png) 0 0 no-repeat;
+}
+#headerArea .Redo div{
+	background: url(../images/header/icon.png) -27px 0 no-repeat;
+}
+/*.recover{
+	background: url(../images/header/icon1.png) 0 0 no-repeat !important;
+}
+.cancel{
+	background: url(../images/header/icon1.png) -27px 0 no-repeat !important;
+}*/
+#headerArea .Unre-do div{
+	width: 20px;
+	height: 22px;
+}
+#headerArea .Unre-do{
+	margin-left: 35px;
+	height: 50px;
+    line-height: 25px;
+    width: 30px;
+    text-align: center;
+    margin-top: 3px;
+    color: #737373;
+    cursor: pointer;
+}
+#headerArea .Unre-do span{
+	margin-top: -10px;
+}
+#headerArea .Unre-line{
+	background: url(../images/header/icon.png) -56px 0 no-repeat;
+	display: block;
+	width: 1px;
+	height: 20px;
+	margin-left: 30px;
+    margin-top: 15px;
+}
+#headerArea .header1{
+	margin: 0 15px;
+}
+#headerArea button{
+	background-color: #03a8f1;
+	padding:5px 10px;
+	color: #fff;
+	border: none;
+	font-family:"microsoft yahei";
+}
+#headerArea .exit{
+   background-color: #ff4501;
+   outline: none;
+}
+#headerArea .see{
+	
+	line-height: 15px;
+	text-align: center;
+	font-size: 12px;
+}
+#headerArea select{
+	background-color: #b8bdc2;
+	outline: none;
+	font-family: "microsoft yahei";
+	font-size: 12px;
+}
+#headerArea .setColor{
+	width: 23px;
+	height: 16px;
+	border: 1px solid #000;
+	background-color: red;
+	margin-top: 18px;
+}
+.selectHeight{
+	height: 24px;
+	line-height: 22px;
+}
+
+#headerArea .fontSt,#headerArea .fontSz{
+	width: 100px;
+}
+
+#headerArea .fontWz{
+	width: 80px;
+}
+#headerArea .selectPos{
+	position: relative;
+}
+
+#headerArea .selectImg{
+	position: absolute;
+    right: 0;
+    z-index: 100;
+    top: 13px;
+}
+
+.fontFa{
+	width: 175px;
+}
+.fontSt,.fontSz{
+	width: 100px !important;
+}
+.fontWz{
+	width: 80px !important;
+}
+.divSelectPos{
+	position:absolute; 
+	z-index:99; 
+	top:13px; 
+	left: 240px;
+}
+
+.divselect cite{ 
+	display:block; 
+	color:#333; 
+	cursor:pointer;
+ 	border:1px solid #333333; 
+	background:url(../images/header/header13.png) #b8bdc2 no-repeat right center;
+}
+.divselect ul{
+	border:1px solid #333333; 
+	background-color:#ffffff; 
+	position:absolute; 
+	z-index:20000; 
+	margin-top:-1px; 
+	display:none;
+}
+.divselect ul li{
+	height:24px; 
+	line-height:24px;
+}
+.divselect ul li a{
+	display:block; 
+	height:24px; 
+	color:#333333; 
+	text-decoration:none; 
+	padding-left:10px; 
+	padding-right:10px;
+}
+.divselect ul li a:hover{
+	background-color:#CCC;
+}
+

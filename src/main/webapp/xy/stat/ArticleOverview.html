@@ -1,0 +1,689 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script type="text/javascript" src="../../e5script/jquery/jquery-1.9.1.min.js"></script>
+    <script src="../../e5script/jquery/jquery.dialog.js"></script>
+    <script src="../script/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="../script/bootstrap-datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../script/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="../../e5script/e5.min.js"></script>
+    <script type="text/javascript" src="../../e5script/e5.utils.js"></script>
+    <script src="./script/articleOverview.js"></script>
+    <script src="./script/bootstrap-paginator.js"></script>
+    <link rel="stylesheet" href="../script/bootstrap-3.3.4/css/bootstrap.min.css">
+    <link href="../script/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" media="screen">
+    <link type="text/css" rel="stylesheet" href="../../e5script/jquery/dialog.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css"/>
+    <!--<link type="text/css" rel="stylesheet" href="./css/dataTables.bootstrap.min.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css"/>-->
+    <link type="text/css" rel="stylesheet" href="./css/statistics.css"/>
+    <style>
+        a:focus,a:visited,a:active,a:hover{
+            text-decoration: none;
+        }
+        #selectType li:hover{
+            border-bottom: 2px solid #ddd;
+        }
+        a,label,input,button{ 
+            vertical-align:middle;
+        }
+        ul{
+            margin:0;
+        }
+        .databox{
+            float: none;
+        }
+        .pagination{
+            margin: 20px 0 0 20px;
+        }
+
+        .pagination>li>a{
+            padding: 1px 12px;
+        }
+        .pagination>.active>a{
+            background-color: #00a0e6;
+            border-color: #00a0e6;
+        }
+        .pagination>.active>a:hover{
+            background-color: #00a0e6;
+            border-color: #00a0e6;
+        }
+        .outputdataBox{
+            width: 974px;
+        }
+        .detail{
+        	margin: 20px 0 0 10px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="division">
+        <div id="typeRegion">
+            <ul class="channels" id="selectType">
+                <li style="width:140px;" class="select channelTab" id="deptStat">按部门统计</li>
+                <li style="width:140px;" class="channelTab" id="srcStat">按来源统计</li>
+                <li style="width:140px;" class="channelTab" id="colStat">按栏目统计</li>
+                <li style="width:140px;" class="channelTab" id="topStat">按话题统计</li>
+            </ul>
+        </div>
+
+        <!-- 部门统计 -->
+        <div id="dept">
+            <div id="channelRegion" class="left">
+                <ul id="selectChannel" class="channels">
+                    <li style="width:70px;margin-left: -2px;" class="ditch publishTime">发布渠道：</li>
+                    <li name="channelWeb" class="channelTab select1" id="channelWeb_dept">Web</li>
+                    <li name="channelApp" class="channelTab" id="channelApp_dept">App</li>
+                </ul>
+            </div>
+            
+            <div id="detailDept">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <span class="publishTime">部门：</span>
+                    <input id="departmentName" type="text" readonly name="departmentName" value="全部"/>
+                    <!--<input id="departmentButton" class="see departmentBtn" type="button" title="选择部门" value="选择" />-->
+                    <input id="particular_dept_web" type="hidden" name="departmentID" />
+                </ul>
+                <div id="chTimeRegionDept" class="times databox">
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HDept" class="time_stat1" style="margin-left: 5px;"  href="javascript:articleOverview_stat.setCalender('current24H','_dept_web','')">24小时内</a>&nbsp;
+                    <a id="current7DDept" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current7D','_dept_web','')">最近7天</a>&nbsp;
+                    <a id="current14DDept" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current14D','_dept_web','')">最近14天</a>&nbsp;
+                    <a id="current30DDept" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current30D','_dept_web','')">最近30天</a>&nbsp;
+                    <a id="lastMonthDept" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('lastMonth','_dept_web','')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthDept" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('thisMonth','_dept_web','')">本月</a>
+                    <input  style="margin-left: -35px;" id="pubTime_from_dept_web" readonly type="text" value="" name="pubTime_from_dept_web" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+                    <input id="pubTime_to_dept_web" readonly type="text" value="" name="pubTime_to_dept_web" date-data-format="yyyy-mm-dd hh:ii:ss"/>
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleDepartment','channelWeb','_dept_web');" value="查看" />-->
+                    <img class="lookBtn ml6" src="images/11.png" alt="查看" title="查看"  onclick="articleOverview_stat.search('ArticleDepartment','channelWeb','_dept_web');"/>
+                    <!--<input class="resetBtn" type="button" id="reset" value="重置" />-->
+					<img class="resetBtn ml6" src="images/12.png" alt="重置" title="重置"  id="reset" />
+					<img class="ml6" id="outputdata" src="images/13.png"  onclick="articleOverview_stat.outputcsv('ArticleDepartment','channelWeb', 'department', '', '_dept_web')" alt="导出数据" title="导出数据" />
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input id="outputdata" class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleDepartment','channelWeb', 'department', '', '_dept_web')" value="导出数据" />-->
+                   
+                    <ul class="foot_page" id="paginator_dept_web">
+
+                </ul>
+                    <input type="hidden" id="total_count_dept_web" name="" value="0" />
+                    <div style="float:left;margin: 20px 0 0 12px;">总个数[<span id="total_count_dept_web_all">0</span>]</div>
+                </div>
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="departmentDetailTable">
+                        <thead>
+                            <tr class="tdtr">
+                                <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_dept" title="全选/取消"/></th>-->
+                                <th class="title tdtr">部门名称</th>
+                                <th class="title tdtr">稿件量</th>
+                                <th class="title tdtr">总点击量</th>
+                                <th class="title1 tdtr">Web点击数</th>
+                                <th class="title1 tdtr">触屏点击数</th>
+                                <th class="title1 tdtr">APP点击数</th>
+                                <th class="title tdtr">总分享数</th>
+                                <th class="title1 tdtr">Web分享</th>
+                                <th class="title1 tdtr">触屏分享</th>
+                                <th class="title1 tdtr">APP分享</th>
+                                <th class="title tdtr">总评论量</th>
+                                <th class="title1 tdtr">Web点评量</th>
+                                <th class="title1 tdtr">触屏点评量</th>
+                                <th class="title1 tdtr">APP点评量</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+            </div>
+
+            <div id="detailDept_App" style="display:none;">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <span class="publishTime">部门：</span>
+                    <input id="departmentName_app" type="text" readonly name="departmentName_App" value="全部" />
+                    <!--<input id="departmentButton_App" class="see departmentBtn" type="button" title="选择部门" value="选择" />-->
+                    <input id="particular_dept_App" type="hidden" value="" name="departmentID_App"/>
+                </ul>
+                <div id="chTimeRegionDept_App" class="times databox">
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HDept_App" class="time_stat1" style="margin-left: 5px;" href="javascript:articleOverview_stat.setCalender('current24H','_dept_App','_App')">24小时内</a>&nbsp;
+                    <a id="current7DDept_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('current7D','_dept_App','_App')">最近7天</a>&nbsp;
+                    <a id="current14DDept_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('current14D','_dept_App','_App')">最近14天</a>&nbsp;
+                    <a id="current30DDept_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('current30D','_dept_App','_App')">最近30天</a>&nbsp;
+                    <a id="lastMonthDept_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('lastMonth','_dept_App','_App')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthDept_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('thisMonth','_dept_App','_App')">本月</a>
+                    <input style="margin-left: -35px;" id="pubTime_from_dept_App" readonly type="text" value="" name="pubTime_from_dept_App" /> -
+                    <input id="pubTime_to_dept_App" readonly type="text" value="" name="pubTime_to_dept_App" />
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleDepartment','channelApp','_dept_App');" value="查看" />-->
+                    <img  class="lookBtn ml6" src="images/11.png" alt="查看" title="查看"  onclick="articleOverview_stat.search('ArticleDepartment','channelApp','_dept_App');" />
+                    <!--<input class="resetBtn" type="button" id="reset_app" value="重置" />-->
+					<img class="resetBtn ml6" src="images/12.png"  id="reset_app" alt="重置" title="重置" />
+					<img class="see exportBtn ml6" src="images/13.png"  onclick="articleOverview_stat.outputcsv('ArticleDepartment','channelApp', 'department', '_App', '_dept_App')" alt="导出数据" title="导出数据" />
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleDepartment','channelApp', 'department', '_App', '_dept_App')" value="导出数据" />-->
+                    <ul class="foot_page" id="paginator_dept_App">
+
+                    </ul>
+                    <input type="hidden" id="total_count_dept_App" name="" value="0" />
+                    <div style="float: left;margin: 20px 0 0 12px;">总个数[<span id="total_count_dept_App_all">0</span>]</div>
+                </div>
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="departmentDetailTable_App">
+                        <thead>
+                            <tr class="tdtr">
+                                <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_dept_App" title="全选/取消"/></th>-->
+                                <th class="title tdtr">部门名称</th>
+                                <th class="title tdtr">稿件量</th>
+                                <th class="title tdtr">总点击量</th>
+                                <th class="title1 tdtr">Web点击数</th>
+                                <th class="title1 tdtr">触屏点击数</th>
+                                <th class="title1 tdtr">APP点击数</th>
+                                <th class="title tdtr">总分享数</th>
+                                <th class="title1 tdtr">Web分享</th>
+                                <th class="title1 tdtr">触屏分享</th>
+                                <th class="title1 tdtr">APP分享</th>
+                                <th class="title tdtr">总评论量</th>
+                                <th class="title1 tdtr">Web点评量</th>
+                                <th class="title1 tdtr">触屏点评量</th>
+                                <th class="title1 tdtr">APP点评量</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 来源统计 -->
+        <div id="src" style="display: none">
+            <div id="channelRegion_src" class="left">
+                <ul id="selectChannel_src" class="channels">
+                    <li style="width:70px;margin-left: -2px;" class="ditch publishTime">发布渠道：</li>
+                    <li name="channelWeb" class="channelTab select1" id="channelWeb_src">Web</li>
+                    <li name="channelApp" class="channelTab" id="channelApp_src">App</li>
+                </ul>
+            </div>
+
+            <div id="detailSrc">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <span class="publishTime">来源：</span>
+                    <input id="sourceName_src_web" type="text"  name="sourceName_src_web"/>
+                    <!--<input id="sourceID" type="hidden" name="sourceID"/>-->
+                    <input id="sourceButton" class="see" type="button" title="选择来源" value="选择" />
+                    <input id="particular_src_web" type="hidden" value="" name="particular_src_web"/>
+                </ul>
+                <div id="chTimeRegionSrc" class="times databox">
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HSrc" style="margin-left: 5px;" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current24H','_src_web','_src')">24小时内</a>&nbsp;
+                    <a id="current7DSrc" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current7D','_src_web','_src')">最近7天</a>&nbsp;
+                    <a id="current14DSrc" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current14D','_src_web','_src')">最近14天</a>&nbsp;
+                    <a id="current30DSrc" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current30D','_src_web','_src')">最近30天</a>&nbsp;
+                    <a id="lastMonthSrc" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('lastMonth','_src_web','_src')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthSrc" class="time_stat1" href="javascript:articleOverview_stat.setCalender('thisMonth','_src_web','_src')">本月</a>
+                    <input  style="margin-left: -35px;" id="pubTime_from_src_web" readonly type="text" value="" name="pubTime_from_src_web" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+                    <input id="pubTime_to_src_web" readonly type="text" value="" name="pubTime_to_src_web" date-data-format="yyyy-mm-dd hh:ii:ss"/>
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleSource','channelWeb','_src_web');" value="查看" />-->
+                    <img class="lookBtn ml6" src="images/11.png" alt="查看" title="查看"  onclick="articleOverview_stat.search('ArticleSource','channelWeb','_src_web');" />
+                    <!--<input class="resetBtn" type="button" id="reset_src" value="重置" />-->
+                    <img class="resetBtn ml6" src="images/12.png" id="reset_src" alt="重置" title="重置"/>
+                    <img class="see exportBtn ml6" src="images/13.png" alt="导出数据" title="导出数据" onclick="articleOverview_stat.outputcsv('ArticleSource','channelWeb', 'source', '', '_src_web')" />
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleSource','channelWeb', 'source', '', '_src_web')" value="导出数据" />-->
+                    <ul class="foot_page" id="paginator_src_web">
+
+                    </ul>
+                    <input type="hidden" id="total_count_src_web" name="" value="0" />
+                    <div style="float:left;margin: 20px 0 0 12px;">总个数[<span id="total_count_src_web_all">0</span>]</div>
+                </div>
+
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="sourceDetailTable">
+                        <thead>
+                        <tr class="tdtr">
+                            <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_src" title="全选/取消"/></th>-->
+                            <th class="title tdtr">来源名称</th>
+                            <th class="title tdtr">稿件量</th>
+                            <th class="title tdtr">总点击量</th>
+                            <th class="title1 tdtr">Web点击数</th>
+                            <th class="title1 tdtr">触屏点击数</th>
+                            <th class="title1 tdtr">APP点击数</th>
+                            <th class="title tdtr">总分享数</th>
+                            <th class="title1 tdtr">Web分享</th>
+                            <th class="title1 tdtr">触屏分享</th>
+                            <th class="title1 tdtr">APP分享</th>
+                            <th class="title tdtr">总评论量</th>
+                            <th class="title1 tdtr">Web点评量</th>
+                            <th class="title1 tdtr">触屏点评量</th>
+                            <th class="title1 tdtr">APP点评量</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div id="detailSrc_App" style="display:none;">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <span class="publishTime">来源：</span>
+                    <input id="sourceName_src_App" type="text"  name="sourceName_src_App"/>
+                    <!--<input id="sourceID_App" type="hidden" name="sourceID_App"/>-->
+                    <input id="sourceButton_App" class="see" type="button" title="选择来源" value="选择" />
+                    <input id="particular_src_App" type="hidden" name="particular_src_App" value="" />
+                </ul>
+                <div id="chTimeRegionSrc_App" class="times databox">
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HSrc_App" style=" margin-left: 5px;" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current24H','_src_App','_src_App')">24小时内</a>&nbsp;
+                    <a id="current7DSrc_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current7D','_src_App','_src_App')">最近7天</a>&nbsp;
+                    <a id="current14DSrc_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current14D','_src_App','_src_App')">最近14天</a>&nbsp;
+                    <a id="current30DSrc_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current30D','_src_App','_src_App')">最近30天</a>&nbsp;
+                    <a id="lastMonthSrc_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('lastMonth','_src_App','_src_App')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthSrc_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('thisMonth','_src_App','_src_App')">本月</a>
+                    <input  style="margin-left: -35px;" id="pubTime_from_src_App" readonly type="text" value="" name="pubTime_from_src_App" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+                    <input id="pubTime_to_src_App" readonly type="text" value="" name="pubTime_to_src_App" date-data-format="yyyy-mm-dd hh:ii:ss"/>
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleSource','channelApp','_src_App');" value="查看" />-->
+                    <img  class="lookBtn ml6" src="images/11.png"  onclick="articleOverview_stat.search('ArticleSource','channelApp','_src_App');" alt="查看" title="查看" />
+                    <!--<input class="resetBtn" type="button" id="reset_src_app" value="重置" />-->
+                    <img class="ml6" src="images/12.png" id="reset_src_app" alt="重置" title="重置" />
+                    <img class="see exportBtn ml6" src="images/13.png" onclick="articleOverview_stat.outputcsv('ArticleSource','channelApp', 'source', '_App', '_src_App')"  alt="导出数据" title="导出数据" />
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleSource','channelApp', 'source', '_App', '_src_App')" value="导出数据" />-->
+                    <ul class="foot_page" id="paginator_src_App">
+
+                    </ul>
+                    <input type="hidden" id="total_count_src_App" name="" value="0" />
+                    <div style="float: left;margin: 20px 0 0 12px;">总个数[<span id="total_count_src_App_all">0</span>]</div>
+                </div>
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="sourceDetailTable_App">
+                        <thead>
+                        <tr class="tdtr">
+                            <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_src_App" title="全选/取消"/></th>-->
+                            <th class="title tdtr">来源名称</th>
+                            <th class="title tdtr">稿件量</th>
+                            <th class="title tdtr">总点击量</th>
+                            <th class="title1 tdtr">Web点击数</th>
+                            <th class="title1 tdtr">触屏点击数</th>
+                            <th class="title1 tdtr">APP点击数</th>
+                            <th class="title tdtr">总分享数</th>
+                            <th class="title1 tdtr">Web分享</th>
+                            <th class="title1 tdtr">触屏分享</th>
+                            <th class="title1 tdtr">APP分享</th>
+                            <th class="title tdtr">总评论量</th>
+                            <th class="title1 tdtr">Web点评量</th>
+                            <th class="title1 tdtr">触屏点评量</th>
+                            <th class="title1 tdtr">APP点评量</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- 栏目统计 -->
+        <div id="column" style="display: none">
+            <div id="channelRegion_col" class="left">
+                <ul id="selectChannel_col" class="channels">
+                    <li style="width:70px;margin-left: -2px;" class="ditch publishTime">发布渠道：</li>
+                    <li name="channelWeb" class="channelTab select1_col" id="channelWeb_col">Web</li>
+                    <li name="channelApp" class="channelTab" id="channelApp_col">App</li>
+                </ul>
+            </div>
+
+            <div id="detailCol">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <span class="publishTime">栏目：</span>
+                    <input id="columnName_web" readonly type="text" name="columnName_web"/>
+                    <!--<input id="columnButton" class="see" type="button" title="选择栏目" value="选择" />-->
+                    <input id="colID_col_web" type="hidden" name="colID_col_web" value="" />
+                </ul>
+                <div id="chTimeRegionCol" class="times databox">
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HCol" style="margin-left: 5px;" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current24H','_col_web','_col')">24小时内</a>&nbsp;
+                    <a id="current7DCol" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current7D','_col_web','_col')">最近7天</a>&nbsp;
+                    <a id="current14DCol" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current14D','_col_web','_col')">最近14天</a>&nbsp;
+                    <a id="current30DCol" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current30D','_col_web','_col')">最近30天</a>&nbsp;
+                    <a id="lastMonthCol" class="time_stat1" href="javascript:articleOverview_stat.setCalender('lastMonth','_col_web','_col')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthCol" class="time_stat1" href="javascript:articleOverview_stat.setCalender('thisMonth','_col_web','_col')">本月</a>
+                    <input style="margin-left: -35px;" id="pubTime_from_col_web" readonly type="text" value="" name="pubTime_from_col_web" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+                    <input id="pubTime_to_col_web" readonly type="text" value="" name="pubTime_to_col_web" date-data-format="yyyy-mm-dd hh:ii:ss"/>
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleColumn','channelWeb','_col_web');" value="查看" />-->
+                    <img  class="lookBtn ml6" src="images/11.png" alt="查看" title="查看"  onclick="articleOverview_stat.search('ArticleColumn','channelWeb','_col_web');" />
+                    <!--<input class="resetBtn" type="button" id="reset_col" value="重置" />-->
+					<img class="resetBtn ml6" id="reset_col" src="images/12.png" alt="重置" title="重置" />
+					<img class="see exportBtn ml6" src="images/13.png"  onclick="articleOverview_stat.outputcsv('ArticleColumn','channelWeb', 'column', '', '_col_web')" alt="导出数据" title="导出数据" />
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleColumn','channelWeb', 'column', '', '_col_web')" value="导出数据" />-->
+
+                    <ul class="foot_page" id="paginator_col_web">
+
+                    </ul>
+                    <input type="hidden" id="total_count_col_web" name="" value="0" />
+                    <div style="float: left;margin: 20px 0 0 12px;">总个数[<span id="total_count_col_web_all">0</span>]</div>
+                </div>
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="columnDetailTable">
+                        <thead>
+                            <tr class="tdtr">
+                                <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_col" title="全选/取消"/></th>-->
+                                <th class="title tdtr">栏目名称</th>
+                                <th class="title tdtr">稿件量</th>
+                                <th class="title tdtr">总点击量</th>
+                                <th class="title1 tdtr">Web点击数</th>
+                                <th class="title1 tdtr">触屏点击数</th>
+                                <th class="title1 tdtr">APP点击数</th>
+                                <th class="title tdtr">总分享数</th>
+                                <th class="title1 tdtr">Web分享</th>
+                                <th class="title1 tdtr">触屏分享</th>
+                                <th class="title1 tdtr">APP分享</th>
+                                <th class="title tdtr">总评论量</th>
+                                <th class="title1 tdtr">Web点评量</th>
+                                <th class="title1 tdtr">触屏点评量</th>
+                                <th class="title1 tdtr">APP点评量</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div id="detailCol_App" style="display:none;">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <span class="publishTime">栏目：</span>
+                    <input id="columnName_App" type="text" readonly name="columnName_App"/>
+                    <!--<input id="columnButton_app" class="see" type="button" title="选择栏目" value="选择" />-->
+                    <input id="colID_col_App" type="hidden" name="colID_col_App" value="" />
+                </ul>
+                <div id="chTimeRegionCol_App" class="times databox">
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HCol_App" class="time_stat1" style="margin-left: 5px;"  href="javascript:articleOverview_stat.setCalender('current24H','_col_App','_col_App')">24小时内</a>&nbsp;
+                    <a id="current7DCol_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current7D','_col_App','_col_App')">最近7天</a>&nbsp;
+                    <a id="current14DCol_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current14D','_col_App','_col_App')">最近14天</a>&nbsp;
+                    <a id="current30DCol_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current30D','_col_App','_col_App')">最近30天</a>&nbsp;
+                    <a id="lastMonthCol_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('lastMonth','_col_App','_col_App')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthCol_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('thisMonth','_col_App','_col_App')">本月</a>
+                    <input  style="margin-left: -35px;" id="pubTime_from_col_App" readonly type="text" value="" name="pubTime_from_col_App" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+                    <input id="pubTime_to_col_App" readonly type="text" value="" name="pubTime_to_col_App" date-data-format="yyyy-mm-dd hh:ii:ss"/>
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleColumn','channelApp','_col_App');" value="查看" />-->
+                    <img class="lookBtn ml6" src="images/11.png" alt="查看"  title="查看" onclick="articleOverview_stat.search('ArticleColumn','channelApp','_col_App');" />
+                    <!--<input class="resetBtn" type="button" id="reset_col_app" value="重置" />-->
+					<img class="resetBtn ml6" src="images/12.png" id="reset_col_app" title="重置" alt="重置" />
+					<img class="see exportBtn ml6" src="images/13.png" onclick="articleOverview_stat.outputcsv('ArticleColumn','channelApp', 'column', '_App', '_col_App')" alt="导出数据" title="导出数据" />
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleColumn','channelApp', 'column', '_App', '_col_App')" value="导出数据" />-->
+                    <ul class="foot_page" id="paginator_col_App">
+
+                    </ul>
+                    <input type="hidden" id="total_count_col_App" name="" value="0" />
+                    <div style="float: left;margin: 20px 0 0 12px;">总个数[<span id="total_count_col_App_all">0</span>]</div>
+                </div>
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="columnDetailTable_App">
+                        <thead>
+                            <tr class="tdtr">
+                                <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_col_App" title="全选/取消"/></th>-->
+                                <th class="title tdtr">栏目名称</th>
+                                <th class="title tdtr">稿件量</th>
+                                <th class="title tdtr">总点击量</th>
+                                <th class="title1 tdtr">Web点击数</th>
+                                <th class="title1 tdtr">触屏点击数</th>
+                                <th class="title1 tdtr">APP点击数</th>
+                                <th class="title tdtr">总分享数</th>
+                                <th class="title1 tdtr">Web分享</th>
+                                <th class="title1 tdtr">触屏分享</th>
+                                <th class="title1 tdtr">APP分享</th>
+                                <th class="title tdtr">总评论量</th>
+                                <th class="title1 tdtr">Web点评量</th>
+                                <th class="title1 tdtr">触屏点评量</th>
+                                <th class="title1 tdtr">APP点评量</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 话题统计tab start-->
+        <div id="topic" style="display: none">
+            <div id="channelRegion_top" class="left">
+                <ul id="selectChannel_top" class="channels">
+                    <li style="width:70px;margin-left: -2px;" class="ditch publishTime">发布渠道：</li>
+                    <li name="channelWeb" class="channelTab select1" id="channelWeb_top">Web</li>
+                    <li name="channelApp" class="channelTab" id="channelApp_top">App</li>
+                </ul>
+            </div>
+
+            <div id="detailTop">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <!--<select class="selectTopic" name="">-->
+                        <!--<option value ="all">全部话题</option>-->
+                        <!--<option value ="all">话题1</option>-->
+                        <!--<option value ="all">话题2</option>-->
+                        <!--<option value ="all">话题3</option>-->
+                    <!--</select>-->
+                    <span class="publishTime">话题组：</span>
+                    <input id="topicName" type="text" readonly name="topicName" value="全部"/>
+                    <!--<input id="departmentButton" class="see departmentBtn" type="button" title="选择部门" value="选择" />-->
+                    <input id="particular_top_web" type="hidden" name="topicID" />
+                </ul>
+                <div id="chTimeRegionTop" class="times databox">
+
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HTop" style="margin-left: 5px;" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current24H','_top_web','_top')">24小时内</a>&nbsp;
+                    <a id="current7DTop" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current7D','_top_web','_top')">最近7天</a>&nbsp;
+                    <a id="current14DTop" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current14D','_top_web','_top')">最近14天</a>&nbsp;
+                    <a id="current30DTop" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current30D','_top_web','_top')">最近30天</a>&nbsp;
+                    <a id="lastMonthTop" class="time_stat1" href="javascript:articleOverview_stat.setCalender('lastMonth','_top_web','_top')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthTop" class="time_stat1" href="javascript:articleOverview_stat.setCalender('thisMonth','_top_web','_top')">本月</a>
+                    <input style="margin-left: -35px" id="pubTime_from_top_web" readonly type="text" value="" name="pubTime_from_top_web" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+                    <input id="pubTime_to_top_web" readonly type="text" value="" name="pubTime_to_top_web" date-data-format="yyyy-mm-dd hh:ii:ss"/>
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleColumn','channelWeb','_col_web');" value="查看" />-->
+                    <img  class="lookBtn ml6" src="images/11.png" alt="查看" title="查看"  onclick="articleOverview_stat.search('ColumnTopic','channelWeb','_top_web');" />
+                    <!--<input class="resetBtn" type="button" id="reset_col" value="重置" />-->
+                    <img class="resetBtn ml6" id="reset_top" src="images/12.png" alt="重置" title="重置" />
+                    <img class="see exportBtn ml6" src="images/13.png"  onclick="articleOverview_stat.outputcsv('ArticleTopic','channelWeb', 'topic', '', '_top_web')" alt="导出数据" title="导出数据" />
+                    <!--<div class="topicTocsv" onclick="articleOverview_stat.outputcsv('ArticleTopic','channelWeb', 'topic', '', '_top_web')" >导出EXCEL</div>-->
+                    <!--<div class="topicOverview"onclick="articleOverview_stat.search('ArticleTopic','channelWeb','_top_web');">查看</div>-->
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleColumn','channelWeb', 'column', '', '_col_web')" value="导出数据" />-->
+
+                    <ul class="foot_page" id="paginator_top_web">
+
+                    </ul>
+                    <input type="hidden" id="total_count_top_web" name="" value="0" />
+                    <div style="float: left;margin: 20px 0 0 12px;">总个数[<span id="total_count_top_web_all">0</span>]</div>
+                </div>
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="topicDetailTable">
+                        <thead>
+                        <tr class="tdtr">
+                            <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_top" title="全选/取消"/></th>-->
+                            <th class="title tdtr">话题名称</th>
+                            <th class="title tdtr">发稿量</th>
+                            <th class="title tdtr">总点击量</th>
+                            <th class="title1 tdtr">PC点击量</th>
+                            <th class="title1 tdtr">WAP点击量</th>
+                            <th class="title1 tdtr">APP点击量</th>
+                            <th class="title tdtr">总转发量</th>
+                            <th class="title1 tdtr">PC转发量</th>
+                            <th class="title1 tdtr">WAP转发量</th>
+                            <th class="title1 tdtr">APP转发量</th>
+                            <th class="title1 tdtr">总评论量</th>
+                            <th class="title1 tdtr">PC评论量</th>
+                            <th class="title1 tdtr">WAP评论量</th>
+                            <th class="title1 tdtr">APP评论量</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div id="detailTop_App" style="display:none;">
+                <ul class="left" style="margin:20px 0px 2px 30px">
+                    <!--<select class="selectTopic" name="">-->
+                        <!--<option value ="all">全部话题</option>-->
+                    <!--</select>-->
+                    <span class="publishTime">话题：</span>
+                    <input id="topicName-app" type="text" readonly name="topicName" value="全部"/>
+                    <!--<input id="departmentButton" class="see departmentBtn" type="button" title="选择部门" value="选择" />-->
+                    <input id="particular_top_App" type="hidden" name="topicID" />
+                </ul>
+                <div id="chTimeRegionTop_App" class="times databox">
+                    <span class="publishTime">发布时间：</span>
+                    <a id="current24HTop_App" class="time_stat1" style="margin-left: 5px;"  href="javascript:articleOverview_stat.setCalender('current24H','_top_App','_top_App')">24小时内</a>&nbsp;
+                    <a id="current7DTop_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current7D','_top_App','_top_App')">最近7天</a>&nbsp;
+                    <a id="current14DTop_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current14D','_top_App','_top_App')">最近14天</a>&nbsp;
+                    <a id="current30DTop_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('current30D','_top_App','_top_App')">最近30天</a>&nbsp;
+                    <a id="lastMonthTop_App" class="time_stat1"  href="javascript:articleOverview_stat.setCalender('lastMonth','_top_App','_top_App')">上月</a>&nbsp;&nbsp;
+                    <a id="thisMonthTop_App" class="time_stat1" href="javascript:articleOverview_stat.setCalender('thisMonth','_top_App','_top_App')">本月</a>
+                    <input  style="margin-left: -35px;" id="pubTime_from_top_App" readonly type="text" value="" name="pubTime_from_top_App" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+                    <input id="pubTime_to_top_App" readonly type="text" value="" name="pubTime_to_top_App" date-data-format="yyyy-mm-dd hh:ii:ss"/>
+                    <!--<input class="lookBtn" style="margin:0px 5px;" type="submit" onclick="articleOverview_stat.search('ArticleColumn','channelApp','_col_App');" value="查看" />-->
+                    <img class="lookBtn ml6" src="images/11.png" alt="查看"  title="查看" onclick="articleOverview_stat.search('ColumnTopic','channelApp','_top_App');" />
+                    <!--<input class="resetBtn" type="button" id="reset_col_app" value="重置" />-->
+                    <img class="resetBtn ml6" src="images/12.png" id="reset_top_app" title="重置" alt="重置" />
+                    <img class="see exportBtn ml6" src="images/13.png" onclick="articleOverview_stat.outputcsv('ArticleTopic','channelApp', 'topic', '_App', '_top_App')" alt="导出数据" title="导出数据" />
+                    <!--<div class="topicTocsv" onclick="articleOverview_stat.outputcsv('ArticleTopic','channelWeb', 'topic', '', '_top_web')" >导出EXCEL</div>-->
+                    <!--<div class="topicOverview"onclick="articleOverview_stat.search('ArticleTopic','channelWeb','_top_web');">查看</div>-->
+                </div>
+                <div class="clearfix outputdataBox">
+                    <!--<input class="see exportBtn" style='margin-left:5px;' type="button" onclick="articleOverview_stat.outputcsv('ArticleColumn','channelApp', 'column', '_App', '_col_App')" value="导出数据" />-->
+                    <ul class="foot_page" id="paginator_top_App">
+
+                    </ul>
+                    <input type="hidden" id="total_count_top_App" name="" value="0" />
+                    <div style="float: left;margin: 20px 0 0 12px;">总个数[<span id="total_count_top_App_all">0</span>]</div>
+                </div>
+                <!-- </form> -->
+                <div class="detail">
+                    <table class="loadTable" id="topicDetailTable_App">
+                        <thead>
+                        <tr class="tdtr">
+                            <!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_top_App" title="全选/取消"/></th>-->
+                            <th class="title tdtr">话题名称</th>
+                            <th class="title tdtr">发稿量</th>
+                            <th class="title tdtr">总点击量</th>
+                            <th class="title1 tdtr">PC点击量</th>
+                            <th class="title1 tdtr">WAP点击量</th>
+                            <th class="title1 tdtr">APP点击量</th>
+                            <th class="title tdtr">总转发量</th>
+                            <th class="title1 tdtr">PC转发量</th>
+                            <th class="title1 tdtr">WAP转发量</th>
+                            <th class="title1 tdtr">APP转发量</th>
+                            <th class="title1 tdtr">总评论量</th>
+                            <th class="title1 tdtr">PC评论量</th>
+                            <th class="title1 tdtr">WAP评论量</th>
+                            <th class="title1 tdtr">APP评论量</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 话题统计tab end-->
+
+    </div>
+
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                    部门库列表
+                    </h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="fl">
+                        <div class="department-search" id="department">
+                        <input id="departmentSearch" type="text" placeholder="输入部门查询">
+                        <ul>
+                            <!--<li>部门一</li>
+                            <li>部门二</li>
+                            <li>部门三</li>
+                            <li>部门四</li>-->
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-default search-btn">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="confirm">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 模态框（Modal2）用于显示全部部门的弹出框 start -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel2">
+                        话题组列表
+                    </h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="fl">
+                        <div class="topic-select" id="topic-select">
+                            <!--<input id="departmentSearch2" type="text" placeholder="输入部门查询">-->
+                            <ul>
+                                <!--<li>部门一</li>
+                                <li>部门二</li>
+                                <li>部门三</li>
+                                <li>部门四</li>-->
+                            </ul>
+                        </div>
+                        <!--<button type="button" class="btn btn-default search-btn">-->
+                            <!--<span class="glyphicon glyphicon-search" aria-hidden="true"></span>-->
+                        <!--</button>-->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="confirm2">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 模态框（Modal2）end -->
+
+    <input type="hidden" id="siteID" value="${siteID}" /><!-- 站点ID -->
+    <form id="form" method="post"><!-- csv输出 -->
+        <input type="hidden" id="jsonData" name="jsonData" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.flow">
+	<class name="ProcUnflow" table="E5FLOW_UNFLOWPROCS">
+		<id 
+			column="PROCID"
+			name="procID"
+			type="integer"
+			>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="DOCTYPEID"
+			length="22"
+			name="docTypeID"
+			not-null="false"
+			type="integer"
+			update="false"
+		 />
+		<property
+			column="PROCNAME"
+			length="40"
+			name="procName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="OPERATIONID"
+			length="22"
+			name="opID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="ICONID"
+			length="22"
+			name="iconID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="DESCRIPTION"
+			length="128"
+			name="description"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

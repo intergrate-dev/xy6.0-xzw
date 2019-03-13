@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/datetimepicker.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="../../../e5script/jquery/jquery.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+$(function(){
+
+    $("#btnSetDate").click(function(){
+        
+        var picker = $('#datetimepicker').data('datetimepicker');
+ 
+        // or
+        var myDate=new Date()
+        myDate.setFullYear(2013,7,23)
+        picker.setDate(myDate);
+        alert(picker.getDate());
+ 
+    });
+
+    $('#datetimepicker').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 0,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView:2,
+        disabledDaysOfCurrentMonth:1,
+        forceParse: 0,
+        daysOfWeekDisabled:[0,6],
+        format: 'yyyy-mm-dd'
+    });
+    
+
+    $('#datetimepickeryear').datetimepicker({
+        language:  'zh-CN',
+        autoclose: 1,
+        startView: 3,
+        forceParse: 0,
+        minView:3,
+        format: 'yyyy-mm'
+    });
+    $('#datetimepicker')
+        .datetimepicker()
+        .on('changeMonth', function(ev){
+             alert(ev.date.formatToUTC("yyyy-MM-dd"));
+    });
+
+    var sups =  [
+        {
+            "key": "2013-07-27",
+            "value": "1"
+        },
+        {
+            "key": "2013-07-06",
+            "value": "4"
+        },
+        {
+            "key": "2013-07-31",
+            "value": "5"
+        }
+    ];
+
+   //$('#datetimepicker').datetimepicker("setDaysOfDisabled",["2013-07-05","2013-07-04"]);
+   $('#datetimepicker').datetimepicker("setDaysOfSups",sups);
+});
+    
+</script>
+</head>
+
+<body>
+<div class="container">
+    <div id="datetimepicker" class="datetimepicker datetimepicker-inline"></div>
+</div>
+<div class="container">
+<input type="text" value="2013-10" id="datetimepickeryear">
+ 
+</div>
+<button id="btnSetDate">set to :2013-7-23 </button>
+</body>
+</html>

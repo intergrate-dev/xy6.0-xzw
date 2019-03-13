@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'self'}">
+<#list columns as column>
+	<title>${column.name}</title>
+	<meta name="keywords" content="${column.keyword}">
+	<meta name="description" content="${column.description}">
+</#list>
+</FOUNDER-XY>
+
+<link rel="stylesheet" type="text/css" href="http://news.sina.com.cn/css/87/20140221/gj2014/index.css">
+<style>
+body{font-family:"Microsoft YaHei","SimSun"; overflow:auto;}
+.first-nav a{padding-left:19px; padding-right:18px;}
+.first-nav a.active{color:#990000;}
+.blk12{width:345px;}
+.blk122 a{overflow:hidden; height:34px}
+.scroll-pic1 a, .scroll-pic1 img{width:318px;}
+.scroll-pic1 img{border:1px #ccc solid;}
+.scroll-pic1 span{width:318px;}
+</style>
+</head>
+<body scroll="yes">
+<div class="first-nav" data-sudaclick="first-nav">
+	<div class="wrap">
+		<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'brother'}">
+		<#list columns as column>
+			<#if column_index < 6>
+			<a href="${column.url!}">${column.name}</a>
+			</#if>
+		</#list>
+		</FOUNDER-XY>
+	</div>
+</div>
+<div class="second-nav" data-sudaclick="second-nav">
+	<div class="wrap clearfix">
+		<div class="links">
+		<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'son'}">
+		<#if columns?exists>
+		<#list columns as column>
+			<a href=" ${column.url!}" target="_blank">${column.name}</a>
+		</#list>
+		</#if>
+		</FOUNDER-XY>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="wrap clearfix">
+		<div class="left">
+<div class="blk1 clearfix">
+	<div class="scroll-pic1" data-sudaclick="focuspic">
+	<FOUNDER-XY type="articlelist" data="{'columnid':[],'columntype':'self', 'articletype': 'pic','start':0, 'count':1}">
+	<#list articles as article>
+		<a href="${article.url!}" target="_blank"><img src="${article.picBig!}" width="318" height="224" alt="${article.title!}" /><span>${article.title!}</span></a>
+	</#list>
+	</FOUNDER-XY>
+	</div>
+	<div class="blk12" data-sudaclick="blkimp">
+		<div class="blk121">
+	<FOUNDER-XY type="articlelist" data="{'columnid':[],'columntype':'self', 'articletype': 'all', 'start':0, 'count':10}">
+	<#list articles as article>
+		<a href="${article.url!}" target="_blank">${article.title!}</a>
+		<#if article_index == 4>
+		</div>
+		<div class="blk122">
+		</#if>
+	</#list>
+	</FOUNDER-XY>
+	</div>
+	</div>
+	</div>
+<div class="right">
+	<FOUNDER-XY type="block" data="{'blockid': 10}">
+	</FOUNDER-XY>
+</div>
+</body>
+</html>

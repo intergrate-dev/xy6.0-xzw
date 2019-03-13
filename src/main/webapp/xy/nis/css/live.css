@@ -1,0 +1,130 @@
+﻿/* header css */
+
+body{
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+body input{
+	font-family: "microsoft yahei";
+	
+}
+.left{float: left;}
+.underTop{
+	margin:0 0 0 -29px;
+}
+
+li{list-style:none;margin-bottom:5px;}
+
+#widgetDiv .nav-tabs{
+	margin-bottom: 10px;
+	background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+/*拓展字段*/
+.divTitle {
+	height: 35px;
+    background-color: #f2f2f2;
+    padding: 2px 0px 2px 10px;
+    margin-top: 10px;
+    line-height: 35px;
+    margin-bottom:10px;
+}
+
+
+.require {
+	color:red;
+	margin-left: 35px;
+	margin-right: 5px;
+	margin-top: 13px;
+}
+
+.title1{
+	margin-top: 6px;
+	margin-bottom: -10px;	
+}
+
+
+.addsource{
+	border: 1px solid #dbdbdb;
+	margin-top: -10px;
+}
+#setting li:first-child{
+	margin-left: 10px;
+}
+.nav-tabs>.active>a{
+	color: #f4b57e !important;
+}
+#setting a{
+	color: #666;
+}
+
+.picnone{
+	color:#999;
+	font-size: 14px;
+	display: inline-block;
+	margin-bottom: 5px;	
+}
+#Atta{
+	padding: 20px 0 35px 20px;
+}
+#widgetDiv{
+	min-height: 300px;
+    margin-left:160px;
+    border-top: 1px solid #ddd;
+  	margin-top: 15px;
+    width: 870px;
+    overflow-x: hidden;
+}
+.btngroup{
+	margin-left: 159px;
+    margin-top: 6px;
+}
+
+.nav-tabs>li{
+	margin-top: 11px;
+}
+#setting{
+	height: 48px;
+}
+.dosave {
+    background-color: #00A0E6;
+    border: none ;
+    padding:5px 22px;
+    margin-right: 26px;
+    color: #fff;
+    border-radius: 3px;
+}
+.docancle {
+    background-color: #b1b1b1;
+    border: none;
+    color: #fff;
+    padding: 5px 22px;
+    border-radius: 3px;
+}
+#picUploadDiv{
+	margin:0px 0 0 20px;
+}
+.addsource{
+	overflow-x: hidden !important;
+}
+#LABEL_a_discussClosed,#LABEL_a_questionClosed{
+	margin-left: 99px;
+}
+#liveUrlDiv{
+	/*margin-left: 33px;*/
+    margin-top: 36px;
+}
+#createLiveBtn{
+	margin-left: 18px;
+	margin-bottom: 15px;
+}
+.btn-primary{
+	background-color: #00A0E6;
+	border:none;
+}
+.liveLabel{
+	display: none;
+}

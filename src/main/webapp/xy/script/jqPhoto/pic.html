@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>图片列表页</title>
+<meta name="description" content="">
+<link rel="stylesheet" type="text/css" href="css/shou.css">
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jqueryPhoto.js" type="text/javascript"></script>
+<style>
+	body{font-family: "microsoft yahei";background-color: #f9f9f9;}
+	.wrap{width: 1000px; margin: 0 auto;}
+	.inline-block{display: inline-block;}
+	.left1{float:left;}
+	.header{height: 64px;}
+	.content{background: #fff; border: 1px solid #eeeeee;margin-top: 20px;}
+	.top{border-bottom: 1px solid #e8e8e8; width: 100%;background-color: #fff;}
+	.top .top-right a{display:inline-block;width: 80px; height: 23px; border: 1px solid #eaeaea; background: #f9f9f9; border-radius: 20px;line-height: 23px;}
+	.top .top-right{display: block;float: right; width:580px;}
+	*{margin: 0; padding: 0;}
+	.top .top-right .top-right-info img{margin: 0 10px;}
+	.top .top-right .top-right-info span{margin: 21px 5px; font-size: 14px;}
+	.img002{margin-top: 16px !important;}
+	.top-right-a{margin-top:20px;}
+	.img004{float: left;margin-top: 20px;margin-left: 10px;}
+	.searchtxt{position: relative;}
+	.img003{position: absolute; top:2px ;right: 5px;}
+	.searchtxt input{width: 160px;height:23px; border: 1px solid #eaeaea; box-sizing: border-box;border-radius:30px;background: #f9f9f9;margin-top: 20px;}
+	.logo img:first-child{margin-top:7px;}
+	.logo img:nth-child(2){margin-top:13px;}
+	.mod18 .picBox li{padding-left: 0; padding-right: 0;}
+	.mod18 .picBox{padding-left: 0; padding-right: 0;width: 526px;margin-left: 78px;}
+	.mod18 .cf li span{left:0;bottom: -20px;}
+	.mod18 .listBox li{overflow: hidden;}
+	.mod18 .listBox .on img{border:none !important;}
+	.mod18 .listBox img{margin: 0 5px;}
+	.content h2{font-weight: normal; font-size: 18px; text-align: left; margin: 20px 0 20px 20px;}
+	.tit-info .time{font-size: 13px; color:#ababab;float: left;margin-left:20px;}
+	.right{float: right;}
+	.tit-info-right{color: #666; margin-right: 20px;}
+	.lines{margin: 0 10px;}
+	.img006{margin-right: 5px;}
+	.img007{margin-right: 5px; margin-top: 2px;}
+	.swpt-cont{text-align: left;font-size: 14px; line-height: 28px;margin-top: 10px;position: relative;}
+	.mod18 #prev, .mod18 #next{top: 555px;}
+    .kePublic{height: 650px;}
+   	.swpt-cont .num{position: absolute;left: -45px;color:#a1a1a1;font-size: 16px;}
+    .swpt-cont .curnum{color: #ab000e;font-size: 24px;font-style: normal;}
+    .comment{background: #f1f1f1; padding: 15px; box-sizing: border-box;font-size: 14px;height: 180px;}
+    .comment-num{color: #c23621;}
+    .comment textarea{width: 100%; height: 80px; border: 1px solid #ababab; 
+    border-radius: 5px;resize: none;padding: 10px; 
+    font-size: 14px;margin: 15px 0; box-sizing: border-box;
+    box-shadow: 0 1px 1px #C6C6C6 inset;}
+    .cmnt_user_cont{margin-bottom: 15px;color: #666;font-size: 12px;}
+    .user-resign{margin-left: 10px;}
+    .hotcomment{border: 1px solid #cccccc; background-color: #fff;}
+    .hotcomment-tit{height:48px; line-height: 48px;text-align: left;background-color: #f3f3f3;}
+    .hotcomment-tit button{padding: 0 10px; height: 20px; border: 1px solid #c3c3c3;}
+    .hotcomment-tit span{font-size: 16px;font-weight: bold;margin: 0 15px;}
+    .user-comment{padding: 0 30px;min-height: 150px; border-bottom: 1px dotted #ccc;}
+    .cmnt_user_cont input:first-child,.cmnt_user_cont input:nth-child(2){
+	   	width:130px; 
+	   	height: 20px;
+	   	border: 1px solid #ababab; 
+	   	margin-right: 10px; 
+	   	box-shadow: 0 1px 1px #C6C6C6 inset;
+   	}
+   	.comment button{
+	    padding: 5px 20px;
+	    color: #666;
+	    background-color: #e1e1e1;
+	    border-radius: 3px;
+	    border: 1px solid #bbb;
+	    font-family: '微软雅黑';
+	    font-size: 14px;
+   	}
+    .clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+	}
+	.clearfix{
+		zoom: 1;
+	}
+	.user-photo img{width: 50px; height: 50px; overflow: hidden;margin: 20px 20px 0 0px;}
+	
+	.user-information{display: block; overflow: hidden;color:#666;}
+	.user-txt{font-size: 14px; line-height: 23px;
+	margin-top: 6px;display: block;line-height: 22px; text-align: left; }
+	.t_content{width: 870px; text-align:left; margin-top: 20px;}
+	.reply{margin-top: 30px; display: inline-block;width: 100%;}
+	.txt-time{color: #999;}
+	.user-support-num{color:#dc553e;}
+	.user-support{margin-right: 25px;}
+	.bottom{
+	background-color: #f2f2f2;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-family: "microsoft yahei";
+}
+.bottom .link{
+	margin-left: 60px;
+}
+.bottom .link a{
+	margin: 0 10px;
+}
+.copyright{
+	text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+.fixed{position: fixed; top:0; left: 0;}
+</style>
+</head>
+<body>
+	<!--top start-->
+<div class="top">
+	<div class="wrap header">
+		<div class="left1 logo">
+			<img class="left1" src="images/logo.png" alt="" />
+			<img src="images/001.png" alt="" />
+		</div>
+	<span class="top-right">
+		<span class="top-right-info">
+			<img class="left1" src="images/line.png"/>
+			<img class="left1 img002" src="images/002.png" alt="" />
+			<span class="left1 login">登录</span>
+			<span class="left1"></span>
+			<img class="left1" src="images/line.png"/>
+		</span>
+		<span class="left1 top-right-a">
+			<a href="">全站图库</a>
+			<a href="">新闻中心</a>
+			<a href="">网站首页</a>
+		</span>
+		
+		<img class="img004" src="images/004.png" alt="" />
+		<span class="searchtxt">
+			<input type="text" id="" value="" />
+			<img class="img003" src="images/003.png" alt="" />
+		</span>
+		
+	</span>
+</div>
+</div>
+<!--top end-->
+<div class="wrap content">
+	<h2>小贝与贝嫂力证恩爱 同带小七游乐园玩耍</h2>
+	<span class="tit-info">
+		<span class="time">2015.08.25 10:26:17</span>
+		<span class="right tit-info-right">
+			<span class="left1">
+				<span>支持</span>
+				<img src="images/005.png" alt="" />
+				<span> 键翻阅图片</span>
+				<span class="lines">|</span>
+			</span>
+			
+			<span class="left1">
+				<img class="left1 img006" src="images/006.png" alt="" />
+				<span>列表查看</span>
+				<span class="lines">|</span>
+			</span>
+			<span class="left1">
+				<img class="left1 img007" src="images/007.png" alt="" />
+				<span>全屏观看</span>
+			</span>
+			
+		</span>
+	</span>
+	<div class="wrap kePublic"> 
+	  <!--效果html开始-->
+	  <div class="main">
+	    <div class="left">
+	      <div class="mod18"> <span id="prev" class="btn prev"></span> <span id="next" class="btn next"></span> <span id="prevTop" class="btn prev"></span> <span id="nextTop" class="btn next"></span>
+	        <div id="picBox" class="picBox">
+	          <ul class="cf">
+	            <li> <a href="" target="_blank"><img src="images/Chrysanthemum.jpg" alt=""></a> <span>高跟鞋与美女的时尚潮流</span> </li>
+	            <li> <a href="" target="_blank"><img src="images/Desert.jpg" alt=""></a> <span>紫色复古风席卷欧美，你赶上潮流了吗</span> </li>
+	            <li> <a href="" title="" target="_blank"><img src="images/Hydrangeas.jpg" alt=""></a> <span>黑色与红色的诱惑，你更爱哪一种</span> </li>
+	          </ul>
+	        </div>
+	        <div class="swpt-cont">
+	        	<span class="num"><span class="curnum">3</span> / 5</span>
+	        	<ul>
+	        		<li><a href="">新浪娱乐讯 当地时间2015年8月24日，美国洛杉矶，贝克汉姆携家人迪斯尼欢乐游。当日，小贝与维多利亚带着孩子们现身迪士尼游玩，两人并肩而走，甜蜜恩爱。东方IC/图</a></li>
+	        		<li><a href=""></a></li>
+	        		<li><a href=""></a></li>
+	        	</ul>
+	        </div>
+	        <div id="listBox" class="listBox">
+	          <ul style="width: 1792px; left: -512px;" class="cf">
+	            <li class=""><i class="arr2"></i><img src="images/Chrysanthemum.jpg" alt=""></li>
+	            <li class=""><i class="arr2"></i><img src="images/Desert.jpg" alt=""></li>
+	            <li class=""><i class="arr2"></i><img src="images/Hydrangeas.jpg" alt=""></li>
+	          </ul>  
+	  		</div>
+	  <!--效果html结束--> 
+	 		</div>
+	    	</div>
+		</div>
+	</div>
+</div>
+<div class="wrap comment" id="div1">
+	<span class="clearfix">
+		<span class="left1">我有话说......</span>
+		<span class="right">已有<span class="comment-num">171</span>条评论,共<span class="comment-num">6378</span>人参与</span>
+	</span>
+	<textarea placeholder="请输入评论的内容" name=""></textarea>
+	<span>
+		<span class="left1 cmnt_user_cont">
+			<input type="text" id="" value="" placeholder="微博账号/博客/邮箱" />
+			<input type="text" placeholder="请输入密码" />
+			<input checked="checked" type="checkbox" name="" id="" value="" />
+			<span>下次自动登录</span>
+			<span class="user-resign">
+				<span>注册</span>
+				<span>|</span>
+				<span>忘记密码？</span>
+			</span>
+			
+		</span>
+		<button class="right">发布</button>
+	</span>
+</div>
+	
+<div class="wrap hotcomment">
+	<div class="hotcomment-tit">
+		<span>最热评论</span>
+		<button>刷新</button>
+	</div>
+	<div class="user-comment">
+		<span class="left1 user-photo"><img src="images/008.png" alt="" /></span>
+		<div class="right t_content">
+			<span>
+				<span class="user-information">
+					<span class="user-name"><a href="">江南人家WXND</a></span>
+					<span class="user-address">[江苏南京]</span>
+				</span>
+				<span class="user-txt">
+					没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。
+				</span>
+			</span>
+			<span class="reply">
+				<span class="left1 txt-time">8月25日 19:12</span>
+				<span class="right">
+					<span class="user-support">支持<span class="user-support-num">(623)</span></span>
+					<span class="user-answer">回复</span>
+				</span>
+			</span>
+		</div>
+	</div>
+	<div class="user-comment">
+		<span class="left1 user-photo"><img src="images/008.png" alt="" /></span>
+		<div class="right t_content">
+			<span>
+				<span class="user-information">
+					<span class="user-name"><a href="">江南人家WXND</a></span>
+					<span class="user-address">[江苏南京]</span>
+				</span>
+				<span class="user-txt">
+					没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。
+				</span>
+			</span>
+			<span class="reply">
+				<span class="left1 txt-time">8月25日 19:12</span>
+				<span class="right">
+					<span class="user-support">支持<span class="user-support-num">(623)</span></span>
+					<span class="user-answer">回复</span>
+				</span>
+			</span>
+		</div>
+	</div>
+	<div class="user-comment">
+		<span class="left1 user-photo"><img src="images/008.png" alt="" /></span>
+		<div class="right t_content">
+			<span>
+				<span class="user-information">
+					<span class="user-name"><a href="">江南人家WXND</a></span>
+					<span class="user-address">[江苏南京]</span>
+				</span>
+				<span class="user-txt">
+					没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。
+				</span>
+			</span>
+			<span class="reply">
+				<span class="left1 txt-time">8月25日 19:12</span>
+				<span class="right">
+					<span class="user-support">支持<span class="user-support-num">(623)</span></span>
+					<span class="user-answer">回复</span>
+				</span>
+			</span>
+		</div>
+	</div>
+	<div class="user-comment">
+		<span class="left1 user-photo"><img src="images/008.png" alt="" /></span>
+		<div class="right t_content">
+			<span>
+				<span class="user-information">
+					<span class="user-name"><a href="">江南人家WXND</a></span>
+					<span class="user-address">[江苏南京]</span>
+				</span>
+				<span class="user-txt">
+					没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。
+				</span>
+			</span>
+			<span class="reply">
+				<span class="left1 txt-time">8月25日 19:12</span>
+				<span class="right">
+					<span class="user-support">支持<span class="user-support-num">(623)</span></span>
+					<span class="user-answer">回复</span>
+				</span>
+			</span>
+		</div>
+	</div>
+	<div class="user-comment">
+		<span class="left1 user-photo"><img src="images/008.png" alt="" /></span>
+		<div class="right t_content">
+			<span>
+				<span class="user-information">
+					<span class="user-name"><a href="">江南人家WXND</a></span>
+					<span class="user-address">[江苏南京]</span>
+				</span>
+				<span class="user-txt">
+					没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。
+				</span>
+			</span>
+			<span class="reply">
+				<span class="left1 txt-time">8月25日 19:12</span>
+				<span class="right">
+					<span class="user-support">支持<span class="user-support-num">(623)</span></span>
+					<span class="user-answer">回复</span>
+				</span>
+			</span>
+		</div>
+	</div>
+	<div class="user-comment">
+		<span class="left1 user-photo"><img src="images/008.png" alt="" /></span>
+		<div class="right t_content">
+			<span>
+				<span class="user-information">
+					<span class="user-name"><a href="">江南人家WXND</a></span>
+					<span class="user-address">[江苏南京]</span>
+				</span>
+				<span class="user-txt">
+					没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。没错。恒大是出去欺负别人的。
+				</span>
+			</span>
+			<span class="reply">
+				<span class="left1 txt-time">8月25日 19:12</span>
+				<span class="right">
+					<span class="user-support">支持<span class="user-support-num">(623)</span></span>
+					<span class="user-answer">回复</span>
+				</span>
+			</span>
+		</div>
+	</div>
+	
+</div>
+<!--bottom start-->
+<div class="bottom">
+	<div class="wrap">
+		<img src="images/019.png" alt="" />
+		<span class="display link">
+			<a href="">方正电子简介</a>
+			<a href="">|</a>
+			<a href="">网站地图</a>
+			<a href="">|</a>
+			<a href="">诚聘英才</a>
+			<a href="">|</a>
+			<a href="">广告服务</a>
+			<a href="">|</a>
+			<a href="">联系方式</a>
+			<a href="">|</a>
+			<a href="">隐私政策</a>
+			<a href="">|</a>
+			<a href="">服务条款</a>
+			<a href="">|</a>
+			<a href="">意见反馈</a>
+		</span>
+		<span class="copyright">Copyright ©1996-2015 FOUNDER Corporation, All Rights Reserved</span>
+	</div>
+</div>
+<!--bottom end-->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".user-comment").hover(function(){
+			$(this).css({
+				"background-color":"#fbfaf8",
+				"cursor":"pointer"
+				});
+		},function(){
+			$(this).css("background-color","");
+		})
+	});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var pos=$(".comment").offset().top;
+	var l=$(".comment").offset().left;
+	$(window).scroll(function(){
+		var top=$(window).scrollTop();
+		if(pos< top)
+		{
+			$(".comment").addClass('fixed');
+			$(".comment").css("left",l+'px')
+		}
+		else
+		{
+			$(".comment").removeClass('fixed');
+		}
+	});
+});
+</script>
+</body>
+
+
+</html>

@@ -1,0 +1,83 @@
+﻿html{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	background: #383E43 url(../images/sys-login-bg.png) repeat 0 0;
+}
+body{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	color: #444;
+	font-size:12px;
+	background: url('../images/bg-sys-body3.png') no-repeat center center;
+}
+
+/*common--o*/
+.clearfix{*zoom:1}
+.clearfix:after,.clear{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;font-size:0}
+/*common--x*/
+
+/*menu--o*/
+.SysMenu1,.SysMenu2{
+	position: absolute;
+	z-index:10;
+}
+.SysMenu1{
+	background:	url('../images/bg-sys-nav3.png') repeat-x 0 0;
+	height: 35px;
+	padding-left:223px;
+	width:100%;
+}
+.SysMenu2{	
+	width:183px;
+	height:100%;
+	position: relative;
+}
+.logo{
+	width: 173px;
+	height: 34px;
+	margin: 0 25px;
+	background: url('../images/e5-sys-logo.png') no-repeat 0 0;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src='../images/e5-sys-logo.png');
+	background-repeat: no-repeat;
+	position: absolute;
+	left:0;
+	top:0;
+	text-indent: -9999px;
+}
+.SysMenu2 .logo{
+	margin: 0 auto;
+	background-position:center center;
+	position: static;
+	padding:5px;
+	border-bottom:1px solid #333;
+}
+/*menu--x*/
+
+/*main--o*/
+.mainWrap1{
+	position:absolute;
+	top:33px;
+	left:0;
+	right:0;
+	bottom:0;
+	_width:expression(parseInt(document.body.scrollWidth)-parseInt(this.currentStyle.left)-parseInt(this.currentStyle.right));
+	_height:expression(parseInt(document.body.scrollHeight)-parseInt(this.currentStyle.top)-parseInt(this.currentStyle.bottom));
+}
+.mainWrap2{
+	position:absolute;
+	top:0;
+	left:184px;
+	right:0;
+	bottom:0;
+	_width:expression(parseInt(document.body.scrollWidth)-parseInt(this.currentStyle.left)-parseInt(this.currentStyle.right));
+	_height:expression(parseInt(document.body.scrollHeight)-parseInt(this.currentStyle.top)-parseInt(this.currentStyle.bottom));
+}
+.SysFrame{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+/*main--x*/

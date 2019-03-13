@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Gong Lijie (Founder) -->
+<!--edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Gong Lijie (Founder)-->
+<form-template>
+	<form-file><![CDATA[
+<!DOCTYPE html>
+<head>
+	<!-- all css and js need -->
+	
+	<link type="text/css" rel="stylesheet" href="../e5style/reset.css"/>
+	<link type="text/css" rel="stylesheet" href="../e5script/jquery/jQuery-Validation-Engine/css/validationEngine.jquery.css"/>
+	<link type="text/css" rel="stylesheet" href="../e5script/jquery/dialog.style.css"/>
+	<link type="text/css" rel="stylesheet" href="../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css"/>
+	<link type="text/css" rel="stylesheet" href="../e5script/calendar/calendar.css"/>
+	<link type="text/css" rel="stylesheet" href="../e5style/e5query-custom.css"/>
+	
+	<script type="text/javascript" src="../e5script/jquery/jquery.min.js"></script> 
+	<script type="text/javascript" src="../e5script/jquery/jQuery-Validation-Engine/js/languages/jquery.validationEngine-zh_CN.js"></script>
+	<script type="text/javascript" src="../e5script/jquery/jQuery-Validation-Engine/js/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="../e5script/jquery/jquery.dialog.js"></script> 
+	<script type="text/javascript" src="../e5script/jquery/jquery-autocomplete/jquery.autocomplete.min.js"></script> 
+	<script type="text/javascript" src="../e5script/calendar/usecalendar.js"></script>
+	<script type="text/javascript" src="../e5script/calendar/calendar.js"></script>
+	<script type="text/javascript" src="../e5workspace/script/query-custom.js"></script> 
+</head>
+<form id="queryForm" code="@FORMCODE@">
+<!--@CUSTOM-FORM@-->
+</form>
+]]></form-file>
+	<form-patterns>
+		<pattern>
+			<data-types>
+				<data-type name="DATE" description="DATE"/>
+				<data-type name="TIMESTAMP" description="TIMESTAMP"/>
+			</data-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span-date">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls">
+					<input type="text" id="@FIELDCODE@_0" name="@FIELDCODE@_0" value="" class="custform-input-date @VALID-CLASS@"/>
+					 - 
+					<input type="text" id="@FIELDCODE@_1" name="@FIELDCODE@_1" value="" class="custform-input-date @VALID-CLASS@ validate[future[#@FIELDCODE@_0]]"/>
+				</div>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_FREE" description="任意填写"/>
+			</edit-types>
+			<range>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="text" id="@FIELDCODE@_0" name="@FIELDCODE@_0" value="" class="custform-input-half @VALID-CLASS@"/>
+						 - 
+						<input type="text" id="@FIELDCODE@_1" name="@FIELDCODE@_1" value="" class="custform-input-half @VALID-CLASS@"/>
+					</div>
+				</span>
+			</range>
+			<normal>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@"/>
+					</div>
+				</span>
+			</normal>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_FREE_LINES" description="任意填写（多行）"/>
+				<edit-type name="EDITTYPE_EMAIL" description="字符串类型，EMAIL"/>
+				<edit-type name="EDITTYPE_PHONE" description="字符串类型，固定电话"/>
+				<edit-type name="EDITTYPE_MOBILE" description="字符串类型，手机"/>
+				<edit-type name="EDITTYPE_ADDRESS" description="字符串类型，地址拆分"/>
+				<edit-type name="EDITTYPE_DATE_SPLIT" description="字符串类型，日期拆分"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@"/>
+				</div>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_FREE_AUTOCOMPLETE" description="任意填写（单行，带填写提示）"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" auto-complete="true" class="custform-input @VALID-CLASS@" url="@URL@"/>
+				</div>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_FREE_AUTOCOMPLETE_KEYVALUE" description="任意填写（单行，带填写提示，键值对）"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls">
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" auto-complete="true" pair="true" class="custform-input @VALID-CLASS@" url="@URL@"/>
+				</div>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_BOOLEAN" description="是/否，勾选方式"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" for="@FIELDCODE@" class="custform-label-checkbox checkbox">
+					<input type="checkbox" id="@FIELDCODE@" name="@FIELDCODE@" class="custform-checkbox"/> @LABEL-NAME@
+				</label>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_ENUM" description="单选(下拉框select)"/>
+				<edit-type name="EDITTYPE_SELECT_RADIO" description="单选(单选框radio)"/>
+				<edit-type name="EDITTYPE_MULTI" description="多选（下拉框select）"/>
+				<edit-type name="EDITTYPE_MULTI_CHECKBOX" description="多选（复选框checkbox）"/>
+			</edit-types>
+			<multiple-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@" name="@FIELDCODE@" multiple="multiple" class="custform-select-multi">@OPTIONS@ </select>
+					</div>
+				</span>
+			</multiple-select>
+			<multiple-checkbox>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="hidden" check="true" name="@FIELDCODE@" id="@FIELDCODE@"/>
+						@CHECKBOX_SELECT@
+					</div>
+				</span>
+			</multiple-checkbox>
+			<single-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@" name="@FIELDCODE@" class="custform-select">@OPTIONS@ </select>
+					</div>
+				</span>
+			</single-select>
+			<single-radio>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="radio" radio="true" name="@FIELDCODE@" id="@FIELDCODE@" style="display:none;"/>
+						@RADIO_SELECT@
+					</div>
+				</span>
+			</single-radio>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_SELECT" description="单选(下拉框select，动态取值)"/>
+				<edit-type name="EDITTYPE_SELECT_RADIO_DYNAMIC" description="单选(单选框radio，动态取值)"/>
+				<edit-type name="EDITTYPE_MULTI_DYNAMIC" description="多选（下拉框select，动态取值）"/>
+				<edit-type name="EDITTYPE_MULTI_CHECKBOX_DYNAMIC" description="多选（复选框checkbox，动态取值）"/>
+			</edit-types>
+			<multiple-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@" name="@FIELDCODE@" multiple="multiple" class="custform-select-multi" url="@URL@"> </select>
+					</div>
+				</span>
+			</multiple-select>
+			<multiple-checkbox>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="hidden" check="true" name="@FIELDCODE@" id="@FIELDCODE@" url="@URL@"/>
+					</div>
+				</span>
+			</multiple-checkbox>
+			<single-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@" name="@FIELDCODE@" class="custform-select" url="@URL@" show-all="@SHOWALL@"> </select>
+					</div>
+				</span>
+			</single-select>
+			<single-radio>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="radio" radio="true" name="@FIELDCODE@" id="@FIELDCODE@" url="@URL@" style="display:none;" show-all="@SHOWALL@"/>
+					</div>
+				</span>
+			</single-radio>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_TREE_SELECT" description="分类（下拉框select，只可用于单层分类）"/>
+			</edit-types>
+			<multiple-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" multiple="multiple" class="custform-select" catType="@CATTYPE@"> </select>
+					</div>
+				</span>
+			</multiple-select>
+			<multiple-checkbox>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="hidden" check="true" name="@FIELDCODE@" id="@FIELDCODE@" catType="@CATTYPE@"/>
+					</div>
+				</span>
+			</multiple-checkbox>
+			<single-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" class="custform-select" catType="@CATTYPE@" show-all="@SHOWALL@"> </select>
+					</div>
+				</span>
+			</single-select>
+			<single-radio>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="radio" radio="true" name="@FIELDCODE@" id="@FIELDCODE@" catType="@CATTYPE@" style="display:none;" show-all="@SHOWALL@"/>
+					</div>
+				</span>
+			</single-radio>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_OTHER_DATA" description="其它数据（下拉框，动态取值，键值对）"/>
+			</edit-types>
+			<multiple-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" multiple="multiple" class="custform-select" url="@URL@"> </select>
+					</div>
+				</span>
+			</multiple-select>
+			<multiple-checkbox>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="hidden" check="true" name="@FIELDCODE@" id="@FIELDCODE@" url="@URL@"/>
+					</div>
+				</span>
+			</multiple-checkbox>
+			<single-select>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<select id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" class="custform-select" url="@URL@" show-all="@SHOWALL@"> </select>
+					</div>
+				</span>
+			</single-select>
+			<single-radio>
+				<span id="SPAN_@FIELDCODE@" class="custform-span">
+					<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+					<div class="custform-controls">
+						<input type="radio" radio="true" name="@FIELDCODE@" id="@FIELDCODE@" url="@URL@" style="display:none;" show-all="@SHOWALL@"/>
+					</div>
+				</span>
+			</single-radio>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_TREE" description="分类树"/>
+				<edit-type name="EDITTYPE_TREE_MULTI" description="分类树，可多选"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls input-append">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input34" readonly="true"/>
+					<button type="button" class="btn custform-button" onclick="selectCat('@FIELDCODE@', '@FIELDCODE@ID', '@CATTYPE@', @MULTIPLE@)">...</button>
+					<input type="hidden" id="@FIELDCODE@ID" name="@FIELDCODE@ID" value=""/>
+				</div>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_DEPT" description="部门树"/>
+				<edit-type name="EDITTYPE_DEPT_MULTI" description="部门树，可多选"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls input-append">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input34" readonly="true"/>
+					<button type="button" class="btn custform-button" onclick="selectDept('@FIELDCODE@', '@FIELDCODE@_ID', @MULTIPLE@)">...</button>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+				</div>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_USER" description="用户树"/>
+				<edit-type name="EDITTYPE_USER_MULTI" description="用户树，可多选"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls input-append">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input34" readonly="true"/>
+					<button type="button" class="btn custform-button" onclick="selectUser('@FIELDCODE@', '@FIELDCODE@_ID', @MULTIPLE@)">...</button>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+				</div>
+			</span>
+		</pattern>
+		<pattern>
+			<edit-types>
+				<edit-type name="EDITTYPE_ROLE" description="角色树"/>
+				<edit-type name="EDITTYPE_ROLE_MULTI" description="角色树，可多选"/>
+			</edit-types>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label">@LABEL-NAME@:</label>
+				<div class="custform-controls input-append">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input34" readonly="true"/>
+					<button type="button" class="btn custform-button" onclick="selectRole('@FIELDCODE@', '@FIELDCODE@_ID', @MULTIPLE@)">...</button>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+				</div>
+			</span>
+		</pattern>
+	</form-patterns>
+</form-template>

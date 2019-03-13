@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="./src/css/textext.core.css" rel="stylesheet">
+    <link href="./src/css/textext.plugin.autocomplete.css" rel="stylesheet">
+    <link href="./src/css/textext.plugin.clear.css" rel="stylesheet">
+    <link href="./src/css/textext.plugin.focus.css" rel="stylesheet">
+    <link href="./src/css/textext.plugin.prompt.css" rel="stylesheet">
+    <link href="./src/css/textext.plugin.tags.css" rel="stylesheet">
+    <link href="../bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="../jquery/jquery.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./src/js/textext.core.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.ajax.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.autocomplete.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.clear.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.filter.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.focus.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.prompt.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.suggestions.js"></script>
+    <script type="text/javascript" src="./src/js/textext.plugin.tags.js"></script>
+</head>
+<body>
+<textarea id="textarea" rows="1" style="width: 200px;"></textarea>
+
+<button id="getBtn" type="button">获取</button>
+</body>
+
+<script type="text/javascript">
+    $('#textarea').textext({
+        plugins: 'tags autocomplete',
+        /*ajax: {
+            url: 'http://localhost:8080/xy/xy/nis/querySuggestion.do',
+            dataType: 'json',
+            cacheResults: true
+        },*/
+        html: {
+            Wrap: '<div class="label label-default"></div>'
+        },
+        ext: {
+            itemManager: {
+                items: ['java', 'javascript', 'php'],  // A custom array that will be used to lookup id
+            }
+        }
+
+    })
+    ;
+
+    $("#getBtn").click(function(){
+
+
+        $("#textarea").siblings(".text-tags").find(".text-remove").each(function(){
+            $(this).click();
+        });
+
+    });
+</script>
+
+<style>
+    .text-label div {
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        padding-left: 21px;
+        line-height: 16px;
+    }
+
+    .text-label div p {
+        margin: 0;
+        font-size: 10px;
+        color: silver;
+        line-height: 10px;
+    }
+</style>
+</html>

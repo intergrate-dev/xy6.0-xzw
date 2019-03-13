@@ -1,0 +1,9 @@
+#titleDiv{
+	background-color: #e8e8e8;
+	height: 50px;
+	padding-top : 10px;
+	padding-left: 20px;
+}
+#titleDiv select{
+	margin-right:40px;
+}

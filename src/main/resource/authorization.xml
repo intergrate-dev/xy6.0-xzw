@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<authorization>
+	<!--
+		组织机构分级授权,1:启用，0:不启用 
+	-->
+	<organization valid="1"/>
+	<!-- 
+		文档管理分级授权,1:启用，0：不启用， 
+		DocType表示只授权到文档类型
+		DocLib表示需要授权到文档库
+	-->
+	<document valid="1" clazz="DocLib"/>
+	<!--
+		流程管理分级授权，1：启用，0：不启用
+		DocType表示只授权到文档类型
+		Workflow表示授权到具体流程
+	-->
+	<workflow valid="1" clazz="Workflow"/>
+	<!--
+		分类管理分级授权，1：启用，0：不启用
+	-->
+	<classfication valid="1"/>
+	<!--
+		系统配置管理分级授权，1：启用，0：不启用
+	-->
+	<config valid="1"/>
+	<!--
+		服务管理分级授权，1：启用，0：不启用
+	-->
+	<service valid="1"/>
+	<!--
+		在线用户管理分级授权，1：启用，0：不启用
+	-->
+	<online_user valid="1"/>
+	<!--
+		系统日志管理分级授权，1：启用，0：不启用
+	-->
+	<logger valid="1"/>
+	<!--
+		系统缓存管理分级授权，1：启用，0：不启用
+	-->
+	<cache valid="1"/>
+	<!--
+		子系统管理模块分级授权，1：启用，0：不启用
+		Module表示授权到模块一级
+		Inner表示授权到模块内部
+	-->
+	<module_manager valid="1" clazz="Module"/>
+	<!--
+		子系统授权管理模块分级授权，1：启用，0：不启用
+		Module表示授权到模块一级
+		Inner表示授权到模块内部
+	-->
+	<module_permisson valid="1" clazz="Module"/>
+</authorization>

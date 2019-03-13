@@ -1,0 +1,37 @@
+.skin{
+	margin-left:-15px;
+	padding: 10px;
+	overflow: hidden;
+	*zoom:1;
+}
+.skin a{
+	float: left;
+	border: 2px solid #fff;
+	position: relative;
+	margin: 0 0 9px 15px;
+	text-decoration: none;
+}
+.skin img{
+	border: 1px solid #A0A0A0;
+	width:100px;
+	height:60px;
+}
+.skin a:hover,.skin a:hover img{
+	border-color:#d9d9d9;
+}
+.skin span{
+	position:absolute;
+	top:41px;
+	left:1px;
+	display:block;
+	width:100px;
+	height:20px;
+	line-height:20px;
+	background:url("../../images/bg-skin-title.png") repeat;
+	text-align:center;
+	color:#fff;
+}
+.skin a.cur,.skin a.cur img,.skin a.cur:hover,.skin a.cur:hover img{
+	border-color:#70B0E2;
+	cursor:default;
+}

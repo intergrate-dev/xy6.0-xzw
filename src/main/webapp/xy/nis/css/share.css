@@ -1,0 +1,1854 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body { background:#fff; font-size:14px; font-family:"微软雅黑"; -webkit-overflow-scrolling: touch; }
+td,th,caption { font-size:14px; }
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+a { color:#555; text-decoration:none; }
+a:hover { text-decoration:none; }
+img { border:none; }
+ol,ul,li { list-style:none; }
+input, textarea, select, button { font:14px 微软雅黑; }
+table { border-collapse:collapse; }
+html {overflow-y: scroll;} 
+body,html{width: 100%;height:100%;}
+/*.wrap{ height: 100%;}*/
+.right{float: right;}
+.left{float: left;}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+	}
+.clearfix{
+	zoom: 1;
+}
+
+/*看见详情分享页面样式*/
+.usr-attachmentsinfo img{
+  width:100%
+}
+
+.sh-det-share .banner{
+	width: 100%; 
+	height: auto;
+	position: relative;
+	height: 31%;
+	overflow: hidden;
+}
+.sh-det-share .banner img{ 
+	width: 98%;
+	margin: 0 auto;
+	position: absolute;
+	z-index: -2;
+}
+.header-img{
+	width: 40px !important;
+	height: 40px !important;
+	border-radius: 50% !important;
+}
+.sh-det-share .mark{
+	background: rgba(0,0,0,0.6);
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+/*.sh-det-share .banner{
+	background: url(../img/001.png) no-repeat;
+	height: 30%;
+}*/
+.sh-det-share h2{
+	font-size: 22px; 
+	
+	color:#333;
+
+
+}
+
+.sh-det-share .open{
+	font-size: 20px; 
+	color: #999;
+	width: 98%;
+	margin: 0 auto;	
+}
+.sh-det-share .icon{
+	width: 0;
+	height: 0;
+	border: 7px solid transparent;
+	margin: 0 10%;
+	display: inline-block;
+	border-bottom-color: #333;
+}
+.showarticle{
+	float: right;
+    width: 22%;
+}
+.sh-det-share .context{
+	border-top: 6px solid #ededed;
+	border-right: 6px solid #ededed;
+	display: table;
+	margin: 0 auto;
+	width: 100%;
+	
+}
+.sh-det-share .title .right img{
+	width: 50%;
+}
+.sh-det-share .img{
+	width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.sh-det-share .headerpic img{
+	margin: 16% 20% 16% 2%;
+	width:40px;
+	height:40px;
+	overflow: hidden;
+	border-radius:50%;
+}
+#showdiv p{
+	text-align: justify;
+	line-height: 1.5;
+	font-size: 18px;
+	width: 95%;
+	margin: 0 auto;
+}
+#mainimgdata img{
+	width: 100%;
+	
+}
+
+.sh-det-share .usrname{
+	font-size: 17px;
+	color: #333;
+	float: right;
+	width: 69%;
+	height:98%;
+	background: #fff;
+	padding: 3% 3% 0 3%;
+	line-height:1.5;
+	
+}
+.sh-det-share .usrname div:nth-of-type(2) a{
+	
+  display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+		
+}
+.userpic{
+	width: 100%;
+	position: relative;
+}
+.container{
+	background-color: #ddd;
+}
+.sh-det-share .hoster .traigle{
+    width:0; 
+    height:0; 
+    border:10px solid transparent;
+    border-right-color: #fff;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -10%;
+}
+.editor{
+	float: right;
+}
+.sh-det-share .hoster{
+	width:25%;
+	text-align: center;	
+	float: left;
+	
+}
+.sh-det-share .more img{
+    width: 10%;
+    margin-top: 2%;
+    float: left;
+    margin-right: 5%;
+	
+
+}
+.sh-det-share .more{
+    width: 50%;
+    display: BLOCK;
+    margin: 0 auto;
+    font-size: 20px;
+
+}
+.sh-det-share .contextwrap{
+	width:98%;
+	background: #ededed;
+}
+
+.sh-det-share .time{
+	font-size: 17px;
+	color: #999;
+	
+}
+.sh-det-share .num{
+	font-size: 16px;
+	color: #999;
+}
+
+.sh-det-share .usrname div:nth-of-type(3){
+	  display:-webkit-box;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    word-break:break-all;
+
+    -webkit-box-orient:vertical;
+
+    -webkit-line-clamp:4;
+	
+} 
+.sh-det-share .usrname div{
+	color: #333;
+
+	
+}
+.sh-det-share .usrname ul li{
+	float: left;
+	margin: 0 1% 1% 0;
+	width: 32%;
+	
+}
+
+.sh-det-share .usrname ul li img{
+	width:100%;
+	max-height:60px;
+}
+.sh-det-share .usrname ul {
+	width: 100%;
+	
+}
+.sh-det-share .title{
+	height:35px;
+}
+
+ .uploadtip{
+	background: rgba(0,0,0,0.8);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding: 2% 0;
+	
+}
+.uploadtip span{
+	color: #fff;
+	font-size: 20px;
+}
+.uploadtip .logo{
+	float: left;
+	margin-right: 2%;
+	width: 10%;
+}
+.aboutword{
+	width: 95%;
+	margin: 0 auto;
+	
+}
+.uploadtip .close{
+  color: #fff;
+  font-size: 25px;
+  outline: none;
+} 	
+
+.uploadtip	.upload{
+	margin: 0 1%;
+	background-color: #f93c42;
+	border: none;
+	color: #fff;
+	padding: 1% 2%;
+    font-size: 18px;
+    border-radius: 3px;
+    outline: none;
+    font-family: "microsoft yahei";
+}
+.img002{
+	width: 16% !important;
+	border-radius: 50%;
+	z-index: 1 !important;
+	left: 4%;
+    top: 10px;
+}
+.user-infor{
+	position: relative;
+	/*top: 10px;
+	left: 2%;*/
+	color: #fff;
+	font-size: 18px;
+	width: 100%;
+	height: 100%;
+}
+.user-infor-name{
+	position: absolute;
+	top: 2px;
+	left: 12%;
+}
+.user-infor-name span{
+	color:#fff;
+}
+/*快点新闻生产后分享页面*/
+.newshare{
+	width: 100%;
+	height: 100%;
+	
+}
+.newshare h2{
+	font-size: 24px;
+	line-height:1.5;
+	width: 90%;
+	margin: 0 auto;
+}
+.newshare .p-information{
+	font-weight: bold;
+	font-size: 16px;
+	padding: 1% 0;
+	width: 90%;
+    margin: 0 auto;
+	
+}
+.newshare .article{
+	font-size: 18px;
+	line-height: 30px;
+	width: 90%;
+    margin: 0 auto;
+}
+.newshare .article h3{
+	color: #999;
+	font-size: 16px;
+	margin-bottom: 4%;
+	margin-top: -3%;
+}
+.newshare .article img{
+	width: 95%;
+	margin: 0 auto !important;
+}
+.newshare .order img{
+	border-radius: 50%;
+}
+.newshare .order{
+	border-top: 1px solid #ededed;
+	padding-top: 3%;
+	margin-left: 2%;
+	text-align: right;
+	font-size: 20px;
+	color: #666;
+	margin-right: 2%;
+
+}
+.img005{
+	width: 7%;
+	margin-top: 1%;
+	float: left;
+	margin-right: 1%;
+}
+/*论坛详情分享页面1*/
+.deta-share{
+	width: 100%；
+	height:100%;
+}
+.deta-share .header{
+	width: 100%;
+	height: 12%;
+}
+.deta-share .header img{
+	width: 20%;
+	border-radius: 50%;
+	float: left;
+}
+.deta-share .user-name{
+	font-size: 18px;
+	color: #666;
+	display: inline-block;
+	margin: 3% 0 0 2%;
+	width: 77%;
+}
+.deta-share .time{
+	font-size: 18px;
+	color: #999;
+	margin-top: 2%;
+	display: inline-block;
+}
+.deta-share .develop{	
+	border: 1px solid #999;
+	border-radius: 49%;
+	padding:1% 3%;
+	font-size: 16px;
+}
+.deta-share h2{
+	font-size:1.6em;
+	margin: 5% 0;
+}
+.deta-share .news p{
+	text-indent: 2em;
+	line-height:1.5;
+	font-size: 17px;
+	margin-bottom: 16px;
+	color: #333;
+}
+/*论坛详情分享页面2*/
+.deta-share .usr-say{
+	background-color: #f8f8f8;
+	width: 100%;
+	margin-top: 10%;
+	border-top: 1px solid #ddd;
+	display: table;
+}
+.deta-share .usr-say .floor{
+	border-bottom: 1px solid #ddd;
+}
+.deta-share .usr-pic{
+	width: 20%;
+	border-radius:50%;
+	float: left;
+	margin-right: 3%;
+}
+.deta-share .usr-info{
+	font-size: 18px;
+	
+	display: inline-block;
+}
+.deta-share .usr-info span:first-child{
+	color: #147be3;
+	font-size: 18px;
+}
+.deta-share .usr-info span{
+	color: #b3b3b3;
+	font-size: 15px;
+}
+.deta-share  .floor{
+	padding: 3%;
+	display: block;
+}
+.deta-share .more{
+	color: #147be3;
+	font-size: 18px;
+	display: block;
+	margin-top: 6%;
+	text-align: right;
+}
+.usr-comment{
+	line-height: 1.5;
+	font-size: 16px;
+	margin-top: 2%;
+	display: inline-block;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.usrwrap{
+	width: 77%;
+}
+/*新闻详情分享页面2*/
+.newshare p{
+	font-size: 18px;
+	line-height: 1.7;
+	color:#252525;
+	text-align: justify !important;
+	text-indent:0 !important;
+}
+.newstitle a{
+	font-size: 20px;
+	line-height: 1.5;
+	color: #000;
+}
+.newslist .time{
+	color: #999;
+	font-size: 15px;
+	margin-top: 3%;
+}
+.newslist ul{
+	border-bottom:1px solid #ddd;
+	padding-bottom: 1%;
+}
+.img006{
+	width: 100%;
+	margin: 3% 0;
+}
+.newslist h3{
+	background:red;
+	color: #fff;
+	font-size: 18px;
+	width: 30%;
+	text-align: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin: 3% 0;
+}
+
+@media only screen and (min-width:1441px) and (max-width:1980px){
+
+.uploadtip span{
+	color: #fff;
+	font-size: 79px;
+	font-family: "microsoft yahei";
+	
+}
+.uploadtip .logo{
+	float: left;
+	margin-right: 2%;
+	width: 13%;
+}
+.aboutword{
+	width: 95%;
+	margin: 0 auto;
+	
+}
+.uploadtip .close{
+  color: #fff;
+  font-size:110px;
+  cursor: pointer;
+  outline: none;
+} 	
+
+.uploadtip	.upload{
+	margin: 0 1%;
+	background-color: #f93c42;
+	border: none;
+	color: #fff;
+	padding: 1% 2%;
+    font-size: 56px;
+    border-radius: 3px;
+    outline: none;
+    font-family: "microsoft yahei";
+    cursor: pointer;
+}	
+	
+#mainimgdata li {
+    width: 32%;
+    float: left;
+    overflow: hidden;
+    margin: 5px;
+    max-height: 189px;
+}
+#class1content{
+	font-size: 22px;
+	line-height: 26px;
+}	
+.deta-share .develop{	
+	border: 1px solid #999;
+	border-radius: 50%;
+	padding:2% 4%;
+	font-size: 40px;
+	display: inline-block;
+}
+
+.deta-share .username{
+	float: left;
+	margin: 1% 1% 0 0;
+}
+
+.deta-share .header img{
+	width: 21%;
+	border-radius: 50%;
+	float: left;
+}
+.deta-share .time{
+	font-size: 40px;
+	color: #999;
+	margin-top: 1%;
+	display: inline-block;
+}
+.deta-share h2{
+	font-size: 45px;
+    margin: 1% 0;
+    text-align:center;
+}
+.deta-share .header{
+	width: 100%;
+	display: table;
+}
+.showMorehandle{
+	font-size: 22px;
+	text-align: center;
+	margin: 2% 0;
+}
+
+
+/*璁哄潧璇︽儏鍒嗕韩椤甸潰1*/
+.deta-share{
+	width: 100%;
+	height:100%;
+}
+
+.deta-share .user-name{
+	font-size: 40px;
+	color: #666;
+	display: inline-block;
+	margin: 3% 0 0 2%;
+	width: 77%;
+}
+
+.deta-share .news p{
+	text-indent: 2em;
+    line-height: 1.6;
+    font-size: 40px;
+    color: #333;
+}
+
+.deta-share .usr-say{
+	background-color: #f8f8f8;
+	height: 100%;
+	margin-top: 10%;
+	border-top: 1px solid #ddd;
+}
+.deta-share .usr-say .floor{
+	border-bottom: 1px solid #ddd;
+}
+.deta-share .usr-pic{
+	width: 20%;
+	border-radius:50%;
+	float: left;
+	margin-right: 3%;
+}
+.deta-share .usr-info{
+	font-size: 18px;
+	
+	display: inline-block;
+}
+.deta-share .usr-info span:first-child{
+	color: #147be3;
+	font-size: 45px;
+}
+.deta-share .usr-info span{
+	color: #b3b3b3;
+	font-size: 36px;
+}
+.deta-share  .floor{
+	padding: 3%;
+	display: block;
+}
+.deta-share .more{
+	color: #147be3;
+	font-size: 18px;
+	display: block;
+	margin-top: 6%;
+	text-align: right;
+}
+.usr-comment{
+	line-height: 1.6;
+    font-size: 40px;
+    margin-top: 2%;
+    display: inline-block;
+    text-align: justify;
+    color: #333;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.usrwrap{
+	width: 77%;
+}
+.img003{
+	width: 10%;
+}
+.good{
+	width: 15%;
+}
+.good .img003{
+	width: 30%;
+}
+.good span{
+	font-size: 45px;
+	}
+/*鏂伴椈璇︽儏鍒嗕韩椤甸潰2*/
+.newshare p{
+	font-size: 18px;
+	line-height: 1.7;
+	color:#252525;
+	text-align: justify !important;
+}
+.newstitle a{
+	font-size: 20px;
+	line-height: 1.5;
+	color: #000;
+}
+.newslist .time{
+	color: #999;
+	font-size: 15px;
+	margin-top: 3%;
+}
+.newslist ul{
+	border-bottom:1px solid #ddd;
+	padding-bottom: 1%;
+}
+.img006{
+	width: 100%;
+	margin: 3% 0;
+}
+.newslist h3{
+	background:red;
+	color: #fff;
+	font-size: 18px;
+	width: 30%;
+	text-align: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin: 3% 0;
+}
+
+#user{
+	display:block;
+}
+.sh-det-share .banner {
+    width: 100%;
+    height: auto;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+.user-infor {
+    position: relative;
+    color: #fff;
+    font-size: 60px;
+    width: 100%;
+    height: 100%;
+}
+.user-infor-name {
+    position: absolute;
+    top: 11%;
+    left: 22%;
+}
+.sh-det-share h2 {
+    font-size: 63px;
+    color: #333;
+}
+.sh-det-share .open {
+    font-size: 56px;
+    color: #999;
+    width: 11%;
+    margin-bottom: 3%;
+    float: right;
+}
+.sh-det-share .title {
+    height: 15%;
+}
+.sh-det-share .usrname {
+    font-size: 21px;
+    color: #333;
+    float: right;
+    width: 69%;
+    height: 98%;
+    background: #fff;
+    padding: 3% 3% 0 3%;
+}
+.sh-det-share .time {
+    font-size: 28px;
+    color: #999;
+}
+#good{
+	width: 15%;
+}
+#img003{
+	width: 30%;
+}
+#num{
+	font-size: 34px;
+}
+.sh-det-share .headerpic img {
+    margin: 16% 20% 16% 2%;
+    width: 83%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+}
+@media only screen and (min-width:1280px) and (max-width:1440px){
+
+.uploadtip span{
+	color: #fff;
+	font-size: 70px;
+}
+.uploadtip .logo{
+	float: left;
+	margin-right: 2%;
+	width: 13%;
+}
+.aboutword{
+	width: 95%;
+	margin: 0 auto;
+	
+}
+.uploadtip .close{
+  color: #fff;
+  font-size: 92px;
+  outline: none;
+} 	
+
+.uploadtip	.upload{
+	margin: 0 1%;
+	background-color: #f93c42;
+	border: none;
+	color: #fff;
+	padding: 1% 2%;
+    font-size: 48px;
+    border-radius: 3px;
+    font-family: "microsoft yahei";
+    outline: none;
+}	
+	
+#mainimgdata li {
+    width: 32%;
+    float: left;
+    overflow: hidden;
+    margin: 5px;
+    max-height: 189px;
+}
+#class1content{
+	font-size: 22px;
+	line-height: 26px;
+}	
+.deta-share .develop{	
+	border: 1px solid #999;
+	border-radius: 50%;
+	padding:2% 4%;
+	font-size: 40px;
+	display: inline-block;
+}
+
+.deta-share .username{
+	float: left;
+	margin: 1% 1% 0 0;
+}
+
+.deta-share .header img{
+	width: 21%;
+	border-radius: 50%;
+	float: left;
+}
+.deta-share .time{
+	font-size: 40px;
+	color: #999;
+	margin-top: 1%;
+	display: inline-block;
+}
+.deta-share h2{
+	font-size: 45px;
+    margin: 1% 0;
+    text-align: center;
+}
+.deta-share .header{
+	width: 100%;
+	display: table;
+}
+.showMorehandle{
+	font-size: 22px;
+	text-align: center;
+	margin: 2% 0;
+}
+
+
+/*璁哄潧璇︽儏鍒嗕韩椤甸潰1*/
+.deta-share{
+	width: 100%;
+	height:100%;
+}
+
+.deta-share .user-name{
+	font-size: 40px;
+	color: #666;
+	display: inline-block;
+	margin: 3% 0 0 2%;
+	width: 77%;
+}
+
+.deta-share .news p{
+	text-indent: 2em;
+    line-height: 1.6;
+    font-size: 40px;
+    color: #333;
+}
+
+.deta-share .usr-say{
+	background-color: #f8f8f8;
+	height: 100%;
+	margin-top: 10%;
+	border-top: 1px solid #ddd;
+}
+.deta-share .usr-say .floor{
+	border-bottom: 1px solid #ddd;
+}
+.deta-share .usr-pic{
+	width: 20%;
+	border-radius:50%;
+	float: left;
+	margin-right: 3%;
+}
+.deta-share .usr-info{
+	font-size: 18px;
+	
+	display: inline-block;
+}
+.deta-share .usr-info span:first-child{
+	color: #147be3;
+	font-size: 45px;
+}
+.deta-share .usr-info span{
+	color: #b3b3b3;
+	font-size: 36px;
+}
+.deta-share  .floor{
+	padding: 3%;
+	display: block;
+}
+.deta-share .more{
+	color: #147be3;
+	font-size: 18px;
+	display: block;
+	margin-top: 6%;
+	text-align: right;
+}
+.usr-comment{
+	line-height: 1.6;
+    font-size: 40px;
+    margin-top: 2%;
+    display: inline-block;
+    text-align: justify;
+    color: #333;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.usrwrap{
+	width: 77%;
+}
+.good{
+	width: 15%;
+}
+.good .img003{
+	width: 30%;
+}
+.good span{
+	font-size: 45px;
+	}
+
+.good span{
+	font-size: 45px;
+	}
+/*鏂伴椈璇︽儏鍒嗕韩椤甸潰2*/
+.newshare p{
+	font-size: 18px;
+	line-height: 1.7;
+	color:#252525;
+	text-align: justify !important;
+}
+.newstitle a{
+	font-size: 20px;
+	line-height: 1.5;
+	color: #000;
+}
+.newslist .time{
+	color: #999;
+	font-size: 15px;
+	margin-top: 3%;
+}
+.newslist ul{
+	border-bottom:1px solid #ddd;
+	padding-bottom: 1%;
+}
+.img006{
+	width: 100%;
+	margin: 3% 0;
+}
+.newslist h3{
+	background:red;
+	color: #fff;
+	font-size: 18px;
+	width: 30%;
+	text-align: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin: 3% 0;
+}
+
+#user{
+	display:block;
+}
+#user{
+	display:block;
+}
+
+.sh-det-share h2{
+	font-size: 56px;
+    color: #333;
+    line-height: 1.5;
+
+}
+.sh-det-share .open{
+	font-size: 55px; 
+	color: #999;
+	width: 25%;
+  	margin-bottom: 3%;
+    float: right;
+}
+.sh-det-share .icon{
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	margin: 0 10%;
+	display: inline-block;
+	border-bottom-color: #333;
+}
+.sh-det-share .usrname{
+	font-size: 21px;
+	color: #333;
+	float: right;
+	width: 69%;
+	height:98%;
+	background: #fff;
+	padding: 3% 3% 0 3%;
+	
+}
+.sh-det-share .say{
+	font-size: 40px;
+	text-align: justify;
+	line-height: 1.5;
+	display: block;
+}
+.sh-det-share .time{
+	font-size: 35px;
+	color: #999;
+	
+}
+#img003{
+	width: 25%;
+}
+
+#good{
+	width: 13%;
+}
+.sh-det-share .title{
+	height:7%;
+}
+.user-infor-name {
+    position: absolute;
+    top: 2px;
+    left: 12%;
+}
+.user-infor {
+    position: relative;
+    color: #fff;
+    font-size: 45px;
+    width: 100%;
+    height: 100%;
+}
+.user-infor-name {
+    position: absolute;
+    top: 14px;
+    left: 23%;
+}
+.img002 {
+    width: 18% !important;
+    border-radius: 50%;
+    z-index: 1 !important;
+    left: 4%;
+    top: 15px;
+}
+.sh-det-share .headerpic img {
+    margin: 16% 20% 16% 2%;
+    width: 83%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.sh-det-share .title {
+    height: 28%;
+}	
+}
+@media only screen and (min-width:720px) and (max-width:1079px){
+
+.uploadtip span{
+	color: #fff;
+	font-size: 41px;
+}
+.uploadtip .logo{
+	float: left;
+	margin-right: 2%;
+	width: 13%;
+}
+.aboutword{
+	width: 95%;
+	margin: 0 auto;
+	
+}
+.uploadtip .close{
+  color: #fff;
+  font-size: 55px;
+  outline: none;
+} 	
+
+.uploadtip	.upload{
+	margin: 0 1%;
+	background-color: #f93c42;
+	border: none;
+	color: #fff;
+	padding: 1% 2%;
+    font-size: 32px;
+    border-radius: 3px;
+    font-family: "microsoft yahei";
+    outline: none;
+}	
+	
+#mainimgdata li {
+    width: 32%;
+    float: left;
+    overflow: hidden;
+    margin: 5px;
+    max-height: 189px;
+}
+#class1content{
+	font-size: 22px;
+	line-height: 26px;
+}	
+.deta-share .develop{	
+	border: 1px solid #999;
+	border-radius: 50%;
+	padding:2% 4%;
+	font-size: 40px;
+	display: inline-block;
+}
+
+.deta-share .username{
+	float: left;
+	margin: 1% 1% 0 0;
+}
+
+.deta-share .header img{
+	width: 21%;
+	border-radius: 50%;
+	float: left;
+}
+.deta-share .time{
+	font-size: 40px;
+	color: #999;
+	margin-top: 1%;
+	display: inline-block;
+}
+.deta-share h2{
+	font-size: 45px;
+    margin: 1% 0;
+    text-align: center;
+}
+.deta-share .header{
+	width: 100%;
+	display: table;
+}
+.showMorehandle{
+	font-size: 22px;
+	text-align: center;
+	margin: 2% 0;
+}
+
+
+/*璁哄潧璇︽儏鍒嗕韩椤甸潰1*/
+.deta-share{
+	width: 100%;
+	height:100%;
+}
+
+.deta-share .user-name{
+	font-size: 40px;
+	color: #666;
+	display: inline-block;
+	margin: 3% 0 0 2%;
+	width: 77%;
+}
+
+.deta-share .news p{
+	text-indent: 2em;
+    line-height: 1.6;
+    font-size: 40px;
+    color: #333;
+}
+
+.deta-share .usr-say{
+	background-color: #f8f8f8;
+	height: 100%;
+	margin-top: 10%;
+	border-top: 1px solid #ddd;
+}
+.deta-share .usr-say .floor{
+	border-bottom: 1px solid #ddd;
+}
+.deta-share .usr-pic{
+	width: 20%;
+	border-radius:50%;
+	float: left;
+	margin-right: 3%;
+}
+.deta-share .usr-info{
+	font-size: 18px;
+	
+	display: inline-block;
+}
+.deta-share .usr-info span:first-child{
+	color: #147be3;
+	font-size: 45px;
+}
+.deta-share .usr-info span{
+	color: #b3b3b3;
+	font-size: 36px;
+}
+.deta-share  .floor{
+	padding: 3%;
+	display: block;
+}
+.deta-share .more{
+	color: #147be3;
+	font-size: 18px;
+	display: block;
+	margin-top: 6%;
+	text-align: right;
+}
+.usr-comment{
+	line-height: 1.6;
+    font-size: 40px;
+    margin-top: 2%;
+    display: inline-block;
+    text-align: justify;
+    color: #333;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.usrwrap{
+	width: 77%;
+}
+.good{
+	width: 25%;
+}
+.good .img003{
+	width: 40%;
+}
+.good span{
+	font-size: 40px;
+	}
+
+
+/*鏂伴椈璇︽儏鍒嗕韩椤甸潰2*/
+.newshare p{
+	font-size: 18px;
+	line-height: 1.7;
+	color:#252525;
+	text-align: justify !important;
+}
+.newstitle a{
+	font-size: 20px;
+	line-height: 1.5;
+	color: #000;
+}
+.newslist .time{
+	color: #999;
+	font-size: 15px;
+	margin-top: 3%;
+}
+.newslist ul{
+	border-bottom:1px solid #ddd;
+	padding-bottom: 1%;
+}
+.img006{
+	width: 100%;
+	margin: 3% 0;
+}
+.newslist h3{
+	background:red;
+	color: #fff;
+	font-size: 18px;
+	width: 30%;
+	text-align: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin: 3% 0;
+}
+
+#user{
+	display:block;
+}
+
+.sh-det-share h2{
+	font-size: 56px;
+    color: #333;
+    line-height: 1.5;
+    width: 98%;
+    margin: 0 auto;
+
+}
+.sh-det-share .open{
+	font-size: 55px; 
+	color: #999;
+	width: 25%;
+  	margin-bottom: 3%;
+    float: right;
+}
+.sh-det-share .icon{
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	margin: 0 10%;
+	display: inline-block;
+	border-bottom-color: #333;
+}
+.sh-det-share .usrname{
+	font-size: 21px;
+	color: #333;
+	float: right;
+	width: 69%;
+	height:98%;
+	background: #fff;
+	padding: 3% 3% 0 3%;
+	
+}
+.sh-det-share .say{
+	font-size: 40px;
+	text-align: justify;
+	line-height: 1.5;
+	display: block;
+}
+.sh-det-share .time{
+	font-size: 35px;
+	color: #999;
+	
+}
+#img003{
+	width: 35%;
+}
+
+#good{
+	width: 25%;
+}
+.sh-det-share .title{
+	height:7%;
+}
+.user-infor-name {
+    position: absolute;
+    top: 2px;
+    left: 12%;
+}
+.user-infor {
+    position: relative;
+    color: #fff;
+    font-size: 45px;
+    width: 100%;
+    height: 100%;
+}
+.user-infor-name {
+    position: absolute;
+    top: 14px;
+    left: 23%;
+}
+.img002 {
+    width: 18% !important;
+    border-radius: 50%;
+    z-index: 1 !important;
+    left: 4%;
+    top: 15px;
+}
+
+}
+
+@media only screen and (min-width: 320px) and (max-width:479px){
+.more1{
+    width: 50%;
+    display: BLOCK;
+    margin: 0 auto;
+    font-size: 18px;
+    margin-top: 4%;
+
+}
+.more1 .send{
+	width: 13%;
+    margin-top: 1%;
+    float: left;
+    margin-right: 5%;
+}
+}	
+.uploadtip .slogan{
+	width: 52%;
+    display: block;
+    float: left;
+    line-height: 1;
+    text-align: left;
+    margin-top: 0.7%;
+}
+.uploadtip .slogan span:first-child{
+	font-size:21px;
+	color: #fff;
+	
+}
+.uploadtip .slogan span:nth-of-type(2){
+	font-size: 13px;
+	color: #aaa;
+}
+.uploadtip .slogan span:first-child{
+	color: #fff;
+	font-size: 18px;
+}
+.uploadtip .logo{
+	float: left;
+	margin-right:1%;
+	width: 12%;
+	border-radius: 10px;
+}
+
+.aboutword{
+	width: 96%;
+	margin: 0 auto;
+	
+}
+.uploadtip .close{
+  color: #fff;
+  font-size: 25px;
+  float: right;
+  margin-top: 2%;
+  outline: 0;
+} 	
+
+.uploadtip	.upload{
+	margin: 0 1%;
+	background-color: #f93c42;
+	border: none;
+	color: #fff;
+	padding: 1% 2%;
+    font-size: 16px;
+    font-family: "microsoft yahei";
+    outline: none;
+    margin-top: 2.5%;
+    display: inline-block;
+}
+.deta-share .news p{
+	text-indent: 2em;
+    line-height: 1.6;
+    font-size: 25px;
+    color: #333;
+    text-align: justify;
+}
+.deta-share .user-name{
+	font-size: 22px;
+	color: #666;
+	display: inline-block;
+	margin: 3% 0 0 2%;
+	width: 77%;
+}
+.deta-share .develop{	
+	border: 1px solid #999;
+	border-radius: 49%;
+	padding:1% 3%;
+	font-size: 18px;
+}
+.deta-share .time{
+	font-size: 22px;
+	color: #999;
+	margin-top: 2%;
+	display: inline-block;
+}
+.deta-share h2{
+	font-size: 30px;
+    margin: 5% 0;
+    line-height: 1.5;
+    text-align: justify;
+
+}
+.deta-share .usr-info span:first-child{
+	color: #147be3;
+	font-size: 30px;
+}
+.deta-share .usr-info span{
+	color: #b3b3b3;
+	font-size: 24px;
+}
+.usr-comment{
+	line-height: 1.5;
+    font-size: 24px;
+    margin-top: 2%;
+    display: inline-block;
+    text-align: justify;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.deta-share .more{
+	color: #147be3;
+	font-size: 24px;
+	display: block;
+	margin-top: 6%;
+	text-align: right;
+}
+.good{
+	width: 28%;
+}
+.good .img003{
+	width: 40%;
+}
+.good span{
+	font-size: 23px;
+}
+
+.sh-det-share h2{
+	font-size: 24px; 	
+	color:#333;
+	line-height: 35px;
+	
+	width: 98%;
+	margin: 0 auto;
+}
+.articleOpen{
+	cursor: pointer;
+}
+.sh-det-share .say{
+	font-size: 25px;
+	display: block;
+	text-align: justify;
+	line-height: 1.5;
+}
+.Name{
+	font-size: 21px;
+}
+.user-infor-name{
+	position: absolute;
+	top: 2px;
+	left: 8%;
+	width: 40%;
+}
+.timekeeper{
+	width: 14% !important;
+}
+.userinfo{
+	color: rgb(255, 255, 255);
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    left: 30%;
+}
+#mainimgdata li{
+	width: 30%;
+    float: left;
+    margin: 1.5%;
+}
+#mainimgdata li img{
+	width: 100%;
+}
+
+#publishtime{
+	color: rgb(255, 255, 255);
+    margin-left: 15%;
+    display: inline-block;
+}
+.img002{
+	width: 16% !important;
+	border-radius: 50%;
+	z-index: 1 !important;
+	left: 4%;
+    top: 1px;
+}
+.deta-share .more img{
+    width: 10%;
+    margin-top: 4%;
+    float: left;
+    margin-right: 5%;
+	
+
+}
+.deta-share .more1{
+    width: 50%;
+    display: BLOCK;
+    margin: 0 auto;
+    font-size: 21px;
+
+}
+
+}
+
+
+@media only screen and (min-width: 480px) and (max-width:719px){
+
+.uploadtip span{
+	color: #fff;
+	font-size: 20px;
+}
+.uploadtip .logo{
+	float: left;
+	margin-right: 2%;
+	width: 10%;
+}
+.aboutword{
+	width: 95%;
+	margin: 0 auto;
+	
+}
+.uploadtip .close{
+  color: #fff;
+  font-size: 25px;
+  outline: none;
+} 	
+
+.uploadtip	.upload{
+	margin: 0 1%;
+	background-color: #f93c42;
+	border: none;
+	color: #fff;
+	padding: 1% 2%;
+    font-size: 18px;
+    border-radius: 3px;
+    font-family: "microsoft yahei";
+    outline: none;
+    margin-top: 0.3%;
+}
+
+}
+@media only screen and (max-width: 320px){
+	
+.uploadtip .slogan{
+	width: 52%;
+    display: block;
+    float: left;
+    line-height: 1;
+    text-align: left;
+}
+.uploadtip .slogan span:first-child{
+	font-size:15px;
+	color: #fff;
+	
+}
+.uploadtip .slogan span:nth-of-type(2){
+	font-size: 12px;
+	color: #aaa;
+}
+.uploadtip .logo{
+	float: left;
+	margin-right: 2%;
+	width: 12%;
+	margin-top: 1.5%;
+	border-radius: 10px;
+}
+.aboutword{
+	width: 95%;
+	margin: 0 auto;
+	
+}
+.uploadtip .close{
+  color: #fff;
+  font-size: 25px;
+  float: right;
+  margin-top: 1%; 
+  outline: none;
+  
+} 	
+
+.uploadtip	.upload{
+	margin: 0 1%;
+	background-color: #f93c42;
+	border: none;
+	color: #fff;
+	padding: 1%;
+    font-size: 14px;
+    font-family: "microsoft yahei";
+    outline: none;
+    margin-top: 3%;
+    display: inline-block;
+}
+
+.deta-share .user-name{
+	font-size: 18px;
+	color: #666;
+	display: inline-block;
+	margin: 3% 0 0 2%;
+	width: 77%;
+}
+.deta-share .develop{	
+	border: 1px solid #999;
+	border-radius: 49%;
+	padding:1% 3%;
+	font-size: 16px;
+}
+.deta-share .time{
+	font-size: 18px;
+	color: #999;
+	margin-top: 2%;
+	display: inline-block;
+}
+.deta-share h2{
+	font-size: 25px;
+    margin: 5% 0;
+    line-height: 1.5;
+    text-align: justify;
+
+}
+.deta-share .news p{
+	text-indent: 2em;
+    line-height: 1.6;
+    font-size: 22px;
+    color: #333;
+    text-align: justify;
+}
+.usr-comment{
+	line-height: 1.5;
+    font-size: 18px;
+    margin-top: 2%;
+    display: inline-block;
+    text-align: justify;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.deta-share .usr-info span:first-child{
+	color: #147be3;
+	font-size: 22px;
+}
+.deta-share .usr-info span{
+	color: #b3b3b3;
+	font-size: 18px;
+}
+.deta-share .more{
+	color: #147be3;
+	font-size: 18px;
+	display: block;
+	margin-top: 6%;
+	text-align: right;
+}
+.good{
+	width: 28%;
+}
+.good .img003{
+	width: 40%;
+}
+.good span{
+	font-size: 19px;
+	}
+	
+#good{
+	width: 25%;
+}
+#good #img003{
+	width: 40%;
+}
+#good span{
+	font-size: 15px;
+}
+
+.sh-det-share .usrname{
+	font-size: 16px;
+	color: #333;
+	float: right;
+	width: 69%;
+	height:98%;
+	background: #fff;
+	padding: 3% 3% 0 3%;
+	
+}
+
+.img002{
+	width: 16% !important;
+	border-radius: 50%;
+	z-index: 1 !important;
+	left: 4%;
+    top: 10px;
+}
+.user-infor{
+	position: relative;
+	height: 100%;
+	color: #fff;
+	font-size: 20px;
+	width: 100%;
+	height: 100%;
+}
+.user-infor-name{
+	position: absolute;
+	top: 10px;
+	left:4%;
+}
+.header-img{
+	width: 60px !important;
+	height: 60px !important;
+	border-radius: 50%;
+}
+.sh-det-share .say{
+	font-size: 19px;
+    text-align: justify;
+    display: block;
+}
+.newshare h2{
+	font-size: 24px;
+	line-height: 35px;
+}	
+.sh-det-share .more img{
+    width: 10%;
+   	margin-top: 3.5%;
+    float: left;
+    margin-right: 5%;
+	
+
+}
+.sh-det-share .more{
+    width: 50%;
+    display: BLOCK;
+    margin: 0 auto;
+    font-size: 19px;
+    margin-top: 4%; 
+
+}
+.deta-share .more img{
+    width: 10%;
+    margin-top: 4%;
+    float: left;
+    margin-right: 5%;
+	
+
+}
+.deta-share .more1{
+    width: 50%;
+    display: BLOCK;
+    margin: 0 auto;
+    font-size: 19px;
+
+}
+.sh-det-share .usrname ul li img{
+	width:100%;
+	max-height:51px;
+}
+.more1{
+    width: 50%;
+    display: BLOCK;
+    margin: 0 auto;
+    font-size: 18px;
+    margin-top: 4%;
+
+}
+.more1 .send{
+	width: 11%;
+    margin-top: 3%;
+    float: left;
+    margin-right: 5%;
+}
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>选项查看页</title>
+<style>
+	.modal-backdrop{
+		z-index:140;	
+	}
+	.modal {
+	    width: 550px;
+	    z-index: 150;
+	}
+	.pop_wrap{
+		height: 550px;
+	    margin: 0 auto;
+	    width: 530px;
+	}
+	.pop_wrap .table td.left{text-align:right;color:#0088CC}
+	.alert{margin:10px;}
+</style>
+
+</head>
+<body>
+    <div class="pop_wrap" style="overflow:auto;">
+        <div class="alert alert1" style="color:#b94a48;font-size: 15px;display:none;">
+		</div>
+		<div class="checkcontainer" >
+			<div class="page-header" id="popcheckpage_option" style="margin-bottom: 10px;">
+                <h4 style="margin-bottom: 10px;margin-top: 10px;"></h4>
+          	</div>
+			<div class="oppageimg" style="margin-bottom:35px;text-align:center;" id="popcheckpage_img">
+			    <img src="" style="width: 90%;height: 250px;">
+			</div>		
+			<div class="vopagecontentbody" id="popcheckpage_content" style="width: 90%;margin-left:5%;margin-right: 5%;">
+			</div>
+			</div>
+	</div>
+<script type="text/javascript">
+    var _opid = $("#temOpID").val(); 
+     
+     $(function(){
+    	 initViewPageInfoByOpId(_opid);
+    	 $(".modal-header .close").click(function(){
+    		 $("#temOpID").attr("value","");
+    	 });
+     });
+     
+     function initViewPageInfoByOpId(_opid){
+  	   $.ajax({
+  			type:"POST",
+  			url:"getOptionAndImgInfo.do",
+  			data:{action:'getoptionandimginfo',opid:_opid},
+  			dataType:"json",
+  			success:function(data){
+  				if(data.ret=="1"){
+  					$("#temOpID").attr("value","");
+  					_optionContet = data.retinfo.opinfo.voName;
+  					_imageUrl = data.retinfo.opinfo.voImgAdd;
+  					_viewPageContent = data.retinfo.opinfo.voViewContent;
+  					_showImgFlag = data.retinfo.opinfo.voShowOpImgFlag;
+  					// 赋值
+  					$("#popcheckpage_option h4").text(_optionContet);
+  					if(_showImgFlag=="1" && _imageUrl != ""){
+  						$("#popcheckpage_img img").attr("src",rootURL + _imageUrl);
+  					}else{
+  						$("#popcheckpage_img").css("display","none");
+  					}
+  					$("#popcheckpage_content").append(_viewPageContent);
+  				}else{
+  					$(".alert1").html(data.retinfo.errormsg);
+  					$(".alert1").css("display","block");
+  				}
+  			}
+  		});
+     }
+</script>
+</body>
+</html>

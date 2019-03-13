@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   	<link rel="stylesheet" href="../third/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../export/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sliderBar.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/editor.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sidebar-panel.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/model.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/navMenuSet.css"/>
+</head>
+<body style="overflow: hidden;">
+<!--悬浮框开始-->
+<div class="navMenuSet posAbsolute" style="display:block;">
+    <div class="navMenuSet-tit">
+        <div class="pull-left mgl20 font16">
+            <b>导航菜单设置</b>
+        </div>
+        <div class="pull-right mgr20">
+            <img class="btn-hide" src="../export/images/navMenu/navMenu1.png"/>
+        </div>
+    </div>
+    <div class="columnList bgf pull-left clearfix">
+        <div class="columu-text posRelative">
+            <input class="pad5 bgf" type="text" placeholder="请输入搜索的内容"/>
+            <img class="posAbsolute" src="../export/images/navMenu/navMenu3.png" alt=""/>
+        </div>
+        <ul class="mgl20 setHeight">
+            <li>
+                <input type="checkbox"/>
+                <img class="mgl10 toggleBtn" src="../export/images/navMenu/navMenu4.png"/>
+                <img class="mgl10 hide1 toggleBtn" src="../export/images/navMenu/navMenu5.png"/>
+                <b>军事</b>
+            </li>
+            <li>
+                <input type="checkbox"/>
+                <img class="mgl10 toggleBtn" src="../export/images/navMenu/navMenu5.png"/>
+                <img class="mgl10 hide1 toggleBtn" src="../export/images/navMenu/navMenu4.png"/>
+                <b>新闻部</b>
+                <ul>
+                    <li><input class="pull-left" type="checkbox"/><span class="mgl35 font12"><b>时政新闻</b></span></li>
+                    <li><input class="pull-left mgt5" type="checkbox"/><span class="mgl35 font12"><b>新闻热点</b></span>
+                    </li>
+                    <li><input class="pull-left mgt5" type="checkbox"/><span class="mgl35 font12"><b>奥运专题</b></span>
+                    </li>
+                    <li><input class="pull-left mgt5" type="checkbox"/><span class="mgl35 font12"><b>奥运</b></span></li>
+                    <li><input class="pull-left mgt5" type="checkbox"/><span class="mgl35 font12"><b>车祸</b></span></li>
+                    <li><input class="pull-left mgt5" type="checkbox"/><span class="mgl35 font12"><b>寻人</b></span></li>
+                    <li><input class="pull-left mgt5" type="checkbox"/><span class="mgl35 font12"><b>寻物</b></span></li>
+                    <li><input class="pull-left mgt5" type="checkbox"/><span class="mgl35 font12"><b>水灾</b></span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="pull-right column-right clearfix">
+        <ul class="setColumn font14 clearfix posRelative">
+            <div class="posAbsolute total font16"><b class="pa5">共选中<span class="num">8</span>个</b></div>
+            <li class="pull-left">经济<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+            <li class="pull-left">国内军事<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+            <li class="pull-left">政治<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+            <li class="pull-left">经济<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+            <li class="pull-left">政治<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+            <li class="pull-left">经济<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+            <li class="pull-left">经济<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+            <li class="pull-left">经济<img class="posAbsolute closeBtn" src="../export/images/navMenu/navMenu2.png" alt=""/></li>
+        </ul>
+        <div class="fastChoice font14 clearfix posRelative mgt30">
+            <ul class="column-type clearfix mgt20">
+                <div class="posAbsolute total font16"><b class="pa5">快速选择(请先在左侧栏目中勾选其中一个栏目)</b></div>
+                <li class="pull-left borderNone">栏目类型：</li>
+                <li class="pull-left btn-curr activt cursor">兄弟栏目</li>
+                <li class="pull-left btn-curr cursor">子栏目</li>
+                <li class="pull-left btn-curr cursor">顶级栏目</li>
+                <li class="pull-left btn-curr cursor">单个栏目</li>
+                <li class="pull-left btn-curr cursor">父栏目</li>
+            </ul>
+            <div class="column-style font14 clearfix mgt20 mgb10">
+                <div class="pull-left fontWeight mgl15 mgr15 height50">栏目属性：</div>
+                <ul>
+                    <li class="pull-left">
+                        <input class="pull-left" type="checkbox"/><span class="mgl5 fontWeight">报纸</span></li>
+                    <li class="pull-left">
+                        <input class="pull-left" type="checkbox"/><span class="mgl5 fontWeight">电子新闻</span></li>
+                    <li class="pull-left">
+                        <input class="pull-left" type="checkbox"/><span class="mgl5 fontWeight">首页新闻</span></li>
+                    <li class="pull-left">
+                        <input class="pull-left" type="checkbox"/><span class="mgl5 fontWeight">连载</span></li>
+                    <li class="pull-left">
+                        <input class="pull-left" type="checkbox"/><span class="mgl5 fontWeight">专题</span></li>
+                    <li class="pull-left">
+                        <input class="pull-left" type="checkbox"/><span class="mgl5 fontWeight">版次</span></li>
+                    <li class="pull-left">
+                        <input class="pull-left" type="checkbox"/><span class="mgl5 fontWeight">栏目</span></li>
+                </ul>
+            </div>
+            <ul class="mgt20 clearfix show-style">
+                <li class="pull-left  fontWeight mgl15 mgr15">显示方式：</li>
+                <li class="pull-left mgr10">
+                    <input class="btn-curr activt" type="button" value="总是显示该栏目"/>
+                    <input class="btn-curr" type="button" value="当天栏目中有文章再显示"/>
+                </li>
+            </ul>
+            <ul class="mgt30 clearfix">
+                <li class="pull-left  fontWeight mgl15 mgr15">从选中的栏目中读取第：</li>
+                <li class="pull-left"><input class="inputStyle78 pad5" type="text"/></li>
+                <li class="pull-left mgl5 mgr5 readLine">—</li>
+                <li class="pull-left"><input class="inputStyle78 pad5" type="text"/></li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-center btn-content">
+        <input class="btn fontWeight mgt20 mgr15" type="button" name="" value="确定"/>
+        <input class="btn fontWeight mgt20" type="button" name="" value="取消"/>
+    </div>
+
+</div>
+<!--悬浮框结束-->
+</body>
+</html>

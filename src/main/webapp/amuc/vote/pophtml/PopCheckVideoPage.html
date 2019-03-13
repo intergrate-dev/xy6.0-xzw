@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>选项查看页</title>
+<style>
+.modal-backdrop {
+	z-index: 140;
+}
+
+.modal {
+	width: 550px;
+	z-index: 150;
+}
+
+.pop_wrap {
+	height: 550px;
+	margin: 0 auto;
+	width: 530px;
+}
+
+.pop_wrap .table td.left {
+	text-align: right;
+	color: #0088CC
+}
+
+.alert {
+	margin: 10px;
+}
+</style>
+
+</head>
+<body>
+	<div class="checkcontainer" style="width: 550px; height: 310px;">
+	</div>
+	<!-- 
+	<div class="container" style="width: 550px; height: 100px;">
+		<div class="alert success">
+		视频地址
+		</div>
+			<textarea style='width:510px;height:80px;margin-left:10px;' id="videourlinput"></textarea>
+	</div>
+	 -->
+	<script type="text/javascript">
+	var _opid = $("#temOpID").val(); 
+    $(function(){
+   	 initVideoUrlByOpId(_opid);
+   	 $(".modal-header .close").click(function(){
+   		 $("#temOpID").attr("value","");
+   	 });
+    });
+	
+    
+    function initVideoUrlByOpId(_opid){
+   	   $.ajax({
+   			type:"POST",
+   			url:"VoteOption.do",
+   			data:{action:'getoptionandimginfo',opid:_opid},
+   			dataType:"json",
+   			success:function(data){
+   				if(data.ret=="1"){
+   					$("#temOpID").attr("value","");
+   					$("#videourlinput").val(data.retinfo.opinfo.voVideoAdd);
+   					$(".checkcontainer").html("<video width='540' height='300' controls='controls' style='margin: auto; display: block;'><source src='"+data.retinfo.opinfo.voVideoAdd+"' type='video/mp4'></video>");
+   				}else{
+   					$(".alert1").html(data.retinfo.errormsg);
+   					$(".alert1").css("display","block");
+   				}
+   			}
+   		});
+      }
+		
+	</script>
+</body>
+</html>

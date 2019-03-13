@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>图片页跳转</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+    <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="insertlink.css" />
+    <link rel="stylesheet" href="../../../script/bootstrap-3.3.4/css/bootstrap.min.css">
+    <!--<script src="code_1.js"></script>-->
+</head>
+<body >
+ <div class="wrapper" >
+    <div id="codeTab">
+        <div id="tabBodys" class="tabbody">
+            <div id="code-content">
+                <div>
+                    <h4>当前稿件的页数：<span></span></h4>
+                    <ul>
+                        <li class="btn btn-link">添加(更新)图片页跳转</li>
+                        <li class="btn btn-default">清除所有图片跳转</li>
+                        <li class="btn">取消</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+ <script type="text/javascript">
+     //进入页面需要先初始化一下
+     var editor1 = UE.getEditor('editor').getContent();
+     var arrLink = editor1.split('_ueditor_page_break_tag_');
+     var numLink =arrLink.length;
+     var editorStr = '';
+
+     $('#code-content span').text(numLink);
+
+     $('#code-content li').eq(0).on('click',function () {
+
+         if(numLink > 1){
+            //判定数组下否有 img 标签
+             for(var i = 0; i < arrLink.length; i++){
+
+                 if(arrLink[i].indexOf('<img ') != -1){
+                     //需要加上 img 外面已经有 a 标签的判定
+//                     var imgLink = arrLink[i].replace(/<\s?img[^>]*>/gi,function(val){
+////                     var imgLink = arrLink[i].replace(/(\<[^(\<)|a]+)(\<\s?img[^>]*\>)\s*(\<[^(\<)|a]+\>)/gi,function(val){
+//
+//                         var curVal=val;
+//
+//                         return '<a href=/content_0000_'+ i + '.html>'+curVal+'</a>'
+//
+//                     });
+//                     console.log()
+                     var article = window.parent.article;
+                     var pageNum = parseInt(i) + 2;
+
+                     if( i == arrLink.length-1){
+                         //最后一个不添加链接
+                         imgLink = arrLink[i];
+
+                     }else{
+                         //添加图片链接
+                         imgLink = arrLink[i].replace(/(\<\s*[^a][^\>]+\>)(\<\s*img[^>]*\>)\s*(\<[^(\<)|a]+\>)/gi, '$1<a href='+ article.prefixUrl +  article.docID + '_' + pageNum + '.' + article.suffixUrl+'>$2</a>$3')
+
+                     }
+
+                     arrLink[i] = imgLink;
+                 }
+
+                 //拼接字符串最后一个
+                 if(i < arrLink.length-1){
+
+                     editorStr += arrLink[i] + '_ueditor_page_break_tag_';
+                 }else{
+                     editorStr += arrLink[i];
+                 }
+             }
+         }else{
+             alert('暂无分页,请添加分页后再添加分页链接')
+             dialog.close();
+             return
+         }
+         UE.getEditor('editor').setContent(editorStr);
+         dialog.close();
+     })
+     $('#code-content li').eq(1).on('click',function () {
+         //可以加入优化判定
+
+         if(editor1.match(/<\s*a[^\<]*\>\s*\<\s*img[^>]*\>\s*\<\s*\/a\>/gi)){
+             editor1 = editor1.replace(/<\s*a[^\<]*\>\s*(\<\s*img[^>]*\>)\s*\<\s*\/a\>/gi, '$1')
+             UE.getEditor('editor').setContent(editor1);
+         }
+         dialog.close();
+     });
+     $('#code-content li').eq(2).on('click',function () {
+         dialog.close();
+     });
+
+ </script>
+</body>
+</html>

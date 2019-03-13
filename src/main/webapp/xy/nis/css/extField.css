@@ -1,0 +1,74 @@
+@CHARSET "UTF-8";
+/* CSS Document */
+.sidebar-list{
+	width:225px;
+	height:100px;
+	overflow-y:auto; 
+	padding-bottom : 20px;
+	background-color:#EEEEEE;
+	border-radius: 3px;
+	margin-left: 0px;	
+}
+.sidebar-list .scroll{
+	cursor: pointer;
+	position: absolute;
+	right: 0px;
+	width: 8px;
+	top:0;
+	display:none;
+	z-index:1000
+}
+.sidebar-list .scroll em {
+	background-image: url("http://img.t.sinajs.cn/t4/appstyle/V5_webim/images/webim_scroll_bg.png");
+	cursor: pointer;
+	display: block;
+	font-size:0;
+	line-height: 0;
+	font-style: normal;
+	font-weight: normal;
+    
+}
+.sidebar-list .scroll .scroll_top {
+	background-position: 0 0;
+	border-radius: 4px 4px 0 0;
+	height: 3px;
+	margin-left: 2px;
+	overflow: hidden;
+	width: 6px;
+}
+.sidebar-list .scroll .scroll_slider {
+	background-position: -12px 0;
+	background-repeat: repeat-y;
+	min-height: 5px;
+	width: 8px;
+}
+.sidebar-list .scroll .scroll_bottom {
+	background-position: 0 -7px;
+	border-radius: 0 0 4px 4px;
+	height: 4px;
+	margin-left: 2px;
+	overflow: hidden;
+	width: 6px;
+}
+
+.sidebar-list table{
+	width: 100%;
+}
+
+.sidebar-list td{
+	cursor: pointer;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.sidebar-list td:hover{
+	cursor: pointer;
+	background: #DFDADA;
+}
+
+.sidebar-list td input{
+	width: 150px;
+}
+
+.chosenBackground{
+	background: #DADADA;
+}

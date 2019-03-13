@@ -1,0 +1,169 @@
+#sliderBar{
+    margin-top: 22px;
+    margin-left: 0;
+	width: 210px;
+	color: #fff;
+	left: 0;
+	top: 22px;
+	background-color: #3d3d3d;
+	overflow-x: hidden;
+    z-index: 1;
+}
+#sliderBar .pageColor{
+	background-color: #3d3d3d;
+}
+#sliderBar .page-content{
+	min-height: 95px;	
+}
+#sliderBar .pageHeg{
+	height: 25px;
+	line-height: 25px;
+}
+#sliderBar .line{
+	border:2px solid #b8bdc2;
+}
+
+/*组件样式*/
+#sliderBar .layout-content li{
+	width: 33%;
+	text-align: center;
+	margin: 10px 0;
+}
+#sliderBar .layout-content li img{
+	display: block;
+	margin: 0 auto;
+}
+.pageScale{
+    background: #3d3d3d;
+    background: -moz-linear-gradient(top, #333333, #3d3d3d 50%, #333333 100%);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), color-stop(50%, #3d3d3d), color-stop(100%, #333333));
+}
+.pageScaleHeg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:210px;
+    height: 20px;
+    line-height: 20px;
+}
+.Scaleline{
+    border-bottom: 1px solid #2c2c2c;
+}
+.ScaleBtmLine{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    border:1px solid #3d3d3d;
+    width: 210px;
+}
+/*多图 标题为空提示*/
+.gallery-edit .bottom-title a:empty:before {
+    content: '请添加标题内容';
+    color: #bbb;
+}
+.gallery-edit .bottom-title a:empty:hover {
+    text-decoration: none;
+    color: #bbb;
+}
+.gallery-edit .bottom-title a:focus:before{
+    content:none;
+}
+/*.le-gallery .bottom-title a:empty:focus {
+    text-decoration: none;
+    color: #bbb;
+}*/
+.gallery-edit .over-title span:nth-child(1):empty:before {
+    content: '请添加标题内容';
+    color: #bbb;
+}
+.gallery-edit .over-title span:nth-child(1):focus:before{
+    content:none;
+}
+/*文字可编辑、为空时提示*/
+#container .textCanEdit{
+    outline: 1px solid rgba(255,0,0,0.8);
+    outline-offset: -1px;
+}
+.le-text:empty:before{
+    content: attr(data-placeholder);
+    color:#bbb;
+}
+.le-text:focus:before{
+    content:none;
+}
+/*局部文字编辑*/
+#partText{
+    position: absolute;
+    top: 32px;
+    left: 10px;
+    z-index: 99;
+}
+#partText .partText-set{
+    display: none;
+    width:776px;
+    height:34px;
+    background:#3d3d3d;
+    color: #fff;
+    padding: 5px 20px 0 20px;
+    clear: both;
+}
+.divselect span {
+    display: block;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #3d3d3d;
+    background: url(../images/sliderBar/sliderBar1.png) no-repeat right center;
+}
+.left-line{
+    display:block;
+    float: left;
+    margin-top: 4px;
+    height: 16px;
+    width: 1px;
+    background: #2f2f2f;
+}
+.right-line{
+    display:block;
+    float: left;
+    margin-top: 4px;
+    height: 16px;
+    width: 1px;
+    background: #494949;
+}
+.part-hover:hover{
+    background-color: #1c1c1c;
+    background-clip: content-box;
+}
+.parttHeight {
+    height: 29px;
+    padding-bottom: 5px;
+    line-height: 22px;
+}
+.partlink-box{
+    position: absolute;
+    width: 526px;
+    top: 29px;
+    right: -133px;
+    padding: 10px;
+    background: #3d3d3d;
+    border-top: 1px solid #1c1c1c;
+}
+#partLinkUrl{
+    width: 340px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    border-radius: 0;
+}
+#partLinkBtn{
+    width: 64px;
+    height: 30px;
+    line-height: 22px;
+    padding: 4px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #fff;
+    background: #03A8F1;
+    border: none;
+}
+

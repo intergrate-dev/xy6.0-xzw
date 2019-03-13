@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<style>
+		body{
+			background-color:#fff;
+		}
+	</style>
+</head>
+<body>
+<button id="getDataBtn">获得前台传来的数据</button>
+<button id="closeDialog">关闭dialog</button>
+<button id="sendDataBtn">向前台发送数据</button>
+</body>
+<script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#getDataBtn").click(function(e){
+            var articleIds = parent.window.LEDialog.getData();
+            alert(articleIds);
+        });
+        $("#closeDialog").click(function(e){
+            parent.window.LEDialog.closeDialog();
+        });
+        $("#sendDataBtn").click(function(e){
+            parent.window.LEDialog.dialogConfirm(jsonArray);
+        });
+    });
+
+    var jsonArray = [
+        {
+            id: "1111",
+            imgPath: 'http://a.page.9466.com/169705/66d6ef719597d15946d91e354df6d3f7.jpg',//src
+            title: '主题：罗胖子最牛逼', //h2
+            summary: '简介：罗胖子最牛逼',//p
+            link: 'http://www.baidu.com'//a
+        },
+        {
+            id: "1112",
+            imgPath: 'http://a.page.9466.com/169705/cfd589543527127ced39e2b8d9ecb9cf.png',
+            title: '主题：小胖最牛逼',
+            summary: '简介：小胖最牛逼',
+            link: 'http://www.baidu.com'
+        },
+        {
+            id: "1113",
+            imgPath: 'http://a.page.9466.com/169705/2c2216a6508905a34fe5e71cb48b2605.jpg',
+            title: '主题：小李最牛逼',
+            summary: '简介：小李最牛逼',
+            link: 'http://www.baidu.com'
+        },
+        {
+            id: "1114",
+            imgPath: 'http://a.page.9466.com/169705/97a9c3c2ee776fa13bf1966bbbbe5f1e.jpg',
+            title: '主题：小刘最牛逼',
+            summary: '简介：小刘最牛逼',
+            link: 'http://www.baidu.com'
+        }
+    ];
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+﻿.ztree{
+	overflow: auto;
+	background: #FBFBFB;
+	border-bottom: 1px solid #8EB3D6;
+	border-right: 1px solid #8EB3D6;
+	border-top: 1px solid #8EB3D6;
+	padding-top: 10px;
+	position: absolute;
+	top:26px;
+	right:0;
+	left:0;
+	bottom:0;
+	z-index:1;
+}
+.ztree li{
+	margin:2px 0;
+}
+.ztree li a{
+	color: #184382;
+	padding:2px 5px;
+}
+.ztree li a:hover{
+	background:#e5effa;
+}
+.ztree li a.curSelectedNode{
+	background:#84B1E1;
+	color:#fff;
+	border:1px solid #84B1E1;
+}
+.ztree li span.button.switch {
+    height: 12px;
+    width: 12px;
+    overflow: hidden;
+    background: #FBFBFB url('../images/icon_skin.gif') repeat-x 0 0;
+    margin-top:3px;
+}
+.ztree li span.button.noline_docu{
+	background:none;
+}
+.ztree li span.button.noline_close{
+	background-position: -15px 0;
+}

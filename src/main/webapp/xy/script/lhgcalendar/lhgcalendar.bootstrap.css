@@ -1,0 +1,204 @@
+﻿/*!
+ * lhgcore Calendar Plugin StyleSheet
+ * Copyright (c) 2009 - 2012 By Li Hui Gang
+ */
+.cui_well{
+	/*from bootstrap*/
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	/*end*/
+	border: 1px solid #e3e3e3;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+			border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	padding:5px 4px 4px;
+	margin:0;
+	background-color: #fff;
+}
+
+.lcui_border {
+	font-size: 12px;
+	line-height:15px;
+	color:#707070;
+	width:100%;
+	border:1px solid #CDCDCD;
+	background:#fafafa;
+	-webkit-box-shadow:0 2px 2px -2px #cccccc;
+	-moz-box-shadow:0 2px 2px -2px #cccccc;
+	box-shadow:0 2px 2px -2px #cccccc;
+	border-collapse:collapse;
+	border-spacing:0;
+	max-width: 100%;
+}
+.lcui_border td, .lcui_border th {
+	text-align:center;
+	/*width:15px;
+	height:15px;*/
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:none;
+	padding:1px 5px;
+}
+/*.cui_py,.cui_ny,.cui_pm,.cui_nm {
+	width: 3px;
+	background: url(default/default_s.gif) no-repeat;
+}*/
+
+.lcui_head .dow {
+	color: #5F5F5F;
+	font-weight: bold;
+}
+.lcui_head tr:first-child {
+	background:#ececec;
+	background-image:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkZmRmZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VjZWNlYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+	background-size:100%;
+	background-image:-webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #fdfdfd), color-stop(100%, #ececec));
+	background-image:-webkit-linear-gradient(top, #fdfdfd, #ececec);
+	background-image:-moz-linear-gradient(top, #fdfdfd, #ececec);
+	background-image:-o-linear-gradient(top, #fdfdfd, #ececec);
+	background-image:linear-gradient(top, #fdfdfd, #ececec);
+	border-bottom:1px solid #CDCDCD
+}
+
+/*.cui_py {
+	display: block;
+	width: 9px;
+	height: 16px;
+	background-position: -25px 0;
+}
+
+.cui_ny {
+	display: block;
+	width: 9px;
+	height: 16px;
+	background-position: -35px 0;
+}*/
+
+.lcui_head .cui_iy,.lcui_head .cui_im {
+	width: 20px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #eee;
+	height: 14px;
+	line-height: 14px;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+	margin-right: 2px;
+	cursor: pointer;
+	background-color: #EEE;
+}
+.lcui_head .cui_iy{
+	width:40px;
+}
+.cui_pm,.cui_nm{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin-top: 1px;
+	*margin-right: .3em;
+	line-height: 14px;
+	vertical-align: text-top;
+	background-image: url("cui_icon.png");
+	background-repeat: no-repeat;
+	text-decoration: none;
+}
+.cui_pm {
+	background-position: 0 0;
+}
+
+.cui_nm {
+	background-position: -14px 0;
+}
+
+.lcui_body td {
+	color: #ddd;
+}
+
+.lcui_body td.day {
+	color: #333;
+	cursor: pointer;
+}
+
+.lcui_body td.pDay,.lcui_body td.nDay {
+	color: #999;
+	cursor: pointer;
+}
+
+.lcui_body td.day:hover {
+	background: #32779A;
+	color:#FFF;
+}
+
+.lcui_body td.day.cui_today{
+	background:#519FC7;
+	color:#FFF;
+	border-color:#0044cc #0044cc #002a80;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25)
+}
+.cui_tbtn,.cui_dbtn {
+	display: block;
+	color: #333;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius:4px;
+	padding:2px 0;
+}
+
+
+.cui_tbtn:hover,.cui_dbtn:hover {
+	background-color: #eee;
+	color: #333;
+	text-decoration: none;
+}
+
+.lcui_time input {
+	margin: 0;
+	padding: 0;
+	border: 1px solid #999;
+	width: 20px;
+	height: 17px;
+	font: 11px Verdana,Arial;
+	text-align: center;
+	background-color: #f2f2f2;
+	line-height: 17px;
+}
+
+.cui_ymlist {
+	position: absolute;
+	border: 1px solid #0093d1;
+	background-color: #fff;
+	width: 120px;
+}
+
+.cui_lbox a {
+	display: block;
+	padding: 3px 0;
+	background: #f7f7f7;
+	text-decoration: none;
+	cursor: default;
+	color: #000;
+	text-align: center;
+	font: 11px verdana,arial,sans-serif;
+}
+
+.cui_lbox a:hover {
+	background: #3991d1;
+	color: #fff;
+}
+
+.cui_ybar {
+	background-color: #f7f7f7;
+}
+
+.cui_ybar a {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	color: #000;
+}

@@ -1,0 +1,109 @@
+button.submit=保存(S)
+button.fvproc.inheritsubmit=保存&继承(C)
+
+button.fvproc.submit.hint=保存本文件夹的权限设置
+button.fvproc.inheritsubmit.hint=保存本文件夹的权限设置，并把权限复制给所有子文件夹
+button.fvproc.inheritsubmit.confirm=确认所有子文件夹都复制当前权限吗？原来各子文件夹上的权限设置将被替换！
+
+operation.success=操作完成
+operation.fail=操作失败！请参考日志。错误信息是：
+fail=系统错误！
+
+#------For System Log-----
+info.flow=修改流程权限
+info.flow.description=修改角色的流程权限 [角色ID:{0},流程ID:{1}]
+info.unflow=修改非流程权限
+info.unflow.description=修改角色的非流程权限 [角色ID:{0},文档类型ID:{1}]
+info.folder=修改文件夹权限
+info.folder.description=修改角色的文件夹权限 [角色ID:{0}]
+
+info.fvproc=修改文件夹操作权限
+info.fvproc.description=修改角色的文件夹操作权限 [角色ID:{0},文件夹ID:{1},是否复制给所有子文件夹:{2}]
+info.fvproc.lineselect=全选
+info.fvproc.lineselect.hint=点此将一次性选择整列
+
+info.cat=修改分类权限
+info.cat.description=修改角色的分类权限 [角色ID:{0},分类ID:{1}]
+info.filterrule=过滤器/规则权限设置
+info.filterrule.description=修改角色的过滤器/规则权限 [角色ID:{0}]
+
+info.resource.flow=修改流程权限
+info.resource.flow.description=按流程节点修改多角色的流程权限 [流程节点ID:{1}]
+info.resource.unflow=修改非流程权限
+info.resource.unflow.description=按文档类型修改多角色的非流程权限 [文档类型ID:{1}]
+info.resource.folder=修改文件夹权限
+info.resource.folder.description=按文件夹/视图修改多角色的权限 [文件夹/视图ID:{1}]
+
+#------Flow Permission-----
+flow.caption=流程操作权限设置
+flow.unflow=非流程操作
+flow.fail.nounflow=没有非流程操作，不必设权限！
+flow.read=读
+flow.newDoc=新建文档
+flow.currentFlow=当前流程：
+flow.fail=操作失败！请参考日志。错误信息是：
+flow.hint=提示：在节点名称上单击可以选中/取消整行
+flow.newdoc.hint=（表示是否可以在本流程上新建文档）
+flow.fail.InvalidRole=不正确的角色：
+flow.fail.NoFlow=流程不存在：
+
+#-------Folder Permission------
+folder.select=请选择要配置权限的文档库：
+folder.allFolder=所有文档库
+folder.permission.title=文件夹权限管理
+folder.permission.read=读
+folder.permission.transfer=传递
+folder.permission.deal=处理
+
+#-------Cat Permission------
+cat.hint= < 分类类型 >
+
+#-------Resource Folder Permission------
+resource.folder.title=文件夹权限设置
+resource.folder.select=当前文件夹/视图：
+resource.folder.hint=（设置文件夹权限后，需刷新缓存才会生效）
+resource.tree.role=机构和角色
+
+#-------Resource Flow Permission------
+resource.flow.select=当前流程节点：
+resource.unflow.title=非流程操作权限设置
+
+#-------Filter and Rule Permission------
+filter.title=过滤器权限
+rule.title=规则权限
+
+#-------FolderView Proc Permission------
+fvproc.title=文件夹操作权限设置
+fvproc.copy=复制权限
+fvproc.copy.title=作为要复制权限的参考文件夹
+fvproc.paste=粘贴权限
+fvproc.paste.title=按参考文件夹的权限来复制本身的权限
+fvproc.copy.hint=权限参考文件夹：
+fvproc.copy.hint.noref=没有设置参考文件夹
+fvproc.copy.hint.same=相同文件夹，不必复制
+fvproc.copy.hint.confirm=确定要复制以下文件夹的操作权限吗？本文件夹原有的权限将被清除！\\n权限参考文件夹：
+
+resource.fvproc.copy.title=作为要复制权限的参考角色
+resource.fvproc.paste.title=按参考角色的权限来复制本身的权限
+resource.fvproc.copy.hint=权限参考角色：
+resource.fvproc.copy.hint.noref=没有设置参考角色
+resource.fvproc.copy.hint.same=同一个角色，不必复制
+resource.fvproc.copy.hint.confirm=确定要复制以下角色的操作权限吗？本角色原有的权限将被清除！\\n权限参考角色：
+
+fvproc.fv.title=对于文件夹
+fvproc.fv.canread=可浏览
+fvproc.fv.cantransfer=可传入数据
+
+#-------Multi Code Proc Permission------
+multiproc.title=操作权限设置
+multiproc.copy.title=作为要复制权限的参考节点
+multiproc.paste.title=按参考节点的权限来复制本身的权限
+multiproc.copy.hint=权限参考节点：
+multiproc.copy.hint.noref=没有设置参考节点
+multiproc.copy.hint.same=相同节点，不必复制
+multiproc.copy.hint.confirm=确定要复制以下节点的操作权限吗？本节点原有的权限将被清除！
+
+multiproc.fv.title=对于节点
+button.multiproc.submit.hint=保存本节点的权限设置
+button.multiproc.inheritsubmit.hint=保存本节点的权限设置，并把权限复制给所有子节点
+button.multiproc.inheritsubmit.confirm=确认所有子节点都复制当前权限吗？原来各子节点上的权限设置将被替换！

@@ -1,0 +1,580 @@
+/**主界面和列表的样式*/
+#wrapMain {
+	padding-top: 0;
+}
+label{
+	font-weight: 100;
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style: none;
+}
+.account{padding-left:10px;}
+
+.toolkitArea, #tablePinHeader{height:0px; display:none;}
+#status{background-color:white;}
+#main_doclist{border-top:1px solid #ddd;}
+
+#listing{
+	background-color:white;
+}
+.doclist td {
+	padding-left: 10px;
+}
+/*列表上的图片的尺寸控制*/
+.listAttachments {
+  width: 258px;
+  margin: -6px 0 0 -6px;
+}
+.listAttachments li{
+	position:relative;
+	float:left;
+	display:block;
+	margin: 6px 0 0 6px;
+	overflow: hidden;
+}
+.listAttachments .listLargePic{
+	width : 120px;
+	height: 120px;
+}
+.listAttachments .listSmallPic{
+	width : 80px;
+	height: 80px;
+}
+.listAttachments img{
+	position:absolute;
+	left:50%;
+	top:50%;
+	max-width:150%;
+}
+.listAttachments .picLarge{
+	margin-left:-90px;
+	margin-top:-80px;
+}
+.listAttachments .picSmall{
+	margin-left:-60px;
+	margin-top:-25px;
+}
+.clearfix{clear:both;}
+
+/* 以下是专对微博功能的样式*/
+#wb-home{
+	width:1000px;
+	margin-top:5px ;
+	position: relative;
+}
+#sendtime{
+	height: 25px;
+	line-height: 25px;
+}
+.weibo-timing-feed-box{
+	width: 980px;
+	overflow:hidden;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.fixed{
+	width: 18px; 
+	height: 18px;
+	position: absolute;
+	top:9px;
+	right: 15px;
+}
+.photo-Left{
+	width: 6%;
+	height: 60px;
+	border-radius:4px ;
+	overflow: hidden;
+	line-height: 60px;
+}
+.photo-Left img{
+	height: 100%;
+}
+.picture{
+	width:100%;
+	padding: 5px 0;
+}
+.weibo-pic-show{
+	padding:0;
+	margin-bottom: 0;
+	margin-left: 7%;
+	display: table;
+	width: 300px;
+}
+.picture img{
+	overflow:hidden;
+	width: 100%;
+	height:100%;	
+}
+.picture li{ 
+	float: left; 
+	margin:3px ;
+	width:80px;
+	height:80px;
+	overflow: hidden;
+}
+.picture li.singleImg{ 	
+	width:120px;
+	height:75px;
+}
+/* 评论 */
+.weibo-comments, .weibo-reposts{
+	position: fixed;
+	left : 350px;
+	top : 80px;
+	z-index : 1;
+	width : 600px;
+}
+.weibo-comments-list{
+	position: relative;
+	left: 0px;
+}
+.weibo-comment-1, .weibo-reposts-1{
+	width: 100%;
+	overflow:auto;
+	height:250px;
+}
+.weibo-comments-box{
+	padding:15px;
+	width: 100%;
+	border: 1px solid #dddddd;
+	position: relative;
+	background: #fafafa;
+}
+.weibo-comments-box a{
+	color:#0a1126 ;
+}
+.weibo-feed .closeBtn{
+	cursor : pointer;
+}
+.wbpoto_Left{ 
+	width: 50px; 
+	height: 50px;	
+}
+.wbtime{
+	margin:5px 5px 0 0 ;
+}
+.wbpic{
+	padding-top:4px ;
+	padding-right: 6px;
+}
+.weibo-comment{
+	border-bottom: 1px solid #ddd;
+	padding:5px 0;
+	margin-top: 8px;
+	width: 100%;
+}
+.ment_Right{
+	width: 85%;
+	margin-left:15px
+}
+.ment_Right a{
+	font-size:12px ;
+	text-decoration: none;
+    color:#333 ;
+}
+
+.yellow{
+	color:#eb7350 !important;
+}
+.black{
+	padding-left: 5px;
+}
+.Grey{
+	color:#808080;
+}
+#pubButton{
+  background: #00a0e6;
+  color: #fff;
+  width: 90px;
+  border: none;
+}       	
+
+#wb-editor .content{
+	border:1px solid #dedede; 
+	background:#fafafa;
+	padding: 7px;
+	position: relative;
+	
+}
+.domain{
+	height: 45px;
+	line-height: 45px;
+	margin-bottom: 3px !important;
+}
+.fate{
+	padding-left: 8px;
+}
+.wbtime,.fate{
+	color: #808080;
+}
+.reply{
+	color: #666;
+}
+.reply:hover{
+	color: #eb7350;
+}
+.laud{
+	cursor: pointer;
+}
+.Long{
+	width: 96%;
+	height: 28px; 	
+	border: 1px solid #00a0e6; 
+}
+.editor{
+	margin-left: 22px;
+	width: 96%;
+	height:40px;
+	line-height: 40px;
+	font-family: "microsoft yahei";
+	font-size:14px ;
+}
+.editor span{
+	padding: 0 3px;
+}
+.editor input{
+	margin: 0;
+	vertical-align: middle;
+	margin-bottom: 1px;
+}
+
+/* 未发布开始 */
+
+.text{
+	position: fixed;
+	top:150px;
+	
+	width: 490px;
+	
+	border: 1px solid #ddd;
+	background-color: #fafafa;
+	display: none;
+	margin-top: 10px;
+	float: right;
+	right: 65px;
+
+	padding: 0 10px;
+	padding-bottom: 12px;
+	
+	min-height: 25%;
+	overflow: hidden;
+}
+.Wdate{
+	line-height: 25px;
+	border: 1px solid #ddd; color:#666; font-family:'microsoft yahei';width: 164px;padding: 3px;
+}
+.textarea{
+	background: #fff;
+	width: 97%;
+	height: 120px;
+	border: 1px solid #ddd;
+	top: 0%;
+	right: 0%;
+	margin-bottom: 3px;
+	font-size : 14px;
+}
+.span{
+	padding: 5px 0;
+  	font-weight: bold;
+  	color: #333333;
+  	font-family: "microsoft yahei";
+  	font-size: 15px;
+}
+.img{
+	padding-right: 0px;
+  	cursor: pointer;
+  	margin-bottom:5px ;
+}
+.lan{	
+  	height: 40px;
+  	line-height: 40px;
+}
+.rode{
+ 	  width: 100%;
+ 	  height: 55px;
+}
+.weibo{
+	margin-right: 20px;
+	margin-left: 5px;
+	color:#333333 ;
+}
+.save{
+	
+	margin-top: 1px !important;
+	
+	background: #faa424;
+	
+}
+.save,.public{
+	width: 60px !important;
+    height: 30px;
+    line-height: 30px;
+    background: #00a0e6;
+    color: #fff;
+    border: none;
+    font-family: "microsoft yahei";
+    font-size: 13px;
+    margin-top: 2px;
+    border-radius: 3px;
+}
+.made{
+	height: 50px;
+}
+.load{
+	font-family: "microsoft yahei";
+	color: #51b3ea;
+	font-size: 12px;
+	border-bottom: 1px solid #51b3ea;
+	cursor: pointer;
+}
+.hold{
+	padding: 0 15px;
+}
+.hold li{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.sheng{
+	font-family: "microsoft yahei";
+	color: #666;
+	padding:7px 5px 0px 5px;
+	display: inline-block;
+}	
+.red{
+	color: #ff2323;
+	font-weight: bold;
+}
+.san{
+	position: fixed;
+	left: -12px;
+	top: 286px;
+	z-index:1;
+}
+.form-group .pull-right{
+	top: 71px;
+	right: 27px; 
+	font-style:italic;  
+	font-family: 'microsoft yahei'; 
+	color:#666666 ;
+}
+.form-group span{
+	font-size:14px ;
+	font-family: 'microsoft yahei'; 
+	padding: 0 3px;
+}
+.form-group .date {
+	position: relative; 
+  	left: 0;
+    top: 6%;
+}
+.form-group a{
+    color: #666666;
+}
+.form-group a:hover{
+	text-decoration: none;
+	color:#eb7350 ;
+}
+.form-group textarea{
+	resize: none;
+	width:98%;
+	margin-bottom: 0;
+	font-size : 14px;
+}
+.title-Height{
+	line-height: 25px;
+	color: #666666;	
+}
+/** 评论 **/
+.commentBtn{
+	width: 60px;
+	height: 28px;
+	margin-top: 8px;
+	background:#00a0e6;
+	color: #fff; 
+	border: none;
+	padding-right:16px ;
+	float: right;
+}
+.replyBtn {
+	width: 60px;
+	height: 28px;
+	margin-top: 8px;
+	background:#00a0e6;
+	color: #fff; 
+	border: none;
+	border-radius: 3px;
+	padding-right:16px ;
+	float: right;
+}
+.weibo-reposts-list-one{
+	height: 55px; 
+	border-bottom: 1px solid #dddddd;
+    margin: 5px 0;	
+}
+.weibo-reposts-list{
+	position: relative;
+	left: 0px;
+}
+.weibo-reposts-box{
+	padding:15px;
+	width: 100%;
+	border: 1px solid #dddddd;
+	
+	position: relative;
+	background: #fafafa;
+}
+.weibo-reposts-box a{
+	color:#0a1126 ;
+}
+.weibo-reposts-tab{
+	margin-top:0px ;
+	margin-left: 35px;
+}
+.weibo-reposts-tab li{
+	height:20px ; 
+}
+.weibo-reposts-tab a{
+	padding: 2px 12px;
+}
+.weibo-reposts-line{
+	/*border-bottom: 1px solid #d9d9d9;*/
+	padding: 3px 0;
+	width: 92%;	
+}
+.weibo-page{
+	text-align: center;
+}
+.weibo-prepage{
+	display: inline-block;
+	margin-top: 15px;
+}
+.weibo-nextpage{
+	display: inline-block;
+	margin-top: 15px;
+}
+.weibo-page button{
+	border:1px solid #ddd;
+	color: #614A4A;
+    border-radius: 2px;
+    font-size: 12px;
+}
+.weibo-timing-feed,.weibo-timing-tab{
+	margin-left: 15px;
+	
+}
+.weibo-timing {
+	color: #808080;
+	font-size: 12px;
+	vertical-align: middle;
+  	padding: 1px 5px;
+  	border: 1px solid #ddd;	
+}
+.weibo-word{
+	float:left;
+	width:95%;
+	border: 1px solid #d9ecfd;
+	background: #f1f8ff;
+	height: 30px;
+	line-height: 30px;
+	padding: 0;
+	text-indent: 1em;
+}
+.weibo-reply {
+	background: #fff;
+	width:98%;
+	margin-top:7%;	
+}
+.wb_reply_text {
+	width: 100%;
+  	padding: 5px;
+  	border: 1px solid #00a0e6;
+}
+.we_reply_editor {
+  	width: 100%;
+ 	height: 40px;
+ 	line-height: 40px;
+  	font-family: "microsoft yahei";
+ 	font-size: 14px;
+}
+.weibo-reply-form{
+	padding:20px;
+}  
+.uploadPic {
+	overflow：hidden;
+	position: relative;
+}
+.weibo_cardwrap{
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	min-height: 96px;
+	padding: 10px 0 10px 0;
+}
+.btn-info.active{
+	background: #00a8f2;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	padding: 5px 10px;
+}
+#layer_send_btn{
+	position: relative;
+}
+.wb-horn-f{
+	display:inline-block;
+    position: absolute;
+    top:-19px;
+    border-color: transparent transparent #ddd;
+    border-style: dashed dashed solid;
+    border-width: 0 8px 8px;
+    font-size: 0;
+    line-height: 0;
+    z-index: 1;
+}
+.wb-horn-d{
+	display: inline-block;
+	border-width: 0 8px 8px;
+	position: absolute;
+	border-style: solid dashed dashed;
+	border-color: #fff transparent transparent;
+	border-bottom-color: #fff;
+	top:-18px;
+	font-size: 0;
+	line-height: 0;
+	z-index: 1;
+}
+.wb-horn-f,.wb-horn-d{
+	left: 100px;
+}
+.form-control{
+	 -webkit-box-shadow:none;
+	 box-shadow:none;
+}
+.display-on {
+	display: block;
+}
+.display-off {
+	display: none;
+}
+@media only screen and (min-width:1280px) and (max-width:1366px){
+	.upload_preview{
+		height: 200px;
+		overflow-y: auto;
+	}
+	.sudokuUpload{
+		width: 290px !important;
+	}
+}
+.unpublic{
+	position: relative;
+}
+.viewReposts, .viewComments{
+	cursor:pointer;
+}
+

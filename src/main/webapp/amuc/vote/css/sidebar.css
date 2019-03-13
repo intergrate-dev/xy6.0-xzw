@@ -1,0 +1,252 @@
+/*Important Start*/
+.navItem{
+	display:inline-block;
+	width:1px;
+	height:1px;
+	margin:25px;	
+}
+/*Important End*/
+.siderbar_iteam{	
+	height: 100%;
+	box-shadow: 0px 1px 0px #666666;
+}
+.navItem_box{
+	position: absolute;
+	left: 0;
+	padding:0 11px;
+	width: 38px;
+	height: 54px;
+	background-color: transparent;
+	border-radius: 0px 3px 3px 0px;	
+	overflow:  hidden;
+	cursor: pointer;
+	z-index: 300;
+}
+.nav_shareMike{
+	bottom: 50px;
+}
+.nav_mikeWiki{
+	bottom: 104px;
+}
+.nav_mikeWiki.active{width: 110px; background-color: rgb(58, 108, 146);  }
+
+.messageFeedback{
+	bottom: 158px;
+}
+.messageFeedback.active{width: 110px; background-color: rgb(58, 108, 146);  }
+
+.userSurvey{
+	bottom: 212px;
+}
+.navItem_box img{
+	margin:13px 0;
+	float: left;
+}
+.navItem_box a{
+	margin-left:10px;
+	font-size:13px;
+	color:#ffffff;
+	line-height:54px;
+}
+.chatOnline {
+	margin-bottom:15px;
+	text-align: right;
+}
+.chatOnline a {
+	background: url(../images/icon/QQchat.png) 0 0 no-repeat;
+	color: #666666;
+	padding: 5px 0 6px 30px;
+}
+.chatOnline a:hover {
+	background: url(../images/icon/QQchat.png) 0 -28px no-repeat;
+}
+
+
+.messagesTous{
+	position: relative;
+	width: 435px;
+	overflow: scroll;
+	margin: 20px 0;
+	padding: 5px;
+	text-align: left;
+}
+.messagePlaceHolder{
+	position: absolute;
+	top: 144px;
+	left: 48px;
+	color: #999999;
+}
+.tbox .popwin_inputError{
+	border: 1px solid #7A3230;
+}
+input.message_email{
+	width: 193px;
+}
+input.message_name{
+	width: 80px;
+}
+input.message_phone{
+	width: 130px;
+}
+.siderbar_name{
+	margin-top: 60px;
+}
+.siderbar_name a{
+	display: block;
+	padding: 10px 0;
+	margin:5px auto;
+	text-align: center;
+	color: #ffffff;
+}
+.siderbar_name a:hover{
+	background: #3A6C92;
+}
+
+
+.shareMike_icon{
+	margin: 15px auto;
+	width: 260px;
+	height: 40px;
+}
+
+.jiathis_style_32x32 a{
+	width:38px;height:38px;overflow:hidden;
+	margin:0px 5px;
+}
+
+.jiathis_style_32x32 .jiathis_button_tsina .jtico_tsina {
+	width:38px;
+	background: url(../images/shareMikeIcons.png) no-repeat 0 -38px;
+	height: 38px !important;
+}
+.jiathis_style_32x32 .jiathis_button_weixin .jtico_weixin {
+	width:38px;
+	background: url(../images/shareMikeIcons.png) no-repeat -38px -38px;
+	height: 38px !important;
+}
+.jiathis_style_32x32 .jiathis_button_douban .jtico_douban {
+	width:38px;
+	background: url(../images/shareMikeIcons.png) no-repeat -76px -38px;
+	height: 38px !important;
+}
+.jiathis_style_32x32 .jiathis_button_cqq .jtico_cqq {
+	width:38px;
+	background: url(../images/shareMikeIcons.png) no-repeat -114px -38px;
+	height: 38px !important;
+}
+.jiathis_style_32x32 .jiathis_button_renren .jtico_renren {
+	width:38px;
+	background: url(../images/shareMikeIcons.png) no-repeat -152px -38px;
+	height: 38px !important;
+}
+
+.jiathis_style_32x32 .jiathis_button_tsina .jtico_tsina:hover {
+	background: url(../images/shareMikeIcons.png) no-repeat 0 0;
+}
+.jiathis_style_32x32 .jiathis_button_weixin .jtico_weixin:hover {
+	background: url(../images/shareMikeIcons.png) no-repeat -38px 0;
+}
+.jiathis_style_32x32 .jiathis_button_douban .jtico_douban:hover {
+	background: url(../images/shareMikeIcons.png) no-repeat -76px 0;
+}
+.jiathis_style_32x32 .jiathis_button_cqq .jtico_cqq:hover {
+	background: url(../images/shareMikeIcons.png) no-repeat -114px 0;
+}
+.jiathis_style_32x32 .jiathis_button_renren .jtico_renren:hover {
+	background: url(../images/shareMikeIcons.png) no-repeat -152px 0;
+}
+
+
+/*.disableForm_switchBtn a{
+	width: 60px;
+	text-align: center;
+}
+.switchField, .enableField{
+	width: 300px;
+	text-align: left;
+	margin: 20px auto;
+}
+.disable_time input, .disable_feedbackNum input, .enable_time input{
+	width: 20px;
+	text-align: center;
+	font-weight: bold;
+	border: 0;
+	border-bottom: 1px solid #999;
+	outline: none;
+}
+.disable_time .year, .enable_time .year{
+	width: 32px;
+}
+.disable_time .time, .enable_time .time{
+	width: 40px;
+}
+.current_time, .current_feedbackNum{
+	line-height: 30px;
+}
+.current_time span, .current_feedbackNum span{
+	font-weight: bold;
+}
+.popwin_disableForm_confirm, .popwin_EnableForm_confirm{
+	margin-left: 70px;
+	margin-right: 20px;
+}
+.disable_feedbackNum input{
+	width: 50px;
+}
+.disableError, .enableError{
+	width: 300px;
+	color: white;
+	font-size: 12px;
+	line-height: 19px;
+	text-align: center;
+	background: #7A3230;
+	border: 1px solid #7A3230;
+	border-radius: 3px;
+	visibility: hidden;
+}*/
+
+.welcomeMikeTable{
+}
+.welcomeMikeTable td{
+	text-align: center;
+}
+
+.welcomeMikeTable .welcome_wiki_item{
+	font-size: 16px;
+	color: #333;
+	background: center no-repeat;
+	background-position: 28px 15px;
+	padding-top: 110px;
+	width: 143px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.welcomeMikeTable .welcome_wiki_item.icon_wiki{
+	background-image:URL('/images/wiki_default.png');
+}
+.welcomeMikeTable .welcome_wiki_item.icon_wiki:hover{
+	background-image:URL('/images/wiki_hover.png');
+}
+
+.welcomeMikeTable .welcome_wiki_item.icon_magicbook{
+	background-image:URL('/images/magicbook_default.png');
+}
+.welcomeMikeTable .welcome_wiki_item.icon_magicbook:hover{
+	background-image:URL('/images/magicbook_hover.png');
+}
+
+.welcomeMikeTable .welcome_wiki_item.icon_feedback{
+	background-image:URL('/images/feedback_default.png');
+}
+.welcomeMikeTable .welcome_wiki_item.icon_feedback:hover{
+	background-image:URL('/images/feedback_hover.png');
+}
+
+.welcomeMikeTable p{
+	margin-top:5px;
+	color:#9d9d9d;
+	font-size:12px;
+	line-height:20px;
+	padding:2px 25px;
+}

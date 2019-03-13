@@ -1,0 +1,61 @@
+.contentTable{
+    margin: 0 80px;
+}
+table#contentTable td{
+    border-bottom: 1px solid #cdcdcd;
+    width: 150px;
+}
+#defaultIcon1{
+    margin-top: 5px;
+}
+.tablecontent {
+    font-size: 15px;
+}
+table.tablecontent{
+    line-height: 35px;
+    margin: 30px 30px;
+}
+table.tablecontent td{
+    border: 0;
+}
+.custform-from-wrap{
+    margin-left:50px;
+}
+.custform-from-wrap table{
+    line-height: 15px;
+    font-size: 12px;
+    color: #808080;
+    margin: 0 75px;
+}
+.custform-from-wrap input[type=button],#btnFormSave,#btnFormCancel{
+    border-radius: 5px;
+    color: #000;
+    background: #cdcdcd;
+    width: 45px;
+    height: 25px;
+    line-height: 25px;
+    border: none;
+    margin-left: 40px;
+    margin: 0px 30px 0px 0px;
+    font-size: 20px;
+    cursor: pointer;
+    text-shadow: none;
+    padding: 0px 15px;
+    font-family: "microsoft yahei";
+}
+#btnFormSave,#btnFormCancel{
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    background: #00a0e6;
+    border:1px solid #cdcdcd;
+    font-weight: 400;
+    color: #fff;
+}
+span#txtFormSave{
+    margin: 30px 30px 0 80px;
+}
+input[type="file"] {
+    height: auto;
+    margin: 0 0 0 95px;
+}

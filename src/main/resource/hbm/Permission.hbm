@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.permission">
+	<class name="Permission" table="FSYS_PERMISSION">
+		<composite-id>
+			<key-property
+				column="NID"
+				name="roleID"
+				type="int"
+			 />
+			<key-property
+				column="NRESOURCETYPE"
+				name="resourceType"
+				type="string"
+			 />
+			<key-property
+				column="NRESOURCEID"
+				name="resource"
+				type="string"
+			 />
+		</composite-id>
+		<property
+			column="NPERMISSION"
+			length="22"
+			name="permission"
+			not-null="true"
+			type="int"
+		 />
+	</class>
+</hibernate-mapping>

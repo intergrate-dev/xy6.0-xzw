@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.cat">
+	<class name="CatType" table="CATEGORY_TYPE">
+		<id
+			column="WT_TYPE"
+			name="catType"
+			type="integer">
+	      <generator class="assigned"/>
+		</id>
+		<property
+			column="WT_NAME"
+			length="255"
+			name="name"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="WT_PROP_SUB"
+			length="10"
+			name="property_sub"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="WT_PROP"
+			length="10"
+			name="property"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="WT_ORDER"
+			length="3"
+			name="order"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="WT_TABLE"
+			length="40"
+			name="tableName"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

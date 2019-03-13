@@ -1,0 +1,536 @@
+/*  
+*@Description: 基本组件样式 
+*@Author:      Zhuyb 
+*@Update:      Zhuyb(2012-10-26)  
+*/ 
+
+/* Button */
+.btn {
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:2px;
+  font-size: 12px;
+}
+.btn img{
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.btn .icon{
+  float: left;
+  width: 20px;
+  height: 18px;
+  background-image: url(../images/application/icons.png?m=20160122);
+}
+.btn .title{
+  float: left;
+  white-space: nowrap;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-primary .form{
+  background-position: -125px -99px;
+}
+.btn-primary .arrow_down{
+  float: right;
+  background-position: -22px -340px;
+}
+
+.btn .mailWhite{
+  background-position: -125px -146px;
+}
+.btn-minor .group{
+  background-position: -437px -52px;
+}
+.btn-minor .contact{
+  background-position: -436px -4px;
+}
+.btn-minor .mail{
+  background-position: -437px -148px;
+}
+.btn-minor .sms{
+  background-position: -437px -195px;
+}
+.btn-minor .star{
+  background-position: -126px -292px;
+}
+.btn-minor .arrow_down{
+  float: right;
+  background-position: 0 -340px;
+}
+.btn-minor:hover .arrow_down{
+  background-position: -48px -340px;
+}
+
+.btn-disabled .group{
+  background-position: -437px -52px;
+}
+.btn-disabled .contact{
+  background-position: -436px -4px;
+}
+.btn-disabled .mail{
+  background-position: -437px -148px;
+}
+.btn-disabled .sms{
+  background-position: -437px -195px;
+}
+.btn-disabled .arrow_down{
+  float: right;
+  background-position: 0 -340px;
+}
+
+
+
+.btn-primary {
+  color: white;
+  background:#2976A4;
+}
+.btn-primary:hover {
+  background:#3C8CBD;
+}
+.btn-primary:active{
+  background:#255A7A;
+}
+.btn-primary:visited{
+  color:#ffffff;
+}
+.btn-primary .title {
+  color:#ffffff;
+}
+
+.btn-minor {
+  background-color: white;
+  border: 1px solid #BFBFBF;
+}
+.btn-minor .title {
+  color: #666;
+}
+.btn-minor:hover{
+  color: #4491C4;
+}
+.btn-minor:hover .title{
+  color: #4491C4;
+}
+.btn-minor:active{
+  background-color:#DEEBF3;
+}
+.btn-minor:visited .title{
+  color: #666;
+}
+
+.btn-disabled {
+  background-color: #F5F5F5;
+  border: 1px solid #BFBFBF;
+  cursor: default;
+}
+.btn-disabled .title {
+  color: #999;
+}
+.btn-disabled:visited .title{
+  color: #999;
+}
+
+
+.button{
+  display: inline-block;
+  padding: 0 20px;
+  border: 1px solid #8D3836;
+  box-shadow: 0 0 2px #ffffff inset;
+  border-radius: 2px;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+  line-height: 28px;
+}
+.button:visited{
+  color: white;
+}
+.btn_red{ 
+  background: #B94A48;  
+  box-shadow: 0 1px 0 #EC9F9F inset;
+}
+.btn_red:hover{
+  background: #B76666; 
+}
+.btn_red:active{
+  background: #7A3230; 
+}
+.btn_green{
+  background: #579658;
+  border-color: #396F3A;
+  box-shadow: 0 1px 0 #86B28A inset;
+}
+.btn_green:hover{
+  background: #68AC68; 
+}
+.btn_green:active{
+  background: #2F5930; 
+}
+.btn_blue{
+  background: #377FA3;
+  border-color: #2C5E8B;
+  box-shadow: 0 1px 0 #6D9ACC inset;
+}
+.btn_blue:hover{
+  background: #62A6C4; 
+}
+.btn_blue:active{
+  background: #235F78; 
+}
+.btn_orange{
+  background: #FF7B00;
+  border-color: #F55A00;
+  box-shadow: 0 1px 0 #FFA204 inset;
+}
+.btn_gray{
+  color: #555555;
+  background: #E7E7E7;
+  border-color: #AAAAAA;
+  cursor: default;
+}
+
+/*input框*/
+.input, .input_small, .textarea{
+    outline:0 none;
+    border:1px solid #D9D9D9;
+    border-top-color:#AAAAAA;
+    border-radius: 2px;
+    padding:5px;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-delay: 0;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-delay: 0;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-property: all;
+    -moz-transition-duration: 200ms;
+    -moz-transition-delay: 0;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-property: all;
+    -o-transition-duration: 200ms;
+    -o-transition-delay: 0;
+    -o-transition-timing-function: ease-in-out;
+}
+.textarea {
+    /*overflow: hidden;*/
+}
+.input{
+  width:168px;
+  height:18px;
+}
+.input_small{
+  width:74px;
+  height:18px;
+}
+.input:hover, .input_small:hover , .textarea:hover, .inputHover{
+  background: #ffffff;
+  border-color: #A6A6A6;
+  border-top-color:#808080;
+}
+.input:focus, .input_small:focus, .textarea:focus, .inputFocus{
+  background: #ffffff;
+  border-color: #609ED2;
+}
+.input:invalid{
+  border-color: #7A3230;
+}
+.input_val, .input_val .input{
+  position: relative;
+}
+.input_val span{
+  position: absolute;
+  left: 5px;
+  top: 0;
+  color: #999999;
+  cursor: text;
+}
+
+/*复选框*/
+.input_checkbox, .group_checkbox, .input_checkboxAll{
+  background: url(../images/checkbox.png) no-repeat 0 0;
+  width: 16px;
+  height: 16px;
+}
+.checked{
+  background-position: 0 -17px;
+}
+.tel_checkbox.checked{
+  background: url(../images/icon/checkBoxGreen.png);
+  background-repeat: no-repeat;
+  background-position: 0 1px;
+}
+.input_checkbox input, .group_checkbox input, .input_checkboxAll input{
+  background: none;
+  cursor: pointer;
+  opacity: 0; /* Standards Compliant Browsers */
+  filter: alpha(opacity=0); /* IE 7 and Earlier */
+  /* Next 2 lines IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  width: 16px;
+  height: 16px;
+  outline: none;
+}
+
+/*三态复选框*/
+.checkbox3State{
+  width: 16px;
+  height: 16px;
+  background: url(../images/checkbox.png?m=20140509) no-repeat 0 0;
+}
+.checkbox3State.yes{
+  background-position: 0 -17px;
+}
+.checkbox3State.no{
+  background-position: 0 -51px;
+}
+.states{
+  display: inline-block;
+  height: 24px;
+  padding-left: 25px;
+  background: url(../images/states.png) 0 0 no-repeat;
+  line-height: 24px;
+}
+.states_none{
+  background-position: 0 0;
+}
+.states_yes{
+  background-position: 0 -24px;
+}
+.states_no{
+  background-position: 0 -48px;
+}
+
+
+/*单选框*/
+label.radio input{
+  margin-right: 5px;
+}
+
+/* Dropdown-menu */
+.btn-group {
+  position: relative;
+}
+.btn-dropdown{
+  display:block;
+  height: 18px;
+  padding:5px 25px 5px 10px;
+  background: -moz-linear-gradient(top, #FCFCFC 0%, #F1F1F1 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FCFCFC), color-stop(100%,#F1F1F1));
+  background: -webkit-linear-gradient(top, #FCFCFC 0%,#F1F1F1 100%);
+  background: -o-linear-gradient(top, #FCFCFC 0%,#F1F1F1 100%);
+  background: -ms-linear-gradient(top, #FCFCFC 0%,#F1F1F1 100%);
+  background: linear-gradient(top, #FCFCFC 0%,#F1F1F1 100%);
+  color: #5F5F5F;
+  border: 1px solid #C0C0C0;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  box-shadow: 0 1px 0 white inset, 0 1px 0px #EEE;
+  -webkit-box-shadow: 0 1px 0 white inset, 0 1px 0px #EEE;
+  -moz-box-shadow: 0 1px 0 white inset, 0 1px 0px #EEE;
+  position: relative;
+}
+.btn-dropdown span{
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.btn-dropdown .arrow_down{
+  position: absolute;
+  right: 4px;
+  top: 5px;
+  width: 20px;
+  height: 16px;
+  background: url(../images/application/icons.png?m=20160122) 0 -340px no-repeat;
+}
+.btn-group.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 31px;
+  min-width:58px;
+  min-height: 28px;
+  display: none;
+  padding: 3px 0;
+  background-color: #ffffff;
+  border: 1px solid #B4B4B4;
+  border-radius: 3px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 200;
+}
+
+.dropdown-menu>li{
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  line-height: 18px;
+  color: #333333;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 6px 1px;
+  overflow: hidden;
+  background-color: #CFCFCF;
+  border-bottom: 1px solid white;
+  padding: 0;
+  line-height: 0;
+}
+
+.dropdown-menu>li:hover {
+  color: #ffffff;
+  background-color: #3586C1;
+}
+
+/*下拉-操作*/
+.dropdown_wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 200;
+}
+.btn_arrow, .group_arrow{
+  position: relative;
+}
+.dropdown_operate{
+  display: none;
+  border: 1px solid #C2C2C2;
+  border-radius: 3px;
+  box-shadow: 0 0 1px #D4D9DF;
+  border-top: 3px solid #3C8CBD;
+  background: #ffffff;
+  position: absolute;
+  top:10px;
+  left: 0px;
+  z-index: 200;
+}
+.dropdown_operate li{
+  cursor: pointer;
+  display: block;
+  min-width: 80px;
+  padding: 5px 10px;
+  line-height: 20px;
+  color: #333333;
+  border-bottom: 1px solid #D4D9DF;
+}
+.dropdown_operate li:hover{
+  color: #3586C1;
+}
+
+/*群组的下拉*/
+.group_operate{
+  width: 280px;
+  max-height: 200px;
+  padding: 10px;
+  z-index: 200;
+}
+.group_operate li{
+  font-size: 12px;
+  width: 120px;
+  line-height: 27px;
+  padding: 0 10px;
+  height: 27px;
+  color: #666666;
+  border-bottom: 0;
+  float: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.group_operate li:first-child{
+  width: 260px;
+  height: auto;
+  line-height: 25px;
+  color: #333333;
+  cursor: default;
+}
+.group_operate li:first-child .groupClose{
+  margin-right: -10px;
+  margin-top: -10px;
+  float: right;
+  cursor: pointer;
+}
+.group_operate .add_creatGroup{
+  color: #2776A4;
+}
+.group_operate .cerateGroup_field{
+  display: inline-block;
+  width: 260px;
+}
+.group_operate li:hover{
+  color: #666666;
+  background: #E4F6FF;
+}
+.group_operate li:first-child:hover{
+  color: #333333;
+  background: #ffffff;
+}
+.group_operate li span{
+  margin-right: 5px;
+}
+.input_creatGroup{
+  width: 162px;
+  padding: 3px;
+}
+.btn_creatGroup{
+  line-height: 15px;
+  margin: -5px 10px 0 10px;
+}
+.atgroupNumber{  
+  font-size: 12px;
+  line-height: 25px;
+  color: #63841F;
+  background: #E7FFCF;
+  border: 1px solid #B3E179;
+  padding-left: 10px;
+  border-radius: 3px;
+}
+
+/*遮罩*/
+.tips_cover{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0.2; /* Standards Compliant Browsers */
+  filter: alpha(opacity=30); /* IE 7 and Earlier */
+  /* Next 2 lines IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+  z-index: 999;
+}
+.cover_content{
+  position: absolute;
+  top: 42%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.coverIng, .cover_after{
+  width: 300px;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #444;
+  background: #fff;
+  box-shadow: 0 0 5px #4D4D4D;
+  border-radius: 5px;
+}
+.coverIng>span{
+  display: inline-block;
+  padding-left: 20px;
+  background: url(../images/loading.gif) 0 center no-repeat;
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.sys">
+	<class name="SysLog" table="FSYS_SYSLOG">
+		<id
+			column="LOGID"
+			name="logID"
+			type="integer"
+		>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="FINISHTIME"
+			length="29"
+			name="finishTime"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="OPERATOR"
+			length="20"
+			name="operator"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DESCRIPTION"
+			length="254"
+			name="description"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="OPERATION"
+			length="40"
+			name="operation"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="HOST"
+			length="254"
+			name="userHost"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="LOGTYPE"
+			length="10"
+			name="logType"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="APPDESCRIPTION"
+			length="60"
+			name="appDescription"
+			not-null="true"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

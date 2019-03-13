@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>稿件管理</title>
+    <link rel="stylesheet" href="../third/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../export/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sliderBar.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/editor.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sidebar-panel.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/model.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/navMenuSet.css"/>
+    <style type="text/css">
+    *,body{
+	    margin: 0;
+	    padding: 0;
+    }
+        #list-zone {
+            margin-top: 10px;
+            overflow-y: auto;
+            height: 430px;
+            width: 100%;
+        }
+        #list-zone .ui-sortable-placeholder{
+	        background: #03a8f1;
+        }
+
+        .toolBar {
+            height: 30px;
+            background-color: #333;
+            bottom: 0;
+            width: 100%;
+            line-height: 30px;
+        }
+
+        .selectBtn {
+            background: #03a8f1;
+            color: #fff;
+        }
+
+        .unselectBtn {
+            background: #999;
+            color: #fff;
+        }
+
+        .selectBtn, .unselectBtn {
+            height: 30px;
+	        line-height: 30px;
+            border: none;
+            width: 70px;
+            outline: none;
+            font-family: "microsoft yahei";
+        }
+
+        .article-mes {
+            width: 630px
+        }
+
+        .articleList {
+            position: relative;
+            padding: 13px 0;
+            border: 1px solid #eee;
+	        background: #fff;
+        }
+
+        .active {
+            /*background-color: #ccc;*/
+            border: 1px solid #afd9fd;
+        }
+
+        .titleBox {
+	        width: 630px;
+            height: 34px;
+            max-height: 34px;
+            overflow: auto;
+            color: #333;
+            padding-left: 10px;
+            border: 1px solid #eee;
+	        font-family: '微软雅黑';
+	        font-size: 14px;
+	        font-weight: bold;
+        }
+
+        .summaryBox {
+	        width: 630px;
+            height: 76px;
+            max-height: 76px;
+            overflow: auto;
+            color: #666;
+            padding-left: 10px;
+            border: 1px solid #eee;
+	        font-family: '微软雅黑';
+	        margin-top: 10px;
+	        font-size: 12px;
+        }
+
+        .srcBox, .timeBox, .linkBox, .keyWordBox {
+            height: 36px;
+            max-height: 36px;
+            overflow: auto;
+            color: #666;
+            padding-left: 10px;
+            border: 1px solid #eee;
+	        font-family: '微软雅黑';
+	        font-size: 12px;
+        }
+        .srcBox{
+	        width: 110px;
+        }
+	    .timeBox{
+		    width: 150px;
+	    }
+	    .linkBox{
+		    width: 260px;
+	    }
+	    .keyWordBox{
+		    width: 240px;
+	    }
+
+        .drag-hand {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 40px;
+            height: 20px;
+            /*color: #777;*/
+            font-size: 12px;
+            cursor: pointer;
+            background-color:#59525b;
+	        opacity:.7;
+	        z-index: 200;
+	        color: white;
+	        text-align: center;
+	        line-height: 20px;
+	        border-radius: 0 0 5px 5px;
+        }
+        .deletePic {
+            position: absolute;
+            top: 0;
+            right: 2px;
+            cursor: pointer;
+        }
+
+        .list-editing {
+            width: 900px;
+            height: 610px;
+            padding: 10px 20px;
+            background-color: #fff;
+            z-index: 100;
+        }
+
+        .list-editing-tit {
+            height: 40px;
+            line-height: 38px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .addlist {
+            font-size: 16px;
+            font-weight: 700;
+            width: 76px;
+            text-align: center;
+            line-height: 38px;
+            border-bottom: 2px solid #03a8f1;
+	        color: #333;
+        }
+
+        .addBox {
+            background: #f5f5f5;
+            height: 38px;
+            line-height: 38px;
+            border: 1px solid #eee;
+            padding: 0 8px;
+            font-size: 14px;
+            font-family: "microsoft yahei";
+            color: #232323;
+        }
+
+        .clearAll {
+            padding: 0 10px;
+            height: 24px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background: #fff;
+            outline: none;
+            color: #232323;
+            font-family: "microsoft yahei";
+	        line-height: 22px;
+	        font-size: 12px;
+        }
+
+        .addNewList {
+            padding: 0 10px;
+            height: 24px;
+	        line-height: 22px;
+	        font-size: 12px;
+            border: 1px solid #0290cf;
+            border-radius: 4px;
+            background: #03a8f1;
+            outline: none;
+            color: #fff;
+            float: right;
+            margin-top: 6px;
+            font-family: "microsoft yahei";
+        }
+        .addSysList {
+	        padding: 0 10px;
+	        height: 24px;
+	        line-height: 22px;
+	        font-size: 12px;
+	        /*border: 1px solid #eee;
+	        border-radius: 4px;
+	        background: #fff;
+	        outline: none;
+	        color: #333;*/
+	        border: 1px solid #0290cf;
+	        border-radius: 4px;
+	        background: #03a8f1;
+	        outline: none;
+	        color: #fff;
+	        float: right;
+	        margin-top: 6px;
+	        font-family: "microsoft yahei";
+        }
+
+        .editToolbar {
+            position: absolute;
+            bottom: 0;
+            right: -20px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            background: rgba(0, 0, 0, 0.6) url(../export/img/pencil.png) no-repeat center center;
+            overflow: hidden;
+            text-align: center;
+            display: none;
+            z-index: 10;
+        }
+        .mgl6{
+	        margin-left: 6px;
+        }
+	    .mgl0{
+		    margin-left: 10px;
+	    }
+
+        p {
+            word-break: break-all;
+        }
+	    #list-zone textarea{
+		    overflow: hidden;
+		    resize : none;
+	    }
+        input:focus,textarea:focus {
+            outline: 1px solid #afd9fd;
+            outline-offset: -1px;
+        }
+	    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+		    color: #ccc;
+	    }
+	    input:-moz-placeholder, textarea:-moz-placeholder {
+		    color: #ccc;
+	    }
+    .sysFlag{
+	        position: absolute;
+	        bottom: 4px;
+	        right: 4px;
+	        width: 30px;
+	        height: 30px;
+	        border: 1px solid #ccc;
+	        color: #03a8f1;
+	        border-radius: 50%;
+	        font-family: '微软雅黑';
+	        font-size: 12px;
+	        text-align: center;
+	        line-height: 28px;
+	        cursor: default;
+        }
+    .local{
+	    display:none;
+    }
+
+    /** 文字列表不显示图片 引用下面的css**/
+
+    .noImg  .titleBox {
+	    width: 790px;
+	    margin-left: 10px;
+    }
+    .noImg  .summaryBox {
+	    width: 790px;
+	    margin-left: 10px;
+    }
+    .noImg .imgBox{
+	    display: none;
+    }
+    .imgBox{
+        width: 152px;
+        height: 122px;
+        border: 1px solid #ccc;
+    }
+
+    /** 文字列表不显示图片 引用下面的css**/
+    </style>
+</head>
+<body style="overflow: hidden;">
+<div class="list-editing">
+    <div class="list-editing-tit">
+        <div class="pull-left addlist">
+            编辑列表
+        </div>
+        <div class="pull-right">
+            <img id="closecarousSetBtn" class="btn-hide" src="../export/images/sliderPanel/listRemove1.png">
+        </div>
+    </div>
+    <div class="mgt10 addBox">
+        共（<span id="listNum" style="color: #03a8f1">0</span>）条
+        <button id="clearAll" class="clearAll mgl15">清空</button>
+	    <button id="addSysList" class="addSysList mgl10">系统选取</button>
+        <button id="addNewList" class="addNewList mgl15">手动添加</button>
+    </div>
+    <!--列表开始-->
+    <div id="list-zone">
+        <div class="articleList clearfix mgt10" data-id="000" data-type="local">
+            <div class="drag-hand hide">
+                <span class="glyphicon glyphicon-move"></span>
+            </div>
+            <div class="deletePic hide">
+                <img src="../export/images/sliderPanel/listRemove2.png"/>
+            </div>
+            <div class="clearfix">
+                <div class="pull-left mgr10 mgl10 posRelative imgBox">
+                    <img width="150" height="120" class="imgPath" src="../export/images/sliderPanel/listUpLoad.png" alt=""/>
+                    <img class="removeImg posAbsolute cancelBtn hide1" src="../export/images/sliderPanel/listRemove.png" alt=""/>
+                </div>
+                <div class="pull-left article-mes">
+	                <input class="titleBox" type="text" placeholder="标题" value="" />
+	                <textarea placeholder="摘要" class="summaryBox"></textarea>
+                </div>
+            </div>
+            <div class="clearfix">
+	            <input class="srcBox mgt10 mgl10" type="text" placeholder="来源" value="" />
+	            <input class="timeBox mgt10 mgl6" id="exampleTime" type="text" placeholder="时间" value="2016-08-24 16:08:08" />
+	            <input class="linkBox mgt10 mgl6" type="text" placeholder="链接" value="" />
+	            <input class="keyWordBox mgt10 mgl6" type="text" placeholder="标签" value="" />
+            </div>
+        </div>
+    </div>
+    <div class="mgt10 text-center">
+        <button id="btnConfirm" class="selectBtn mgr20">确定</button>
+        <button id="btnCancel" class="unselectBtn">取消</button>
+    </div>
+    <!--列表结束-->
+</div>
+
+</body>
+<script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="../third/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        var $listZone = $("#list-zone");
+        //如果是编辑 获取前台数据
+        var PicJson = parent.window.LEDialog.getData();
+	    var _record={};
+	    //判断是否自定义添加还是编辑   编辑的话获取前台json数据
+	    var listName=typeof(PicJson)=="object";
+        if(listName){
+
+	        //页面加载完毕就记录旧的样式信息,用于编辑之后返回
+	         _record= {
+		        'moreId': PicJson[0].moreId,
+		        'modelClass': PicJson[0].modelClass,
+		        'moreState': PicJson[0].moreState,
+		        'moreText': PicJson[0].moreText,
+		        'moreHref': PicJson[0].moreHref,
+		        'timeState': PicJson[0].timeState,
+		        'timeFormat': PicJson[0].timeFormat,
+		        'hrefTarget': PicJson[0].hrefTarget,
+		        'theSecondStyle':PicJson[0].theSecondStyle,
+		        'titleStyle':PicJson[0].titleStyle,
+		        'titleFont':PicJson[0].titleFont,
+		        'summaryStyle':PicJson[0].summaryStyle,
+		        'sourceStyle':PicJson[0].sourceStyle,
+		        'timeStyle':PicJson[0].timeStyle,
+	            'moreStyle':PicJson[0].moreStyle,
+		        'dataLevel':PicJson[0].dataLevel,
+		        'middleTimeState':PicJson[0].middleTimeState,
+		        'bottomTimeState':PicJson[0].bottomTimeState,
+		         'summaryState':PicJson[0].summaryState,
+		         'sourceState':PicJson[0].sourceState,
+		         'middleSourceState':PicJson[0].middleSourceState,
+		         'bottomSourceState':PicJson[0].bottomSourceState
+	        };
+            var htmlAll = "";
+            for(i in PicJson){
+	            //先判断是否显示图片
+	            if(PicJson[0].listName=="listMedia"){
+		            $listZone.removeClass("noImg");
+	            }else if(PicJson[0].listName=="listGroup"){
+		            $listZone.addClass("noImg");
+	            }
+
+                var html = ['<div id="' + PicJson[i].liId + '" data-hrefTarget="' + PicJson[i].hrefTarget + '" data-timeFormat="' + PicJson[i].timeFormat + '" data-timeState="' + PicJson[i].timeState + '" data-moreHref="' + PicJson[i].moreHref + '" data-moreText="' + PicJson[i].moreText + '" data-moreState="' + PicJson[i].moreState + '" data-modelClass="' + PicJson[i].modelClass + '" data-time="' + PicJson[i].PublishTime + '" data-moreId="'+PicJson[i].moreId+'" data-type="'+PicJson[i].listType+'" class="articleList mgt10 clearfix">',
+                    '<div class="drag-hand hide">',
+                    '<span class="glyphicon glyphicon-move"></span>',
+                    '</div>',
+                    '<div class="deletePic hide">',
+                    '<img src="../export/images/sliderPanel/listRemove2.png"/>',
+                    '</div>',
+                    '<div class="clearfix">',
+                    '<div class="pull-left mgr10 mgl10 posRelative imgBox">',
+                    '<img width="150" height="120" class="imgPath" " src="' + PicJson[i].imgPath.replace("image.do", "../image.do") + '" alt="" />',
+                    '<img class="removeImg posAbsolute cancelBtn hide1" src="../export/images/sliderPanel/listRemove.png" alt=""/>',
+                    '</div>',
+                    '<div class="pull-left article-mes">',
+		                ' <input class="titleBox" type="text" placeholder="标题" value=\'' + PicJson[i].title + '\' />',
+			               '<textarea placeholder="摘要" class="summaryBox">' + PicJson[i].summary + '</textarea>',
+                    '</div>',
+                    '</div>',
+                    '<div class="clearfix">',
+		                '<input class="srcBox mgt10 mgl10" type="text" placeholder="来源" value=\'' + PicJson[i].src + '\' />',
+			                '<input class="timeBox mgt10 mgl0" type="text" placeholder="时间" value=\'' + PicJson[i].PublishTime + '\' />',
+			            '<input class="linkBox mgt10 mgl0" type="text" placeholder="链接" value=\'' + PicJson[i].link + '\' />',
+			            '<input class="keyWordBox mgt10 mgl0" type="text" placeholder="标签" value=\'' + PicJson[i].keyWord + '\' />',
+		            '<div class="sysFlag '+PicJson[i].listType+'">系统</div>',
+                    '</div>',
+                    '</div>'].join("");
+
+
+                htmlAll += html;
+            }
+            $listZone.html(htmlAll);
+        }else{
+            var myDate = new Date();
+            var _year=myDate.getFullYear();
+            var _month=parseInt(myDate.getMonth()+1);
+            var _day=myDate.getDate();
+            var _hours=myDate.getHours();
+            var _minutes=myDate.getMinutes();
+            var _seconds=myDate.getSeconds();
+            var timeStr=_year+"-"+oneToTwo(_month)+"-"+oneToTwo(_day)+" "+oneToTwo(_hours)+":"+oneToTwo(_minutes)+":"+oneToTwo(_seconds);
+            $("#exampleTime").val(timeStr);
+	        //判断是否显示图片
+	        if(PicJson=="listMedia"){
+		        $listZone.removeClass("noImg");
+	        }else if(PicJson=="listGroup"){
+		        $listZone.addClass("noImg");
+	        }
+        }
+
+        //读取列表条数
+        function getlistNum(){
+            var listNum = $listZone.children().length;
+            $("#listNum").text(listNum);
+        }
+
+        getlistNum();
+
+        //删除按钮、拖拽排序助手
+        $listZone.on({
+            "mouseover": function(){
+                $(this).addClass("active");
+                $(this).find(".deletePic").removeClass("hide");
+                $(this).find(".drag-hand").removeClass("hide");
+            }
+        }, '.articleList');
+
+        $listZone.on({
+            "mouseout": function(){
+                $(this).removeClass("active");
+                $(this).find(".deletePic").addClass("hide");
+                $(this).find(".drag-hand").addClass("hide");
+            }
+        }, '.articleList');
+
+        $listZone.on({
+            "mouseover": function(){
+                //拖拽排序
+                $listZone.sortable({
+                    disabled: false,
+                    items: ".articleList",
+                    cursor: "move",
+                    tolerance: "pointer",
+                    //placeholder: "gallery-state-highlight",
+                    axis: "y"
+                });
+            }
+        }, '.drag-hand');
+        $listZone.on({
+            "mouseout": function(){
+                //禁用排序
+                $listZone.sortable({
+                    disabled: true
+                });
+            }
+        }, '.drag-hand');
+
+       /* //修改内容
+        $listZone.on({
+            "click": function(){
+                $(this).parent().find("p").attr("contenteditable", "plaintext-only");
+                $(this).parent().find("p").trigger("focus");
+            }
+        }, '.editToolbar');
+
+        $listZone.on({
+            "blur": function(){
+                $(this).attr("contenteditable", false);
+            }
+        }, '.titleBox,.summaryBox,.srcBox,.timeBox,.linkBox,.keyWordBox');
+
+        //编辑小笔的出现消失
+        $listZone.on({
+            'mouseover': function(){
+                $(this).find(".editToolbar").show();
+            }, 'mouseout': function(){
+                $(this).find(".editToolbar").hide();
+            }
+        }, '.edit');
+
+        $listZone.on({
+            'mouseover': function(){
+                $(this).show();
+            }, 'mouseout': function(){
+                $(this).hide();
+            }
+        }, '.editToolbar');
+*/
+        //图片修改标记的出现消失 imgBox
+        $listZone.on({
+            'mouseover': function(){
+                var isNew = $(this).find(".imgPath").attr("src") != "../export/images/sliderPanel/listUpLoad.png";
+                if(isNew){
+                    $(this).find(".removeImg").show();
+                }
+            }, 'mouseout': function(){
+                $(this).find(".removeImg").hide();
+            }
+        }, '.imgBox');
+
+	    //图片上传 imgPath
+	    $listZone.on({
+		     'click': function(){
+			    var obj = $(this);
+			    parent.window.LEDialog.toggleDialog("dialog/imageupload.html?",
+					    function(jsonUploadImg){
+						    var url = jsonUploadImg.imgPath;
+						    var type = jsonUploadImg.type;
+						    obj.attr("src", url.replace("image.do", "../image.do"));
+					    }, null, true
+			    );
+		    }
+	    }, '.imgPath');
+
+        $listZone.on({
+            'mouseover': function(){
+                $(this).show();
+            }, 'mouseout': function(){
+                $(this).hide();
+            }
+        }, '.removeImg');
+
+        //删除图片
+        $listZone.on({
+            'click': function(){
+                $(this).parent().find(".imgPath").attr("src", "../export/images/sliderPanel/listUpLoad.png");
+            }
+        }, '.removeImg');
+
+        //单条删除
+        $listZone.on({
+            "click": function(){
+                $(this).parent().remove();
+                var listNum = parseInt($("#listNum").text());
+                $("#listNum").text(listNum - 1);
+            }
+        }, '.deletePic');
+
+
+        //复制粘贴清除样式
+        $listZone.on({
+            paste: function(e){
+                var _$this = $(this);
+                if(_$this.attr("contenteditable") == "plaintext-only"){
+                    setTimeout(function(){
+                        //e.preventDefault();
+                        e.stopPropagation();
+                        _$this.find("*").each(function(){
+                            $(this).after($(this).text());
+                            $(this).remove();
+                        });
+                        var reg = /&nbsp;/ig;
+                        _$this.html(_$this.html().replace(reg, ""));
+                        //alert(LECurrentObject.html());
+                    }, 100)
+                }
+            }
+        }, '.titleBox,.summaryBox,.srcBox,.timeBox,.linkBox,.keyWordBox');
+
+        //清空
+        $("#clearAll").click(function(){
+            $listZone.html("");
+            $("#listNum").text("0");
+        });
+
+	    //一位数变两位数 不够补0
+	    function oneToTwo(num){
+		    if (parseInt(num)<10) return '0'+num;
+		    return num;
+	    }
+        //增加一行
+        $("#addNewList").click(function(){
+            var listNum = parseInt($("#listNum").text());
+            $("#listNum").text(listNum + 1);
+
+	        var myDate = new Date();
+	        var _year=myDate.getFullYear();
+	        var _month=parseInt(myDate.getMonth()+1);
+	        var _day=myDate.getDate();
+	        var _hours=myDate.getHours();
+	        var _minutes=myDate.getMinutes();
+	        var _seconds=myDate.getSeconds();
+	        var timeStr=_year+"-"+oneToTwo(_month)+"-"+oneToTwo(_day)+" "+oneToTwo(_hours)+":"+oneToTwo(_minutes)+":"+oneToTwo(_seconds);
+
+            var newStr = ['<div class="articleList mgt10 clearfix" data-id="000" data-type="local">',
+                '<div class="drag-hand hide">',
+                '<span class="glyphicon glyphicon-move"></span>',
+                '</div>',
+                '<div class="deletePic hide">',
+                '<img src="../export/images/sliderPanel/listRemove2.png"/>',
+                '</div>',
+                '<div class="clearfix">',
+                '<div class="pull-left mgr10 mgl10 posRelative imgBox">',
+                '<img width="150" height="120" class="imgPath"  src="../export/images/sliderPanel/listUpLoad.png" alt="" />',
+                '<img class="removeImg posAbsolute cancelBtn hide1" src="../export/images/sliderPanel/listRemove.png" alt=""/>',
+                '</div>',
+                '<div class="pull-left article-mes">',
+			            '<input class="titleBox" type="text" placeholder="标题" value="" /></span>',
+			            '<textarea placeholder="摘要" class="summaryBox"></textarea></span>',
+                '</div>',
+                '</div>',
+                '<div class="clearfix">',
+			            '<input class="srcBox mgt10 mgl10" type="text" placeholder="来源" value="" />',
+			            '<input class="timeBox mgt10 mgl0" type="text" placeholder="时间" value="'+timeStr+'" />',
+			            '<input class="linkBox mgt10 mgl0" type="text" placeholder="链接" value="" />',
+			            '<input class="keyWordBox mgt10 mgl0" type="text" placeholder="标签" value="" />',
+                '</div>',
+                '</div>'].join("");
+            $listZone.append(newStr);
+
+	        var num = parseInt($("#listNum").text());
+	        var height=198*num;
+	        $listZone.scrollTop(height);
+        });
+
+
+	    //区分列表和图文列表调用不同的选稿框 列表模式和相册模式
+	    function selectType(){
+		    var Dialog="dialog/articlelistdilog.jsp?type=1&ch=0";
+
+		    if(PicJson[0].listName=="listMedia"){
+			    Dialog="dialog/thumbnailList.jsp?type=0&ch=0";
+		    }else if(PicJson[0].listName=="listGroup"){
+			    Dialog="dialog/articlelistdilog.jsp?type=1&ch=0";
+		    }
+
+		    return Dialog
+	    }
+
+	    //系统选取
+	    $("#addSysList").click(function(){
+		    var _url=selectType();
+		    //"dialog/articlelistdilog.jsp?type=1&ch=0"
+            parent.window.LEDialog.toggleDialog(_url,
+		            function(jsonList) {
+			            if (jsonList.length == 0) return;
+			            var len = jsonList.length;
+			            var strH = "";
+			            for (var i = 0; i < len; i++) {
+				            var str =['<div class="articleList mgt10 clearfix" data-id="'+jsonList[i].id+'" data-type="sql">',
+					            '<div class="drag-hand hide">',
+					            '<span class="glyphicon glyphicon-move"></span>',
+					            '</div>',
+					            '<div class="deletePic hide">',
+					            '<img src="../export/images/sliderPanel/listRemove2.png"/>',
+					            '</div>',
+					            '<div class="clearfix">',
+					            '<div class="pull-left mgr10 mgl10 posRelative imgBox">',
+					            '<img width="150" height="120" class="imgPath" src="' + jsonList[i].imgPath + '" alt="" />',
+					            '<img class="removeImg posAbsolute cancelBtn hide1" src="../export/images/sliderPanel/listRemove.png" alt=""/>',
+					            '</div>',
+					            '<div class="pull-left article-mes">',
+						            ' <input class="titleBox" type="text" placeholder="标题" value=\'' + jsonList[i].title + '\' />',
+						            '<textarea placeholder="摘要" class="summaryBox">' + jsonList[i].summary + '</textarea>',
+					            '</div>',
+					            '</div>',
+					            '<div class="clearfix">',
+					                    '<input class="srcBox mgt10 mgl10" type="text" placeholder="来源" value=\'' + jsonList[i].src + '\' />',
+							            '<input class="timeBox mgt10 mgl0" type="text" placeholder="时间" value=\'' + jsonList[i].PublishTime + '\' />',
+					                    '<input class="linkBox mgt10 mgl0" type="text" placeholder="链接" value=\'' + jsonList[i].link + '\' />',
+					                    '<input class="keyWordBox mgt10 mgl0" type="text" placeholder="标签" value=\'' + "" + '\' />',
+						            //jsonList[i].keyWord //待新增标签之后替换
+						        '<div class="sysFlag">系统</div>',
+					            '</div>',
+					            '</div>'].join("");
+				            strH += str;
+			            }
+			            $listZone.append(strH);
+
+			            var listNum = parseInt($("#listNum").text());
+			            $("#listNum").text(listNum + len);
+
+			            var num = parseInt($("#listNum").text());
+			            var height=198*num;
+			            $listZone.scrollTop(height);
+
+		            }, null, true
+            );
+	    });
+
+        //关闭dialog
+        $("#closecarousSetBtn,#btnCancel").click(function(e){
+            parent.window.LEDialog.closeDialog();
+        });
+
+        //向前台发送数据
+        $("#btnConfirm").click(function(e){
+            var jsonListed = [];
+            var obj;
+            var len = $listZone.children().length;
+            var $articleList = $listZone.children("div.articleList");
+                for(var i = 0; i < len; i++){
+                    if(!$.trim($articleList.eq(i).find(".titleBox").val())){
+                        alert("请输入第"+(i+1)+"条稿件的标题！");
+                        return;
+                    }
+                    /*obj = {
+	                    'listType':$articleList.eq(i).attr("data-type"),
+                        'id':$articleList.eq(i).attr("data-id"),
+	                    'OldId':$articleList.eq(i).attr("id"),
+                        'link': $articleList.eq(i).find(".linkBox").val(),
+                        'imgPath': $listZone.children().eq(i).find("img.imgPath").attr("src"),
+                        'title': $articleList.eq(i).find(".titleBox").val(),
+                        'summary': $articleList.eq(i).find(".summaryBox").val(),
+                        'src': $articleList.eq(i).find(".srcBox").val(),
+                        'PublishTime': $articleList.eq(i).find(".timeBox").val(),
+                        'modelClass': $articleList.eq(i).attr("data-modelClass"),
+                        'moreState': $articleList.eq(i).attr("data-moreState"),
+                        'moreText': $articleList.eq(i).attr("data-moreText"),
+                        'moreHref': $articleList.eq(i).attr("data-moreHref"),
+                        'timeState': $articleList.eq(i).attr("data-timeState"),
+                        'timeFormat': $articleList.eq(i).attr("data-timeFormat"),
+                        'hrefTarget': $articleList.eq(i).attr("data-hrefTarget"),
+	                    'moreId':$articleList.eq(i).attr("data-moreId")
+                    };*/
+
+	                obj = {
+		                'listType':$articleList.eq(i).attr("data-type"),
+		                'id':$articleList.eq(i).attr("data-id"),
+		                'OldId':$articleList.eq(i).attr("id"),
+		                'link': $articleList.eq(i).find(".linkBox").val(),
+		                'imgPath': $listZone.children().eq(i).find("img.imgPath").attr("src").replace("../image.do", "image.do"),
+		                'title': $articleList.eq(i).find(".titleBox").val(),
+		                'summary': $articleList.eq(i).find(".summaryBox").val(),
+		                'src': $articleList.eq(i).find(".srcBox").val(),
+		                'PublishTime': $articleList.eq(i).find(".timeBox").val(),
+		                'modelClass': _record.modelClass,
+		                'moreState': _record.moreState,
+		                'moreText': _record.moreText,
+		                'moreHref': _record.moreHref,
+		                'timeState': _record.timeState,
+		                'timeFormat':_record.timeFormat,
+		                'hrefTarget': _record.hrefTarget,
+		                'moreId':_record.moreId,
+		                'theSecondStyle':_record.theSecondStyle,
+		                'titleStyle':_record.titleStyle,
+		                'titleFont':_record.titleFont,
+		                'summaryStyle':_record.summaryStyle,
+		                'sourceStyle':_record.sourceStyle,
+		                'timeStyle':_record.timeStyle,
+		                'moreStyle':_record.moreStyle,
+		                'dataLevel':_record.dataLevel,
+		                'middleTimeState':_record.middleTimeState,
+		                'bottomTimeState':_record.bottomTimeState,
+		                'summaryState':_record.summaryState,
+		                'sourceState':_record.sourceState,
+		                'middleSourceState':_record.middleSourceState,
+		                'bottomSourceState':_record.bottomSourceState
+	                };
+
+                    jsonListed[i] = obj;
+                }
+
+                parent.window.LEDialog.dialogConfirm(jsonListed);
+	      //  console.info(JSON.stringify(jsonListed))
+        });
+
+    });
+
+</script>
+</html>

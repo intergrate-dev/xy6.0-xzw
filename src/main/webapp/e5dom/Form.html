@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta content="text/html;charset=utf-8" http-equiv="content-type" />
+    <link href="../e5style/style.css" rel="stylesheet" type="text/css" />
+    <link href="../e5style/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <link href="../e5script/jquery/dialog.style.css" rel="stylesheet" type="text/css" />
+    <link href="../e5script/jquery/jquery-ui/jquery-ui.custom.css" rel="stylesheet" type="text/css" />
+    <link href="../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../e5script/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../e5script/jquery/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../e5script/jquery/jquery.query.js"></script>
+    <script type="text/javascript" src="../e5script/e5.min.js"></script>
+    <script type="text/javascript" src="../e5script/e5.utils.js"></script>
+    <script type="text/javascript" src="../e5script/jquery/jquery.dialog.js"></script>
+    <script type="text/javascript" src="../e5script/jquery/jquery.contextmenu.r2.js"></script>
+    <script type="text/javascript" src="../e5script/jquery/jquery-tablehandle/jquery.tablehandle.js"></script>
+    <link href="../e5script/jquery/jquery-tablehandle/jquery.tablehandle.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../e5script/jquery/jquery-autocomplete/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript">
+		var i18n = {
+			
+		};
+
+        
+	</script>
+	<script type="text/javascript" src="script/form.js"></script>
+    
+</head>
+<body>
+<div class="container">
+  <div class="header">
+      <input id="btnRegOperation" type="button" value="注册为操作" />
+      <input id="btnSave" type="button" value="保存" />
+      <input id="btnCancel" type="button" value="取消" />
+  </div>
+  <div class="menu">
+      表单名称:<input id="txtFormName" type="text" />
+      表单编码:<span id="txtFormCode"></span>
+  </div>
+  <div class="mainContent">
+    <div class="sidebar">
+        <ul id="listFiled">
+            <li filedtype="0" filedname="名称" filedcode="sys_name">名称</li>
+            <li filedtype="1" filedname="性别" filedcode="sys_sex">性别</li>
+            <li filedtype="2" filedname="婚否" filedcode="sys_mary">婚否</li>
+            <li filedtype="7" filedname="爱好" filedcode="sys_like">爱好</li>
+            <li filedtype="21" filedname="自我介绍" filedcode="sys_aboutme">自我介绍</li>
+            <li filedtype="24" filedname="电子邮件" filedcode="sys_mail">电子邮件</li>
+            <li filedtype="25" filedname="固定电话" filedcode="sys_phone">固定电话</li>
+            <li filedtype="26" filedname="手机" filedcode="sys_mobile">手机</li>
+            <li filedtype="27" filedname="联系地址" filedcode="sys_addr">联系地址</li>
+            <li filedtype="28" filedname="出生日期" filedcode="sys_birthday">出生日期</li>
+            <li filedtype="29" filedname="部门" filedcode="sys_dept">部门</li>
+            <li filedtype="30" filedname="用户" filedcode="sys_users">用户</li>
+            <li filedtype="6" filedname="行业分类" filedcode="sys_cat">行业分类</li>
+        </ul>
+        <ul id="listCust">
+            <li filedtype="-1">插入文本</li>
+            <li filedtype="-2">插入分隔线</li>
+            <li filedtype="-3">保存</li>
+            <li filedtype="-4">保存并提交</li>
+            <li filedtype="-5">取消</li>
+        </ul>
+    </div>
+    <div class="content">
+        <table id="tbcontent" class="tablecontent" cellspacing="0" cellpadding="0">
+            <tr>
+                <td >&nbsp;</td>
+                
+            </tr>
+             <tr>
+                               <td >&nbsp;</td>
+                
+            </tr>
+             <tr>
+                               <td >&nbsp;</td>
+                
+            </tr>
+             <tr>
+               <td >&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+
+    <div class="size-tooltip-container">
+				<div class="size-tooltip-text">100px</div>
+				<div class="size-tooltip-line "></div>
+			</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.flow">
+	<class name="FlowNode" table="E5FLOW_FLOWNODES">
+		<id
+			column="FLOWNODEID"
+			name="ID"
+			type="integer"
+		>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="FLOWNODENAME"
+			length="40"
+			name="name"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="FLOWID"
+			length="22"
+			name="flowID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="DESCRIPTION"
+			length="128"
+			name="description"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="PRENODEID"
+			length="22"
+			name="preNodeID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="NEXTNODEID"
+			length="22"
+			name="nextNodeID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="WAITINGNAME"
+			length="40"
+			name="waitingStatus"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="DOINGNAME"
+			length="40"
+			name="doingStatus"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="DONENAME"
+			length="40"
+			name="doneStatus"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

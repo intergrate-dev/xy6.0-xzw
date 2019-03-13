@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.founder.e5.rel.model.RelTable" table="DOM_REL_TABLES">
+
+		<id name="id" column="ID" type="integer">
+			<generator class="assigned" />
+		</id>
+
+		<property name="name" column="NAME" not-null="true" type="string" />
+		<property name="tableName" column="TABLENAME" not-null="true" type="string" />
+		<property name="dsID" column="DSID" not-null="true" type="integer" />
+		<property name="refDocTypeID" column="REF_DOCTYPEID" not-null="true" type="integer" />
+			
+	</class>
+</hibernate-mapping>

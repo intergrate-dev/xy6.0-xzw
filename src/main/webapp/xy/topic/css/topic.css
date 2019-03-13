@@ -1,0 +1,116 @@
+/*新建话题样式*/
+
+.container-div{
+    margin-top:5%;
+    width:100%;
+    height:100%;
+    position:relative;
+    margin-left:15%;
+}
+.container-details .choose-color{
+   border:none;
+    width: 55px;
+    height: 27px;
+    position: relative;
+    top: -5px;
+    left: 10px;
+    border-radius: 5px;
+}
+.container-details .inform-text{
+    float:left;
+    text-align: right;
+    width: 6%;
+    margin-top: 4px;
+    margin-right: 15px;
+}
+.container-ul .topic-id{
+    border: none;
+    outline: none;
+    background: none;
+    margin-top:2px;
+}
+.container-details #topicPicBigDiv{
+    overflow: hidden;
+}
+.container-details #topicPicBigDiv {
+    overflow: hidden;
+}
+.container-details .plus{
+    color: #666;
+    margin-top: 36px;
+    text-align: center;
+}
+.container-details .picTopic {
+    width: 31%;
+    min-height: 100px;
+    margin: 0px 5px 10px 0px;
+    border: 1px dashed #dedede;
+    text-align: left;
+    vertical-align: middle;
+    color: #dedede;
+    font-size: 40px;
+    cursor: pointer;
+    position: relative;
+}
+.container-details .icon-remove{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+.container-details .topic-radios{
+    position:relative;
+    margin-left:20px;
+}
+
+.container-details .topicEnable{
+    margin-left: 12px;
+    position: relative;
+    vertical-align: middle;
+    margin-right:10px;
+}
+.container-details .topicDisable{
+    margin-left: 12px;
+    position: relative;
+    vertical-align: middle;
+    margin-right:10px;
+}
+.topic-buttons #tobottomSave{
+    border: none;
+    width: 77px;
+    height: 30px;
+    position: relative;
+    margin-left: 115px;
+    margin-top: 30px;
+    background-color: #1bb8fb;
+    color: #fff;
+}
+.topic-buttons #tobottomCancel{
+    border: none;
+    width: 77px;
+    height: 30px;
+    position: relative;
+    margin-left: 115px;
+    margin-top: 30px;
+    background-color:#ccc;
+    color: #fff;
+}
+/*颜色选择input框*/
+#a_color{
+    width:100px;
+    margin-left:20px;
+}
+.showColor{
+    width:180px;
+    height:27px;
+    border:1px solid #ccc;
+    float:left;
+    background:#fff;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+/*必填项标识样式*/
+.container-details .reqOption{
+    color:#f56c6c;
+    position: relative;
+    margin-right: 5px;
+}

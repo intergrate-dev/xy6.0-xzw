@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.datasource">java:comp/env/jdbc/E5NEW</property>
+
+        <property name="hibernate.show_sql">false</property>
+		<property name="hibernate.use_outer_join">true</property>
+
+		<!--========Context======-->
+		<mapping resource="hbm/Datasources.hbm"/>
+
+		<!--========Category======-->
+		<mapping resource="hbm/CategoryExt.hbm"/>
+		<mapping resource="hbm/CategoryExtType.hbm"/>
+		<mapping resource="hbm/CategoryType.hbm"/>
+
+		<!--========Flow======-->
+		<mapping resource="hbm/FlowNodes.hbm"/>
+		<mapping resource="hbm/Icons.hbm"/>
+		<mapping resource="hbm/Procs.hbm"/>
+		<mapping resource="hbm/Operations.hbm"/>
+		<mapping resource="hbm/ProcOrders.hbm"/>
+		<mapping resource="hbm/UnflowProcs.hbm"/>
+		<mapping resource="hbm/WorkFlows.hbm"/>
+
+		<!--========Permission======-->
+		<mapping resource="hbm/Permission.hbm"/>
+		<mapping resource="hbm/PermissionFV.hbm"/>
+
+		<!--========Dom======-->
+		<mapping resource="hbm/DocType.hbm.xml"/>
+		<mapping resource="hbm/DocTypeApps.hbm.xml"/>
+		<mapping resource="hbm/DocTypeField.hbm.xml"/>
+		<mapping resource="hbm/DocTypeFieldApps.hbm.xml"/>
+		<mapping resource="hbm/DocLib.hbm.xml"/>
+		<mapping resource="hbm/DocLibAdditionals.hbm.xml"/>
+		<mapping resource="hbm/FolderView.hbm.xml"/>
+		<mapping resource="hbm/Filter.hbm.xml"/>
+		<mapping resource="hbm/FVFilters.hbm.xml"/>
+		<mapping resource="hbm/Rule.hbm.xml"/>
+		<mapping resource="hbm/FVRules.hbm.xml"/>
+		<mapping resource="hbm/DataSourceConfig.hbm.xml"/>
+		<mapping resource="hbm/DomRelTable.hbm.xml"/>
+		<mapping resource="hbm/DomRelTableDocLib.hbm.xml"/>
+		<mapping resource="hbm/DomRelTableDocLibFields.hbm.xml"/>
+
+		<!--========Sys======-->
+		<mapping resource="hbm/FsysStoragedev.hbm.xml" />
+		<mapping resource="hbm/FsysUser.hbm.xml" />
+		<mapping resource="hbm/FsysUserdocfolder.hbm.xml" />
+		<mapping resource="hbm/FsysRoleuserrelations.hbm.xml" />
+		<mapping resource="hbm/FsysRole.hbm.xml" />
+		<mapping resource="hbm/FsysNode.hbm.xml" />
+		<mapping resource="hbm/FsysApp.hbm.xml" />
+		<mapping resource="hbm/FsysApppermission.hbm.xml" />
+		<mapping resource="hbm/FsysAppwebaddress.hbm.xml" />
+		<mapping resource="hbm/FsysLoginuser.hbm.xml" />
+		<mapping resource="hbm/FsysLoginArchive.hbm.xml" />
+		<mapping resource="hbm/FsysSysconfig.hbm.xml" />
+		<mapping resource="hbm/FsysSyslog.hbm.xml" />
+		<mapping resource="hbm/FsysDefaultFolder.hbm.xml" />
+
+		<!--========workspace======-->
+		<mapping resource="hbm/FsysPersonalSetting.hbm.xml" />
+		<mapping resource="hbm/ListPage.hbm.xml"/>
+
+		<!--========Scheduler======-->
+		<mapping resource="hbm/SysJob.hbm.xml" />
+		<mapping resource="hbm/SysJobTrigger.hbm.xml"/>
+
+		<!--========V3.0 add.======-->
+		<mapping resource="hbm/Form.hbm.xml"/>
+
+		<mapping resource="hbm/FsysUserFrozen.hbm.xml"/>
+
+		<mapping resource="hbm/JobDrawimgTask.hbm.xml"/>
+		<mapping resource="hbm/FsysDocview.hbm.xml"/>
+		<mapping resource="hbm/Query.hbm.xml"/>
+   </session-factory>
+</hibernate-configuration>

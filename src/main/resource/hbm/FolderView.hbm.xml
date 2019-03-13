@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.founder.e5.dom.FolderView" table="DOM_FOLDERVIEW"
+		discriminator-value="0">
+		
+		<id name="FVID" type="integer" column="FVID">
+			<generator class="assigned"/>
+		</id>
+		
+		<discriminator column="TYPE" type="integer"/>
+		
+		<property name="FVName" column="FVNAME" type="string" not-null="true"
+			length="80"/>
+		
+		<property name="docLibID" column="DOCLIBID" type="integer" not-null="true"/>
+		
+		<property name="docTypeID" column="DOCTYPEID" type="integer"
+			not-null="true"/>
+		
+		<property name="parentID" column="PARENTID" type="integer" not-null="true"/>
+		
+		<property name="rootID" column="ROOTID" type="integer" not-null="true"/>
+		
+		<property name="keepDay" column="KEEPDAY" type="integer" not-null="true"/>
+		
+		<property name="defaultLayoutID" column="DEFAULTLAYOUTID" type="integer"
+			not-null="true"/>
+		
+		<property name="treeOrder" column="TREEORDER" type="integer"
+			not-null="true"/>
+		
+		<property name="treeLevel" column="TREELEVEL" type="integer"
+			not-null="true"/>
+		
+		<subclass name="com.founder.e5.dom.Folder" discriminator-value="1"/>
+		
+		<subclass name="com.founder.e5.dom.View" discriminator-value="2">
+			
+			<property name="viewFormula" column="VIEWFORMULA" type="string"
+				not-null="false" length="255"/>
+			
+		</subclass>
+		
+	</class>
+	
+</hibernate-mapping>

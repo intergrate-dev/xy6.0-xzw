@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>编辑数据</title>
+    <link rel="stylesheet" href="../third/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../export/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../third/handSonTable/css/handsontable.full.min.css"/>
+
+    <style type="text/css">
+        *,body{
+            margin: 0;
+            padding: 0;
+        }
+        .data-editing {
+            width: 900px;
+            height: 610px;
+            padding:10px 20px;
+            background-color: #fff;
+            z-index: 100;
+        }
+
+        .data-editing-title {
+            height: 40px;
+            line-height: 38px;
+            border-bottom: 1px solid #eee;
+        }
+        .add-data {
+            font-size: 16px;
+            font-weight: 700;
+            width: 76px;
+            text-align: center;
+            line-height: 38px;
+            border-bottom: 2px solid #03a8f1;
+            color: #333;
+        }
+        .addBox {
+            background: #f5f5f5;
+            height: 38px;
+            line-height: 38px;
+            border: 1px solid #eee;
+            padding: 0 8px;
+            font-size: 14px;
+            font-family: "microsoft yahei";
+            color: #232323;
+        }
+        .addBox input{
+            display:inline-block;
+            width:40px;
+            margin-left:15px;
+            margin-right:3px;
+        }
+        .confirmAdd {
+            padding: 0 10px;
+            height: 24px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background: #fff;
+            outline: none;
+            color: #232323;
+            font-family: "microsoft yahei";
+            line-height: 22px;
+            font-size: 12px;
+        }
+        .confirmAdd:hover {
+            background: #03a8f1;
+            color: #fff;
+        }
+        .selectBtn {
+            background: #03a8f1;
+            color: #fff;
+        }
+
+        .unselectBtn {
+            background: #999;
+            color: #fff;
+        }
+
+        .selectBtn, .unselectBtn {
+            height: 30px;
+            line-height: 30px;
+            border: none;
+            width: 70px;
+            outline: none;
+            font-family: "microsoft yahei";
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+<div class="data-editing">
+    <div class="data-editing-title">
+        <div class="pull-left add-data">
+            编辑数据
+        </div>
+        <div class="pull-right">
+            <img id="closeDataEdit" class="btn-hide" src="../export/images/sliderPanel/listRemove1.png">
+        </div>
+    </div>
+   <!-- <div class="mgt10 addBox">
+        增加<input id="rowNum" type="text" value="0">行<input id="colNum" type="text" value="0">列
+        <button id="confirmAdd" class="confirmAdd mgl15">确认添加</button>
+    </div>-->
+    <!--列表开始-->
+
+    <div id="dataEdit" style="width: 858px;height: 478px;overflow: auto;border:1px solid #eee;box-sizing:content-box;margin-top: 10px;"></div>
+    <div class="mgt10 text-center">
+        <button id="confirmDataBtn" class="selectBtn mgr20">确定</button>
+        <button id="closeDataBtn" class="unselectBtn">取消</button>
+    </div>
+    <!--列表结束-->
+</div>
+
+</body>
+<script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../third/handSonTable/js/handsontable.full.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+        // 获取前台数据
+        var PicJson = parent.window.LEDialog.getData();
+
+        var data=PicJson;
+        var table = document.getElementById('dataEdit');
+        var hot3 = new Handsontable(table,
+                {
+                    data: data,
+                    fixedRowsTop: 1,    //固定首行
+                    fixedColumnsLeft: 1, //固定左侧第一列
+                   /* startRows: 20,
+                    startCols: 20,*/
+                    manualColumnResize: true,
+                    manualRowMove: true,  //拖拽行
+                    manualColumnMove: true,  //拖拽列
+                    //	    stretchH:"all"     //延伸列的宽度
+                    colHeaders: true,  //显示列头
+                    rowHeaders: true,  //显示行头
+                    contextMenu: true,   //右键菜单
+                    contextMenu: ['row_above', 'row_below', 'col_left', 'col_right', 'remove_row', 'remove_col'],////显示指定菜单
+                    autoColumnSize: true,
+                    autoRowSize: true,
+                    minRows: 19,
+                    minCols: 15,
+                    maxCols: 26,
+                    maxRows: 100,
+                    className: "htCenter",  //居中显示
+                    cell: [
+                        {row: 0, col: 0, readOnly : true}
+                    ]
+                });
+
+
+        //右键自定义项
+        hot3.updateSettings({
+            contextMenu: {
+                items: {
+                    "row_above": {
+                        name: '上加行',
+                        disabled: function () {
+                            //if first row, disable this option
+                            return (hot3.getSelected() && hot3.getSelected()[0] === 0)
+                        }
+                    },
+                    "row_below": {
+                        name: '下加行'
+                     /*  disabled: function () {
+                            //if first row, disable this option
+                            return (hot3.getSelected() && hot3.getSelected()[0] === 0)
+                        }   */
+                    },
+                    "hsep1": "---------",
+                    "col_left": {
+                        name: '左加列',
+                        disabled: function () {
+                            //if first row, disable this option
+                            return (hot3.getSelected() && hot3.getSelected()[1]===0)
+                        }
+                    },
+                    "col_right": {
+                        name: '右加列'
+                     /*  disabled: function () {
+                            //if first row, disable this option
+                            return (hot3.getSelected() && hot3.getSelected()[1] === 0)
+                        }   */
+                    },
+                    "hsep2": "---------",
+                    "remove_row": {
+                        name: '删行'
+                     /*   disabled: function () {
+                            //if first row, disable this option
+                            return (hot3.getSelected() && hot3.getSelected()[0] === 0)
+                        }   */
+                    },
+                    "remove_col": {
+                        name: '删列'
+                      /*  disabled: function () {
+                            //if first row, disable this option
+                            return (hot3.getSelected() && hot3.getSelected()[1] === 0)
+                        }  */
+                    }
+                }
+            }
+
+        });
+
+
+        //关闭dialog
+        $("#closeDataEdit,#closeDataBtn").click(function (e) {
+            parent.window.LEDialog.closeDialog();
+        });
+        //获取后台数据
+        $("#confirmDataBtn").click(function (e) {
+	        //总列数、总行数
+	        var allCols=hot3.countCols();
+	        var allRows=hot3.countRows();
+	        //空列数、空行数
+	        var emptyCols=hot3.countEmptyCols(true);
+	        var emptyRows=hot3.countEmptyRows(1);
+	        //有效列数、有效行数
+	        var realCols=allCols-emptyCols-1;
+	        var realRows=allRows-emptyRows-1;
+            parent.window.LEDialog.dialogConfirm(hot3.getData(realRows,realCols));
+        });
+    })
+</script>
+</html>

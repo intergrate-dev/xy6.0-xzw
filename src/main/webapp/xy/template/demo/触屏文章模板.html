@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+ 	<FOUNDER-XY type="article" data="">
+		<title>${article.title?replace("<.*?>","","r")}</title>
+		<meta name="keywords" content="${article.keyword}">
+		<meta name="description" content="${article.summary}">
+		<meta name="tags" content="${article.tag}">
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="${article.title?replace("<.*?>","","r")}" />
+		<meta property="og:description" content="${article.summary?replace("<.*?>","","r")}" />
+		<meta property="og:url" content="${article.url!}" />
+	</FOUNDER-XY>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="http://172.19.33.95/template/css/share.css">
+	<script type="text/javascript" src="http://172.19.33.95/template/script/jquery.min.js"></script>
+	<script type="text/javascript" src="http://172.19.33.95/template/script/share.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".close").click(function(){
+				$(".uploadtip").toggle();
+			});
+		})
+	</script>
+</head>
+<body class="newshare">
+	<div class="wrap">
+		<FOUNDER-XY type="article" data="">
+		<h2>${article.title}</h2>
+		<p class="p-information">
+			<#if (article.source?exists && (article.source?length > 0))>
+				${article.source}
+			<#else>
+				<img class="img005" src="http://172.19.33.95/template/img/005.png" alt="南方+">
+			</#if>
+			<#if (article.author?exists && (article.author?length > 0))>记者 ${article.author}</#if>
+			　${article.pubTime?string("yyyy-MM-dd HH:mm")}
+		</p>
+		<div class="article">
+		<#if (article.type == 1)>
+			<#list article.attPics as attachment>
+				<img src="${attachment.urlPad}.2"/><br/>
+				<center style="color:gray;">${attachment.content}</center><br/>
+			</#list>
+		</#if>
+		<#if (article.type == 2)>
+			<#list article.attVideos as attachment>
+			<video src="${attachment.urlPad}" controls="controls" poster="${attachment.picUrlPad!}" width1="95%">
+				您的浏览器不支持 video 标签，不是触屏设备吗？
+			</video>
+			</#list>
+		</#if>
+			${article.content}
+		</div>
+		<#if (article.editor?exists && (article.editor?length > 0))>
+			<div class="editor">
+			编辑　${article.editor}
+			</div>
+		</#if>
+		
+		<div class="adv"></div>
+		
+		<#if (article.rels?size > 0)>
+		<div class="newslist">
+			<h3>相关文章</h3>
+			<#list article.rels as rel>
+			<ul>
+				<li class="newstitle"><a href="${rel.url}" target="_blank">${rel.title}</a></li>
+				<li class="time">南方日报 ${rel.pubTime?string("yyyy-MM-dd HH:mm")}</li>
+			</ul>
+			</#list>
+		</div>
+		</#if>
+		</FOUNDER-XY>
+		<div id="divOrder" class="order" style="display:none;">
+			<div></div>
+			<span id="countSubscribe"></span>人定制了这篇文章
+		</div>
+	</div>
+	<div style="height:88px"></div>
+	<div class="uploadtip">
+		<div class="aboutword">
+			<img class="logo" src="http://static.nfapp.southcn.com/app/nanfang_logo.png" alt="" />
+			<span class="slogan">
+				<span>创造更多价值</span><br />
+				<span>更多精彩尽在南方<sup>+</sup>客户端</span>
+			</span>
+			
+			<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.nfdaily.nfplus" class="upload">立即打开</a>
+			<span class="close">×</span>
+		</div>
+		
+	</div>
+</body>
+<script>
+$(function() {
+	$("div.article img").each(function(i){
+		this.style.width = "95%";
+		this.style.height = "auto";
+		
+		var src = $(this);
+		var title = src.attr("title");
+		if (title) {
+			var label = $("<span/>").addClass("spanPicTitle").html(title);
+			src.parent().append(label);
+		}
+	});
+	$("div.article video").each(function(i){
+		this.style.width = "95%";
+		this.style.height = "auto";
+	});
+});
+</script>
+
+</html>

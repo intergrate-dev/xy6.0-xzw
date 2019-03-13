@@ -1,0 +1,25 @@
+.file-actions {
+    bottom: -4px;
+    position: absolute;
+    right: -2px;
+}
+
+.contentStyle {
+    border: 1px solid #cecdcd;
+}
+
+.contentStyle:empty:before{
+    content: attr(placeholder);
+    color:#bbb;
+}
+.contentStyle:focus:before{
+    content:none;
+}
+
+.tag-hide .file-thumbnail-footer {
+    height: 16px !important;
+}
+
+.tag-hide .file-footer-caption {
+    display: none !important;
+}

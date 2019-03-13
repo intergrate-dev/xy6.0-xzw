@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:amq="http://activemq.apache.org/schema/core"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+               http://www.springframework.org/schema/beans/spring-beans-2.0.xsd   
+               http://activemq.apache.org/schema/core    
+               http://activemq.apache.org/schema/core/activemq-core.xsd">
+               
+	<!-- a pooling based JMS provider -->
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL"><value>tcp://${AMQ_ADDR:172.19.33.95}:61616</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!--  queue -->
+	<amq:queue name="pubQueue" physicalName="PUBLISH-QUEUE" />
+	<amq:queue name="pubByColQueue" physicalName="PUBLISH-BY-COL-QUEUE" />
+	<amq:queue name="revokeQueue" physicalName="REVOKE-QUEUE" />
+	<amq:queue name="orderQueue" physicalName="ORDER-QUEUE" />
+	<amq:queue name="relQueue" physicalName="REL-QUEUE" />
+	<amq:queue name="blockQueue" physicalName="BLOCK-QUEUE" />
+	<amq:queue name="blockRevokeQueue" physicalName="BLOCK-REVOKE-QUEUE" />
+	<amq:queue name="pubOthersQueue" physicalName="PUBLISH-OTHERS-QUEUE" />
+	
+	<amq:topic name="otherTopic" physicalName="OTHER-TOPIC" />
+	
+	<!--  data converter -->
+	<bean id="articleConverter" class="com.founder.xy.jms.data.ArticleConverter" />
+	<bean id="docIDConverter" class="com.founder.xy.jms.data.DocIDConverter" />
+	<bean id="columnArticleConverter" class="com.founder.xy.jms.data.ColumnArticleConverter" />
+	
+	<!--  template -->
+	<bean id="pubTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="articleConverter" />
+		<property name="defaultDestination" ref="pubQueue"></property>
+		<!--property name="pubSubDomain" value="true" /-->
+	</bean>
+	<bean id="pubByColTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="columnArticleConverter" />
+		<property name="defaultDestination" ref="pubByColQueue"></property>
+	</bean>
+	<bean id="revokeTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="articleConverter" />
+		<property name="defaultDestination" ref="revokeQueue"></property>
+	</bean>
+	<bean id="orderTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="docIDConverter" />
+		<property name="defaultDestination" ref="orderQueue"></property>
+	</bean>
+	<bean id="relTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="docIDConverter" />
+		<property name="defaultDestination" ref="relQueue"></property>
+	</bean>
+	<bean id="blockTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="docIDConverter" />
+		<property name="defaultDestination" ref="blockQueue"></property>
+	</bean>
+	<bean id="blockRevokeTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="docIDConverter" />
+		<property name="defaultDestination" ref="blockRevokeQueue"></property>
+	</bean>
+	<bean id="pubOthersTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="docIDConverter" />
+		<property name="defaultDestination" ref="pubOthersQueue"></property>
+	</bean>
+	<bean id="otherTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="messageConverter" ref="docIDConverter" />
+		<property name="defaultDestination" ref="otherTopic"></property>
+	</bean>
+
+	<!-- publisher -->
+	<bean id="pubSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="pubTemplate"></property>
+	</bean>
+	<bean id="pubByColSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="pubByColTemplate"></property>
+	</bean>
+	<bean id="revokeSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="revokeTemplate"></property>
+	</bean>
+	<bean id="orderSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="orderTemplate"></property>
+	</bean>
+	<bean id="relSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="relTemplate"></property>
+	</bean>
+	<bean id="blockSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="blockTemplate"></property>
+	</bean>
+	<bean id="blockRevokeSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="blockRevokeTemplate"></property>
+	</bean>
+	<bean id="pubOthersSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="pubOthersTemplate"></property>
+	</bean>
+	<bean id="otherSender" class="com.founder.xy.jms.Publisher">
+		<property name="jmsTemplate" ref="otherTemplate"></property>
+	</bean>
+	
+	<bean id="otherListener" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsConnectionFactory"></property>
+		<property name="destination" ref="otherTopic"></property>
+		<property name="messageListener">
+			<bean class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+				<constructor-arg><bean class="com.founder.xy.jms.receiver.CacheRefreshReceiver"/></constructor-arg>
+				<property name="defaultListenerMethod" value="receive"/>
+				<property name="messageConverter" ref="docIDConverter"/>
+			</bean>
+		</property>
+	</bean>
+</beans>

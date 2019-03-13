@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>图片页跳转</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+    <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="insertlink.css" />
+    <link rel="stylesheet" href="../../../script/bootstrap-3.3.4/css/bootstrap.min.css">
+    <!--<script src="code_1.js"></script>-->
+</head>
+<body >
+ <div class="wrapper" >
+    <div id="codeTab">
+        <div id="tabBodys" class="tabbody">
+            <div id="code-content">
+                <div>
+                    <h4>当前稿件的页数：<span></span></h4>
+                    <ul>
+                        <li class="btn btn-link">添加(更新)图片页跳转</li>
+                        <li class="btn btn-default">清除所有图片跳转</li>
+                        <li class="btn">取消</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+ <script type="text/javascript">
+     //进入页面需要先初始化一下
+     var editor1 = UE.getEditor('editor').getContent();
+     var arrLink = editor1.split('_ueditor_page_break_tag_');
+     var numLink =arrLink.length;
+     var editorStr = '';
+
+     $('#code-content span').text(numLink);
+
+     $('#code-content li').eq(0).on('click',function () {
+
+         if(numLink > 1){
+            //判定数组下否有 img 标签
+//             for(var i = 0; i < arrLink.length; i++){
+//
+//                 if(arrLink[i].indexOf('<img ') != -1){
+//                     需要加上 img 外面已经有 a 标签的判定
+//                     var imgLink = arrLink[i].replace(/<\s?img[^>]*>/gi,function(val){
+////                     var imgLink = arrLink[i].replace(/(\<[^(\<)|a]+)(\<\s?img[^>]*\>)\s*(\<[^(\<)|a]+\>)/gi,function(val){
+//
+//                         var curVal=val;
+//
+//                         return '<a href=/content_0000_'+ i + '.html>'+curVal+'</a>'
+//
+//                     });
+//                     console.log()
+//
+//                     方案一：
+//                     var article = window.parent.article;
+//                     var pageNum = parseInt(i) + 2;
+//
+//                     if( i == arrLink.length-1){
+//                         //最后一个不添加链接
+//                         imgLink = arrLink[i];
+//
+//                     }else{
+//                         //添加图片链接
+//                         imgLink = arrLink[i].replace(/(\<\s*[^a][^\>]+\>)(\<\s*img[^>]*\>)\s*(\<[^(\<)|a]+\>)/gi, '$1<a href='+ article.prefixUrl +  article.docID + '_' + pageNum + '.' + article.suffixUrl+'>$2</a>$3')
+//
+//                     }
+//
+//                     arrLink[i] = imgLink;
+//
+//                 }
+//
+//                 拼接字符串最后一个
+//                 if(i < arrLink.length-1){
+//
+//                     editorStr += arrLink[i] + '_ueditor_page_break_tag_';
+//                 }else{
+//                     editorStr += arrLink[i];
+//                 }
+//             }
+
+
+             //方案二：
+                //过滤只有一个img子标签
+             //editorStr = editor1.replace(/(\<\s*[^\>]+\>\s*\<\s*img[^>]*)\/\s*\>\s*(\<[^(\<)]+\>)/gi, '$1 classData ="' + 'next_page' + '"/>$2')
+                //过滤span 后面的img
+             //editorStr = editor1.replace(/(\<\s*p[^\>]*\>[\s|\t|\n]*\<\s*img[^>]*)\/\s*\>(.*?[\s|\t|\n]*\<\s*\/p\s*\>)/gi, '$1 classData ="' + 'next_page' + '"/>$2');
+                //双过滤  但不能过滤一个p 里面包含两个img
+
+             //这是不包含图说的情况
+            //editorStr = editor1.replace(/(\<\s*p[^\>]*\>[\s|\t|\n]*.*?[\s|\t|\n]*<\s*img[^>]*)\/\s*\>([\s|\t|\n]*.*?[\s|\t|\n]*\<\s*\/p\s*\>)/gi, '$1 classData ="' + 'next_page' + '"/>$2')
+
+            //这是包含图说 img 有兄弟节点figcaption
+             editor1 = editor1.replace(/[\s|\t|\n]*<[\s|\t|\n]*/gim, '<').replace(/[\s|\t|\n]*>[\s|\t|\n]*/gim, '>');//过滤标签附近多余的空格
+             editorStr = editor1.replace(/(\<figure[^\>]*\>.*?<img[^>]*)\/\>(.*?\<\/figure\>)/gi, '$1 classData ="next_page"/>$2');//图说:图说标签figure包裹的img
+             editorStr = editorStr.replace(/(\<p[^\>]*\>.*?<img[^>]*)\/\>(.*?\<\/p\>)/gi, '$1 classData ="next_page"/>$2');//常见情况:P标签包裹的img
+
+             //方案三：
+//             var editor1Arr = editor1.match(/\<\s*[^\>]+\>\s*\<\s*img[^>]*\/\s*\>\s*\<[^(\<)]+\>/gi)
+//             var data = 'next_page'
+//             for (var i = 0; i< editor1Arr.length;i++){
+//                 if (editor1Arr[i].match(/\<\s*[^\>]+\>\s*\<\s*img[^>]*class\s*\=\s*\"[^\"]*\"[^>]*\/\s*\>\s*\<[^(\<)]+\>/gi)) {
+//                     // console.log(d[i].match(/\<\s*[^\>]+\>\s*\<\s*img[^>]*class\s*\=\s*\"[^\"]*\"[^>]*\/\s*\>\s*\<[^(\<)]+\>/gi))
+//                     editor1Arr[i] = editor1Arr[i].replace(/(\<\s*[^\>]+\>\s*\<\s*img[^>]*class\s*\=\s*\"[^\"]*)(\"[^>]*\/\s*\>\s*\<[^(\<)]+\>)/gi, '$1 ' + data + '$2')
+//                 }
+//                 else{
+//                     editor1Arr[i] = editor1Arr[i].replace(/(\<\s*[^\>]+\>\s*\<\s*img[^>]*)\/\s*\>\s*(\<[^(\<)]+\>)/gi, '$1 class="' + data + '"/>$2')
+//                 }
+//             }
+//             editorStr = editor1Arr.join("_ueditor_page_break_tag_") + '<p><br/></p>';
+
+
+             //方案四
+//             var data = 'next_page',
+//                 imgLink = '';
+//             for(var i = 0; i < arrLink.length; i++){
+//
+//                 if(arrLink[i].indexOf('<img ') != -1){
+//                    // 需要加上 img 外面已经有 a 标签的判定
+//
+//                     if (arrLink[i].match(/\<\s*[^\>]+\>\s*\<\s*img[^>]*class\s*\=\s*\"[^\"]*\"[^>]*\/\s*\>\s*\<[^(\<)]+\>/gi)) {
+//                         // console.log(d[i].match(/\<\s*[^\>]+\>\s*\<\s*img[^>]*class\s*\=\s*\"[^\"]*\"[^>]*\/\s*\>\s*\<[^(\<)]+\>/gi))
+//
+//                         //保持原有的class的属性值
+//                         imgLink = arrLink[i].replace(/(\<\s*[^\>]+\>\s*\<\s*img[^>]*class\s*\=\s*\"[^\"]*)(\"[^>]*\/\s*\>\s*\<[^(\<)]+\>)/gi, '$1 ' + data + '$2')
+//                     }
+//                     else{
+//                         //创建一个新的class
+//                         imgLink = arrLink[i].replace(/(\<\s*[^\>]+\>\s*\<\s*img[^>]*)\/\s*\>\s*(\<[^(\<)]+\>)/gi, '$1 class="' + data + '"/>$2')
+//                     }
+//
+//                     arrLink[i] = imgLink;
+//
+//                 }
+//
+//                 //拼接字符串最后一个
+//                 if(i < arrLink.length-1){
+//
+//                     editorStr += arrLink[i] + '_ueditor_page_break_tag_';
+//                 }else{
+//                     editorStr += arrLink[i];
+//                 }
+//             }
+
+
+
+         }else{
+             alert('暂无分页,请添加分页后再添加分页链接')
+             dialog.close();
+             return
+         }
+         UE.getEditor('editor').setContent(editorStr);
+         dialog.close();
+     })
+     $('#code-content li').eq(1).on('click',function () {
+         //可以加入优化判定
+        //方案一：
+//         if(editor1.match(/<\s*a[^\<]*\>\s*\<\s*img[^>]*\>\s*\<\s*\/a\>/gi)){
+//             editor1 = editor1.replace(/<\s*a[^\<]*\>\s*(\<\s*img[^>]*\>)\s*\<\s*\/a\>/gi, '$1')
+//             UE.getEditor('editor').setContent(editor1);
+//         }
+         //方案二：
+         if(editor1.indexOf('next_page') != -1){
+             editor1 = editor1.replace(/next_page/g,'')
+             UE.getEditor('editor').setContent(editor1);
+         }
+
+         dialog.close();
+     });
+     $('#code-content li').eq(2).on('click',function () {
+         dialog.close();
+     });
+
+ </script>
+</body>
+</html>

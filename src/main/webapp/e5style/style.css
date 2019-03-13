@@ -1,0 +1,217 @@
+body{
+    font-size: 12px;
+}
+
+
+
+.table{
+	border: 1px solid #F0F0F0;
+	color: #444444;
+}
+.table th{
+	background: none repeat scroll 0 0 #F0F0F0;
+	line-height: 18px;
+	padding: 6px 10px 6px 19px;
+	color: #0078B6;
+}
+
+
+
+.blueLabel {
+	color: #0066ff;
+}
+.work {
+	font-style: normal;
+	line-height: normal;
+	color: #333333;
+	text-decoration: none;
+}
+.noborderinput{
+	border:0px;
+}
+.pageheader{
+	font-size:14px;
+	font-style: normal;
+	line-height: normal;
+	color: #333333;
+	text-decoration: none;
+}
+#nameDiv{
+	background:url(../images/t-bar.gif);
+	text-align:center;
+	color:white;
+}
+#titleDiv{
+	background-color: #e8e8e8;
+	height: 50px;
+	padding-top : 5px;
+	padding-left: 10px;
+}
+
+.BODY2 {
+	scrollbar-face-color:#C9C9C9;;
+	scrollbar-highlight-color:#C9C9C9;
+	scrollbar-3dlight-color:#C9C9C9;
+	scrollbar-darkshadow-color:#C9C9C9;
+	scrollbar-shadow-color:#C9C9C9;
+	scrollbar-arrow-color:#A5A5A5
+	scrollbar-track-color:#E4E4E4;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+.field {
+	background: #ffffff;
+	border-bottom:1.5px solid #BEBEBE;
+	border-left:1.6px solid #BEBEBE;
+	border-right:1px solid #BEBEBE;
+	border-top:1px solid #BEBEBE;
+	color:#333333;
+	cursor: text;
+	font-family:Arial;
+	height: 18px;
+	padding: 1px
+}
+.white {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.select {
+	color: #333333;
+	border: thin dashed #CCCCCC;
+	list-style-type: disc;
+	height: 20px;
+	border-top-style: none;
+	border-top-width: thin;
+	border-right-style: none;
+	border-right-width: thin;
+	border-bottom-style: none;
+	border-bottom-width: thin;
+	border-left-style: none;
+	border-left-width: thin;
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+	border-style: none;
+	border-width: none;
+}
+.textarea {
+	color: #333333;
+	height: 100px;
+	scrollbar-face-color:#C9C9C9;;
+	scrollbar-highlight-color:#C9C9C9;
+	scrollbar-3dlight-color:#C9C9C9;
+	scrollbar-darkshadow-color:#C9C9C9;
+	scrollbar-shadow-color:#C9C9C9;
+	scrollbar-arrow-color:#A5A5A5;
+	scrollbar-track-color:#E4E4E4;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+.button {
+	text-decoration: none;
+	background-attachment1: fixed;
+	background-image: url(../images/but_blank.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	word-spacing: normal;
+	height: 20px;
+	width: 78px;
+	border: 0px none;
+	margin: 0px;
+	padding: 0px;
+}
+.bluebutton {
+	text-decoration: none;
+	background-attachment1: fixed;
+	background-image: url(../images/button_1.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	word-spacing: normal;
+	height: 20px;
+	width: 78px;
+	border: 0px none;
+	margin: 0px;
+	padding: 0px;
+}
+.timebutton
+{
+	text-decoration: none;
+	background-attachment1: fixed;
+	background-image: url(../images/but-time.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	word-spacing: normal;
+	height: 19px;
+	width: 35px;
+	border: 0px none;
+	margin: 0px;
+	padding: 0px;
+}
+.blacktd{
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #333333;
+}
+.bottomlinetd{
+	border-bottom: 1px solid #E0E0E0;
+}
+.bluetd{
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(../images/t-bar.gif);
+}
+.bluetd2{
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(../images/t2-bar.gif);
+}
+.textarea1 {
+	color: #333333;
+	height: 200px;
+	scrollbar-face-color:#C9C9C9;;
+	scrollbar-highlight-color:#C9C9C9;
+	scrollbar-3dlight-color:#C9C9C9;
+	scrollbar-darkshadow-color:#C9C9C9;
+	scrollbar-shadow-color:#C9C9C9;
+	scrollbar-arrow-color:#A5A5A5;
+	scrollbar-track-color:#E4E4E4;
+	margin-left: 0px;
+	margin-top: 0px;.red {
+	color: #CC0000;
+	text-decoration: none;
+}
+.red {
+	color: #CC0000;
+}
+.divtitle{
+ 	background-color: #5e6db2;
+ 	color: white;
+ 	margin:0px;
+}
+.onlyborder{
+    border: #888888 1px solid;
+    width: 100%;
+}
+.withwidth{
+    border: #888888 1px solid;
+}
+.withwidth td{
+    border: #9b9999 1px solid;
+}
+.withwidth th{
+    background-color: #dddddd;
+    border: #9b9999 1px solid;
+    color: black;
+    font-weight: lighter
+}
+input.radio{
+	border:0px;
+}
+input.checkbox{
+	border:0px;
+}
+a:link{font-weight : normal ;text-decoration : none ;color : #000;}
+a:visited {font-weight : normal ;text-decoration : none ;color : #000 ;}
+a:hover {font-weight : normal ;text-decoration : none ;color : COLOR: #06f;}
+a:active {font-weight : normal ;text-decoration : none ;color : #F90 ;}

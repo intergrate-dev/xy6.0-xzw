@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.scheduler.db">
+	<class name="com.founder.e5.scheduler.db.SysJob" table="FSYS_JOBS">
+		<id
+			column="JOB_ID"
+			name="jobID"
+			type="integer"
+		>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="NAME"
+			length="40"
+			name="name"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DESCRIPTION"
+			length="400"
+			name="description"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="JOB_CLASS"
+			length="200"
+			name="jobClass"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="CONFIG_URL"
+			length="200"
+			name="configUrl"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="LOG_URL"
+			length="200"
+			name="logUrl"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="ACTIVE"
+			length="1"
+			name="active"
+			not-null="false"
+			type="string"
+		 />		
+	</class>
+</hibernate-mapping>

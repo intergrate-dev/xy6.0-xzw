@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.dom">
+	<class name="DocLib" table="DOM_DOCLIBS" >
+		<id name="docLibID" type="integer" column="DOCLIBID" >
+			<generator class="assigned"/>
+		</id>
+		<property name="docLibName" column="DOCLIBNAME" type="string" 
+			not-null="true" length="40" />
+		<property name="docLibTable" column="DOCLIBTABLE" type="string" 
+			not-null="true" length="40" />
+		<property name="docTypeID" column="DOCTYPEID" type="integer" 
+			not-null="true" />
+		<property name="keepDay" column="KEEPDAY" type="integer" 
+			not-null="true" />
+		<property name="description" column="DESCRIPTION" type="string" 
+			not-null="false" length="50" />
+		<property name="storageDevice" column="ATTACHDEVNAME" type="string" 
+			not-null="false" length="255" />
+		<property name="isPersistent" column="ISPERSISTENT" type="integer" 
+			not-null="false" />
+		<property name="dsID" column="DSID" type="integer" not-null="false" />
+		<property name="folderID" column="FOLDERID" type="integer" 
+			not-null="false" />
+	</class>
+</hibernate-mapping>

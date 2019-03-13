@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>统计列表</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" type="text/css" href="countlist.css"> 
+     <script type="text/javascript" src="../internal.js"></script>
+     <script type="text/javascript" src="countlist.js"></script>
+     
+</head>
+<body>
+<div class="wrapper" >
+<table  class="tabbody">
+                 
+                <tbody>
+                <tr>
+                    <td><var id="lang_input_hzstring"></var></td>
+                    <td><script type="text/javascript">document.write(getContentHZCount());</script></td>
+                </tr>
+                <tr>
+                    <td><var id="lang_input_string"></var></td>
+                    <td><script type="text/javascript">document.write(getContentTxtCount());</script></td>
+                </tr>
+                <tr>
+                    <td><var id="lang_input_stringtrim"></td>
+                    <td><script type="text/javascript">document.write(getContentTxtCountTrim());</script></td>
+                </tr>
+                 
+                <tr>
+                    <td><var id="lang_input_paragraph"></var></td>
+                    <td><script type="text/javascript">document.write(getContentCountTable('</p>'));</script></td>
+                </tr>
+                <tr>
+                    <td><var id="lang_input_table"></var></td>
+                    <td><script type="text/javascript">document.write(getContentCountTable('</table>'));</script></td>
+                </tr>
+                <tr>
+                    <td><var id="lang_input_picture"></var></td>
+                    <td><script type="text/javascript">document.write(getContentCountTable('img'));</script></td>
+                </tr>
+                <tr>
+                    <td><var id="lang_input_video"></var></td>
+                    <td> <script type="text/javascript">document.write(getContentCountTable('edui-faked-video'));</script></td>
+                </tr>
+                <tr>
+                    <td><var id="lang_input_audio"></var></td>
+                    <td> <script type="text/javascript">document.write(getContentCountTable('edui-faked-music'));</script></td>
+                </tr>
+                </tbody>
+            </table>
+ </div>           
+        
+         
+     
+       
+</body>
+</html>

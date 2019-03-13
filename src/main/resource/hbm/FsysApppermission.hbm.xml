@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.app">
+	<class name="AppPermission" table="FSYS_APPPERMISSION">
+		<composite-id>
+			<key-property
+				column="NRESOURCETYPE"
+				name="ResourceType"
+				type="string"
+			 />
+			<key-property
+				column="APPID"
+				name="AppID"
+				type="integer"
+			 />
+		</composite-id>
+		<property
+			column="NOTES"
+			length="254"
+			name="Notes"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="COMMONURL"
+			length="254"
+			name="CommonURL"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

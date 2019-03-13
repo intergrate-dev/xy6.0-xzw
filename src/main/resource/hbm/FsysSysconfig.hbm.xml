@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.sys">
+	<class name="com.founder.e5.sys.SysConfig" table="FSYS_SYSCONFIG">
+		<composite-id>
+			<key-property
+				column="ITEM"
+				name="Item"
+				type="string"
+			 />
+			<key-property
+				column="PROJECT"
+				name="Project"
+				type="string"
+			 />
+			<key-property
+				column="APPID"
+				name="AppID"
+				type="integer"
+			 />
+		</composite-id>
+		<property
+			column="SYSCONFIGID"
+			length="22"
+			name="SysConfigID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="NOTE"
+			length="254"
+			name="Note"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="VALUE"
+			length="254"
+			name="Value"
+			not-null="true"
+			type="string"
+		 />
+		 <!-- V3.0 增加参数类型支持-->
+		 <property
+			column="ITEMTYPE"
+			length="10"
+			name="ItemType"
+			not-null="false"
+			type="integer"
+		 />
+		 <property
+			column="ITEMOPTIONS"
+			length="254"
+			name="ItemOptions"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

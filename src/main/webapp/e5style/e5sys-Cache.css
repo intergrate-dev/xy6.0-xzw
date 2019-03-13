@@ -1,0 +1,11 @@
+.cacheDiv{
+	width: 30px;
+	text-align:center;
+}
+.table{
+	width:400px;
+	margin:0 auto;
+}
+.table label{
+	cursor: pointer;
+}

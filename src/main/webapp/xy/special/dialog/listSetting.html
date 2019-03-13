@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <title>稿件管理</title>
+	   	<link rel="stylesheet" href="../third/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="../export/css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="../export/css/header.css"/>
+	    <link rel="stylesheet" type="text/css" href="../export/css/sliderBar.css"/>
+	    <link rel="stylesheet" type="text/css" href="../export/css/editor.css"/>
+	    <link rel="stylesheet" type="text/css" href="../export/css/sidebar-panel.css"/>
+	    <link rel="stylesheet" type="text/css" href="../export/css/model.css"/>
+	    <link rel="stylesheet" type="text/css" href="../export/css/navMenuSet.css"/>
+	     <style type="text/css">
+	    	.pic-zone{
+	    		margin-top: 10px;
+	    		/*padding: 20px;*/
+	    		overflow-y: auto;
+	    		height: 457px;
+	    	}
+	    	.toolBar{
+	    		height: 30px;
+	    		background-color: #333;
+	    		bottom: 0;
+	    		width: 100%;
+	    		line-height: 30px;
+	    	}
+	    	.selectBtn{
+	    		background: url(../export/images/navMenu/navMenu22.png) repeat-x;
+	    		color: #fff;
+	    	}
+	    	.unselectBtn{
+	    		background: url(../export/images/navMenu/navMenu23.png) repeat-x;
+	    		
+	    		color:#232323;
+	    	}
+	    	.selectBtn,.unselectBtn{
+	    		height: 26px;
+	    		border:none;
+	    		width: 70px;
+	    		outline: none;
+	    		font-family: "microsoft yahei";
+	    	}
+	    	.article-mes{
+	    		width: 75%;
+	    	}
+	    	.public-time{
+	    		color: #8D8D8D;
+                display: inline-block;
+	    	}
+	    	.articleList{
+                position: relative;
+	    		padding: 13px 0;
+	    		border-bottom: 2px solid #eee;
+	    		padding-top: 20px;
+	    	}
+	    	.articleList:last-child{
+	    		border-bottom: none;
+	    	}
+	    	.rightAndWrong{
+	    		right: 4px;
+	    	}
+	    	.active{
+	    		background-color: #ccc;
+	    	}
+	    	.inline-block{
+	    		display: inline-block;
+	    	}
+	    	.artPic{
+	    		width: 112px;
+	    		height: 84px;
+	    	}
+	    	.edit-pic{
+	    		width: 112px;
+	    		height: 84px;
+	    		left: 0;
+	    		top: 0;
+	    		text-align: center;
+	    		background: rgba(0,0,0,0.5);
+	    	}
+	    	.btn_edit{
+	    		border:none;
+	    		outline: none;
+	    		font-family: "microsoft yahei";
+	    		padding: 2px 4px;
+	    		margin-top: 30px;
+	    	}
+	    	.current{
+	    		border: 2px solid #1e99dd;
+	    	}
+	    	.title{
+	    		height: 56px;
+                line-height:18px;
+                padding-left: 50px;
+	    	}
+            .titlePre{
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 16px;
+                font-weight: 700;
+            }
+             .titleBox{
+                 height: 56px;
+                 max-height: 56px;
+                 overflow:auto;
+             }
+            .summary{height: 66px;
+            line-height:16px;
+                padding-left: 50px;}
+            .summaryPre{
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 14px;
+                font-weight: 700;
+            }
+            .summaryBox{
+                height: 66px;
+                max-height: 66px;
+                overflow:auto;
+                color: #666;
+            }
+            .src{height: 18px;
+            line-height:16px;
+                padding-left: 50px;}
+            .srcPre{
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 12px;
+                font-weight: 700;
+            }
+            .srcBox{
+                height: 18px;
+                max-height:18px;
+                overflow:auto;
+                color: #999;;
+            }
+             .canEdit{position: absolute;
+             top: 10px;
+             right: 0}
+            .canEditSum{position: absolute;
+                top: 74px;
+                right: 34px}
+            .canEditSrc{position: absolute;
+                top: 148px;
+                right: 34px}
+             .drag-hand{position: absolute;
+             top: 0px;
+             left: 50%;
+             width: 20px;
+             height: 20px;
+             color: #777;
+             font-size: 16px;
+             cursor: pointer}
+	    </style>
+		</head>
+	<body style="overflow: hidden;">
+		<div class="image-editing">
+			<div class="image-editing-tit">
+		        <div class="pull-left mgl20 font16">
+		            <b>列表内容编辑</b>
+		        </div>
+		        <div class="pull-right mgr20">
+		            <img id="closecarousSetBtn" class="btn-hide" src="../export/images/navMenu/navMenu1.png">
+		        </div>
+		    </div>
+		    <div class="mgt10 mgl20">
+		    	<button id="btnConfirm" class="selectBtn mgr15">确认</button>
+		    	<button id="btnCancel" class="unselectBtn">取消</button>
+		    </div>
+		    <!--列表开始-->
+		    <div class="pic-zone">
+		    	<!--<div class="articleList clearfix active">
+		    		<div class="pull-left mgr15">
+		    			<label class="mgl15 mgr15" for=""><input type="checkbox" /></label>
+		    			<div class="inline-block posRelative">
+		    				<img class="artPic" src="../export/images/navMenu/navMenu14.png" alt="" />
+		    				<div class="posAbsolute edit-pic">	    					
+		    					<button class="btn_edit font12">编辑图片</button>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="pull-left article-mes">
+		    			<div class="title clearfix posRelative">
+		    				<p class="font16">下一代产品设计和生产要怎么升级？洛克大会的创业大咖们这样说</p>
+		    				<div class="pull-right posAbsolute rightAndWrong hide">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu24.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu25.png" alt="" />
+		    				</div>
+		    			</div>
+		    			<div class="clearfix">
+		    				<div class="public-time">
+		    					<img src="../export/images/navMenu/pubed.png" alt="" />
+		    					<span class="mgr30">已发布</span>
+		    					<span>2016-06-02&nbsp;&nbsp;&nbsp;&nbsp;11:09</span>
+		    				</div>
+		    				<div class="pull-right">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu26.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu27.png" alt=""/>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="articleList clearfix">
+		    		<div class="pull-left mgr15">
+		    			<label class="mgl15 mgr15" for=""><input type="checkbox" /></label>
+		    			<img src="../export/images/navMenu/navMenu14.png" alt="" />
+		    		</div>
+		    		<div class="pull-left article-mes">
+		    			<div class="title clearfix posRelative current active">
+		    				<p class="font16">下一代产品设计和生产要怎么升级？洛克大会的创业大咖们这样说</p>
+		    				<div class="pull-right posAbsolute rightAndWrong">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu24.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu25.png" alt="" />
+		    				</div>
+		    			</div>
+		    			<div class="clearfix">
+		    				<div class="public-time">
+		    					<img src="../export/images/navMenu/pubed.png" alt="" />
+		    					<span class="mgr30">已发布</span>
+		    					<span>2016-06-02&nbsp;&nbsp;&nbsp;&nbsp;11:09</span>
+		    				</div>
+		    				<div class="pull-right hide">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu26.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu27.png" alt=""/>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="articleList clearfix">
+		    		<div class="pull-left mgr15">
+		    			<label class="mgl15 mgr15" for=""><input type="checkbox" /></label>
+		    			<img src="../export/images/navMenu/navMenu14.png" alt="" />
+		    		</div>
+		    		<div class="pull-left article-mes">
+		    			<div class="title clearfix posRelative">
+		    				<p class="font16">下一代产品设计和生产要怎么升级？洛克大会的创业大咖们这样说</p>
+		    				<div class="pull-right posAbsolute rightAndWrong hide">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu24.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu25.png" alt="" />
+		    				</div>
+		    			</div>
+		    			<div class="clearfix">
+		    				<div class="public-time">
+		    					<img src="../export/images/navMenu/pubed.png" alt="" />
+		    					<span class="mgr30">已发布</span>
+		    					<span>2016-06-02&nbsp;&nbsp;&nbsp;&nbsp;11:09</span>
+		    				</div>
+		    				<div class="pull-right hide">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu26.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu27.png" alt=""/>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="articleList clearfix">
+		    		<div class="pull-left mgr15">
+		    			<label class="mgl15 mgr15" for=""><input type="checkbox" /></label>
+		    			<img src="../export/images/navMenu/navMenu14.png" alt="" />
+		    		</div>
+		    		<div class="pull-left article-mes">
+		    			<div class="title clearfix posRelative">
+		    				<p class="font16">下一代产品设计和生产要怎么升级？洛克大会的创业大咖们这样说</p>
+		    				<div class="pull-right posAbsolute rightAndWrong hide">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu24.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu25.png" alt="" />
+		    				</div>
+		    			</div>
+		    			<div class="clearfix">
+		    				<div class="public-time">
+		    					<img src="../export/images/navMenu/pubed.png" alt="" />
+		    					<span class="mgr30">已发布</span>
+		    					<span>2016-06-02&nbsp;&nbsp;&nbsp;&nbsp;11:09</span>
+		    				</div>
+		    				<div class="pull-right hide">
+		    					<img class="mgr10" src="../export/images/navMenu/navMenu26.png" alt="" />
+		    					<img src="../export/images/navMenu/navMenu27.png" alt=""/>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>-->
+		    	
+		    	
+		    </div>
+		    <!--列表结束-->
+		</div>
+	</body>
+    <script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function(){
+            //获取前台数据
+                var PicJson = parent.window.LEDialog.getData();
+            var htmlAll="";
+            for(i in PicJson) {
+
+                var html = ['<div id="'+PicJson[i].liId+'" data-hrefTarget="'+PicJson[i].hrefTarget+'" data-timeFormat="'+PicJson[i].timeFormat+'" data-timeState="'+PicJson[i].timeState+'" data-moreHref="'+PicJson[i].moreHref+'" data-moreText="'+PicJson[i].moreText+'" data-moreState="'+PicJson[i].moreState+'" data-modelClass="'+PicJson[i].modelClass+'" data-time="'+PicJson[i].PublishTime+'" class="articleList clearfix">',
+                    '<div class="drag-hand hide">',
+                    '<span class="glyphicon glyphicon-move"></span>',
+                    '</div>',
+                    '<div class="pull-left mgr15 mgl15">',
+                    '<img width="112" height="84" class="imgPath" data-link="'+PicJson[i].link+'" src="'+PicJson[i].imgPath+'" alt="" />',
+                    '</div>',
+                    '<div class="pull-left article-mes">',
+                    '<div class="title clearfix posRelative">',
+                        '<span class="titlePre">标题:</span>'+
+                    '<p class="titleBox font16">'+PicJson[i].title+'</p>',
+                    '<div class="pull-right posAbsolute rightAndWrong hide">',
+                    '<img class="mgr10" src="../export/images/navMenu/navMenu24.png" alt="" />',
+                    '<img src="../export/images/navMenu/navMenu25.png" alt="" />',
+                    '</div>',
+                    '</div>',
+                    '<div class="summary clearfix posRelative mgt10">',
+                            '<span class="summaryPre">摘要:</span>'+
+                     '<p class="summaryBox font14">'+PicJson[i].summary+'</p>',
+                    '</div>',
+                    '<div class="src clearfix posRelative mgt10">',
+                            '<span class="srcPre">来源:</span>'+
+                     '<p class="srcBox font12">'+PicJson[i].src+'</p>',
+                    '</div>',
+                    //'<div class="clearfix">',
+                    '<div class="canEdit hide">',
+                    '<img class="editPic mgr10" src="../export/images/navMenu/navMenu26.png" alt="" />',
+                    '<img class="deletePic" src="../export/images/navMenu/navMenu27.png" alt=""/>',
+                    '</div>',
+                    '<div class="canEditSum hide">',
+                    '<img class="editPicSum" src="../export/images/navMenu/navMenu26.png" alt="" />',
+                    '</div>',
+                    '<div class="canEditSrc hide">',
+                    '<img class="editPicSrc" src="../export/images/navMenu/navMenu26.png" alt="" />',
+                    '</div>',
+                    //'</div>',
+                    '</div>',
+                    '</div>'].join("");
+                htmlAll += html;
+            }
+            $("div.pic-zone").html(htmlAll);
+
+            $(".articleList").hover(function(){
+                $(this).addClass("active");
+                //$(this).find(".rightAndWrong").removeClass("hide");
+                $(this).find(".canEdit").removeClass("hide");
+                $(this).find(".canEditSum").removeClass("hide");
+                $(this).find(".canEditSrc").removeClass("hide");
+                $(this).find(".drag-hand").removeClass("hide");
+            },function(){
+                $(this).removeClass("active");
+                //$(this).find(".rightAndWrong").addClass("hide");
+                $(this).find(".canEdit").addClass("hide");
+                $(this).find(".canEditSum").addClass("hide");
+                $(this).find(".canEditSrc").addClass("hide");
+                $(this).find(".drag-hand").addClass("hide");
+            });
+        });
+
+        $(".pic-zone").on({"mouseover":function(){
+            //拖拽排序
+            $(".pic-zone").sortable({
+                disabled: false,
+                items: ".articleList",
+                cursor:"move",
+                tolerance: "pointer",
+                //placeholder: "gallery-state-highlight",
+                axis: "y"
+            });
+        }},'.drag-hand');
+        $(".pic-zone").on({"mouseout":function(){
+            //禁用排序
+            $(".pic-zone").sortable({
+                disabled: true
+            });
+        }},'.drag-hand');
+        //修改标题
+        $(".pic-zone").on({"click":function(){
+            $(this).parent().parent().find("p.titleBox").attr("contenteditable","plaintext-only");
+            //$(this).parent().parent().prev().find("p.titleBox").attr("contenteditable",true);
+            $(this).parent().parent().find("p.titleBox").trigger("focus");
+        }},'.editPic');
+
+        $(".pic-zone").on({"blur":function(){
+            $(this).attr("contenteditable",false);
+        }/*,"keydown":function(event){
+            if(event.keyCode == 13){
+                $(this).trigger("blur");
+            }
+        }*/},'.titleBox');
+
+        $(".pic-zone").on({"click":function(){
+            $(this).parent().parent().parent().remove();
+        }},'.deletePic');
+        //修改摘要
+        $(".pic-zone").on({"click":function(){
+            $(this).parent().parent().find("p.summaryBox").attr("contenteditable","plaintext-only");
+            //$(this).parent().parent().prev().find("p.titleBox").attr("contenteditable",true);
+            $(this).parent().parent().find("p.summaryBox").trigger("focus");
+        }},'.editPicSum');
+
+        $(".pic-zone").on({"blur":function(){
+            $(this).attr("contenteditable",false);
+        }/*,"keydown":function(event){
+            if(event.keyCode == 13){
+                $(this).trigger("blur");
+            }
+        }*/},'.summaryBox');
+        //修改来源
+        $(".pic-zone").on({"click":function(){
+            $(this).parent().parent().find("p.srcBox").attr("contenteditable","plaintext-only");
+            //$(this).parent().parent().prev().find("p.titleBox").attr("contenteditable",true);
+            $(this).parent().parent().find("p.srcBox").trigger("focus");
+        }},'.editPicSrc');
+
+        $(".pic-zone").on({"blur":function(){
+            $(this).attr("contenteditable",false);
+        }/*,"keydown":function(event){
+            if(event.keyCode == 13){
+                $(this).trigger("blur");
+            }
+        }*/},'.SrcBox');
+
+
+        //复制粘贴清除样式
+        $(".pic-zone").on({
+            paste:function(e){
+                var _$this = $(this);
+                if(_$this.attr("contenteditable")=="plaintext-only"){
+                    setTimeout(function(){
+                        //e.preventDefault();
+                        e.stopPropagation();
+                        _$this.find("*").each(function(){
+                            $(this).after($(this).text());
+                            $(this).remove();
+                        });
+                        var reg=/&nbsp;/ig;
+                        _$this.html(_$this.html().replace(reg,""));
+                        //alert(LECurrentObject.html());
+                    }, 100)
+                }
+            }}, '.titleBox,.summaryBox,.srcBoxs');
+
+            //关闭dialog
+            $("#closecarousSetBtn,#btnCancel").click(function(e){
+                parent.window.LEDialog.closeDialog();
+            });
+
+            //向前台发送数据
+            $("#btnConfirm").click(function(e){
+                var jsonListed=[];
+                var obj;
+                var len = $("div.pic-zone").children().length;
+                for(var i = 0; i < len; i++){
+                    obj={'id':$("div.pic-zone").children("div.articleList").eq(i).attr("id"),
+                        'link':$("div.pic-zone").children().eq(i).find("img.imgPath").attr("data-link"),
+                        'imgPath':$("div.pic-zone").children().eq(i).find("img.imgPath").attr("src"),
+                        'title':$("div.pic-zone").children().eq(i).find("p.titleBox").html(),
+                        'summary':$("div.pic-zone").children().eq(i).find("p.summaryBox").html(),
+                        'src':$("div.pic-zone").children().eq(i).find("p.srcBox").html(),
+                        'PublishTime':$("div.pic-zone").children("div.articleList").eq(i).attr("data-time"),
+                        'modelClass':$("div.pic-zone").children("div.articleList").eq(i).attr("data-modelClass"),
+                        'moreState':$("div.pic-zone").children("div.articleList").eq(i).attr("data-moreState"),
+                        'moreText':$("div.pic-zone").children("div.articleList").eq(i).attr("data-moreText"),
+                        'moreHref':$("div.pic-zone").children("div.articleList").eq(i).attr("data-moreHref"),
+                        'timeState':$("div.pic-zone").children("div.articleList").eq(i).attr("data-timeState"),
+                        'timeFormat':$("div.pic-zone").children("div.articleList").eq(i).attr("data-timeFormat"),
+                        'hrefTarget':$("div.pic-zone").children("div.articleList").eq(i).attr("data-hrefTarget")
+                    };
+
+                    jsonListed[i]=obj;
+                }
+                parent.window.LEDialog.dialogConfirm(jsonListed);
+            });
+    </script>
+</html>

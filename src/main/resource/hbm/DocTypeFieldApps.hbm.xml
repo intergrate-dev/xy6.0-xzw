@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	
+	<class name="com.founder.e5.dom.DocTypeFieldApps" 
+		table="DOM_DOCTYPEFIELDAPPS">
+		<composite-id>
+			<key-property column="DOCTYPEID" name="docTypeID" type="integer"/>
+			<key-property column="DOCLIBID" name="docLibID" type="integer"/>
+			<key-property column="FIELDID" name="fieldID" type="integer"/>
+			<key-property column="APPID" name="appID" type="integer"/>
+		</composite-id>
+		<property column="ISDBADDED" name="isDBAdded" not-null="false" 
+			type="integer"/>
+		<property column="ISDBUPDATED" name="isDBUpdated" not-null="false" 
+			type="integer"/>
+	</class>
+</hibernate-mapping>

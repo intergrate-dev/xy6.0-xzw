@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--============ 2. service ==========-->
+	<bean id="ResourceTreeService" class="com.founder.e5.workspace.service.ResourceTreeServiceImpl"/>
+	<bean id="ResourceTreeLayed" class="com.founder.e5.workspace.service.ResourceTreeServiceLayed"/>
+	<bean id="ResourceTreeServicePS" class="com.founder.e5.workspace.personality.ResourceTreeServicePS"/>
+	<bean id="DocListService" class="com.founder.e5.workspace.service.DefaultDocListService" singleton="false"/>
+
+	<bean id="SearchDocListService" class="com.founder.e5.search.SearchDocListService" singleton="false"/>
+	<bean id="SimpleSearchDocListService" class="com.founder.e5.workspace.service.DefaultDocListService" singleton="false"/>
+	<bean id="ComplexSearchDocListService" class="com.founder.e5.workspace.service.DefaultDocListService" singleton="false"/>
+
+	<!--
+	<bean id="ToolkitService" class="com.founder.e5.workspace.service.ToolkitServiceImpl"/>
+	-->
+	<bean id="Toolkit4MultiCode" class="com.founder.e5.workspace.service.Toolkit4MultiCodeImpl"/>
+	<bean id="ToolkitService" class="com.founder.e5.workspace.service.ToolkitServiceImpl4FVProc"/>
+	<bean id="ToolkitServiceFree" class="com.founder.e5.workspace.service.ToolkitServiceFreeImpl"/>
+
+	<bean id="AfterService" class="com.founder.e5.workspace.service.AfterService"/>
+	<bean id="PreviewService" class="com.founder.e5.workspace.service.PreviewServiceImpl"/>
+	<bean id="FolderSelectTreeService" class="com.founder.e5.workspace.service.FolderSelectTreeServiceImpl"/>
+	<bean id="DocMoveService" class="com.founder.e5.workspace.app.service.DocMoveServiceImpl"/>
+	<!--============ 3. controller ========-->
+	<!--3.1 workspace-->
+	<!-- by V3.0
+	<bean id="ssoReader" class="com.founder.e5.sso.SSOImpl">
+		<property name="loginManager" ref="LoginUserManager"/>
+		<property name="userReader" ref="UserReader"/>
+		<property name="roleReader" ref="RoleReader"/>
+	</bean>
+	-->
+	<!--====Exchange when merge role permission===
+	<bean id="workspace.Auth" class="com.founder.e5.workspace.controller.AuthenticationController">
+	<bean id="workspace.Auth" class="com.founder.e5.workspace.mergerole.controller.AuthenticationController">
+
+	<bean id="workspace.KeepLive" class="com.founder.e5.workspace.controller.AutoRefreshAccessController">
+	<bean id="workspace.KeepLive" class="com.founder.e5.workspace.mergerole.controller.AutoRefreshAccessController">
+	-->
+	<bean id="workspace.Auth" class="com.founder.e5.workspace.controller.AuthenticationController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="sso"><ref bean="ssoReader"/></property>
+		<property name="userManager"><ref bean="UserReader"/></property>
+		<property name="authManager"><ref bean="authManager"/></property>
+		<property name="concurrent"><value>false</value></property>
+	</bean>
+	<bean id="workspace.KeepLive" class="com.founder.e5.workspace.controller.AutoRefreshAccessController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="sso"><ref bean="ssoReader"/></property>
+	</bean>
+	<bean id="workspace.Login" class="com.founder.e5.workspace.controller.LoginController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="sso"><ref bean="ssoReader"/></property>
+		<property name="viewName"><value>e5workspace/Functions</value></property>
+	</bean>
+	<bean id="workspace.Change" class="com.founder.e5.workspace.controller.RoleChangeController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="sso"><ref bean="ssoReader"/></property>
+		<property name="authManager"><ref bean="authManager"/></property>
+		<property name="concurrent"><value>false</value></property>
+	</bean>
+	<bean id="workspace.Logout" class="com.founder.e5.workspace.controller.LogoutController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="sso"><ref bean="ssoReader"/></property>
+	</bean>
+	<bean id="workspace.ResourceTree" class="com.founder.e5.workspace.controller.ResourceTreeController">
+		<property name="service"><ref bean="ResourceTreeLayed"/></property>
+		<property name="psReader"><ref bean="PersonalSettingManager"/></property>
+	</bean>
+	<bean id="workspace.Statusbar" class="com.founder.e5.workspace.controller.StatusExController">
+		<property name="listModeReader"><ref bean="ListModeReader"/></property>
+		<property name="fvListPageReader"><ref bean="FVListPageReader"/></property>
+	</bean>
+	<!-- by V3.0
+	<bean id="workspace.DocList" class="com.founder.e5.workspace.controller.DefaultDocListController">
+		<property name="listModeReader"><ref bean="ListModeReader"/></property>
+	</bean>
+	-->
+	<bean id="workspace.DocList" class="com.founder.e5.workspace.controller.DocListHTMLController">
+		<property name="listModeReader"><ref bean="ListModeReader"/></property>
+	</bean>
+	<!--
+	<bean id="workspace.Toolkit" class="com.founder.e5.workspace.controller.ToolkitController">
+		<property name="service"><ref bean="ToolkitService"/></property>
+		<property name="psReader"><ref bean="PersonalSettingManager"/></property>
+	</bean>
+	-->
+	<bean id="workspace.Toolkit" class="com.founder.e5.workspace.controller.ToolkitGroupController">
+		<property name="service"><ref bean="ToolkitService"/></property>
+		<property name="psReader"><ref bean="PersonalSettingManager"/></property>
+		<property name="procGroupReader"><ref bean="ProcGroupReader"/></property>
+	</bean>
+	<bean id="workspace.ToolkitFree" class="com.founder.e5.workspace.controller.ToolkitGroupController">
+		<property name="service"><ref bean="ToolkitServiceFree"/></property>
+		<property name="psReader"><ref bean="PersonalSettingManager"/></property>
+		<property name="procGroupReader"><ref bean="ProcGroupReader"/></property>
+	</bean>
+
+	<bean id="workspace.BeforePreview" class="com.founder.e5.workspace.controller.PreviewController">
+		<property name="service"><ref bean="PreviewService"/></property>
+	</bean>
+	<bean id="workspace.BeforeProcess" class="com.founder.e5.workspace.controller.BeforeProcess"/>
+	<!-- by V3.0
+	<bean id="workspace.AfterProcess" class="com.founder.e5.workspace.controller.AfterProcess">
+		<property name="viewName"><value>/e5workspace/AfterProcess</value></property>
+	</bean>
+	-->
+	<bean id="workspace.Binary" class="com.founder.e5.workspace.controller.BinaryController"/>
+	<!--3.2 Personal Setting-->
+	<bean id="profile.ResTreeController" class="com.founder.e5.workspace.personality.ResourceTreeCfgController">
+		<property name="viewName"><value>/e5workspace/e5profile/ResTreeCfg</value></property>
+		<property name="psMgr"><ref bean="PersonalSettingManager" /></property>
+		<property name="folderReader"><ref bean="FolderReader" /></property>
+		<property name="fvpermReader"><ref bean="FVPermissionReader" /></property>
+	</bean>
+	<bean id="profile.ITCfgController" class="com.founder.e5.workspace.personality.IconAndTextCfgController">
+		<property name="viewName"><value>/e5workspace/e5profile/IconAndTextCfg</value></property>
+		<property name="psMgr"><ref bean="PersonalSettingManager" /></property>
+	</bean>
+	<bean id="profile.ToolbarCfg" class="com.founder.e5.workspace.personality.ToolbarCfgController">
+		<property name="viewName"><value>/e5workspace/e5profile/ProcOrderCfg</value></property>
+		<property name="psMgr"><ref bean="PersonalSettingManager" /></property>
+		<property name="procReader"><ref bean="ProcReader"/></property>
+		<property name="toolkitService"><ref bean="ToolkitService"/></property>
+	</bean>
+	<bean id="profile.FVPermissionTree" class="com.founder.e5.workspace.personality.FVPermissionTreeController">
+		<property name="service"><ref bean="ResourceTreeServicePS"/></property>
+		<property name="folderReader"><ref bean="FolderReader"/></property>
+	</bean>
+	<!--3.3 Rule -->
+	<bean name="/e5workspace/ruleTreeCategory.do" class="com.founder.e5.workspace.app.RuleCategoryController">
+		<property name="log"><ref bean="workspaceLog" /></property>
+	</bean>
+	<!--3.4 ListMode -->
+	<bean name="/XSLMaker.do" class="com.founder.e5.workspace.controller.XSLBuilderController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<!--3.5 Apps -->
+	<bean id="workspace.DocumentUnlock" class="com.founder.e5.workspace.app.DocumentUnlockController"/>
+	<bean id="workspace.FlowRecordList" class="com.founder.e5.workspace.app.FlowRecordListController">
+		<property name="listView"><value>e5workspace/manoeuvre/FlowRecordList</value></property>
+	</bean>
+	<bean id="workspace.CatSelectTree" class="com.founder.e5.workspace.app.CatTreeViewController">
+		<property name="catReader"><ref bean="CatReader"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+	</bean>
+	<bean id="workspace.CatSelect" class="com.founder.e5.workspace.app.CatSelectController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="catReader"><ref bean="CatReader"/></property>
+		<property name="viewName"><value>e5workspace/manoeuvre/CatSelectTree</value></property>
+	</bean>
+	<bean id="workspace.CatSelect4DocExt" class="com.founder.e5.workspace.app.CatSelectController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="catReader"><ref bean="CatReader"/></property>
+		<property name="viewName"><value>e5workspace/manoeuvre/CatSelectTree4DocExt</value></property>
+	</bean>
+	<bean id="workspace.CatSelectTreeNoCache" class="com.founder.e5.workspace.app.CatTreeViewController">
+		<property name="catReader"><ref bean="CatManager"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+	</bean>
+	<bean id="DocOperateDelegate" class="com.founder.e5.workspace.app.DocOperateDelegate">
+		<property name="transferForm"><value>e5workspace/manoeuvre/DocTransfer</value></property>
+		<property name="transferError"><value>e5workspace/manoeuvre/StorageForm</value></property>
+		<property name="afterProcess"><value>e5workspace/manoeuvre/AfterProcess</value></property>
+		<property name="refresh"><value>e5workspace/manoeuvre/refresh</value></property>
+		<property name="cancelForm"><value>e5workspace/manoeuvre/AfterCancel</value></property>
+	</bean>
+	<bean id="TransferTreeDelegate" class="com.founder.e5.workspace.app.TreeDelegate">
+		<property name="folderTreeView"><value>e5workspace/manoeuvre/DlgTree</value></property>
+	</bean>
+	<bean id="UserListDelegate" class="com.founder.e5.workspace.app.ListUserDelegate">
+		<property name="userOption"><value>e5workspace/manoeuvre/TransUser</value></property>
+	</bean>
+	<bean id="workspace.Manoeuvre" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="DocOperateDelegate"/></property>
+	</bean>
+	<bean id="workspace.TransDocTree" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="TransferTreeDelegate"/></property>
+	</bean>
+	<bean id="workspace.ListUser" class="org.springframework.web.servlet.mvc.multiaction.MultiActionController">
+		<property name="methodNameResolver"><ref bean="actionParaMethodResolver"/></property>
+		<property name="delegate"><ref bean="UserListDelegate"/></property>
+	</bean>
+	<bean id="workspace.FolderSelect" class="com.founder.e5.workspace.app.FolderSelectController">
+	    <property name="viewName"><value>e5workspace/manoeuvre/FolderSelectTree</value></property>
+		<property name="folderReader"><ref bean="FolderReader"/></property>
+		<property name="docLibReader"><ref bean="DocLibReader"/></property>
+	</bean>
+	<bean id="workspace.FolderSelectTree" class="com.founder.e5.workspace.app.FolderTreeViewController">
+		<property name="folderSelectTreeService"><ref bean="FolderSelectTreeService"/></property>
+	</bean>
+	<bean id="workspace.DocMove" class="com.founder.e5.workspace.app.DocMoveController">
+		<property name="docMoveService"><ref bean="DocMoveService"/></property>
+		<property name="viewName"><value>e5workspace/manoeuvre/DocMove</value></property>
+	</bean>
+	
+	<bean id="workspace.UserSelect" class="com.founder.e5.workspace.app.TreeUserController">
+		<property name="orgReader"><ref bean="OrgReader"/></property>
+		<property name="userReader"><ref bean="UserReader"/></property>
+	</bean>
+	<bean id="workspace.RoleSelect" class="com.founder.e5.workspace.app.TreeRoleController">
+		<property name="orgReader"><ref bean="OrgReader"/></property>
+		<property name="roleReader"><ref bean="RoleReader"/></property>
+	</bean>
+	<bean id="workspace.OrgSelect" class="com.founder.e5.workspace.app.TreeOrgController">
+		<property name="orgReader"><ref bean="OrgReader"/></property>
+	</bean>
+
+	<!--3.6 note -->
+     <bean id="workspace.message.SysMessage" class="com.founder.e5.workspace.app.MsgNotReadController">
+		<property name="log"><ref bean="noteLog"/></property>
+		<property name="viewName"><value>e5workspace/note/ShowNotRead</value></property>
+	</bean>
+    <bean id="workspace.message.GetHistory" class="com.founder.e5.workspace.app.MsgHistoryController">
+		<property name="log"><ref bean="noteLog"/></property>
+		<property name="viewName"><value>e5workspace/note/getHistory</value></property>
+	</bean>
+	<bean id="workspace.message.ReadNote" class="com.founder.e5.workspace.app.MsgReadController">
+		<property name="log"><ref bean="noteLog"/></property>
+		<property name="viewName"><value>e5workspace/note/ReadNote</value></property>
+	</bean>
+    <bean id="workspace.message.ReleaseNote" class="com.founder.e5.workspace.app.MsgPubController"> 
+		<property name="log"><ref bean="noteLog"/></property>
+	</bean>
+
+	<!--======= V3.0 ======= -->
+	<bean id="ExportListService" class="com.founder.e5.workspace.service.ExportDocListService" singleton="false"/>
+
+	<bean id="ssoReader" class="com.founder.e5.sso.SSOImpl">
+		<property name="loginManager" ref="LoginUserManager"/>
+		<property name="userReader" ref="UserManager"/><!--user change pwd-->
+		<property name="roleReader" ref="RoleReader"/>
+		<property name="useAD"><value>false</value></property>
+		<property name="onlyADUser"><value>false</value></property>
+		<property name="userFrozenManager" ref="UserFrozenManager"/>
+	</bean>
+	<bean id="workspace.AfterProcess" class="com.founder.e5.workspace.controller.AfterProcess">
+		<property name="service"><ref bean="AfterService"/></property>
+		<property name="viewName"><value>/e5workspace/After</value></property>
+	</bean>
+	<bean id="workspace.ListpageCust" class="com.founder.e5.workspace.controller.ListpageCustController">
+		<property name="psManager"><ref bean="PersonalSettingManager" /></property>
+		<property name="viewName"><value>/e5workspace/ListCustomize</value></property>
+	</bean>
+	<!-- Form -->
+	<bean id="FormSaver" class="com.founder.e5.workspace.app.form.FormSaver">
+		<property name="formReader"><ref bean="FormReader" /></property>
+		<property name="flowReader"><ref bean="FlowReader" /></property>
+		<property name="docTypeReader"><ref bean="DocTypeReader" /></property>
+	</bean>
+	<bean id="workspace.Form" class="com.founder.e5.workspace.app.form.FormViewController">
+	</bean>
+	<bean id="workspace.FormDocFetcher" class="com.founder.e5.workspace.app.form.FormDocFetcher">
+		<property name="formReader"><ref bean="FormReader" /></property>
+	</bean>
+	<bean id="workspace.FormSubmit" class="com.founder.e5.workspace.app.form.FormSubmitController">
+		<property name="formSaver"><ref bean="FormSaver" /></property>
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.CatFinder" class="com.founder.e5.workspace.app.CatFinder">
+		<property name="catReader"><ref bean="CatReader"/></property>
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	
+	<bean id="workspace.CommonOp" class="com.founder.e5.workspace.app.CommonOpController">
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.ListExport" class="com.founder.e5.workspace.app.DocListExcelController">
+		<property name="listModeReader"><ref bean="ListModeReader"/></property>
+		<property name="count"><value>1000</value></property>
+	</bean>
+
+	<bean id="workspace.DocView" class="com.founder.e5.workspace.controller.DocViewController">
+		<property name="docViewReader"><ref bean="DocViewReader"/></property>
+		<property name="log"><ref bean="workspaceLog"/></property>
+		<property name="viewName"><value>/e5workspace/View</value></property>
+	</bean>
+	<bean id="workspace.OcxUpload" class="com.founder.e5.workspace.app.upload.FtpTransferController"></bean>
+	<bean id="workspace.app.Upload" class="com.founder.e5.workspace.app.upload.UploadController">
+		<property name="storageDeviceManager"><ref bean="StorageDeviceManager"/></property>
+		<property name="drawImgManager"><ref bean="DrawImgManager"/></property>
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.app.StorageDevice" class="com.founder.e5.workspace.app.StorageDeviceController">
+		<property name="storageDeviceReader"><ref bean="StorageDeviceReader"/></property>
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.Bfile" class="com.founder.e5.workspace.controller.BfileController"/>
+
+	<!--security-->
+	<bean id="workspace.security.policy" class="com.founder.e5.workspace.security.SecurityPolicyController"> 
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.security.captcha" class="com.founder.e5.workspace.security.CaptchaController"> 
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.security.validatecaptcha" class="com.founder.e5.workspace.security.VerifyCaptchaController"> 
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.security.pubkey" class="com.founder.e5.workspace.security.PubKeyController"> 
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="workspace.security.changepwd" class="com.founder.e5.workspace.security.ChangePasswordController"> 
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<bean id="QueryFormParser" class="com.founder.e5.workspace.query.QueryFormParser"/> 
+	
+	<!-- master-detail:detail data main -->
+	<bean id="workspace.DataMain" class="com.founder.e5.web.DataMain">
+		<property name="docTypeReader"><ref bean="DocTypeReader"/></property>
+		<property name="viewName"><value>e5workspace/DataMain</value></property>
+		<property name="log"><ref bean="workspaceLog"/></property>
+	</bean>
+	<!-- Form Field Get Data (from other data)-->
+	<bean id="workspace.Data" class="com.founder.e5.workspace.app.form.FormDocFetcher"/>
+	<!--============ 4. web ===============-->
+	<bean id="workspaceUrl" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order"><value>0</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="/e5workspace/auth.do">workspace.Auth</prop>
+				<prop key="/e5workspace/keeplive.do">workspace.KeepLive</prop>
+				<prop key="/e5workspace/login.do">workspace.Login</prop>
+				<prop key="/e5workspace/change.do">workspace.Change</prop>
+				<prop key="/e5workspace/logout.do">workspace.Logout</prop>
+				<prop key="/e5workspace/resource.do">workspace.ResourceTree</prop>
+				<prop key="/e5workspace/statusbar.do">workspace.Statusbar</prop>
+				<prop key="/e5workspace/doclist.do">workspace.DocList</prop>
+				<prop key="/e5workspace/toolkit.do">workspace.Toolkit</prop>
+				<prop key="/e5workspace/toolkitFree.do">workspace.ToolkitFree</prop>
+				<prop key="/e5workspace/before.do">workspace.BeforeProcess</prop>
+				<prop key="/e5workspace/after.do">workspace.AfterProcess</prop>
+				<prop key="/e5workspace/binary.do">workspace.Binary</prop>
+				<prop key="/e5workspace/beforePreview.do">workspace.BeforePreview</prop>
+				<!-- personal setting -->
+				<prop key="/e5workspace/e5profile/resTreeRootCfg.do">profile.ResTreeController</prop>
+				<prop key="/e5workspace/e5profile/iconAndTextCfg.do">profile.ITCfgController</prop>
+				<prop key="/e5workspace/e5profile/toolbarCfg.do">profile.ToolbarCfg</prop>
+				<prop key="/e5workspace/e5profile/fvPermissionTree.do">profile.FVPermissionTree</prop>
+				<!-- apps -->
+				<prop key="/e5workspace/manoeuvre/CatSelect.do">workspace.CatSelect</prop>
+				<prop key="/e5workspace/manoeuvre/CatSelect4DocExt.do">workspace.CatSelect4DocExt</prop>
+				<prop key="/e5workspace/manoeuvre/CatSelectTree.do">workspace.CatSelectTree</prop>
+				<prop key="/e5workspace/manoeuvre/CatSelectTreeNoCache.do">workspace.CatSelectTreeNoCache</prop>
+				<prop key="/e5workspace/manoeuvre/FlowRecordList.do">workspace.FlowRecordList</prop>
+				<prop key="/e5workspace/manoeuvre/DocUnlock.do">workspace.DocumentUnlock</prop>
+				<prop key="/e5workspace/manoeuvre/Manoeuvre.do">workspace.Manoeuvre</prop>
+				<prop key="/e5workspace/manoeuvre/TransDocTree.do">workspace.TransDocTree</prop>
+				<prop key="/e5workspace/manoeuvre/ListUser.do">workspace.ListUser</prop>
+				<prop key="/e5workspace/manoeuvre/FolderSelect.do">workspace.FolderSelect</prop>
+				<prop key="/e5workspace/manoeuvre/FolderSelectTree.do">workspace.FolderSelectTree</prop>
+				<prop key="/e5workspace/manoeuvre/DocMove.do">workspace.DocMove</prop>
+				
+				<prop key="/e5workspace/manoeuvre/UserSelect.do">workspace.UserSelect</prop>
+				<prop key="/e5workspace/manoeuvre/RoleSelect.do">workspace.RoleSelect</prop>
+				<prop key="/e5workspace/manoeuvre/OrgSelect.do">workspace.OrgSelect</prop>
+				 <!-- note -->
+				<prop key="/e5workspace/note/SysMessage.do">workspace.message.SysMessage</prop>
+				<prop key="/e5workspace/note/getHistory.do">workspace.message.GetHistory</prop>
+				<prop key="/e5workspace/note/ReadNote.do">workspace.message.ReadNote</prop>
+				<prop key="/e5workspace/note/ReleaseNote.do">workspace.message.ReleaseNote</prop>
+
+				<!--======= V3.0 ======= -->
+				<prop key="/e5workspace/ListpageCust.do">workspace.ListpageCust</prop>
+				<prop key="/e5workspace/manoeuvre/Form.do">workspace.Form</prop>
+				<prop key="/e5workspace/manoeuvre/FormDocFetcher.do">workspace.FormDocFetcher</prop>
+				<prop key="/e5workspace/manoeuvre/FormSubmit.do">workspace.FormSubmit</prop>
+				<prop key="/e5workspace/manoeuvre/CatFinder.do">workspace.CatFinder</prop>
+				<prop key="/e5workspace/manoeuvre/CommonOp.do">workspace.CommonOp</prop>
+				<prop key="/e5workspace/listExport.do">workspace.ListExport</prop>
+				<prop key="/e5workspace/app/Upload.do">workspace.app.Upload</prop>
+				<prop key="/e5workspace/app/StorageDevice.do">workspace.app.StorageDevice</prop>
+				<prop key="/e5workspace/DocView.do">workspace.DocView</prop>
+				<prop key="/e5workspace/OcxUpload.do">workspace.OcxUpload</prop>
+				<prop key="/e5workspace/bfile.do">workspace.Bfile</prop>
+				<!-- security -->
+				<prop key="/e5workspace/security/securitypolicy.do">workspace.security.policy</prop>
+				<prop key="/e5workspace/security/captcha.do">workspace.security.captcha</prop>
+				<prop key="/e5workspace/security/validatecaptcha.do">workspace.security.validatecaptcha</prop>
+				<prop key="/e5workspace/security/pubkey.do">workspace.security.pubkey</prop>
+				<prop key="/e5workspace/changepwd.do">workspace.security.changepwd</prop>
+				
+				<prop key="/e5workspace/DataMain.do">workspace.DataMain</prop>
+				<prop key="/e5workspace/Data.do">workspace.Data</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

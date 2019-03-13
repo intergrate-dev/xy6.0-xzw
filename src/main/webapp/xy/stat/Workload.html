@@ -1,0 +1,303 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<script type="text/javascript" src="../../e5script/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../e5script/jquery/jquery.dialog.js"></script>
+	<script type="text/javascript" src="../script/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../script/bootstrap-datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../script/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../script/echarts/echarts.js"></script>
+	<script type="text/javascript" src="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.js"></script>
+    <script src="./script/bootstrap-paginator.js"></script>
+	<!--<script type="text/javascript" src="../../e5script/jquery/jquery-ui/jquery-ui.min.js"></script>-->
+	<script type="text/javascript" src="./script/workload_new.js"></script>
+
+	<link rel="stylesheet" href="../script/bootstrap-3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../script/bootstrap-datetimepicker/css/datetimepicker.css" media="screen">
+	<link type="text/css" rel="stylesheet" href="../../e5script/jquery/dialog.style.css"/>
+	<link rel="stylesheet" type="text/css" href="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css"/>
+	<!--<link rel="stylesheet" type="text/css" href="../../e5script/jquery/jquery-ui/jquery-ui.custom.css"/>-->
+	<link type="text/css" rel="stylesheet" href="./css/statistics.css"/>
+	<style>
+		a:focus,a:visited,a:active,a:hover{
+			text-decoration: none;
+		}
+
+        .work-person{
+            float: left;
+            margin-top: 8px;
+            margin-left: 5px;
+            text-align: center;
+            line-height: 25px;
+        }
+		.time1 #thisWeek,.time1 #thisWeek_App{
+			width: 100px;
+			display: inline-block;
+			text-align: center;
+		}
+		.channels li{
+			height: 35px;
+			line-height: 35px;
+		    border: 1px solid #ddd;
+		    border-bottom: none;
+		}
+		.channels li.select{
+			border: none;
+		}
+        #paginator_emp{
+            float:right;
+            margin: 8px 0 0 20px;
+        }
+        #paginator_emp>li>a{
+           padding: 0px 6px;
+		    height: 18px;
+		    font-size: 12px;
+		    border-radius: 2px;
+		    line-height: 15px;
+        }
+        .pagination>.active>a{
+            background-color: #00a0e6;
+            border-color: #00a0e6;
+        }
+        .pagination>.active>a:hover{
+            background-color: #00a0e6;
+            border-color: #00a0e6;
+        }
+        .bg{
+        	background: #f2f2f2;
+    		width: 100%;
+    	    margin-top: 16px;
+        }
+        #channels, #typeRegion{
+        	margin-left: 0;
+        	border-bottom: none;
+        }
+        .detail{
+        	margin-bottom: 10px;
+        }
+        #dept_list{
+        	width: 91%;
+    		/*float: right;*/
+        }
+        .up{
+        	display: none;
+        }
+        .wrapper{
+        	position: relative;
+        }
+        .listShow,.listHide{
+        	position: ABSOLUTE;
+		    right: 10px;
+		    bottom: 5px;
+        }
+        /*#dept_list{
+        	height: 80px;
+        	overflow-y: auto;
+        }*/
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			var listH = $("#dept_list").height();
+			if(listH > 80){
+				$(".listHide").hide();
+				$("#dept_list").css("height", "80px").css('overflow','hidden');
+				$(".listShow").on('click',function(){
+					$("#dept_list").css("height", listH);
+					$(this).hide();
+					$(".listHide").show();
+				})
+				$(".listHide").on('click',function(){
+					$("#dept_list").css("height","80px").css('overflow','hidden');
+					$(this).hide();
+					$(".listShow").show();
+				})
+			}else{
+				$('.listHide').hide();
+				$("#dept_list").css("height", listH);
+			}
+		})
+	</script>
+</head>
+<body>
+<div class="deptChart">
+	<div class="wrapper clearfix">
+		<!--<div class="deptList">部门列表</div>-->
+		<div class="clearfix">
+			<div class="dept_all" id="dept_all">部门列表</div>
+			<ul id="dept_list" class="dept_list clearfix">
+				<li id="dept1">行政部</li>
+				<li id="dept2">财务部</li>
+			</ul>
+		</div>
+		<div class="listHide pull-right">
+			<img src="images/14.png" alt="" />
+			<span>收起</span>
+		</div>
+		<div class="listShow pull-right">
+			<img src="images/15.png" alt="" />
+			<span>展开</span>
+		</div>
+		
+	</div>
+	<div class="bg clearfix">
+		<div class="left" style="margin-top:-5px;">
+			<div class="articleCount">
+				<h2 class="font_color">当月稿件发布总量</h2>
+				<p id="total-num" class="font_color">0</p>
+				<h3 id="nowDate" class="font_color">截止到今天为止</h3>
+			</div>
+			<div style="background:#fff;width:300px;height:20px;margin: 0;margin-left: 10px;padding-left: 10px;line-height: 20px;border: 1px solid #ddd;border-bottom: none;margin-bottom: -5px;">
+				<h2 class="font_color" style="margin: 0;line-height: 20px;font-weight: 700;">当月稿件发布总量</h2>
+			</div>
+			<div class="deptPie" id="deptPie">
+	
+			</div>
+		</div>
+		<div class="wrapper1">
+			<div class="deptLineTime">
+				<span class="publishTime">发布时间：</span>
+				<!-- <a id="thisDayLine" class="time_stat"  href="javascript:workload_stat.setLineTime('thisDay','Line')">24小时内</a>
+				<a id="thisWeekLine" class="time_stat"  href="javascript:workload_stat.setLineTime('thisWeek','Line')">本周</a>
+				<a id="thisMonthLine" class="time_stat" style="width:40px;" href="javascript:workload_stat.setLineTime('thisMonth','Line')">本月</a> -->
+				<a id="thisDayLine" class="time_stat"  href="javascript:void(0)">24小时内</a>
+				<a id="thisWeekLine" class="time_stat"  href="javascript:void(0)">本周</a>
+				<a id="thisMonthLine" class="time_stat" href="javascript:void(0)">本月</a>
+			</div>
+			<div id="deptLine" class="deptLine">
+	
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div class="statis">
+	<div>
+		<ul class="channels" id="channels">
+			<li style="width:150px;" class="select channelTab" id="deptEmployee">部门人员工作量统计</li>
+			<li style="width:150px;" class="channelTab" id="deptArticle">部门稿件流量统计</li>
+		</ul>
+	</div>
+	<!-- 部门人员工作量统计 -->
+	<section id="employeeTab">
+		<div style="display: table; background: #fff;border: 1px solid #ddd;">
+		<div id="detail">
+			<div class="employee" >
+				<div class="left" style="margin:20px 0px 5px 10px;">
+					人员：
+					<input id="employee" type="text" name="Name" readonly value="全部" />
+					<input id="employeeID" type="hidden" name="ID" />
+					<!--<input id="employeeSelect" class="see" type="button" title="选择人员" value="选择" />-->
+				</div>
+				<div class="detail_employee">
+					<div id="chTimeRegionDept" class="times">
+						<span class="publishTime">发布时间：&nbsp;</span>
+						<a id="current24HEmp" class="time_stat"  href="javascript:workload_stat.setCalender('current24H','_emp','Emp')">24小时内</a>
+						<a id="current7DEmp" class="time_stat"  href="javascript:workload_stat.setCalender('current7D','_emp','Emp')">本周</a>
+						<a id="lastMonthEmp" class="time_stat" href="javascript:workload_stat.setCalender('lastMonth','_emp','Emp')">上月</a>
+						<a id="thisMonthEmp" class="time_stat" href="javascript:workload_stat.setCalender('thisMonth','_emp','Emp')">本月</a>
+						<input id="pubTime_from_emp" readonly type="text" value="" name="pubTime_from_emp" date-data-format="yyyy-mm-dd hh:ii:ss" /> -
+						<input id="pubTime_to_emp" readonly type="text" value="" name="pubTime_to_emp" date-data-format="yyyy-mm-dd hh:ii:ss"/> 
+						<!--<input class="lookBtn" style="margin:0px 5px;" type="submit" id="lookMsg" value="查看" />-->
+						<img title="查找" class="lookBtn ml6" id="lookMsg" src="images/11.png"/>
+						<!--<input class="resetBtn" type="button" id="resetWorkload" value="重置" />-->
+						<img class="resetBtn cursor ml6" src="images/12.png" alt="重置" title="重置" id="resetWorkload" />
+						<img class="see exportBtn cursor ml6"  src="images/13.png" alt="导出数据" title="导出数据" onclick="workload_stat.outputcsv('')" />
+						
+		                <input type="hidden" id="total_count_emp" name="" value="0" />
+		               
+					</div>
+				</div>
+			</div>
+			<div class="exportData clearfix">
+				<!--<input class="see" style='width:130px;height:30px;margin-right:5px;' type="button" value="查看个人工作量明细" onclick="workload_stat.showNewWindow()" />-->
+                <!-- <a id="showDetailMsg" target="_blank" class="see work-person" style='width:130px;height:30px;margin-right:5px;color: #fff;' href="../stat/Individual.html?t=stat1&siteID=1" >查看个人工作量明细</a> -->
+                <a style="display: none;" id="showDetailMsg" target="_blank" class="see work-person"  style='width:130px;height:25px;margin-right:5px;color: #fff;' href="javascript:void(0)" >查看个人工作量明细</a>
+                <!--<input class="see exportBtn" style='width:100px;height:25px;' type="button" onclick="workload_stat.outputcsv('')" value="导出数据" />-->
+             	<div style="margin: 5px 0 0 12px; float: left;">总个数[<span id="total_count_emp_all">0</span>]</div>
+                <ul style="float: left;" class="foot_page" id="paginator_emp"></ul>
+
+			</div>
+			<div class="detail">
+				<table class="loadTable" id="EmployeeDetailTable">
+					<thead>
+					<tr class="tdtr">
+						<!--<th class="title tdtr1"><input type="checkbox" name="selectAll" id="selectAll_emp" title="全选/取消"/></th>-->
+						<th class="title tdtr">人员名称</th>
+						<th class="title tdtr">发稿量</th>
+						<th class="title tdtr">Web发稿天数</th>
+						<th class="title tdtr">APP发稿天数</th>
+						<th class="title tdtr">总点击量</th>
+						<th class="title1 tdtr">Web点击数</th>
+						<th class="title1 tdtr">触屏点击数</th>
+						<th class="title1 tdtr">APP点击数</th>
+						<th class="title tdtr">总分享数</th>
+						<th class="title1 tdtr">Web分享</th>
+						<th class="title1 tdtr">触屏分享</th>
+						<th class="title1 tdtr">APP分享</th>
+						<th class="title tdtr">总评论量</th>
+						<th class="title1 tdtr">Web评论量</th>
+						<th class="title1 tdtr">触屏评论量</th>
+						<th class="title1 tdtr">APP评论量</th>
+					</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+
+			</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- 部门稿件流量统计 -->
+	<div id="articleTab" style="display:none;">
+		<iframe id="partmentIfram" src="" width="100%" height="600" frameborder="0px"></iframe>
+	</div>
+
+</div>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					部门人员
+				</h4>
+			</div>
+			<div class="modal-body clearfix">
+				<div class="fl">
+					<div class="department-search" id="departMan">
+						<input type="text" id="partmentSearch" placeholder="输入人员信息查询">
+						<ul>
+							<li>111</li>
+							<li>222</li>
+							<li>333</li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn-default search-btn">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="confirm">确定</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+
+
+<form id="form" method="post"><!-- csv输出 -->
+	<input type="hidden" id="jsonData" name="jsonData" />
+	<input type="hidden" id="csvName" name="csvName" />
+</form>
+
+</body>
+</html>
+

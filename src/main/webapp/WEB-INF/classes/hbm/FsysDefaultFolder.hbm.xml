@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.sys.org">
+	<class name="DefaultFolder" table="FSYS_DEFAULTFOLDER">
+		<composite-id>
+			<key-property
+				column="ENTITY_ID"
+				name="id"
+				type="integer"
+			 />
+			<key-property
+				column="ENTITY_TYPE"
+				name="idType"
+				type="integer"
+			 />
+			<key-property
+				column="DOCTYPEID"
+				name="docTypeID"
+				type="integer"
+			 />
+		</composite-id>
+		<property
+			column="LIBID"
+			length="22"
+			name="libID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="FOLDERID"
+			length="22"
+			name="folderID"
+			not-null="true"
+			type="integer"
+		 />
+	</class>
+</hibernate-mapping>

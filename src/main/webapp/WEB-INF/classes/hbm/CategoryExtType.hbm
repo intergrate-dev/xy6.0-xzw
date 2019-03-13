@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.cat">
+	<class name="CatExtType" table="CATEGORY_EXTTYPE">
+		<id column="EXT_TYPE"
+			name="type"
+			type="int">
+	      <generator class="assigned"/>
+		</id>
+		<property
+			column="EXT_TYPENAME"
+			length="60"
+			name="typeName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="EXT_ORDER"
+			length="3"
+			name="order"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="WT_TYPE"
+			length="3"
+			name="catType"
+			not-null="false"
+			type="integer"
+		 />
+	</class>
+</hibernate-mapping>

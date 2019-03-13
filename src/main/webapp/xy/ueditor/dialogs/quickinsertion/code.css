@@ -1,0 +1,9 @@
+.wrapper{
+    padding: 10px;
+}
+.wrapper>div{
+    margin-bottom: 10px;
+}
+.wrapper input{
+    width: 370px;
+}

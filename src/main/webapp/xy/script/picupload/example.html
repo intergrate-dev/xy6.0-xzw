@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<!-- release v4.3.9, copyright 2014 - 2017 Kartik Visweswaran -->
+
+<!--suppress JSUnresolvedLibraryURL -->
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8"/>
+
+    <title>Krajee JQuery Plugins - &copy; Kartik</title>
+    <link href="../bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="upload_api.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container kv-main">
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <input id="uploadInput" type="file" name="file" multiple>
+        </div>
+        <hr>
+    </form>
+    <button class="btn btn-default" onclick="gogogo()">gogogogogo</button>
+</div>
+</body>
+<script>
+    var upload = new Upload("#uploadInput", {
+        showDelete: false,
+        autoCommit: true
+    });
+
+   /* $("#uploadInput").on('filepredelete', function(event, id) {
+        alert(1);
+    });
+    $("#uploadInput").on('filedeleted', function(event, id) {
+        alert(2);
+    });
+
+    $("#uploadInput").on('filesuccessremove', function(event, id) {
+        alert(3);
+    });*/
+    function gogogo(){
+
+        console.info(upload.data)
+    }
+</script>
+</html>

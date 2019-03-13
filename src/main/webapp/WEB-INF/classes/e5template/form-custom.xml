@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Gong Lijie (Founder) -->
+<!--edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Gong Lijie (Founder)-->
+<form-template>
+	<form-file><![CDATA[
+<!DOCTYPE html>
+<html>
+<head>
+	<title><!--@TITLE@--></title>
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	<link type="text/css" rel="stylesheet" href="../../e5style/reset.css"/>
+	<link type="text/css" rel="stylesheet" href="../../e5script/jquery/jQuery-Validation-Engine/css/validationEngine.jquery.css"/>
+	<link type="text/css" rel="stylesheet" href="../../e5script/jquery/dialog.style.css"/>
+	<link type="text/css" rel="stylesheet" href="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css"/>
+	<link type="text/css" rel="stylesheet" href="../../e5script/calendar/calendar.css"/>
+	<link type="text/css" rel="stylesheet" href="../../e5style/e5form-custom.css"/>
+	<!--@PATHCSS@-->
+	<script type="text/javascript" src="../../e5script/jquery/jquery.min.js"></script> 
+	<script type="text/javascript" src="../../e5script/jquery/jQuery-Validation-Engine/js/languages/jquery.validationEngine-zh_CN.js"></script>
+	<script type="text/javascript" src="../../e5script/jquery/jQuery-Validation-Engine/js/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="../../e5script/jquery/jquery.dialog.js"></script> 
+	<script type="text/javascript" src="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.min.js"></script> 
+	<script type="text/javascript" src="../../e5script/calendar/usecalendar.js"></script>
+	<script type="text/javascript" src="../../e5script/calendar/calendar.js"></script>
+	<script type="text/javascript" src="../../e5workspace/script/form-custom.js"></script> 
+	<!--@PATHJS@-->
+</head>
+<body>
+	<iframe id="iframe" name="iframe" style="display:none;"></iframe>
+	<form id="form" method="post" action="../../e5workspace/manoeuvre/FormSubmit.do">
+		<input type="hidden" id="DocLibID" name="DocLibID" value="<%=request.getParameter("DocLibID")%>"/>
+		<input type="hidden" id="DocID" name="DocID" value="<%=request.getParameter("DocIDs")%>"/>
+		<input type="hidden" id="FVID" name="FVID" value="<%=request.getParameter("FVID")%>"/>
+		<input type="hidden" id="UUID" name="UUID" value="<%=request.getParameter("UUID")%>"/>
+		<input type="hidden" id="FormID" name="FormID" value="@FORMID@"/>
+		<input type="hidden" id="SaveSubmit" name="SaveSubmit" value=""/>
+		<div class="mainBodyWrap">
+			<table class="tablecontent">
+			<!--@CUSTOM-FORM@-->
+			</table>
+		</div>
+	</form>
+</body>
+</html>
+]]></form-file>
+	<form-fields>
+		<field data-type="" edit-type="EDITTYPE_FREE">
+			<description>任意填写</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="" edit-type="EDITTYPE_BOOLEAN">
+			<description>单选（是/否选择）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" for="@FIELDCODE@" class="custform-label-checkbox checkbox"><input type="checkbox" id="@FIELDCODE@" name="@FIELDCODE@" oldValue="-" class="custform-checkbox" style="@CUSTOMSTYLE@"/> @LABEL-NAME@</label>
+				<span class="custform-postfix"></span>
+			</span>
+		</field>
+		<field data-type="" edit-type="EDITTYPE_ENUM">
+			<description>单选(下拉框)</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<select id="@FIELDCODE@" name="@FIELDCODE@" oldValue="-" class="custform-select" style="@CUSTOMSTYLE@">@OPTIONS@</select>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="" edit-type="EDITTYPE_SELECT">
+			<description>单选(下拉框select，动态取值)</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<select id="@FIELDCODE@" name="@FIELDCODE@" oldValue="-" class="custform-select" style="@CUSTOMSTYLE@" url="@URL@"> </select>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="" edit-type="EDITTYPE_SELECT_RADIO">
+			<description>单选(单选框radio)</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="radio" radio="true" name="@FIELDCODE@" id="@FIELDCODE@" oldValue="-" style="display:none;"/>
+		@RADIO_SELECT@
+	</div>
+			</span>
+		</field>
+		<field data-type="" edit-type="EDITTYPE_SELECT_RADIO_DYNAMIC">
+			<description>单选(单选框radio，动态取值)</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="radio" radio="true" name="@FIELDCODE@" id="@FIELDCODE@" oldValue="-" url="@URL@" style="display:none;"/>
+				</div>
+			</span>
+		</field>
+		<field data-type="" edit-type="EDITTYPE_FILE">
+			<description>附件上传</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<img id="img_@FIELDCODE@" src="../../Icons/attach.gif" style="display:none"></img>
+					<input type="file" id="@FIELDCODE@" name="@FIELDCODE@" oldValue="-"/>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_FREE_AUTOCOMPLETE">
+			<description>字符串类型，任意填写（单行，带填写提示）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" auto-complete="true" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" url="@URL@"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_FREE_AUTOCOMPLETE_KEYVALUE">
+			<description>字符串类型，任意填写（单行，带填写提示，键值对）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" auto-complete="true" pair="true" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" url="@URL@"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_FREE_LINES">
+			<description>字符串类型，任意填写（多行）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<textarea id="@FIELDCODE@" name="@FIELDCODE@" class="custform-textarea @VALID-CLASS@" style="@CUSTOMSTYLE@"> </textarea>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_MULTI">
+			<description>字符串类型，多选（下拉框select）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<select id="@FIELDCODE@" name="@FIELDCODE@" oldValue="-" multiple="multiple" class="custform-select-multi @VALID-CLASS@" style="@CUSTOMSTYLE@">@OPTIONS@</select>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_MULTI_DYNAMIC">
+			<description>字符串类型，多选（下拉框select，动态取值）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<select id="@FIELDCODE@" name="@FIELDCODE@" oldValue="-" multiple="multiple" class="custform-select-multi @VALID-CLASS@" style="@CUSTOMSTYLE@" url="@URL@"> </select>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_MULTI_CHECKBOX">
+			<description>字符串类型，多选（复选框checkbox）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="hidden" check="true" name="@FIELDCODE@" id="@FIELDCODE@" oldValue="-"/>
+		@CHECKBOX_SELECT@
+	</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_MULTI_CHECKBOX_DYNAMIC">
+			<description>字符串类型，多选（复选框checkbox，动态取值）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="hidden" check="true" name="@FIELDCODE@" id="@FIELDCODE@" oldValue="-" url="@URL@"/>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_EMAIL">
+			<description>字符串类型，EMAIL</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_PHONE">
+			<description>字符串类型，固定电话</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_MOBILE">
+			<description>字符串类型，手机</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_ADDRESS">
+			<description>字符串类型，地址拆分</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@_PROVINCE" name="@FIELDCODE@_PROVINCE" value="" class="custform-input-address @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-address">省</label>
+					<br class="clear"/>
+					<input type="text" id="@FIELDCODE@_CITY" name="@FIELDCODE@_CITY" value="" class="custform-input-address @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-address">市</label>
+					<br class="clear"/>
+					<input type="text" id="@FIELDCODE@_COUNTY" name="@FIELDCODE@_COUNTY" value="" class="custform-input-address @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-address">区/县</label>
+					<br class="clear"/>
+					<input type="text" id="@FIELDCODE@_STREET" name="@FIELDCODE@_STREET" value="" class="custform-input-address @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-address">街</label>
+					<br class="clear"/>
+					<input type="text" id="@FIELDCODE@_BUILDING" name="@FIELDCODE@_BUILDING" value="" class="custform-input-address @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-address">楼</label>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_DATE_SPLIT">
+			<description>字符串类型，日期拆分</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@_YEAR" name="@FIELDCODE@_YEAR" value="" class="custform-input-date @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-date">年</label>
+					<input type="text" id="@FIELDCODE@_MONTH" name="@FIELDCODE@_MONTH" value="" class="custform-input-date @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-date">月</label>
+					<input type="text" id="@FIELDCODE@_DAY" name="@FIELDCODE@_DAY" value="" class="custform-input-date @VALID-CLASS@" style="@CUSTOMSTYLE@"/>
+					<label class="custform-label-date">日</label>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_DEPT">
+			<description>字符串类型，部门树</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" dept="true" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectDept('@FIELDCODE@', '@FIELDCODE@_ID')"/>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_USER">
+			<description>字符串类型，用户树</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" user="true" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectUser('@FIELDCODE@', '@FIELDCODE@_ID')"/>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_ROLE">
+			<description>字符串类型，角色树</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectRole('@FIELDCODE@', '@FIELDCODE@_ID')"/>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_TREE">
+			<description>字符串类型，分类树</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" catType="@CATTYPE@" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" title1="可输入名称或代码搜索" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectCat('@FIELDCODE@', '@FIELDCODE@ID', '@CATTYPE@')"/>
+					<input type="hidden" id="@FIELDCODE@ID" name="@FIELDCODE@ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_TREE_MULTI">
+			<description>字符串类型，分类树，可多选</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" catType="@CATTYPE@" multi="true" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" title1="可输入名称或代码搜索" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectCat('@FIELDCODE@', '@FIELDCODE@ID', '@CATTYPE@', true)"/>
+					<input type="hidden" id="@FIELDCODE@ID" name="@FIELDCODE@ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_TREE_SELECT">
+			<description>字符串类型，分类（下拉框select，只可用于单层分类）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="hidden" id="@FIELDCODE@" name="@FIELDCODE@" value=""/>
+					<select id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" pair="true" oldValue="-" class="custform-select @VALID-CLASS@" style="@CUSTOMSTYLE@" catType="@CATTYPE@" isNull="@ISNULL@"> </select>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_OTHER_DATA">
+			<description>字符串类型，其它数据（下拉框，动态取值，键值对）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="hidden" id="@FIELDCODE@" name="@FIELDCODE@"/>
+					<select id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" pair="true" oldValue="-" class="custform-select @VALID-CLASS@" style="@CUSTOMSTYLE@" url="@URL@"> </select>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_DEPT_MULTI">
+			<description>字符串类型，部门树，可多选</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" dept="true" multi="true" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectDept('@FIELDCODE@', '@FIELDCODE@_ID', true)"/>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_USER_MULTI">
+			<description>字符串类型，用户树，可多选</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" user="true" multi="true" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectUser('@FIELDCODE@', '@FIELDCODE@_ID', true)"/>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="VARCHAR" edit-type="EDITTYPE_ROLE_MULTI">
+			<description>字符串类型，角色树，可多选</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap input-append" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" readonly="true"/>
+					<input type="button" value="..." class="btn custform-button" onclick="selectRole('@FIELDCODE@', '@FIELDCODE@_ID', true)"/>
+					<input type="hidden" id="@FIELDCODE@_ID" name="@FIELDCODE@_ID" value=""/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="CLOB" edit-type="EDITTYPE_FREE_LINES">
+			<description>CLOB，任意填写（多行）</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<textarea id="@FIELDCODE@" name="@FIELDCODE@" class="custform-textarea @VALID-CLASS@" style="@CUSTOMSTYLE@"> </textarea>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="DATE" edit-type="EDITTYPE_FREE">
+			<description>DATE，任意填写</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" onclick="selectDate('@FIELDCODE@')"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+		<field data-type="TIMESTAMP" edit-type="EDITTYPE_FREE">
+			<description>TIMESTAMP，任意填写</description>
+			<span id="SPAN_@FIELDCODE@" class="custform-span">
+				<label id="LABEL_@FIELDCODE@" class="custform-label @LABEL_REQUIRE@">@LABEL-NAME@</label>
+				<div class="custform-from-wrap" id="DIV_@FIELDCODE@">
+					<input type="text" id="@FIELDCODE@" name="@FIELDCODE@" value="" class="custform-input @VALID-CLASS@" style="@CUSTOMSTYLE@" onclick="selectDate('@FIELDCODE@')"/>
+					<span class="custform-postfix"></span>
+				</div>
+			</span>
+		</field>
+	</form-fields>
+</form-template>

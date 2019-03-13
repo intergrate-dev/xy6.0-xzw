@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加选项查看页内容</title>
+<style>
+	.modal-backdrop{
+		z-index:140;	
+	}
+	.modal {
+	    width: 580px;
+	    z-index: 150;
+	}
+	.pop_wrap{
+		height: 500px;
+	    margin: 0 auto;
+	    width: 560px;
+	}
+	.pop_wrap .table td.left{text-align:right;color:#0088CC}
+	.alert{margin:10px;}
+	
+</style>
+
+</head>
+<body>
+    <div class="pop_wrap" style=''>
+		<div class="alert alert1">
+		请编辑选项弹出页面上要显示的内容
+		</div>
+		<div class="input-prepend" id="addoppagetextdiv">
+			<!-- <textarea style='width:525px;height:200px;margin-left:10px;' id="pagetextinput"></textarea> -->
+			<textarea name="myEditor" id="pagetextinput" style="width:525px;height:200px;margin-left:10px;"></textarea>
+		</div>
+		<div style="margin-top:10px;margin-left:10px;">
+		<form class="form-inline">
+	   	 	<input type="button" id="optionpagetextdone" style="height: 39px; width: 120px;" class="btn" value="保&nbsp;&nbsp;存"/>
+	     	<label class="checkbox" style="margin-left:20px;" >
+	              <input type="checkbox" id='showimgonpage' value="1"  checked> 显示选项图片
+	     	</label>
+	    </form>
+		</div>
+	</div>
+<script type="text/javascript">
+     var _opid = $("#temOpID").val(); 
+     
+     $(function(){
+    	 initViewPageInfoByOpId(_opid);
+    	 $(".modal-header .close").click(function(){
+    		 $("#temOpID").attr("value","");
+    	 });
+    	 
+    	 $("#optionpagetextdone").click(function(){
+    		//_contentText = $("#pagetextinput").val();
+    		_contentText = editor_a.getContent();
+    		if(_contentText.trim()==""){
+    			showOptionAlert(_opid,$("#addoppagetextdiv"),"请编辑选项弹出页面上要显示的内容","error",2);
+    			return false;
+    		}
+    		var params = {};
+    		params.action = "editoptionpagetext";
+    		params.opid = _opid;
+    		params.pagetextcontent = _contentText;
+    		if($("#showimgonpage").is(":checked")){
+    			params.showimgonpage = 1;
+    		}else{
+    			params.showimgonpage = 0;
+    		}
+    		showOptionAlert(_opid,$("#addoppagetextdiv"),"正在保存，请稍候...",'warning',0);
+    		$.ajax({
+     			type:"POST",
+      			url:"editOptionPageText.do",
+      			data:params,
+      			dataType:"json",
+      			success:function(data){
+      				if(data.ret=="1"){
+      					$("#temOpID").attr("value","");
+      					$("#table_"+_opid).find(".addoppagetextbtn").html("<i class='icon-file-alt' title='编辑查看页'></i>编辑查看页");
+      					$(".modal-header .close").click();
+      					
+      					if($("#opmedias_"+_opid).find(".optionpagetext").is("div")){
+      						showOptionAlert(_opid,$("#opmedias_"+_opid),"修改选项查看页内容成功",'success',2);
+      					}else{
+      						_pagetextbox = getOptionPageTextBox(_opid);
+      						$("#opmedias_"+_opid+" .clear").before(_pagetextbox);
+      		 				showOptionAlert(_opid,$("#opmedias_"+_opid),"添加选项查看页内容成功",'success',2);
+      					}
+      				}else{
+      					jAlert(data.retinfo.errormsg,"提示");
+      				}
+      			}
+     		 });
+    	 });
+     });
+     
+     function initViewPageInfoByOpId(_opid){
+  	   $.ajax({
+  			type:"POST",
+  			url:"getoption.do",
+  			data:{action:'getoption',opid:_opid},
+  			dataType:"json",
+  			success:function(data){
+  				if(data.ret=="1"){
+  					_textContent = data.retinfo.opinfo.voViewContent;
+  					_checkedShow = data.retinfo.opinfo.voShowOpImgFlag;
+  					//$("#pagetextinput").text(_textContent);
+  					editor_a.ready(function() {
+  				         editor_a.setContent(_textContent);  //赋值给UEditor
+  				     });
+  					if(_checkedShow=="1"){
+  						$("#showimgonpage").attr("value",_checkedShow);
+  						$("#showimgonpage").attr("checked",'true');
+  					}else{
+  						$("#showimgonpage").attr("value",_checkedShow);
+  						$("#showimgonpage").removeAttr("checked");
+  					}
+  					
+  				}else{
+  					$(".alert1").html(data.retinfo.errormsg);
+  				}
+  			}
+  		});
+     }
+  	//自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+     var editorOption = {
+         //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+         toolbars: [['FullScreen', 'Source', 'Undo', 'Redo', 'Bold', 'forecolor', 'link', 'highlightcode']],
+         //focus时自动清空初始化时的内容
+         autoClearinitialContent: true,
+          //关闭elementPath
+          elementPathEnabled: false,
+          initialFrameWidth:525,//设置编辑器宽度
+          initialFrameHeight:200,//设置编辑器高度
+          scaleEnabled:true
+     };
+     var editor_a = new baidu.editor.ui.Editor(editorOption);
+     editor_a.render('pagetextinput');
+</script>
+</body>
+</html>

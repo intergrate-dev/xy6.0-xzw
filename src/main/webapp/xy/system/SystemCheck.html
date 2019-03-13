@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>翔宇测试</title>
+	
+	<script src="../../e5script/jquery/jquery-1.9.1.min.js"></script>
+	<script src="../../e5script/jquery/jquery.dialog.js"></script>
+	<script src="../script/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+	<script src="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.js"></script>
+	<script src="../stat/script/bootstrap-paginator.js"></script>
+
+	<script src="./script/api.json"></script>
+	<script src="script/SystemCheck.js"></script>
+	<script type="text/javascript" src="script/ApiCheck.js"></script>
+
+	<link rel="stylesheet" href="../script/bootstrap-3.3.4/css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="../../e5script/jquery/dialog.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css"/>
+    <link rel="stylesheet" type="text/css" href="css/SystemCheck.css">
+</head>
+<body>
+	<div class="container main">
+		<div id="typeRegion">
+			<ul class="types" id="selectType">
+                <li class="testTab select" id="licenseTab">加密点</li>
+                <li class="testTab" id="paramCheckTab">参数检测</li>
+                <li class="testTab" id="apiCheckTab">接口检测</li>
+                <li class="testTab" id="apiTestTab">接口测试 </li>
+                <li class="testBtn">
+                	<button id="btnParam" class="btn btn-default btn-sm hide" type="button">测试参数</button>
+				</li>
+				<li class="testBtn">
+					<button id="btnTest" class="btn btn-default btn-sm hide" type="button">连接测试</button>
+				</li>
+            </ul>
+		</div>
+		<!-- 参数检测 -->
+		<div class="hide div-fix" id="paramCheck">
+			<table id="checkTable-param" class="table">
+			</table>
+		</div>
+		<!-- 接口检测 -->
+		<div class="hide div-fix" id="apiCheck">
+			<table id="checkTable-api" class="table">
+			</table>
+		</div>
+		<!-- 接口测试 -->
+		<div class="wrapper hide" id="apiTest" >
+			<div id="tab">
+				<ul class='tab_menu' id="tab_menu">
+				</ul>
+				<div class="tab_box" id="tab_box">
+					<div>
+						<label for="">
+							url：<input type="text" id="list-url" readonly="readonly" style="width: 415px;height: 25px;" value="">
+						</label>
+						<label for="">
+							<span>参数说明 : </span>
+							<table id="paramExplain" border="1px" cellspacing="0px" readonly="readonly">
+								<thead>
+									<tr>
+										<th style="align-content: center">参数名</th>
+										<th>是否必填</th>
+										<th>默认值</th>
+										<th>类型</th>
+										<th>描述</th>
+									</tr>
+								</thead>
+								<tbody>
+				
+								</tbody>
+							</table>
+						</label>
+						<label for="">
+							<span>测试:<input class="btnSbumit" id="btn" type="button" value="提交" /></span>
+				            <table id="test-table" border="1px" cellspacing="0px" >
+							<thead>
+								<tr>
+									<th>参数名</th>
+									<th style="width:235px">值</th>
+								</tr>
+								</thead>
+								<tbody>
+				
+								</tbody>
+				            </table>
+						</label>
+						<label for="">
+							<span>结果:</span>
+							<textarea class="result" id="result" name="" rows="12"></textarea>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 加密点 -->
+		<div id="license">
+			<div class="hide">
+				<label class="license-label">到期时间</label>
+				<input type="text" style="margin-left:200px;" id="expireTime" readonly disabled class="license-input"/>
+			</div>
+			<div>
+				<label class="license-label">授权数</label>
+				<div>
+					<ul class="license-ul">
+						<li>站点数:<input type="text" id="siteCount" readonly disabled class="license-input"/></li>
+						<li>用户数:<input type="text" id="userCount" readonly disabled class="license-input"/></li>
+					</ul>
+				</div>
+			</div>
+			<div>
+				<label class="license-label">发布渠道</label>
+				<div>
+					<ul id="channel" class="license-ul">
+					</ul>
+				</div>
+			</div>
+			<div>
+				<label class="license-label">功能模块</label>
+				<div>
+					<ul id="module" class="license-ul">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<input type="hidden" id="urlRoot" value="paramCheckTab"/>
+		<input type="hidden" id="currTab" value="paramCheckTab"/>
+		<input type="hidden" id="currTr" value=""/>
+		<input type="hidden" id="name" value=""/>
+		<input type="hidden" id="c" value=""/>
+	</div>
+	<div class="modal fade" id="paramInfo"  tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog" style="width: 700px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<strong>修改测试参数</strong></h5>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="ROOTURL">API根路径：</label>
+								<div class="col-sm-10">
+									<input type="text" name="ROOTURL" id="ROOTURL" class="form-control input-sm" placeholder="请输入外网API根路径" value="http://localhost:8080/app_if/">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="siteID">站点ID：</label>
+								<div class="col-sm-4">
+									<input type="text" name="siteID" id="siteID" class="form-control input-sm">
+								</div>
+								<label class="col-sm-2 control-label" for="colID">栏目ID：</label>
+								<div class="col-sm-4">
+									<input type="text" name="colID" id="colID" class="form-control input-sm">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="articleID">稿件ID：</label>
+								<div class="col-sm-4">
+									<input type="text" name="articleID" id="articleID" class="form-control input-sm" >
+								</div>
+								<label class="col-sm-2 control-label" for="liveID">直播ID：</label>
+								<div class="col-sm-4">
+									<input type="text" name="liveID" id="liveID" class="form-control input-sm" >
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="activeID">活动ID：</label>
+								<div class="col-sm-4">
+									<input type="text" name="activeID" id="activeID" class="form-control input-sm">
+								</div>
+								<label class="col-sm-2 control-label" for="paperID">数字报ID：</label>
+								<div class="col-sm-4">
+									<input type="text" name="paperID" id="paperID" class="form-control input-sm" >
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="alert alert-success col-sm-12" id="alertDiv" style="display: none;">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<span id="alertText"></span>
+					</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input id="paramSubmit" name="paramSubmit" type="submit" class="btn btn-primary btn-xs" value="提交参数">
+					<button id="paramCancel" name="paramCancel" type="button" class="btn btn-default btn-xs" data-dismiss="modal">关闭窗口</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

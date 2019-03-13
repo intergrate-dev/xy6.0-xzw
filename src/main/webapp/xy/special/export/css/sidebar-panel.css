@@ -1,0 +1,803 @@
+/*右侧功能样式*/
+#sidebar-panel {
+    width: 240px;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #3d3d3d;
+
+}
+
+#sidebar-panel .tab_menu li {
+    padding: 4px 10px;
+    border: 1px solid #000;
+    border-top: 0px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 2px 0 0;
+}
+#sidebar-panel input[type='text'],#sidebar-panel-II input[type='text'],#sidebar-panel-III input[type='text']{
+    border-radius: 0;
+    background-color: #b8bdc2;
+    padding: 0;
+    border: none;
+    font-family: "microsoft yahei";
+}
+#sidebar-panel .tab_menu {
+    background-color: #333;
+    height: 26px;
+}
+
+#sidebar-panel .tab_menu .selected {
+    background-color: #3d3d3d;
+    cursor: pointer;
+}
+
+#sidebar-panel .hide-text {
+    display: none;
+    color: #fff !important;
+}
+
+#sidebar-panel .sidebar-panel-color,#sidebar-panel-II .sidebar-panel-color,#sidebar-panel-III .sidebar-panel-color{
+    background-color: #3d3d3d;
+}
+
+#sidebar-panel .inputStyle,#sidebar-panel-II .inputStyle,#sidebar-panel-III .inputStyle {
+    background-color: #b8bdc2;
+    color: #333;
+    border-radius: 0;
+    font-family: "microsoft yahei";
+    height: 25px;
+    line-height: 25px;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#sidebar-panel .inputStyle80,#sidebar-panel-II .inputStyle80,#sidebar-panel-III .inputStyle80{
+    width: 80px;
+}
+
+#sidebar-panel .inputStyle45,#sidebar-panel-II .inputStyle45,#sidebar-panel-III .inputStyle45{
+    width: 45px;
+}
+
+.inputStyle55 {
+    width: 55px;
+}
+.inputStyle35{
+    width: 35px;
+}
+
+.inputStyle45 {
+    width: 45px;
+}
+
+#sidebar-panel .setColor,#sidebar-panel-II .setColor,#sidebar-panel-III .setColor {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: #03a8f1;
+    border: 1px solid #000;
+}
+
+#sidebar-panel .vertical,#sidebar-panel-II .vertical,#sidebar-panel-III .vertical{
+    line-height: 25px;
+}
+
+#sidebar-panel .layoutBg-pos .layoutBg-pos-nine li,#sidebar-panel-II .layoutBg-pos .layoutBg-pos-nine li,#sidebar-panel-III .layoutBg-pos .layoutBg-pos-nine li {
+    width: 18px;
+    height: 18px;
+    background-color: #575757;
+    margin: 1px;
+    text-align: center;
+    line-height: 16px;
+}
+
+#sidebar-panel .layoutBg-pos,#sidebar-panel-II .layoutBg-pos,#sidebar-panel-III .layoutBg-pos {
+    width: 65px;
+}
+
+#sidebar-panel .layoutBg-word,#sidebar-panel-II .layoutBg-word,#sidebar-panel-III .layoutBg-word {
+    display: inline-block;
+    height: 50px;
+}
+
+#sidebar-panel .repeat li,#sidebar-panel-II .repeat li,#sidebar-panel-III .repeat li {
+    width: 23px;
+    height: 23px;
+    background-color: #575757;
+    line-height: 22px;
+}
+.handle-style{
+	 background-color: #575757;
+	 padding: 5px;
+}
+#sidebar-panel .textAlign li,#sidebar-panel-II .textAlign li,#sidebar-panel-III .textAlign li {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+}
+
+#sidebar-panel .textAlign li.select,#sidebar-panel-II .textAlign li.select,#sidebar-panel-III .textAlign li.select{
+    background-color: #1c1c1c;
+}
+
+#sidebar-panel .inputStyle50,#sidebar-panel-II .inputStyle50,#sidebar-panel-III .inputStyle50{
+    width: 50px;
+}
+#sidebar-panel .inputStyle40,#sidebar-panel-II .inputStyle40,#sidebar-panel-III .inputStyle40{
+    width: 40px;
+}
+
+#sidebar-panel .selectPos,#sidebar-panel-II .selectPos,#sidebar-panel-III .selectPos {
+    position: relative;
+}
+
+#sidebar-panel select,#sidebar-panel-II select,#sidebar-panel-III select{
+    background-color: #b8bdc2;
+    outline: none;
+    font-family: "microsoft yahei";
+    font-size: 12px;
+}
+
+/*#sidebar-panel .selectHeight {
+    height: 24px;
+    line-height: 24px;
+}*/
+#sidebar-panel .fontWz,#sidebar-panel-II .fontWz,#sidebar-panel-III .fontWz {
+    width: 74px;
+}
+
+#sidebar-panel .selectImg,#sidebar-panel-II .selectImg,#sidebar-panel-III .selectImg {
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    top: 0;
+}
+
+#sidebar-panel .fontFa,#sidebar-panel-II .fontFa,#sidebar-panel-III .fontFa {
+    width: 174px;
+}
+
+#sidebar-panel .fontWzwrap,#sidebar-panel-II .fontWzwrap,#sidebar-panel-III .fontWzwrap {
+    width: 151px;
+}
+
+#sidebar-panel .fontSt,#sidebar-panel-II .fontSt,#sidebar-panel-III .fontSt {
+    width: 100px;
+}
+
+#sidebar-panel .choiceColor,#sidebar-panel-II .choiceColor,#sidebar-panel-III .choiceColor {
+    width: 23px;
+    height: 16px;
+    border: 1px solid #000;
+    background-color: red;
+}
+
+.unit {
+    width: 50px;
+
+}
+#unit {
+    z-index: 100;
+}
+.unit {
+    position: absolute;
+    top: 32px;
+    left: 10px;
+    z-index: 99;
+}
+
+.unit span {
+    display: none;
+}
+
+.unit ul {
+    display: none;
+}
+
+.unit li {
+    color: #fff;
+    line-height: 23px;
+}
+
+.unit li:hover {
+    background-color: #3d3d3d;
+    cursor: pointer;
+}
+.select {
+    background-color: #1c1c1c !important;
+}
+.selectlist  {
+    background-color: #DCDCDC !important;
+}
+.selectlist img{
+    outline:2px solid #03a8f1;
+    outline-offset:6px;
+}
+.act {
+    background-color: #2dbbc4;
+    color: #fff;
+}
+
+.activ {
+    border-bottom: 3px solid #2dbbc4;
+    color: #2dbbc4;
+}
+.span148 {
+    display: inline-block;
+    width: 148px;
+}
+.span124 {
+    display: inline-block;
+    width: 124px;
+}
+.flag{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 3px;
+    left:20px;
+    z-index: 10;
+    cursor: pointer;
+}
+.share1{
+    background: #fff url("../images/sliderPanel/icon_share1.png") no-repeat center;
+}
+.share2{
+    background: #fff url("../images/sliderPanel/icon_share2.png") no-repeat center;
+}
+.flagHover{
+    background: url("../images/sliderBar/sliderBar34.png") no-repeat center;
+}
+.flagActive{
+    background: url("../images/sliderBar/sliderBar35.png") no-repeat center;
+}
+.span128 {
+    display: inline-block;
+    width: 128px;
+}
+.span160 {
+    display: inline-block;
+    width: 160px;
+}
+.cancelBtn{
+	right: -6px;
+	top: -5px;
+}
+.border65{
+	border: 1px solid #656565;
+}
+.uploadbtnStyle {
+    display: inline-block;
+    margin-bottom: 0;
+    /* line-height: 1.42857143; */
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: url(../images/sliderPanel/sliderPanel1.png);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    line-height: 30px;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    margin-bottom: 0px;
+    font-family: "microsoft yahei";
+}
+
+#posAndBs .diy-control.offset > .box,#posAndBs-II .diy-control.offset > .box,#posAndBs-III .diy-control.offset > .box {
+    width: 160px;
+    height: 107px;
+    margin: 16px auto;
+    position: relative;
+}
+
+#posAndBs .diy-control.offset > .box > .handle.top, .diy-control.offset > .box > .handle.bottom, .diy-control.offset > .box > .handle.top:before, .diy-control.offset > .box > .handle.bottom:before,#posAndBs-II .diy-control.offset > .box > .handle.top,#posAndBs-III .diy-control.offset > .box > .handle.top{
+    width: 149px;
+}
+
+#posAndBs .diy-control.offset > .box .handle.top,#posAndBs-II .diy-control.offset > .box .handle.top,#posAndBs-III .diy-control.offset > .box .handle.top {
+    top: 0;
+    border-bottom-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box .handle.top, .diy-control.offset > .box .handle.bottom,#posAndBs-II .diy-control.offset > .box .handle.top,#posAndBs-III .diy-control.offset > .box .handle.top {
+    height: 0;
+    left: 3px;
+    cursor: row-resize;
+}
+
+#posAndBs .diy-control.offset > .box .handle,#posAndBs-II .diy-control.offset > .box .handle,#posAndBs-III .diy-control.offset > .box .handle {
+    position: absolute;
+    display: block;
+    font-size: 0;
+    border: solid 14px transparent;
+}
+
+#posAndBs .diy-control,#posAndBs-II .diy-control,#posAndBs-III .diy-control {
+    vertical-align: middle;
+    line-height: 14px;
+}
+
+#posAndBs .diy-control.offset > .box > .handle.left, .diy-control.offset > .box > .handle.right, .diy-control.offset > .box > .handle.left:before, .diy-control.offset > .box > .handle.right:before,#posAndBs-II .diy-control.offset > .box > .handle.left,#posAndBs-III .diy-control.offset > .box > .handle.left {
+    height: 100px;
+}
+
+#posAndBs .diy-control.offset > .box .handle.right,#posAndBs-II .diy-control.offset > .box .handle.right,#posAndBs-III .diy-control.offset > .box .handle.right {
+    right: 0;
+    border-right-color: #575757;
+    border-left-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box .handle.left, .diy-control.offset > .box .handle.right,#posAndBs-II .diy-control.offset > .box .handle.left,#posAndBs-III .diy-control.offset > .box .handle.left{
+    width: 0;
+    top: 3px;
+    cursor: col-resize;
+}
+
+#posAndBs .diy-control.offset > .box .handle.left,#posAndBs-II .diy-control.offset > .box .handle.left,#posAndBs-III .diy-control.offset > .box .handle.left {
+    left: 0;
+    border-left-color: #575757;
+    border-right-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box .handle.left, .diy-control.offset > .box .handle.right,#posAndBs-II .diy-control.offset > .box .handle.left,#posAndBs-III .diy-control.offset > .box .handle.left {
+    width: 0;
+    top: 3px;
+    cursor: col-resize;
+}
+
+#posAndBs .diy-control.offset > .box > .label.top,#posAndBs-II .diy-control.offset > .box > .label.top,#posAndBs-III .diy-control.offset > .box > .label.top {
+    top: -17px;
+}
+
+#posAndBs .diy-control.offset > .box .label.top, .diy-control.offset > .box .label.bottom,#posAndBs-II .diy-control.offset > .box .label.top,#posAndBs-III .diy-control.offset > .box .label.top{
+    left: 50%;
+    margin-left: -15px;
+    text-align: center;
+}
+
+#posAndBs .diy-control.offset > .box .label,#posAndBs-II .diy-control.offset > .box .label,#posAndBs-III .diy-control.offset > .box .label {
+    position: absolute;
+    width: 26px;
+    height: 12px;
+    padding: 2px 1px;
+}
+
+#posAndBs .diy-control .disable-select,#posAndBs-II .diy-control .disable-select,#posAndBs-III .diy-control .disable-select {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#posAndBs .diy-control.offset > .box > .label.right,#posAndBs-II .diy-control.offset > .box > .label.right,#posAndBs-III .diy-control.offset > .box > .label.right {
+    right: -34px;
+    text-align: left;
+}
+
+#posAndBs .diy-control.offset > .box .label.left, .diy-control.offset > .box .label.right,#posAndBs-II .diy-control.offset > .box .label.left,#posAndBs-III .diy-control.offset > .box .label.left {
+    top: 50%;
+    margin-top: -8px;
+}
+
+#posAndBs .diy-control.offset > .box .label.top, .diy-control.offset > .box .label.bottom,#posAndBs-II .diy-control.offset > .box .label.top,#posAndBs-III .diy-control.offset > .box .label.top {
+    left: 50%;
+    margin-left: -15px;
+    text-align: center;
+}
+
+#posAndBs .diy-control.offset > .box > .label.left,#posAndBs-II .diy-control.offset > .box > .label.left,#posAndBs-III .diy-control.offset > .box > .label.left {
+    left: -35px;
+    text-align: right;
+}
+
+#posAndBs .diy-control.offset > .box > .padding,#posAndBs-II .diy-control.offset > .box > .padding,#posAndBs-III .diy-control.offset > .box > .padding {
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .handle.top, .diy-control.offset > .box > .padding > .handle.bottom, .diy-control.offset > .box > .padding > .handle.top:before, .diy-control.offset > .box > .padding > .handle.bottom:before,#posAndBs-II .diy-control.offset > .box > .padding > .handle.top,#posAndBs-III .diy-control.offset > .box > .padding > .handle.top{
+    width: 115px;
+}
+
+#posAndBs .diy-control.offset > .box .handle.top:before,#posAndBs-II .diy-control.offset > .box .handle.top:before,#posAndBs-III .diy-control.offset > .box .handle.top:before {
+    top: -13px;
+    border-top-color: #575757;
+    border-bottom-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .handle.left, .diy-control.offset > .box > .padding > .handle.right, .diy-control.offset > .box > .padding > .handle.left:before, .diy-control.offset > .box > .padding > .handle.right:before,#posAndBs-II .diy-control.offset > .box > .padding > .handle.left,#posAndBs-III .diy-control.offset > .box > .padding > .handle.left {
+    height: 64px;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .handle.right i,#posAndBs-II .diy-control.offset > .box > .padding > .handle.right i,#posAndBs-III .diy-control.offset > .box > .padding > .handle.right i {
+    right: -11px;
+}
+
+#posAndBs .diy-control.offset > .box .handle.bottom,#posAndBs-II .diy-control.offset > .box .handle.bottom,#posAndBs-III .diy-control.offset > .box .handle.bottom  {
+    bottom: 0;
+    border-top-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box .handle.bottom:before,#posAndBs-II .diy-control.offset > .box .handle.bottom:before,#posAndBs-III .diy-control.offset > .box .handle.bottom:before {
+    bottom: -13px;
+    border-bottom-color: #575757;
+    border-top-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box .handle.bottom b,#posAndBs-II .diy-control.offset > .box .handle.bottom b,#posAndBs-III .diy-control.offset > .box .handle.bottom b {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 12px;
+    right: 0;
+    bottom: -12px;
+    font-size: 12px;
+    color: #333;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+#posAndBs .diy-control.offset > .box .handle.top:before, .diy-control.offset > .box .handle.bottom:before,#posAndBs-II .diy-control.offset > .box .handle.top:before,#posAndBs-III .diy-control.offset > .box .handle.top:before {
+    height: 0;
+    left: -12px;
+    cursor: row-resize;
+}
+
+#posAndBs .diy-control.offset > .box .handle:before,#posAndBs-II .diy-control.offset > .box .handle:before,#posAndBs-III .diy-control.offset > .box .handle:before {
+    content: '';
+    position: absolute;
+    display: block;
+    font-size: 0;
+    border: solid 12px transparent;
+}
+
+#posAndBs .diy-control.offset > .box .handle.right:before,#posAndBs-II .diy-control.offset > .box .handle.right:before,#posAndBs-III .diy-control.offset > .box .handle.right:before{
+    right: -13px;
+    border-right-color: #575757;
+    border-left-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box .handle.left:before, .diy-control.offset > .box .handle.right:before,#posAndBs-II .diy-control.offset > .box .handle.left:before,#posAndBs-III .diy-control.offset > .box .handle.left:before {
+    width: 0;
+    top: -12px;
+    cursor: col-resize;
+}
+
+#posAndBs .diy-control.offset > .box > .handle.right i,#posAndBs-II .diy-control.offset > .box > .handle.right i,#posAndBs-III .diy-control.offset > .box > .handle.right i {
+    right: -12px;
+}
+
+#posAndBs .diy-control.offset > .box .handle.left i, .diy-control.offset > .box .handle.right i,#posAndBs-II .diy-control.offset > .box .handle.left i,#posAndBs-III .diy-control.offset > .box .handle.left i {
+    width: 12px;
+    height: 16px;
+    top: 50%;
+    margin-top: -6px;
+}
+
+#posAndBs .diy-control.offset > .box .handle i,#posAndBs-II .diy-control.offset > .box .handle i,#posAndBs-III .diy-control.offset > .box .handle i{
+    position: absolute;
+    display: block;
+    text-align: center;
+    pointer-events: none;
+}
+
+#posAndBs .diy-control.offset,#posAndBs-II .diy-control.offset,#posAndBs-III .diy-control.offset {
+    display: block;
+    position: relative;
+    color: #3d3d3d;
+    font-size: 12px;
+    width: 200px;
+    /*overflow: hidden;*/
+
+}
+
+#posAndBs .diy-control,#posAndBs-II .diy-control,#posAndBs-III .diy-control {
+    vertical-align: middle;
+    line-height: 14px;
+}
+
+#posAndBs table,#posAndBs-II table,#posAndBs-III table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .label.right,#posAndBs-II .diy-control.offset > .box > .padding > .label.right,#posAndBs-III .diy-control.offset > .box > .padding > .label.right {
+    right: 15px;
+    text-align: right;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .label.bottom,#posAndBs-II .diy-control.offset > .box > .padding > .label.bottom,#posAndBs-III .diy-control.offset > .box > .padding > .label.bottom {
+    bottom: 15px;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .label.left,#posAndBs-II .diy-control.offset > .box > .padding > .label.left,#posAndBs-III .diy-control.offset > .box > .padding > .label.left {
+    left: 15px;
+    text-align: left;
+}
+
+#posAndBs .diy-control.offset > .box .handle.top i,#posAndBs-II .diy-control.offset > .box .handle.top i,#posAndBs-III .diy-control.offset > .box .handle.top i {
+    top: -14px;
+    vertical-align: top;
+}
+
+#posAndBs .diy-control.offset > .box .handle.top i, .diy-control.offset > .box .handle.bottom i,#posAndBs-II .diy-control.offset > .box .handle.top i,#posAndBs-III .diy-control.offset > .box .handle.top i {
+    width: 16px;
+    height: 12px;
+    left: 50%;
+    margin-left: -8px;
+}
+
+#posAndBs .diy-control.offset > .box > .handle.bottom i:after, .diy-control.offset > .box > .padding > .handle.top i:after,#posAndBs-II .diy-control.offset > .box > .handle.bottom i:after,#posAndBs-III .diy-control.offset > .box > .handle.bottom i:after {
+    content: "\E615";
+}
+
+#posAndBs .diy-control.offset > .box .handle i:after,#posAndBs-II .diy-control.offset > .box .handle i:after,#posAndBs-III .diy-control.offset > .box .handle i:after {
+    font-family: "icon";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+#posAndBs .diy-control.offset > .box .handle.left:before,#posAndBs-II .diy-control.offset > .box .handle i:after,#posAndBs-III .diy-control.offset > .box .handle i:after {
+    left: -13px;
+    border-left-color: #575757;
+    border-right-width: 0;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .handle.left i,#posAndBs-II .diy-control.offset > .box > .padding > .handle.left i,#posAndBs-III .diy-control.offset > .box > .padding > .handle.left i {
+    left: -14px;
+}
+
+#posAndBs .diy-control.offset > .box > .handle.left i,#posAndBs-II .diy-control.offset > .box > .handle.left i,#posAndBs-III .diy-control.offset > .box > .handle.left i {
+    left: -15px;
+}
+
+#posAndBs .diy-control.offset > .box > .label.bottom,#posAndBs-II .diy-control.offset > .box > .label.bottom,#posAndBs-III .diy-control.offset > .box > .label.bottom {
+    bottom: -13px;
+}
+
+#posAndBs .diy-control.offset > .box > .padding > .label.top,#posAndBs-II .diy-control.offset > .box > .padding > .label.top,#posAndBs-III .diy-control.offset > .box > .padding > .label.top {
+    top: 15px;
+}
+
+#tmTabs li:hover {
+    background-color: #1c1c1c !important;
+}
+
+#nmTabs li:hover {
+    background-color: #1c1c1c !important;
+}
+.displayStyle {
+    cursor: pointer;
+}
+
+.displayStyle li {
+    pointer-events: none;
+}
+
+.displayStyle:hover {
+    /*box-shadow: inset 0 0 0 1px #03A8F1;*/
+    box-shadow:0 0 0 3px #03A8F1;
+}
+
+#bgDeleteImg,#bgDeleteImg-II,#bgDeleteImg-III {
+    display: none;
+}
+
+#tabBgFileLabel .cancelBtn{
+    right: -6px;
+    top: -5px;
+}
+.functional-menu{
+    width: 240px;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    background-color: #333;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    border-bottom: 1px solid #000;
+    padding: 10px 15px;
+}
+#undoBtn{
+    background: url("../images/sliderPanel/icon_undo_gray.png") no-repeat 0 0;
+    margin-right: 11px;
+}
+#redoBtn{
+    background: url("../images/sliderPanel/icon_redo_gray.png") no-repeat 0 0;
+    margin-right: 11px;
+}
+.Undo div{
+    width: 30px;
+    height: 30px;
+    background: url("../images/sliderPanel/icon_undo_gray.png") no-repeat 0 0;
+}
+
+
+.Redo div{
+    width: 30px;
+    height: 30px;
+    background: url("../images/sliderPanel/icon_redo_gray.png") no-repeat 0 0;
+}
+.recover{
+    background: url("../images/sliderPanel/icon_undo_white.png") no-repeat 0 0 !important;
+}
+.cancel{
+    background: url("../images/sliderPanel/icon_redo_white.png") no-repeat 0 0 !important;
+}
+
+#previewLi{
+    width: 30px;
+    height: 30px;
+    background: url("../images/sliderPanel/icon_preview_do.png") no-repeat 0 0;
+    margin-right: 11px;
+}
+.previewdo{
+    background: url("../images/sliderPanel/icon_preview_un.png") no-repeat 0 0 !important;
+}
+#saveButton{
+    width: 30px;
+    height: 30px;
+    background: url("../images/sliderPanel/icon_save.png") no-repeat 0 0;
+    margin-right: 11px;
+}
+#existBtn{
+    width: 30px;
+    height: 30px;
+    background: url("../images/sliderPanel/icon_exit.png") no-repeat 0 0;
+    margin-left: 11px;
+}
+.Unre-leftline{
+    margin-top: 6px;
+    height: 18px;
+    width: 1px;
+    background: #3c3c3c;
+}
+.Unre-rightline{
+    margin-top: 6px;
+    height: 18px;
+    width: 1px;
+    background: #232323;
+}
+.pic-ratio{
+    width: 25px;
+    height: 25px;
+    background: url("../images/sliderBar/picRatio.png") no-repeat center;
+    background-size: 15px 18px;
+}
+.interactiveStyles{
+    width: 50px;
+    height: 27px;
+    line-height: 27px;
+    cursor: pointer;
+}
+.menu-btn{
+    width: 63px;
+    /*width: 50px;*/
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.bordertop3{
+    border-top: 3px solid #ff8400;
+    border-left: 1px solid #dbdee1;
+    border-right: 1px solid #dbdee1;
+}
+.submenu-btn{
+    width: 190px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+/*模板样式选择框*/
+.box-shadow{
+    /*box-shadow: inset 0 0 0 1px #03A8F1;*/
+    box-shadow: 0 0 0 3px #03A8F1;
+}
+.bdLeft{
+    border-left: 4px solid #03A8F1;
+    padding-left: 4px;
+}
+#tmTabs span.editarea{
+    cursor: auto;
+}
+span.editarea{
+    cursor: ns-resize;
+}
+.listModelDiv{
+
+}
+.editList {
+    padding: 4px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid #262626;
+    background: #333333;
+    border: none;
+    width: 205px;
+    outline: none;
+}
+/*剪切板*/
+.clipboard-box{
+    width:74px;
+    background:red;
+    position:absolute;
+    top:12px;
+    right:252px;
+    z-index:210
+}
+.clipboard-title{
+    width: 100%;
+    height: 40px;
+    background: #3d3d3d;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    position: relative;
+    cursor: move;
+}
+#clipboard-hide{
+    position: absolute;
+    right: -6px;
+    top: -6px;
+}
+#clipboard-cup{
+    width: 100%;
+    height:182px;
+    background:#575757;
+    text-align: center;
+    overflow: hidden;
+}
+#clipboard-cup img {
+    display: block;
+    margin: 0 auto;
+}
+#clipboard-cup span {
+   color: #fff;
+}
+#clipboard-cup .view {
+     display: none;
+ }
+#clipboard-cup .preview {
+    cursor: pointer;
+}
+#clipboard-cup .preview:hover {
+    background:#3d3d3d;
+}
+#clipboard-cup>.plugin {
+    margin: 10px 0px;
+}
+.nav-set-tab{
+    padding: 4px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #fff;
+    background: #3d3d3d;
+    border: 1px solid #1c1c1c;
+    width: 110px;
+    outline: none;
+    text-align: center;
+}

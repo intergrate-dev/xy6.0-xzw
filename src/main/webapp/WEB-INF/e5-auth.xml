@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="authLog" class="com.founder.e5.commons.LogFactory" factory-method="getLog">
+		<constructor-arg><value>e5.permission</value></constructor-arg>
+	</bean>
+	<bean id="authManager" class="com.founder.e5.classauthorization.AuthorizationManagerImpl">
+	<property name="log"><ref bean="authLog"/></property>
+	</bean>
+	<bean id="authProcessor" class="com.founder.e5.web.classauthorization.AuthLogicProcessor">
+		<property name="appManager"><ref bean="AppManager"/></property>
+	</bean>
+	<!-- ====== 2. Class Authorization =======-->
+	<bean name="/e5auth/authInit.do" class="com.founder.e5.web.classauthorization.AuthInitController">
+		<property name="log"><ref bean="authLog"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="authManager"><ref bean="authManager"/></property>		
+		<property name="flowManager"><ref bean="FlowManager"/></property>
+		<property name="docTypeManager"><ref bean="DocTypeManager"/></property>
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="appManager"><ref bean="AppManager"/></property>
+		<property name="appWebAddressManager"><ref bean="AppWebAddressManager"/></property>
+		<property name="appPermissionManager"><ref bean="AppPermissionManager"/></property>
+		<property name="viewName"><value>e5auth/AuthMainList</value></property>
+	</bean>
+	<bean name="/e5auth/partInit.do" class="com.founder.e5.web.classauthorization.PartInitController">
+		<property name="log"><ref bean="authLog"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="authManager"><ref bean="authManager"/></property>
+		<property name="authProcessor"><ref bean="authProcessor"/></property>
+	</bean>
+	<bean name="/e5auth/submitPart.do" class="com.founder.e5.web.classauthorization.PartSubmitController">		
+		<property name="log"><ref bean="authLog"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="authManager"><ref bean="authManager"/></property>
+		<property name="authProcessor"><ref bean="authProcessor"/></property>
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+		<property name="catManager"><ref bean="CatManager"/></property>
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+		<property name="resourceFile"><value>i18n.e5auth</value></property>
+		<property name="viewName"><value>e5auth/ReportResult</value></property>
+	</bean>
+	<bean name="/e5auth/treeCat.do" class="com.founder.e5.web.classauthorization.CatTreeController">
+		<property name="log"><ref bean="authLog"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="catManager"><ref bean="CatManager"/></property>
+	</bean>
+	<bean name="/e5auth/treeOrg.do" class="com.founder.e5.web.classauthorization.OrgTreeController">
+		<property name="log"><ref bean="authLog"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="orgManager"><ref bean="OrgManager"/></property>
+	</bean>
+	<bean name="/e5auth/treeFolderView.do" class="com.founder.e5.web.classauthorization.FolderTreeController" singleton="false">
+		<property name="log"><ref bean="authLog"/></property>
+		<property name="sessionAuth"><ref bean="SessionAuth"/></property>
+		<property name="folderManager"><ref bean="FolderManager"/></property>
+	</bean>
+
+</beans>

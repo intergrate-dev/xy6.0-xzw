@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../third/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../export/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sliderBar.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/editor.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/sidebar-panel.css?t=123"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/model.css"/>
+    <link rel="stylesheet" type="text/css" href="../export/css/navMenuSet.css"/>
+    <link rel="stylesheet" type="text/css" href="../third/jcrop-12/css/jquery.Jcrop.min.css">
+    <style type="text/css">
+        .pic-zone ul {
+            overflow-y: auto;
+            padding-bottom: 20px;
+        }
+
+        .showPic {
+            width: 667px;
+        }
+
+        .tips {
+            width: 300px;
+            border: 1px solid #ddd;
+            padding-bottom: 20px;
+            background-color: #fff;
+            left: 50%;
+            top: 50%;
+            margin-top: -100px;
+            margin-left: -150px;
+        }
+
+        .tips .image-editing-tit {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        button {
+            font-family: "microsoft yahei";
+            padding: 2px 12px !important;
+        }
+
+        ._0 {
+            max-width: 600px;
+            max-height: 430px;
+            -ms-transform: rotate(0deg); /* IE 9 */
+            -moz-transform: rotate(0deg); /* Firefox */
+            -webkit-transform: rotate(0deg); /* Safari and Chrome */
+            -o-transform: rotate(0deg); /* Opera */
+        }
+
+        ._90 {
+            margin-top: 70px;
+            max-height: 600px;
+            max-width: 430px;
+            -ms-transform: rotate(90deg); /* IE 9 */
+            -moz-transform: rotate(90deg); /* Firefox */
+            -webkit-transform: rotate(90deg); /* Safari and Chrome */
+            -o-transform: rotate(90deg); /* Opera */
+        }
+
+        ._90a {
+            margin-top: -80px;
+            max-height: 600px;
+            max-width: 430px;
+            -ms-transform: rotate(90deg); /* IE 9 */
+            -moz-transform: rotate(90deg); /* Firefox */
+            -webkit-transform: rotate(90deg); /* Safari and Chrome */
+            -o-transform: rotate(90deg); /* Opera */
+        }
+
+        ._180 {
+            max-width: 600px;
+            max-height: 430px;
+            -ms-transform: rotate(180deg); /* IE 9 */
+            -moz-transform: rotate(180deg); /* Firefox */
+            -webkit-transform: rotate(180deg); /* Safari and Chrome */
+            -o-transform: rotate(180deg); /* Opera */
+        }
+
+        ._270 {
+            margin-top: 70px;
+            max-height: 600px;
+            max-width: 430px;
+            -ms-transform: rotate(270deg); /* IE 9 */
+            -moz-transform: rotate(270deg); /* Firefox */
+            -webkit-transform: rotate(270deg); /* Safari and Chrome */
+            -o-transform: rotate(270deg); /* Opera */
+        }
+
+        ._270a {
+            margin-top: -80px;
+            max-height: 600px;
+            max-width: 430px;
+            -ms-transform: rotate(270deg); /* IE 9 */
+            -moz-transform: rotate(270deg); /* Firefox */
+            -webkit-transform: rotate(270deg); /* Safari and Chrome */
+            -o-transform: rotate(270deg); /* Opera */
+        }
+
+        .hide {
+            display: none;
+        }
+        .ratioBox{
+            height: 50px;
+            line-height: 50px;
+            margin-right: 20px;
+        }
+        .fontset{
+            font-size: 14px;
+            color: #333;
+            padding-left: 5px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body style="overflow: hidden;">
+<div class="image-editing posRelative">
+    <div class="image-editing-tit">
+        <div class="pull-left mgl20 font16">
+            <b>图片编辑</b>
+        </div>
+        <div class="pull-right mgr20">
+            <img id="closeBtn" class="btn-hide" src="../export/images/navMenu/navMenu1.png">
+        </div>
+    </div>
+    <div id="toolDiv" class="image-tools pull-right">
+        <img data-ref="a" title="逆时针旋转" class="clockBtn" src="../export/images/navMenu/navMenu9.png" alt=""/>
+        <img data-ref="c" title="顺时针旋转" class="mgl25 clockBtn" src="../export/images/navMenu/navMenu10.png" alt=""/>
+        <img id="cropBtn" title="裁剪" class="mgl25" src="../export/images/navMenu/navMenu11.png" alt="" style="margin-right: 50px"/>
+        <!--<img class="mgl25 mgr25" src="../export/images/navMenu/navMenu13.png" alt=""/>
+        <img class="mgr50" src="../export/images/navMenu/navMenu12.png" alt=""/>-->
+        <input id="saveBtn" class="btn mgr30" type="button" value="保存"/>
+    </div>
+    <div class="pull-right ratioBox">
+        <input type="checkbox" checked id="picRatio"/>
+        <label for="picRatio" class="fontset">按比例裁剪</label>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="pic-zone">
+        <ul id="imageListUl" class="pull-left picList text-center">
+            <!--<li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>
+            <li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>
+            <li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>
+            <li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>
+            <li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>
+            <li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>
+            <li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>
+            <li class="padb10 mgt20"><img src="../export/images/navMenu/navMenu14.png"/></li>-->
+        </ul>
+        <div class="showPic text-center pull-left">
+            <div id="previewImageDiv" class="mgt20" style="display: inline-block;">
+                <img id="img_" style=" display: block; max-width: 600px; max-height:430px; " src=""/>
+            </div>
+        </div>
+    </div>
+
+    <div id="noticeDiv" class="text-center tips posAbsolute" style="display: none;z-index: 3000;">
+        <div class="image-editing-tit">
+            <div class="pull-left mgl20 font16">
+                <b>提示</b>
+            </div>
+            <div class="pull-right mgr20">
+                <img id="nCloseBtn" class="btn-hide" src="../export/images/navMenu/navMenu1.png">
+            </div>
+        </div>
+        <div>
+            <div class="font16 mgt20 mgb10">是否应用当前修改?</div>
+            <div>
+                <button id="confirmBtn" class="btn">应用</button>
+                <button id="giveUpBtn" class="btn">放弃</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="../third/jquery-ui-bootstrap-1.0/assets/js/vendor/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../third/jcrop-12/js/jquery.Jcrop.min.js" type="text/javascript"></script>
+<script>
+    var imageList = [];
+    $(function(){
+        $("#closeBtn").click(function(e){
+            parent.window.LEDialog.closeDialog();
+        });
+        var _imageList = parent.window.LEDialog.getData();
+        new ImageEdit(_imageList);
+
+        var _index = getQueryString("index");
+        if(_index){
+            $("#imageListUl").find("li").eq(_index).click();
+        }else{
+            $("#imageListUl").find("li:first").click();
+        }
+
+    });
+
+    var ImageEdit = function(list){
+        this.init(list);
+    };
+    ImageEdit.prototype = {
+        imageRadio: null,
+        jcrop: null,
+        scope: null,
+        operation: null,
+        listHtml: '<li class="padb10 mgt20" data-index="#{index}"><img style="max-width: 112px; max-height: 84px;" data-index="#{index}" src="#{path}"/></li>',
+        imageHtml: '<img id="img_#{id}" data-index="#{id}" style=" display: none;  " class="_0" src="#{path}"/>',
+        init: function(list){
+            //this.imageList = list;
+            this.initImageList(list);
+            this.initImageListHTML();
+            this.initImageListEvent();
+            this.initRotateBtn();
+            this.initCropBtn();
+            this.initConfirmDialog();
+            this.initSaveBtn();
+        }
+        ,
+        initImageList: function(list){
+            //{path, owidth, oheight, rotate, crop, watermark}
+            for(var i in list){
+                var o = {};
+                list[i] = list[i].replace("image.do","../image.do");
+                o.path = list[i];
+                this.getImageWH(o, list[i]);
+
+                imageList.push(o);
+            }
+        }
+        ,
+        initImageListHTML: function(){
+            var _html = [];
+            var _imgHtml = [];
+            var list = imageList;
+            for(var i in list){
+                _html.push(this.listHtml.replace(/#\{path\}/g, list[i].path).replace(/#\{index\}/g, i));
+                _imgHtml.push(this.imageHtml.replace(/#\{id\}/g, i).replace(/#\{path}/g, list[i].path));
+            }
+            $("#imageListUl").html(_html.join(""));
+            $("#previewImageDiv").html(_imgHtml.join(""));
+        }
+        ,
+        initImageListEvent: function(){
+            var obj = this;
+            $("#imageListUl").on({
+                click: function(e){
+                    if(obj.operation){
+                        //修改过的话
+                        if(obj.isModified()){
+                            return;
+                        }
+                    }
+                    var $this = $(this);
+                    $this.addClass("selectlist").siblings().removeClass("selectlist");
+                    $("#img_" + $this.data("index")).show().siblings().hide();
+                }
+            }, "li");
+        }
+        ,
+        getImageWH: function(obj, url){
+            var img = new Image();
+            img.onload = function(){
+                obj.owidth = this.width;
+                obj.oheight = this.height;
+                obj.isGT = obj.owidth > obj.oheight;
+            };
+            url && (img.src = url);
+        }
+        ,
+        scaleCropImg: function(img, maxW, maxH){
+            var width = 0, height = 0, percent, ow = img.width, oh = img.height;
+            if(ow > maxW || oh > maxH){
+                if(ow / oh >= maxW / maxH){
+                    if(width = ow - maxW){
+                        percent = (width / ow).toFixed(2);
+                        img.height = oh - oh * percent;
+                        img.width = maxW;
+                    }
+                } else{
+                    if(height = oh - maxH){
+                        percent = (height / oh).toFixed(2);
+                        img.width = ow - ow * percent;
+                        img.height = maxH;
+                    }
+                }
+            }
+        }
+        ,
+        //如果 rotate不等于0 那就修改过
+        initRotateBtn: function(){
+            var obj = this;
+            $("#toolDiv").find(".clockBtn").click(function(e){
+                //从其他转过来的时候，需要check
+                if(obj.operation && obj.operation != "rotate"){
+                    //修改过的话
+                    if(obj.isModified()){
+                        return;
+                    }
+                }
+                obj.operation = "rotate";
+                var $target = $("img[id^=img_]:visible");
+                var cls = $target.attr("class") + "";
+                var angle = parseInt(cls.replace("_", "")) || 0;
+                cls = $(this).data("ref") == "c" ? (angle + 90) : (angle - 90) < 0 ? 270 : (angle - 90);
+                cls = cls < 360 && cls > 0 ? cls : 0;
+                var img = imageList[$target.data("index")];
+                img.operation = "rotate";
+
+                var isGt = img.isGT;
+                cls = cls + (!isGt && ( cls == 90 || cls == 270) ? "a" : "");
+
+
+                $target.attr("class", "_" + cls);
+                img.modified = cls != 0;
+                img.rotate = cls;
+            });
+        }
+        ,
+        initCropBtn: function(){
+            var obj = this;
+            $("#cropBtn").click(function(){
+                if(obj.operation != "cut"){
+                    //修改过的话
+                    if(obj.isModified()){
+                        return;
+                    }
+                }
+                obj.operation = "cut";
+                var $target = $("img[id^=img_]:visible");
+                var img = imageList[$target.data("index")];
+                img.operation = "cut";
+                img.imageRadio = ($target.width() / img.owidth  ).toFixed(2);
+                var ratio=$("#picRatio").is(':checked')? getQueryString("ratio") : 0;
+                $target.Jcrop({
+                            onSelect: function(c){
+                                img.scope = c;
+                                img.modified = true;
+                            },
+                        aspectRatio:ratio
+                        }, function(){
+                            obj.jcrop = this;
+                            //obj.scope && obj.jcrop.animateTo(obj.scope);
+                        }
+                );
+            });
+            $("#picRatio").click(function(){
+                obj.jcrop && obj.jcrop.destroy();
+            });
+        }
+        ,
+        initConfirmDialog: function(){
+            var obj = this;
+            $("#nCloseBtn").click(function(){
+                $("#noticeDiv").hide();
+            });
+
+            //点击确实后，提交需要修改的图片信息
+            $("#confirmBtn").click(function(e){
+                obj.applyChange();
+            });
+
+            $("#giveUpBtn").click(function(e){
+                var $target = $("img[id^=img_]:visible");
+                $target.attr("class", "_0");
+                var img = imageList[$("#imageListUl").find("li").filter(".selectlist").data("index")];
+                if(obj.operation == "rotate"){
+                    img.modified = false;
+                    $("#noticeDiv").hide();
+                } else if(obj.operation == "cut"){
+                    img.modified = false;
+                    obj.jcrop && obj.jcrop.destroy();
+                    $("#noticeDiv").hide();
+                }
+            });
+        }
+        ,
+        /**
+         * 当有变化的时候，显示这个弹出框
+         */
+        isModified: function(off){
+
+            var $target = $("img[id^=img_]:visible");
+            $target.attr("style", "");
+            var img = imageList[$("#imageListUl").find("li").filter(".selectlist").data("index")];
+            if(img.modified){
+                !off && $("#noticeDiv").show();
+                return true;
+            }
+            this.jcrop && this.jcrop.destroy();
+            return false;
+        }
+        ,
+        applyChange: function(doSmt){
+            var obj = this;
+            var index = $("#imageListUl").find("li").filter(".selectlist").data("index");
+            var img = imageList[index];
+            var param = {};
+
+            param.imagePath = img.path;
+            param.command = obj.operation;
+            param.siteID = parent.window.special.siteID;
+            param.docID = parent.window.special.docID;
+            param.docLibID = parent.window.special.docLibID;
+
+            if(obj.operation == "rotate"){
+                param.rotate = parseInt(img.rotate);
+            } else if(obj.operation == "cut"){
+                param.selectorX = Math.round(Number(img.scope.x) / img.imageRadio);
+                param.selectorY = Math.round(Number(img.scope.y) / img.imageRadio);
+                //结束的位置
+                param.selectorW = Math.round(Number(img.scope.w) / img.imageRadio);
+                param.selectorH = Math.round(Number(img.scope.h) / img.imageRadio);
+
+                param.imageW = img.owidth;
+                param.imageH = img.oheight;
+
+            }
+            $.ajax({
+                url: "../../ueditor/cropImage.do",
+                type: "post",
+                dataType: "text",
+                data: param,
+                async: false,
+                success: function(json){
+                    var result = eval("(" + json + ")");
+                   	img.path = result.imgPath.replace("image.do", "../image.do");
+                    if(img.path){
+                        if(!doSmt){
+                            obj.jcrop && obj.jcrop.destroy();
+                            $("#imageListUl").find("li").filter(".selectlist").find("img").attr("src", img.path);
+                            $("img[id^=img_]:visible").attr("src", img.path);
+                            $("img[id^=img_]:visible").attr("class", "_0");
+                            img.modified = false;
+                            $("#noticeDiv").hide();
+                            obj.getImageWH(img, img.path);
+                        }
+
+                    }
+                }
+            });
+        }
+        ,
+        initSaveBtn: function(){
+            var obj = this;
+            $("#saveBtn").click(function(e){
+                if(obj.isModified(true)){
+                    obj.applyChange(true);
+                }
+                //替换图片路径
+                for(var i in imageList){
+                    imageList[i]["path"] = imageList[i]["path"].replace("../image.do","image.do");
+                }
+                parent.window.LEDialog.dialogConfirm(imageList);
+            });
+        }
+    };
+   /* $(function(){
+        alert(getQueryString("ratio"));
+    });*/
+    function getQueryString(name){
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r != null)return unescape(r[2]);
+        return null;
+    }
+</script>
+</body>
+</html>

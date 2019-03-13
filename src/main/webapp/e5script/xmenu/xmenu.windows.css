@@ -1,0 +1,88 @@
+.webfx-menu {
+	background:			Menu;
+	border:				2px outset Menu;
+	filter:				none;
+}
+
+.webfx-menu-empty {
+	font:				Menu;
+	color:				MenuText;
+	height:				16px;
+	padding-left:		5px;
+	padding-right:		5px;
+}
+
+.webfx-menu a {
+	color:				MenuText;
+	XXXheight:			18px;
+	padding:			2px;
+	padding-left:		3px;
+	padding-right:		3px;
+	cursor:				default;
+	font:				Menu;
+	border:				0;
+	XXXoverflow:		hidden;
+}
+
+.webfx-menu a:visited {
+	color:			MenuText;
+	border:			0;
+}
+
+.webfx-menu a:hover,
+.webfx-menu a:visited:hover {
+	color:			HighlightText;
+	background:		Highlight;
+	border:			0;
+}
+
+.webfx-menu a .arrow {
+	XXXheight:		16px;
+	margin-top:		3px;
+}
+
+/* separtor */
+.webfx-menu div {
+	border-top:		1px solid ButtonShadow;
+	border-bottom:	1px solid ButtonHighlight;
+	margin:			0;
+	margin-top:		2px;
+	margin-bottom:	2px;
+}
+
+.webfx-menu-bar {
+	background:		buttonface;
+}
+
+.webfx-menu-bar a,
+.webfx-menu-bar a:visited,
+.webfx-menu-bar a:visited:hover {
+	color:				ButtonText;
+	border:				1px solid ButtonFace;
+
+	text-decoration:	none;
+	padding:			1px;
+	padding-left:		5px;
+	padding-right:		5px;
+
+	/* IE5.0 Does not paint borders and padding on inline elements without a hieght/width
+	height:		expression(constExpression(ie50 ? "17px" : "auto"));
+	*/
+	white-space:	nowrap;
+}
+
+.webfx-menu-bar a:hover {
+	color:			ButtonText;
+	background:		ButtonFace;
+	border-left:	1px solid ButtonHighlight;
+	border-right:	1px solid ButtonShadow;
+	border-top:		1px solid ButtonHighlight;
+	border-bottom:	1px solid ButtonShadow;
+}
+
+.webfx-menu-bar a:active, .webfx-menu-bar a:focus {
+	border-left:	1px solid ButtonShadow;
+	border-right:	1px solid ButtonHighlight;
+	border-top:		1px solid ButtonShadow;
+	border-bottom:	1px solid ButtonHighlight;
+}

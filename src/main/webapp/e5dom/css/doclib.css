@@ -1,0 +1,75 @@
+#RightDiv{
+	display:none;
+
+}
+
+#prompt {
+	background:#FFCC66;
+	width:20px;
+	height:10px;
+	font-family:arial;
+	font-weight : bold;
+	color:black;
+	display:none;
+}
+
+div.box {
+	font-family:arial;
+	width:250px;
+	height:300px;
+	padding:5px;
+	/*   cursor        : hand; */
+	text-align:center;
+	border-left:2px solid #CCC;
+	position: absolute;
+	LEFT: 300px;
+	TOP: 60px;
+}
+
+#CreateFieldTB {
+	text-align : left
+}
+
+#jst_ta,#jst_ta2,#jst_ta3 {
+	display:none;
+}
+
+TD span{
+	cursor:pointer;
+}
+#titleTR{
+	color:"#FFC800";
+}
+
+#titleTR TD{
+	font-weight:bold;
+}
+
+.labelTD {
+	width:80px;
+	color:#0066ff;
+	text-align:right;
+}
+
+#UpdateDocLibDIV,
+#CreateDocLibDiv,
+#newDocLibProps{
+	display: none;
+}
+
+#CreateDocLibDiv,#UpdateDocLibDIV {
+	margin-left:220px;
+}
+
+#FieldsDDL,#AppendDDLDiv {
+
+	MARGIN: 5px 10px 10px 5px;
+	PADDING:10px 10px 10px 10px;
+	BORDER-TOP: #CCC 0px solid;
+	BORDER-RIGHT: #CCC 0px solid;
+	BORDER-BOTTOM: #CCC 0px solid;
+	BORDER-LEFT: #CCC 0px solid;
+	WIDTH:90%;
+	HEIGHT: auto;
+
+}

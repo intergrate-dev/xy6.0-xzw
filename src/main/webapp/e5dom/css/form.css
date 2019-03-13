@@ -1,0 +1,424 @@
+﻿html,body{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+/* ===== Form.jsp ===== */
+.sidebar-list{
+	width:300px;
+	position: relative;
+	overflow-y:auto; 
+	padding-bottom : 20px;
+	/*overflow: auto;*/
+	/*float: left;
+	margin-right:-300px;
+	position: relative;
+	z-index: 10;*/
+}
+.sidebar-list .scroll{
+	cursor: pointer;
+	position: absolute;
+	right: 0px;
+	width: 8px;
+	top:0;
+	display:none;
+	z-index:1000
+}
+.sidebar-list .scroll em {
+	background-image: url("http://img.t.sinajs.cn/t4/appstyle/V5_webim/images/webim_scroll_bg.png");
+	cursor: pointer;
+	display: block;
+	font-size:0;
+	line-height: 0;
+	font-style: normal;
+	font-weight: normal;
+}
+.sidebar-list .scroll .scroll_top {
+	background-position: 0 0;
+	border-radius: 4px 4px 0 0;
+	height: 3px;
+	margin-left: 2px;
+	overflow: hidden;
+	width: 6px;
+}
+.sidebar-list .scroll .scroll_slider {
+	background-position: -12px 0;
+	background-repeat: repeat-y;
+	min-height: 5px;
+	width: 8px;
+}
+.sidebar-list .scroll .scroll_bottom {
+	background-position: 0 -7px;
+	border-radius: 0 0 4px 4px;
+	height: 4px;
+	margin-left: 2px;
+	overflow: hidden;
+	width: 6px;
+}
+.sidebar-list td{
+	cursor: pointer;
+}
+.sidebar-list-show,.browserIsHidden{
+	background:url("../../images/bg-draphelp-button.png") no-repeat right 0;
+	width: 20px;
+	height:20px;
+	display: inline-block;
+	cursor: pointer;
+	float: left;
+	display: none;
+}
+.browserIsHidden{
+	position:absolute;
+	left:10px;
+	top:20px;
+}
+.sidebar-list-hide{
+	background:url("../../images/bg-draphelp-button.png") no-repeat 0 0;
+	width: 20px;
+	height:20px;
+	display: inline-block;
+	cursor: pointer;
+	float: right;
+}
+#bodyFrame{
+	width:100%;
+	height:100%;
+}
+
+.bodyFrame{
+	position:absolute;
+	left:350px;
+	right: 20px;
+	top:0px;
+	height:100%;
+	overflow:hidden;
+	/*margin-left:320px;*/
+}
+.fl{
+	float: left;
+}
+.align-margin{
+	margin:3px 3px 0 3px;
+}
+.field-required{
+	font-weight:bold;
+	color:red;
+	width:5px;
+}
+.field-note {
+	color: #999;
+}
+
+/* ===== FormCustomFiled.jsp ===== */
+.field-container{
+	margin-top:20px;
+}
+.field-wrap{
+	border:1px solid #999;
+}
+.container{
+	margin:5px auto;
+}
+.btn-area,.header{
+	background: #F3F3F3;
+	border: 1px solid #D1D1D1;
+	padding: 5px;
+}
+.menu {
+	margin-bottom:10px;
+	border:1px solid #999;
+}
+.menu span{
+	margin-right:10px;
+}
+.menu h2,.sidebar h2,.workspace h2{
+	background: url("../../images/bg-sys-tab.png") repeat-x 0 0;
+	border-bottom:1px solid #999;
+	font-size: 13px;
+	font-weight: bold;
+	height: 27px;
+	line-height: 28px;
+	overflow: hidden;
+	padding-left: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.menu .content{
+	padding:10px;
+}
+.mainContent{
+	height:500px;
+	margin-bottom:10px;
+}
+.sidebar{
+	float:left;
+	width:150px;
+	height:100%;
+	overflow: hidden;
+	border:1px solid #999;
+	margin-right:-150px;
+}
+.workspace{
+	border: 1px solid #999999;
+	height: 100%;
+	margin-left: 170px;
+	border:1px solid #999;
+	overflow:hidden;
+}
+.workspace .content{
+	height:452px;
+	overflow:auto;
+	position: relative;
+}
+#tableContainer{
+	margin:10px;
+}
+.workspace .tablecontent{
+	border-left: 1px solid #B9CFE4;
+	border-top: 1px solid #B9CFE4;
+	border-right:0 none;
+	table-layout: fixed;
+}
+.workspace .tablecontent td {
+	border-bottom: 1px solid #B9CFE4;
+	border-right: 1px solid #B9CFE4;
+}
+.workspace .tablecontent tr:nth-child(2n+1) {
+    background: none;
+}
+.workspace .tablecontent tr:hover {
+    background: none repeat scroll 0 0 #5588DD;
+}
+.custom-field {
+	float:left;
+	cursor:move;
+	overflow: hidden;
+}
+
+.custom-field label{
+	float:left;
+	cursor:move;
+	line-height: 24px;
+}
+.custom-field select{
+	float:left;
+	margin-top:2px;
+}
+
+.custom-field .ui-wrapper{
+	float:left;
+}
+.ui-resizable-e{
+	background: url("../../images/bg-column-list-resizable-handle.png") no-repeat center center;
+	right:5px;
+	z-index:99;
+}
+
+
+.search-field{
+	background: #FFF url("../../images/bg-search-field.png") no-repeat 115px center;
+	border-color: #AFAFAF #D6D6D6 #D6D6D6 #AFAFAF;
+	border-style: solid;
+	border-width: 1px;
+	padding:3px 20px 3px 0;
+	width:110px;
+	margin:5px 0 5px 10px;
+	display: block;
+}
+.search-field input{
+	border:0 none;
+	width:105px;
+	background:#fff;
+	padding:0;
+	margin:0;
+	height:18px;
+	line-height:18px;
+}
+.field-list{
+	height:270px;
+	padding-left:10px;
+	overflow: auto;
+}
+.field-list li,.field-list-cust li{
+	background:#fff;
+	margin-bottom: 4px;
+	width:110px;
+	padding:4px;
+	border: 1px solid #999;
+	cursor: move;
+	z-index:999;
+}
+.field-list-cust{
+	margin:5px 10px;
+	border-top:1px dashed #999;
+	padding-top:5px;
+}
+.field-list-cust li{
+	padding-left:30px;
+	width:90px;
+}
+.field-list-cust li.btn-icon{
+	background:#fff url("../../images/field-list-cust-btn-icon.png") no-repeat 5px center;
+}
+.field-list-cust li.text-icon{
+	background:#fff url("../../images/field-list-cust-text-icon.png") no-repeat 5px center;
+}
+.field-list-cust li.hr-icon{
+	background:#fff url("../../images/field-list-cust-hr-icon.png") no-repeat 5px center;
+}
+
+
+.size-tooltip-container {
+	height: 20px;
+	position: absolute;
+	display: none;
+}
+
+.size-tooltip-text {
+	color: red;
+	text-align: center;
+}
+
+.size-tooltip-line {
+	width: 100%;
+	height: 1px;
+	background:red;
+}
+
+.formcustom-button-date {
+	background: #FFF url("../images/date.gif") no-repeat center center;
+}
+
+.fl{
+	float: left;
+}
+.ml5{
+	margin-left:5px;
+}
+#browser{
+	margin-top:20px;
+	position: relative;
+	z-index: 10;
+}
+.formfieldtooltip{
+	float:right;
+	margin:5px;
+	font-size:12px;
+	color:#999;
+}
+.custform-label{
+	padding-left:10px;
+	width:90px;
+}
+.custview-label{
+	padding-left:10px;
+}
+.addressfieldplaceholder{
+	width:423px;
+	height:210px;
+	border:0px solid blue;
+}
+.custform-from-wrap input[type='text'].addrplace{
+	margin-left:110px;
+	margin-top:5px;
+}
+.custform-label-require{
+	background:url("../../images/require.png") left no-repeat;
+	
+}
+.custviewdetail-lable-hide{
+	display:none;
+}
+.custview-img{
+	float:left;
+	text-align:center;
+	margin:5px;
+	padding:0;
+	border:0px solid #113C7C;
+}
+.custview-textarea{
+	
+	margin:5px;
+	float:left;
+	overflow:auto;
+}
+
+/*检索条件自定义*/
+
+.list_search{
+      list-style:none;
+      margin:0px;
+      padding:0;
+      border:1px solid #b9cfe4;
+      overflow: hidden;
+      cursor:default;
+}
+.list_search li{
+    float:left;
+    border:0px dotted #b9cfe4;
+    padding:5px 0;
+    margin:0;
+    height:20px;
+    line-height: 20px;
+    cursor:move;
+}
+.list_search_span {
+	float:left;
+	cursor:move;
+    width:278px;
+	overflow: hidden;
+}
+
+.list_search_span .ui-wrapper{
+	float:left;
+}
+.list_search_label{
+	padding-left:10px;
+	width:90px;
+    float:left;
+	cursor:move;
+	line-height: 24px;
+    text-align:right;
+}
+.list_search_inputOne{
+    width:160px;
+    margin:0 5px;
+    padding:3px;
+}
+.list_search_selectOne{
+    float:left;
+    width:168px;
+    margin:0 5px;
+    padding:3px;
+    
+}
+.list_search_inputHalf{
+    width:65px;
+    margin:0 5px;
+    padding:3px;
+}
+.list_search_input43{
+    width:100px;
+    margin:0 5px;
+    padding:3px;
+}
+.list_search_button41{
+    width:55px;
+    margin:0;
+    padding:0;
+}
+.list_searchhelp{
+
+}
+
+#tablehide-ul{
+	width:100%;
+	height:100px;
+	 
+}
+#tablehide-ul li{
+	padding: 0;
+	margin:0;
+	border: 0;
+	clear: both;
+}

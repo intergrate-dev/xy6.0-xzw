@@ -1,0 +1,264 @@
+/**
+ *Created by guzm on 2015/8/3.
+ */
+body {
+  font-family: "microsoft yahei";
+  color: #333;
+}
+
+/* 选项边框*/
+.divinfo {
+  /*background-color:#ddd;*/
+  /*border-radius:4px;*/
+  /*-webkit-box-shadow: none;*/
+  /*box-shadow: none;*/
+  /*line-height: 42px;*/
+  margin-top: 10px;
+  width: 84%;
+  display: inline-block;
+
+}
+
+.form-control {
+  padding: 6px 8px !important;
+}
+
+/*上传按钮的样式*/
+.uploadbtnStyle {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 200;
+  /*line-height: 1.42857143;*/
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  line-height: 30px;
+  background-color: #337ab7;
+  font-family: "microsoft yahei";
+  text-shadow: none;
+}
+
+.uploadbtnStyle:hover {
+  color: #ffffff;
+}
+
+/*bootstrap中 .form-horizontal .form-group > margin蛋疼的缩进了 -15*/
+.form-horizontal .form-group {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.custform-label-require {
+  background-position: left center;
+}
+
+.padleft {
+  padding-left: 0;
+}
+
+.btnwidth {
+  width: 14%;
+  margin-left: 14.9% !important;
+}
+
+label {
+  font-weight: 100;
+}
+
+textarea {
+  resize: none;
+  width: 80% !important;
+}
+
+.btn-warning {
+  border: none;
+  border-radius: 3px;
+  height: 28px;
+  float: left;
+}
+
+.select-limited {
+  display: none;
+}
+
+.vote-input {
+  width: 30px;
+  height: 25px;
+  border-radius: 2px;
+  margin: 0 5px;
+  padding: 2px 4px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.dosave {
+  background-color: #00A0E6 !important;
+  border: none !important;
+  width: 80px !important;
+  height: 30px !important;
+  margin-right: 26px !important;
+  text-align: center !important;
+  line-height: 16px !important;
+}
+
+.docancle {
+  background-color: #b1b1b1 !important;
+  border: none !important;
+  color: #fff !important;
+  width: 80px !important;
+  height: 30px !important;
+  text-align: center !important;
+  line-height: 16px !important;
+}
+
+#vote_endDate {
+  font-size: 13px;
+  background-color: #fff;
+  border-right: 0;
+  padding-left: 13px;
+}
+
+.thumbnail {
+  margin-left: 80px;
+  margin-bottom: 15px;
+  background-color: #ddd;
+
+}
+
+.vote_selectLimited {
+  width: 30px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#thumbImg_ {
+  max-width: 350px;
+  max-height: 450px;
+  display: none;
+}
+
+#deleteBtn_0 {
+
+  margin-right: 10px
+}
+
+.delete {
+  border: 1px solid #cccccc;
+  width: 60px;
+  height: 32px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.closes {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: #fff;
+  display: none;
+
+}
+
+.wrapimg {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  display: block;
+}
+
+.wrapimg img {
+  max-width: 100%;
+  height: auto;
+
+  display: block;
+}
+
+.container-fluid {
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.radio-inline {
+  width: 140px;
+}
+
+.input-group-addon {
+  background-color: #FFFFFF;
+}
+
+#addVoteQuestion {
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.question-border {
+  border: 1px solid #cdcdcd;
+  padding: 20px 15px;
+  margin: 0 30px 20px;
+}
+
+.label-left {
+  float: left;
+  width: 80px;
+  padding-top: 7px;
+  margin-bottom: 0;
+}
+
+.question-delete {
+  margin-top: 15px;
+  position: absolute;
+  top: 0px;
+  right: 15px;
+}
+
+.question-item {
+  position: relative;
+}
+
+.question-item-show {
+  display: none;
+}
+
+.question-item-div {
+  height: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.q_operation {
+  margin-right: 15px;
+  color: #0a8cd2;
+  cursor: pointer;
+}
+
+.question-topic {
+  margin-left: 10px;
+}
+
+.col-sm-2 {
+  width: 14.5%;
+}
+
+.warm {
+  display: none;
+  color: red;
+  margin-top: 5px;
+  position: absolute;
+}

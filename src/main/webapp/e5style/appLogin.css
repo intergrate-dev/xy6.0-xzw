@@ -1,0 +1,195 @@
+/* css reset www.admin10000.com */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body { background:#fff; color:#555; font-size:14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+td,th,caption { font-size:14px; }
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+a { color:#555; text-decoration:none; }
+a:hover { text-decoration:underline; }
+img { border:none; }
+ol,ul,li { list-style:none; }
+input, textarea, select, button { font:14px Verdana,Helvetica,Arial,sans-serif; }
+table { border-collapse:collapse; }
+html {overflow-y: scroll; width: 100%; height: 100%;} 
+
+/* css common */
+.clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.clearfix { *zoom:1; }
+
+body{
+	overflow: hidden;
+}
+
+/*one*/
+ 
+.loginwrap{
+	width: 100%;
+	height: 100%;
+	font-family: "microsoft yahei";
+}
+.backimg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -2;
+	left: 0;
+	top: 0;
+}
+.mark{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	top: 0;
+
+	
+}
+.login{
+	width: 90%;
+    margin: 0 auto;
+   
+    margin-top: 15%;
+}
+.login .logo{
+	margin: 0 auto;
+	display: block;
+	margin-bottom:2%;
+	width: 50%;
+}
+
+
+input:focus{outline:none;}
+input:required:invalid{box-shadow: none;}
+.login .user{
+	border: none;
+	background:rgba(14,146,203,0);
+	margin-left: 2%;
+	width: 50%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #0b5ed8;
+    font-family: "microsoft yahei";
+    letter-spacing: 2px;
+   	outline: none;
+}
+
+.login ul li{
+	width: 90%;
+    line-height: 80px;
+    border-bottom: 1px solid #ededed;
+    margin:0 auto;
+    height: 55px;
+}
+.login ul li:nth-of-type(2) img{
+	margin:9% 2px 0 3%;
+}
+
+.icon{
+	margin:9% 0 0 10px;
+	float: left;
+}
+.keep{
+	margin: 20px 0 0 15px;
+	color: #fff;
+	font-family: "microsoft yahei";
+	
+}
+.keep input{
+	float: left;
+	margin: 5px 15px 0 0;
+}
+.submit{
+	width: 90%;
+	margin: 10% auto;
+	color: #fff;
+	font-size: 20px;
+	border: none;
+	border: 1px solid #fff;
+	letter-spacing: 2px;
+	background-color: #00a0e6;
+	font-family: "microsoft yahei";
+	border-radius: 5px;
+	display: block;
+	padding: 2% 0;
+}
+.basic{
+	background-color: rgba(61,160,211,0.8);
+	padding: 50px;
+	margin-left: -250px;
+	margin-top: -250px;
+}
+#randImg{
+	width: 20%;
+}
+
+.app03,.app04,.app05,.change img{
+	width: 23px;
+	height: 23px;
+}
+.change img{
+	margin-left: 5%;	
+}
+@media only screen and (min-width:1441px) and (max-width:1980px){
+.icon{
+	margin:2% 0 0 10px;
+	float: left;
+}
+.login ul li:nth-of-type(2) img{
+	margin:2% 2px 0 0.5%;
+}
+#randImg {
+    width: 5%;
+}
+.login{
+	margin-top: 9%;
+}
+}
+@media only screen and (min-width:1280px) and (max-width:1440px){
+.icon{
+	margin:2% 0 0 10px;
+	float: left;
+}
+.login ul li:nth-of-type(2) img{
+	margin:2% 2px 0 0.5%;
+}
+#randImg {
+    width: 5%;
+}
+.login{
+	margin-top: 9%;
+}
+}
+@media only screen and (min-width: 1080px) and (max-width:1279px){
+.icon{
+	margin:2% 0 0 10px;
+	float: left;
+}
+.login ul li:nth-of-type(2) img{
+	margin:2% 2px 0 0.5%;
+}
+#randImg {
+    width: 5%;
+}
+.login{
+	margin-top: 9%;
+}	
+}
+@media only screen and (min-width:720px) and (max-width:1079px){
+.icon{
+	margin:2% 0 0 10px;
+	float: left;
+}
+.login ul li:nth-of-type(2) img{
+	margin:2% 2px 0 0.5%;
+}
+#randImg {
+    width: 5%;
+}
+.login{
+	margin-top: 9%;
+}	
+}
+
+

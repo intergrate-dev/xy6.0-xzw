@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'self'}">
+<#list columns as column>
+	<title>${column.name}</title>
+	<meta name="keywords" content="${column.keyword}">
+	<meta name="description" content="${column.description}">
+	<meta name="column" content="${column.libID},${column.id}">
+</#list>
+</FOUNDER-XY>
+	<style>
+	.pages{clear:both;display:block;}
+	.pages li {float:left; border:1px solid #0088cc;margin:5px;text-align:center;
+			padding:3px 10px; list-style:none;cursor:pointer;}
+	.pages li a {text-decoration:none;}
+	.page-next, .page-previous {background-color:#cccccc;}
+	.page-active {background-color: #0088cc}
+	</style>
+</head>
+<body scroll="yes">
+<FOUNDER-XY type="articlelistpage" data="{'columnid':[],'columntype':'self', 'articletype': 'all', 'start':0, 'count':20, 'showall':'true'}">
+	<ul id="articleList">
+	<#list articles as article>
+		<li><a href="${article.urlPad!}" target="_blank"><img src="${article.picBig!}.0"/><span>${article.title!}</span></a>
+	</#list>
+	</ul>
+	<!-- pages area -->
+	<ul id="pages" class="pages" pages="${pages!}" coID="${coID}" currentColumn="${currentColumn}">
+		<li id="page-previous" class="page-previous" style="display:none;"><a>上一页</a></li>
+		
+		<li class="page page-active" page="1"><a>1</a></li>
+		<li class="page" page="2"><a>2</a></li>
+		<li class="page" page="3"><a>3</a></li>
+		<li class="page" page="4"><a>4</a></li>
+		<li class="page" page="5"><a>5</a></li>
+		
+		<li id="page-next" class="page-next"><a>下一页</a></li>
+		<li id="page-next5" class="page-next page-next-five"><a>下 5 页</a></li>
+	</ul>
+	<script type="text/javascript" src="http://172.19.33.95/template/script/jquery.min.js"></script>
+	<script type="text/javascript" src="http://172.19.33.95/template/script/page.js"></script>
+	<!-- pages area end.-->
+</FOUNDER-XY>
+</body>
+</html>

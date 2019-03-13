@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+<title></title>
+<script src="xtree.js"></script>
+<link type="text/css" rel="stylesheet" href="xtree.css">
+
+<style>
+	body { background: white; color: black; }
+
+	.webfx-tree-checkbox {
+		position: absolute; left: 150px;
+	}
+	.webfx-tree-label {
+		position: absolute; left: 170px;
+	}
+	.webfx-tree-checkbox0 {
+		position: absolute; left: 150px;
+	}
+	.webfx-tree-label0 {
+		position: absolute; left: 170px;
+	}
+	.webfx-tree-checkbox1 {
+		position: absolute; left: 250px;
+	}
+	.webfx-tree-label1 {
+		position: absolute; left: 270px;
+	}
+
+</style>
+
+</head>
+<body>
+
+<div style="position: absolute; width: 400px; top: 0px; left: 0px; height: 600px; padding: 5px; overflow: auto;">
+
+<!-- js file containing the tree content, edit this file to alter the menu,
+     the menu will be inserted where this tag is located in the document -->
+<script>
+function doDrag()
+{
+//	return false;
+}
+function doDragOver()
+{
+	//return false;
+}
+function doDrop(src)
+{
+	return true;
+}
+function doClick(src)
+{
+	alert(src.getAttribute("id"));
+}
+function doThis(src)
+{
+	alert(src);
+}
+
+	webFXTreeConfig.defaultContextAction = "javascript:alert('this is pop menu:' + this.p1);";
+	webFXTreeConfig.defaultClickAction = "doThis(this)";
+	webFXTreeConfig.multiple = true;
+
+	webFXTreeConfig.draggable  = true;
+	webFXTreeConfig.defaultDragStartAction = "doDrag()";
+	webFXTreeConfig.defaultDragOverAction = "doDragOver()";
+	webFXTreeConfig.defaultDropAction = "doDrop(this)";
+	webFXTreeConfig.defaultClickAction = "doClick(this)";
+
+	webFXTreeConfig.cbRootable 	= false;
+	webFXTreeConfig.cbCount 	= 2;
+	webFXTreeConfig.cbLabels 	= ["read", "deal"];
+	webFXTreeConfig.cbPrefix 	= ["read", "deal"];
+	webFXTreeConfig.cbRefAttribute = "p";
+
+	webFXTreeConfig.preselect_enable = true;
+    webFXTreeConfig.preselect_attr = "p1";
+	webFXTreeConfig.preselect_values = ["value1", "12", "value.b.1", "4"];
+
+if (document.getElementById)
+{
+
+	var tree = new WebFXTree('Root');
+	tree.setBehavior('classic');
+	tree.setAttribute('p1', "value1");
+	tree.setAttribute('p2', "value2");
+
+	var a = new WebFXTreeItem('1');
+	a.setAttribute('p1', "12");
+	a.setAttribute('p2', "value2");
+	a.setAttribute('read-12', "1");
+	tree.add(a);
+
+	var b = new WebFXTreeItem('1.1');
+	b.add(new WebFXTreeItem('1.1.1'));
+	b.add(new WebFXTreeItem('1.1.2'));
+	b.add(new WebFXTreeItem('1.1.3'));
+	b.setAttribute('p1', "value.b.1");
+	b.setAttribute('p2', "value.b.2");
+	b.click="doThis(this);";
+	a.add(b);
+
+	var f = new WebFXTreeItem('1.1.4');
+	b.add(f);
+	f.add(new WebFXTreeItem('1.1.4.1'));
+	f.add(new WebFXTreeItem('1.1.4.2'));
+	f.add(new WebFXTreeItem('1.1.4.3'));
+	var c = new WebFXTreeItem('1.2');
+	a.add(c);
+	c.add(new WebFXTreeItem('1.5.1'));
+	c.add(new WebFXTreeItem('1.5.2'));
+	c.add(new WebFXTreeItem('1.5.3'));
+	a.add(new WebFXTreeItem('1.3'));
+	a.add(new WebFXTreeItem('1.4'));
+	a.add(new WebFXTreeItem('1.5'));
+
+	var d = new WebFXTreeItem('2');
+
+	tree.add(d);
+
+	var e = new WebFXTreeItem('2.1');
+	d.add(e);
+	e.add(new WebFXTreeItem('2.1.1'));
+	e.add(new WebFXTreeItem('2.1.2'));
+	e.add(new WebFXTreeItem('2.1.3'));
+	d.add(new WebFXTreeItem('2.2'));
+	d.add(new WebFXTreeItem('2.3'));
+	d.add(new WebFXTreeItem('2.4'));
+
+	var f = new WebFXTreeItem('3');
+
+	tree.add(f);
+	tree.show();
+}
+
+</script>
+
+</div>
+<div style="position: absolute; left: 500px; top: 10px;">
+
+<p>
+  This tree works just as the one found in the Microsoft Windows Explorer,
+  expand/collapse a tree item by double click on the icon or by single click
+  on the plus/minus symbol.<br/>Buttons below bound to the tree root.
+</p>
+
+<p>
+	This is the method thats called when you click on a tree item.<br/>
+	<input type="button" value="toggle()" onclick="tree.getSelected().toggle();">
+</p>
+<p>
+	Pretty self explaining, expands or collapses the current item.<br/>
+	<input type="button" value="expand()" onclick="tree.getSelected().expand();">
+	<input type="button" value="collapse()" onclick="tree.getSelected().collapse();">
+</p>
+<p>
+	Expands or collapses the current item and all child items (recursive).<br/>
+	<input type="button" value="expandAll()" onclick="tree.expandAll();">
+	<input type="button" value="collapseAll()" onclick="tree.collapseAll();">
+</p>
+<p>
+	Expands or collapses all child items (recursive) but not the item itself.<br/>
+	<input type="button" value="expandChildren()" onclick="tree.getSelected().expandChildren();">
+	<input type="button" value="collapseChildren()" onclick="tree.getSelected().collapseChildren();">
+</p>
+<p>
+	Returns the id of the selected item (if any)<br/>
+	<input type="button" value="alert(tree.getSelected().id);" onclick="if (tree.getSelected()) { alert(tree.getSelected().id); }" style="width: 245px;">
+</p>
+<p>
+  Add node(s) below selected, or remove the selected node.<br/>
+  <input type="button" onclick="addNode();"  style="width: 80px;" value="Add one" />
+  <input type="button" onclick="addNodes();" style="width: 80px;" value="Add multiple" />
+  <input type="button" onclick="delNode();"  style="width: 80px;" value="Remove" />
+</p>
+
+<p>
+  <input type="button" onclick="alert(tree.getSelected());"  style="width: 80px;" value="getSelect" />
+  <input type="button" onclick="alertMultiSelected();"  style="width: 80px;" value="getMultiples" />
+</p>
+</div>
+
+
+</body>
+
+
+<script>
+function alertMultiSelected()
+{
+	var str = "";
+	for (var i = 0; i < tree.getAllSelected().length; i++)
+		str += (tree.getAllSelected())[i].id + ",";
+	alert(str);
+}
+function doThis(src)
+{
+	//alert("this is click event:" + src.id);
+}
+function addNode() {
+	if (tree.getSelected()) {
+		tree.getSelected().add(new WebFXTreeItem('New'));
+	}
+}
+
+function addNodes() {
+	if (tree.getSelected()) {
+		var foo = tree.getSelected().add(new WebFXTreeItem('New'));
+		var bar = foo.add(new WebFXTreeItem('Sub 1'));
+		var fbr = foo.add(new WebFXTreeItem('Sub 2'));
+	}
+}
+
+function delNode() {
+	if (tree.getSelected()) {
+		tree.getSelected().remove();
+	}
+}
+</script>
+</html>

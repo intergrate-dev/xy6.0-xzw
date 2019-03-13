@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.sys.org">
+	<class name="com.founder.e5.sys.org.UserFrozen" table="FSYS_USERFROZEN">
+		<id
+			column="USERID"
+			name="UserID"
+			type="integer"
+		 >
+		<generator class="assigned" />
+		</id>
+		<property
+			column="ERR_COUNT"
+			length="22"
+			name="errorCount"
+			not-null="false"
+			type="integer"
+		 />
+
+		<property
+			column="ERR_FIRSTTIME"
+			length="22"
+			name="errorFirst"
+			not-null="true"
+			type="timestamp"
+		 />
+		<property
+			column="ERR_LASTTIME"
+			length="22"
+			name="errorLast"
+			not-null="false"
+			type="timestamp"
+		 />
+		
+	</class>
+</hibernate-mapping>

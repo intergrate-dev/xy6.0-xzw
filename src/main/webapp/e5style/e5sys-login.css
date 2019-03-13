@@ -1,0 +1,109 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+}
+html{
+	background: #383E43 url(../images/sys-login-bg.png) repeat 0 0;
+}
+body{
+	font-family: "Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";
+	font-size: 12px;
+	color: #444;
+}
+.login-bg-box{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width:100%;
+	height:100%;
+}
+.login-bg-box img{
+	width:100%;
+	height:auto;
+}
+.login-box{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	width: 820px;
+	height: 280px;
+	margin: -140px 0 0 -410px;
+	z-index: 10;
+}
+.login-box h1{
+	background:url(../images/sys-login-title-bg.png) no-repeat 0 0;
+	width: 468px;
+	height: 138px;
+	margin: 0 auto 75px auto;
+	text-indent: -9999px;
+	_background:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/sys-login-title-bg.png',sizingMethod='crop')
+}
+.login-body{
+	margin:0 auto;
+}
+.inpt-area{
+	position: relative;
+	height: 23px;
+	padding: 13px 20px 14px;
+	line-height: 23px;
+	background:#25282b;
+	border:1px solid #474747;
+	opacity: 0.7;
+	border-radius:3px;
+	margin-right:7px;
+	box-shadow: 0 0 5px #1b1b1b inset;
+}
+div.focus{
+	background:#16181a;
+	box-shadow: 0 0 5px #000 inset;
+	opacity: 1;
+}
+div.hasT label{
+	display: none;
+}
+.inpt-area .un,.inpt-area .pw{
+	top: 12px;
+	left: 15px;
+	width: 232px;
+	border: 0;
+	outline: none;
+	font-size: 20px;
+	background:none;
+	margin:0;
+	padding:0;
+	line-height: 23px;
+	height:23px;
+	color: #444;
+}
+.inpt-area label{
+	position: absolute;
+	top: 13px;
+	left: 20px;
+	font-size: 20px;
+	color: #fff;
+	*color: #43474B;
+	color: #43474B\0;
+	cursor: text;
+	white-space: nowrap;
+}
+.login-btn{
+	width: 137px;
+	height: 52px;
+	display: block;
+	border: 0;
+	background:url(../images/sys-login-btn-bg.png) no-repeat 0 0;
+}
+.login-btn span{
+	display: block;
+	text-indent: -9999px;
+}
+.role{
+	height: 19px;
+	padding: 17px 0;
+	line-height: 19px;
+	color: #F0F0F0;
+	font-size: 14px;
+	text-shadow: 0 0 3px black;
+}

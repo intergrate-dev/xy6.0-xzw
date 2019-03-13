@@ -1,0 +1,55 @@
+.wrapper{
+    width:770px;
+    margin: 5px auto;
+    zoom:1;
+    position: relative;
+}
+.tabbody {
+   height:450px;
+    width: 100%;
+    position: relative;
+    top: -1px;
+    margin-left: 1px;
+    margin: 0 auto;
+    border: 1px solid white;
+    display: block;
+}
+.tabhead{
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+.tab-span{
+    margin-left: 1px;
+}
+div{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-size: 100%;
+    display: block;
+}
+.tabhead span{
+    font-family: "microsoft yahei";
+    display: inline-block;
+    padding: 0 2px;
+    height: 31px;
+    border: 1px solid #ccc;
+    background: url("../images/dialog-title-bg.png") repeat-x;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+#code-content{
+    /*border: 1px solid white;*/
+    /*background-color: white;*/
+    height:490px;
+    width: 770px;
+}
+#code-textarea{
+    background-color: #ddd;
+    height:490px;
+    width: 768px;;
+    font-family:宋体;
+    font-size: 16px;
+}

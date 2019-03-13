@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title></title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+	<script type="text/javascript" src="../internal.js"></script>
+	<script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+	<style type="text/css">
+		.warpper{ position:relative; width:400px; margin: 10px auto;}		
+		.warpper table{width:400px;border-collapse:collapse;}
+		.warpper table tr td{ border:solid #dcdcdc 1px; line-height:35px; font-size:12px; font-family:"微软雅黑"; font-weight:bold;color:#333;}
+		.warpper table caption{font-weight: bold;}
+	</style>
+</head>
+<body>
+	<div class="warpper">
+		<table border="1" class="tabbody" cellpadding="0" cellspacing="0">
+			<caption>请选择需要添加链接的热字</caption>
+			<thead>
+				<tr>
+					<th width="50"><input title="全选" id="checkall"s type="checkbox" onclick="selectAll(this);" checked="checked"/></th>
+					<th width="30%">热字</th>
+					<th>链接</th>
+				</tr>
+			</thead>
+			<tbody id="hotwordlisttbody">
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		window.onload = function () {
+			//查找稿件中包含的热字
+			findHotWord();
+
+			//点击'确定'按钮
+			dialog.onok = function(){
+				 //console.log(editor.hotWords);
+				//alert(editor.hotWords.length);
+				//先删除所有的热字链接
+				var contentTxt = editor.getContentTxt();
+				var as = domUtils.getElementsByTagName(editor.document,'a');//所有A链接
+				for(var i=0; i<editor.hotWords.length; i++){
+					var hw = editor.hotWords[i];
+					if(contentTxt.indexOf(hw.word) > -1){
+						for(var j=0,aj; aj=as[j++];){
+							//alert(aj.innerText);
+							if(aj.innerText.toLowerCase() == hw.word.toLowerCase() && (aj.href == hw.link || aj.href == hw.link+'/')){
+								domUtils.remove(aj, true);
+							}
+						}
+					}
+				}
+			
+				//获取选中的热字并加链接
+				var hotwordlist = [];
+				var tbody = document.getElementById('hotwordlisttbody');
+				var inputs = tbody.getElementsByTagName('input');
+				var content = editor.getContent();
+				for (var i=0; i<inputs.length; i++) {
+					var input = inputs[i];
+					if(input.checked){
+						//alert(input.value);
+						//alert(eval('('+input.value+')'));
+						var hw = eval('('+input.value+')');
+						//alert(hw.link);						
+						var reg = new RegExp(hw.word, 'i');//只替换第一个
+						var ahtml = '<a href="'+hw.link+'" target="'+hw.target+'" title="'+hw.title+'">'+hw.word+'</a>';
+						content = content.replace(reg, ahtml);
+					}
+				}
+				editor.setContent(content);
+
+			};
+			dialog.oncancel = function(){
+				
+			}
+		};
+
+		/**
+		 * 全选\取消
+		 * @param obj
+		 */
+		function selectAll(obj) {
+			var tbody = document.getElementById('hotwordlisttbody');
+			var inputs = tbody.getElementsByTagName('input');
+			for (var i=0; i<inputs.length; i++) {
+				var input = inputs[i];
+				input.checked = obj.checked;
+			}
+		}
+
+		//查找稿件中包含的热字
+		var findHotWord = function () {
+			var contentTxt = editor.getContentTxt();
+			//遍历稿件中包含的热字
+			//TODO
+			var hotWords = [{"word":"你","link":"http://www.baidu.com/","target":"_self","title":"你"},{"word":"方正电子","link":"http://www.baidu.com/","target":"_blank","title":"方正电子"},{"word":"我","link":"http://www.sina.com","target":"_blank","title":"我"},{"word":"梦想","link":"http://www.baidu.com","target":"_self","title":"梦想"},{"word":"新闻","link":"http://www.baidu.com","target":"_blank","title":"新闻"}];
+			editor.hotWords = hotWords;
+			for(var i=0; i<hotWords.length; i++){//editor.hotWords?????????????  docedit.jsp(从后台查出热字，赋值JS对象)
+				var hw = hotWords[i];//editor.hotWords[i]
+				if(contentTxt.indexOf(hw.word) > -1){
+					var tbody = document.getElementById('hotwordlisttbody');
+					var row = tbody.insertRow(tbody.rows.length-1);
+					var cell1 = row.insertCell(row.cells.length);
+					var cell2 = row.insertCell(row.cells.length);
+					var cell3 = row.insertCell(row.cells.length);
+					cell1.align = 'center';
+					cell1.appendChild(domUtils.createElement(document, 'input', {'name':'select','type':'checkbox','checked':'checked','value':'{"word":"'+hw.word+'","link":"'+hw.link+'","target":"'+hw.target+'","title":"'+hw.title+'"}'}));
+					cell2.innerHTML = hw.word;
+					cell3.innerHTML = hw.link;
+				}
+			}
+			
+			//取消全选
+			$("#hotwordlisttbody input:checkbox").each(function(index,input){
+				$(input).click(function(){					
+					if($(this).attr("checked")!="checked"){
+						$("#checkall").attr("checked",false);
+					}
+				})
+			
+			})
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿@charset "utf-8";
+.mod18 ul,.mod18 dl,.mod18 dd,.mod18 dt,.mod18 ol,.mod18 li{margin:0;padding:0;-webkit-text-size-adjust: none}
+.mod18 a img {border:0}
+.mod18 ul,.mod18 ol,.mod18 li {list-style-type:none;vertical-align:0}
+.mod18 a {outline-style:none;color:#535353;text-decoration:none}
+.mod18 a:hover { color: #D40000; text-decoration: none}
+.button {display: inline-block;zoom: 1; *display: inline;vertical-align: baseline;margin: 0 2px;outline: none;cursor: pointer;text-align: center;text-decoration: none;font: 14px/100% Arial, Helvetica, sans-serif;padding:0.25em 0.6em 0.3em;text-shadow: 0 1px 1px rgba(0,0,0,.3);-webkit-border-radius: .5em; -moz-border-radius: .5em;border-radius: .5em;-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.red {color: #faddde;border: solid 1px #980c10;background: #d81b21;background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#A51715));background: -moz-linear-gradient(top,  #ed1c24,  #A51715);filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+}
+.red:hover { background: #b61318; background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115)); background: -moz-linear-gradient(top,  #c9151b,  #a11115); filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115'); color:#fff;}
+.red:active {color: #de898c;background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));background: -moz-linear-gradient(top,  #aa1317,  #ed1c24);filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');}
+.cor_bs,.cor_bs:hover{color:#ffffff;}
+.keBody{background:url(../images/bodyBg.jpg) repeat #333;}
+.keTitle{height:100px; line-height:100px; font-size:30px; font-family:'微软雅黑'; color:#FFF; text-align:center; background:url(../images/bodyBg3.jpg) repeat-x bottom left; font-weight:normal}
+.kePublic{ height: 585px; padding:0; }
+.keBottom{color:#FFF; padding-top:25px; line-height:28px; text-align:center; font-family:'微软雅黑'; background:url(../images/bodyBg2.jpg) repeat-x top left; padding-bottom:25px}
+.keTxtP{font-size:16px; color:#ffffff;}
+.keUrl{color:#FFF; font-size:30px;}
+.keUrl:hover{ text-decoration: underline; color: #FFF; }
+/*科e互联特效基本框架CSS结束，应用特效时，以上样式可删除*/
+/* 效果CSS开始 */
+.main{ width:677px; margin:0 auto;}
+.mod18{width:677px;position:relative;}
+.mod18 .btn{position:absolute;cursor:pointer;z-index:99;font-size:50px;font-weight:bold;}
+.mod18 .prev{left:-1px;background:url(../images/prevBtn.png) no-repeat;}
+.mod18 #prevTop_orignal,.mod18 #nextTop_orignal{top:200px;width:32px;height:48px;}
+.mod18 #prevTop_pc,.mod18 #nextTop_pc{top:200px;width:32px;height:48px;}
+.mod18 #prevTop_app,.mod18 #nextTop_app{top:200px;width:32px;height:48px;}
+
+.mod18 #prev_orignal,.mod18 #next_orignal{top:531px;width:10px;height:20px;}
+.mod18 #next_orignal{ right: -16px;}
+
+.mod18 #prev_pc,.mod18 #next_pc{top:531px;width:10px;height:20px;}
+.mod18 #next_pc{ right: -16px;}
+.mod18 #prev_pc,.mod18 #prev_orignal,.mod18 #prev_app{top: 534px;}
+
+.mod18 #prev_app,.mod18 #next_app{top:541px;width:10px;height:20px;}
+.mod18 #next_app{ right: -16px;}
+
+
+
+.word{  width: 529px; margin: 0 auto; line-height: 23px; text-indent: 2em;}
+.mod18 table th{ text-align: center;}
+.mod18 #prevTop_orignal{background:url(../images/prevBtnTop.png) 0 0 no-repeat;}
+.mod18 #nextTop_orignal{background:url(../images/nextBtnTop.png) 0 0 no-repeat;}
+
+.mod18 #prevTop_pc{background:url(../images/prevBtnTop.png) 0 0 no-repeat;}
+.mod18 #nextTop_pc{background:url(../images/nextBtnTop.png) 0 0 no-repeat;}
+
+.mod18 #prevTop_app{background:url(../images/prevBtnTop.png) 0 0 no-repeat;}
+.mod18 #nextTop_app{background:url(../images/nextBtnTop.png) 0 0 no-repeat;}
+
+.mod18 .next{right:35px;background:url(../images/nextBtn.png) no-repeat;}
+.mod18 li{float:left;}
+.mod18 .cf li{position:relative;color:#fff;}
+.mod18 .cf a{display:block;width:526px;height:377px;position:absolute;color:#fff;}
+#comments_orignal span,#comments_pc span{display:block;width:48px;position:absolute;bottom:132px;padding:10px 0px;color:#fff;line-height:22px;text-align:center;text-indent: 0;left:10px;background:rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = "#60000000",endColorstr = "#60000000");}
+.mod18 .picBox{ width:526px; height:414px; margin-left:75px; margin-right:76px;position:relative;overflow:hidden; padding-top:40px;text-align: center;}
+.mod18 .picBox ul{height:377px;position:absolute; left:0;}
+.mod18 .picBox li{ width:526px;height:377px; text-align: center;}
+.mod18 .listBox{width:642px;height:110px;margin:0 auto;position:relative; overflow:hidden;background: rgb(209, 209, 209);}
+.mod18 .listBox ul{height:88px;position:absolute; padding-left:12px; padding-top: 6px;}
+.mod18 .listBox li{width:127px;height:88px;cursor:pointer;position:relative;text-align: center;}
+.mod18 .listBox li i{display:none;}
+.mod18 .listBox li a{display:block;width:108px;height:77px;}
+/*.mod18 .listBox img{border:3px solid #fff;}*/
+.mod18 .listBox .on img{border:3px solid #fff;}
+/*.mod18 .listBox .on { background:url(../images/img_bg.jpg) center top no-repeat;}*/
+.mod18 .listBox .on i{display:block;}
+.left { width:677px; float:left; padding-bottom:34px; }
+.left_top { font-family:Arial; font-size:32px; color:#fff; text-align:center; height:30px; line-height:30px; background:#333}
+/* 效果CSS结束 */
+.num{
+	
+    
+    position: absolute;
+    left:50px;
+  
+    bottom:-15px;
+    font-size: 12px;
+    color: #000;
+	z-index: 99;
+}

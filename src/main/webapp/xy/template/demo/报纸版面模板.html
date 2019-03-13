@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="http://172.19.33.95/template/css/paper.css">
+	<style>
+		.layoutTitle, .layoutArea{clear:both; border:1px solid gray; padding:10px;min-height:40px;}
+		.layoutArea li{float:left; min-width:150px; display:inline-block;}
+		.layoutTitle li{float:left; width:300px;}
+	</style>
+</head>
+<body scroll="yes">
+	<div class="wrap">
+		<FOUNDER-XY type="paperlayout" data="">
+			<div class="divTitle">
+				<ul class="layoutArea">
+				<#list layout.siblings as s>
+				<li><a href="${s.url!}" target="_blank">${s.layout}.${s.layoutName!}</a>&nbsp;</li>
+				</#list>
+				</ul>
+				<ul class="layoutTitle">
+				<#if layout.previous?exists>
+					<li style="float:left;"><a href="${layout.previous.url!}">上一版（第${layout.previous.layout}版 ${layout.previous.layoutName!}）</a></li>
+				</#if>
+				<li>第${layout.layout}版 ${layout.layoutName!}</li>
+				<#if layout.next?exists>
+					<li style="float:right;"><a href="${layout.next.url!}">下一版（第${layout.next.layout}版 ${layout.next.layoutName!}）</a></li>
+				</#if>
+				</ul>
+			</div>
+			<div style="clear:both;"/>
+			<div>
+				<a href="${layout.pdfUrl!}">PDF</a>
+			</div>
+			<div  class="divLayoutPic" style="width:400px;float:left;">
+				<img src="${layout.picUrl!}" usemap="#PagePicMap"/>
+				${layout.mapping}
+			</div>
+			<div  class="divArticles" style="float:left;">
+			<ul>
+			<#list layout.articles as article>
+				<li><a href="${article.url!}" target="_blank">${article.id?c}.${article.title}</a></li>
+			</#list>
+			</ul>
+			</div>
+			
+			<!-- 叠 -->
+			<div  class="divArticles" style="float:left;">
+			<ul>
+			<#list piles as pile>
+				<li>
+					叠（${pile.name}）
+					<#list pile.layouts as layout>
+						<li><a href="${layout.url!}" target="_blank">第${layout.layout}版.${layout.layoutName}</a></li>
+					</#list>
+				</li>
+			</#list>
+			</ul>
+			</div>
+		</FOUNDER-XY>
+	</div>
+</body>
+</html>

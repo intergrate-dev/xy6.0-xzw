@@ -1,0 +1,219 @@
+﻿body{
+    font-family: 'Microsoft Yahei';
+    background-color:rgb(255,255,255);
+    margin-bottom: 40px;
+    padding-top: 50px;
+}
+.panel-body {
+	padding: 0;
+}
+
+/* 菜单管理 */
+#manager-opt .btn {
+	margin-left: 5px;
+}
+
+#menu-list {
+	height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#menu-list dl {
+	margin: 0;
+}
+
+.menu {
+	border-bottom: 1px solid #ddd;
+}
+
+.menu-item {
+	position: relative;
+	line-height: 32px;
+}
+
+.menu-item a {
+	background-color: #fff;
+}
+
+.menu-item a,.menu-item a:hover {
+	text-decoration: none;
+}
+
+.menu-item.selected a,.menu-item:hover a {
+	background-color: #eee;
+}
+
+.menu-item .menu-link {
+	width: 100%;
+	font-weight: normal;
+	padding-left: 20px;
+	display: block;
+}
+
+dd.menu-item .menu-link {
+	padding-left: 32px;
+}
+
+.icon_dot {
+	display: inline-block;
+	font-weight: 400;
+	font-style: normal;
+	vertical-align: middle;
+	margin-top: -0.2em;
+	margin-right: 5px;
+	font-size: 14px;
+	color: #d5d5d5;
+}
+
+.menu-item .icon_dot {
+	position: absolute;
+	top: 50%;
+	left: 20px;
+	margin-top: -14px;
+	-webkit-transform: scale(0.8);
+	font-size: 10px;
+}
+
+.menu_opr {
+	position: absolute;
+	right: 14px;
+	top: 0px;
+}
+
+.menu_opr .opr_meta {
+	color: #999;
+}
+
+.menu_opr .opr_meta:hover {
+	color: #555;
+}
+
+.soft {
+	display: none;
+}
+
+.soft-enabled .no-soft {
+	display: none;
+}
+
+.soft-enabled .soft {
+	display: inline-block;
+}
+
+#bd .panel-heading .tit {
+	line-height: 19px;
+}
+
+#bd .panel-heading .opt {
+	float: right;
+	margin-left: 10px;
+}
+
+#bd .panel-heading::after {
+	clear: right;
+	width: 0px;
+	height: 0px;
+	margin: 0px;
+	padding: 0px;
+	line-height: 0px;
+}
+.panel-heading{
+	padding: 10px;
+}
+#bd .panel-body {
+	text-align: center;
+}
+
+#bd .panel-body .tips {
+	padding-top: 60px;
+	text-align: center;
+	padding-bottom: 45px;
+}
+
+#bd .panel-body a {
+	color: #222;
+	margin-left: 15px;
+	margin-right: 15px;
+	text-decoration: none;
+	display: inline-block;
+}
+
+#bd .panel-body a span {
+	display: block;
+	padding-top: 5px;
+}
+
+#bd .panel-body .content {
+	text-align: left;
+	padding-left: 10px
+}
+
+#bd .panel-body .reset {
+	color: #459ae9;
+	margin: 0;
+}
+
+#bd .panel-body .resetContent {
+	margin: 15px;
+}
+
+#bd .panel-body .resetContent .btn {
+	width: 100px;
+}
+
+#bd .panel-body .resetContent .btn:first-child {
+	margin-right: 10px;
+}
+
+#bd .panel-body .lab {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+#bd .panel-body .ibox {
+	padding: 3px 10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	vertical-align: middle;
+}
+
+#bd .panel-body .ibox input {
+	border: 0;
+	width: 500px;
+}
+
+#bd .panel-body .btn-success {
+	color: #fff;
+}
+
+.icon_menu_action {
+	width: 114px;
+	height: 114px;
+	display: block;
+	vertical-align: middle;
+}
+
+.icon_menu_action.add {
+	background: url("../../img/menu_setting.png") 0 0 no-repeat;
+}
+
+a:hover .icon_menu_action.add {
+	background: url("../../img/menu_setting.png") 0 -124px no-repeat;
+}
+
+.icon_menu_action.send {
+	background: url("../../img/menu_setting.png") 0 -248px no-repeat;
+}
+
+a:hover .icon_menu_action.send {
+	background: url("../../img/menu_setting.png") 0 -372px no-repeat
+}
+
+.icon_menu_action.url {
+	background: url("../../img/menu_setting.png") 0 -496px no-repeat;
+}
+
+a:hover .icon_menu_action.url {
+	background: url("../../img/menu_setting.png") 0 -620px no-repeat
+}

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta property="og:type" content="article">
+<FOUNDER-XY type="paperarticle" data="">
+	<title>${article.title?replace("<.*?>","","r")}</title>
+</FOUNDER-XY>
+</head>
+<body>
+<FOUNDER-XY type="paperarticle" data="">
+    <div class="page-header">
+      <h1>
+		${article.title} ---- 
+		<a href="${article.layout.url!}">第${article.layout.layout}版 ${article.layout.layoutName!}</a>
+	  </h1>
+    </div>
+    <div class="page-content clearfix" id="articleContent">
+		<div class="article">
+			<#list article.attPics as pic>
+			<img src="${pic.url}"/>
+			</#list>
+			${article.content}
+        </div>
+	</div>
+</FOUNDER-XY>
+ </body>
+</html>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.sys">
+	<class name="com.founder.e5.sys.StorageDevice" table="FSYS_STORAGEDEV">
+		<id
+			column="FSD_DEVICENAME"
+			name="DeviceName"
+			type="string"
+		>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="FSD_USERNAME"
+			length="20"
+			name="UserName"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FSD_HTTPDEVICEURL"
+			length="100"
+			name="HttpDeviceURL"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FSD_DEVICETYPE"
+			length="22"
+			name="DeviceType"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="FSD_USERPASSWORD"
+			length="30"
+			name="UserPassword"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FSD_NOTES"
+			length="254"
+			name="Notes"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FSD_NFSDEVICEPATH"
+			length="100"
+			name="NfsDevicePath"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FSD_FTPDEVICEURL"
+			length="100"
+			name="FtpDeviceURL"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FSD_NTFSDEVICEPATH"
+			length="100"
+			name="NtfsDevicePath"
+			not-null="false"
+			type="string"
+		 />
+		
+	</class>
+</hibernate-mapping>

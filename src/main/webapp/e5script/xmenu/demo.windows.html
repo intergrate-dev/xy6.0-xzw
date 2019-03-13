@@ -1,0 +1,149 @@
+﻿<html>
+<head>
+<title>XMenu (WebFX)</title>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+	<Script type="text/javascript" src="../e5script/Function.js"></Script>
+<script type="text/javascript" src="xmenu.js"></script>
+<link href="xmenu.css" type="text/css" rel="stylesheet">
+<link href="xmenu.windows.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+
+webFXMenuConfig.imagePath = "images/"
+
+WebFXMenu.prototype.borderLeft		= 2;
+WebFXMenu.prototype.borderRight		= 2;
+WebFXMenu.prototype.borderTop		= 2;
+WebFXMenu.prototype.borderBottom	= 2;
+WebFXMenu.prototype.paddingLeft		= 1;
+WebFXMenu.prototype.paddingRight	= 1;
+WebFXMenu.prototype.paddingTop		= 1;
+WebFXMenu.prototype.paddingBottom	= 1;
+
+WebFXMenu.prototype.shadowLeft		= 0;
+WebFXMenu.prototype.shadowRight		= 0;
+WebFXMenu.prototype.shadowTop		= 0;
+WebFXMenu.prototype.shadowBottom	= 0;
+
+
+		function prepare()
+		{
+			webFXMenuConfig.imagePath	= "../e5script/xmenu/images/";
+			webFXMenuConfig.defaultWidth = 150;
+
+			var myBar = new WebFXMenuBar;
+			//?3??????????
+			var myMenu = new WebFXMenu;
+
+			myMenu.add(new WebFXMenuItem("机构管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuSeparator());
+
+			myMenu.add(new WebFXMenuItem("权限管理"
+						,"show('../e5permission/listPage.do?RoleID=1')"));
+			myMenu.add(new WebFXMenuItem("按文件夹设置权限"
+						,"show('../e5permission/permissionFolderResource.do?FVID=264')"));
+			myMenu.add(new WebFXMenuItem("按流程节点设置权限"
+						,"show('../e5permission/permissionFlowResource.do?FlowID=0&FlowNodeID=20001')"));
+			myMenu.add(new WebFXMenuItem("按非流程操作设置权限"
+						,"show('../e5permission/permissionUnflowResource.do?DocTypeID=1')"));
+
+			myMenu.add(new WebFXMenuSeparator());
+			myMenu.add(new WebFXMenuItem("系统日志"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("登录用户监控"
+						,"show('')"));
+			myMenu.add(new WebFXMenuSeparator());
+			myMenu.add(new WebFXMenuItem("退出系统"
+						,"show('')"));
+			myBar.add(new WebFXMenuButton("主系统管理", null, null, myMenu));
+
+			//?????￡??????
+			myMenu = new WebFXMenu;
+
+			myMenu.add(new WebFXMenuItem("文档类型管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("文档库管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("文件夹视图管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuSeparator());
+			myMenu.add(new WebFXMenuItem("规则管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("过滤器管理"
+						,"show('')"));
+			myBar.add(new WebFXMenuButton("文档管理", null, null, myMenu));
+			//?μ??¨???????
+			myMenu = new WebFXMenu;
+
+			myMenu.add(new WebFXMenuItem("操作管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("图标管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("流程设置"
+						,"show('')"));
+			myMenu.add(new WebFXMenuSeparator());
+			myMenu.add(new WebFXMenuItem("操作显示排序"
+						,"show('')"));
+			myBar.add(new WebFXMenuButton("流程管理", null, null, myMenu));
+			//????±???????
+			myMenu = new WebFXMenu;
+
+			myMenu.add(new WebFXMenuItem("分类及类型管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("扩展属性类型管理"
+						,"show('')"));
+			myBar.add(new WebFXMenuButton("分类管理", null, null, myMenu));
+			//?3????é?????
+			myMenu = new WebFXMenu;
+
+			myMenu.add(new WebFXMenuItem("数据源登记"
+						,"show('../e5sys/dataSource.do')"));
+			myMenu.add(new WebFXMenuItem("数据源对应"
+						,"show('')"));
+			myMenu.add(new WebFXMenuSeparator());
+			myMenu.add(new WebFXMenuItem("参数配置管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("存储设备管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuItem("应用系统管理"
+						,"show('')"));
+			myMenu.add(new WebFXMenuSeparator());
+			myMenu.add(new WebFXMenuItem("缓存刷新"
+						,"show('../e5sys/cache.do')"));
+			myMenu.add(new WebFXMenuSeparator());
+			myMenu.add(new WebFXMenuItem("管理员设置"
+						,"show('')"));
+			myBar.add(new WebFXMenuButton("系统设置", null, null, myMenu));
+			//?o???¨?3????è?????
+			/*
+			myMenu = new WebFXMenu;
+			myMenu.add(new WebFXMenuItem("机构管理"
+						,'showFunction("')"));
+			myMenu.add(new WebFXMenuItem(""
+						,'showFunction("')"));
+			myMenu.add(new WebFXMenuItem("系统日志"
+						,'showFunction("')"));
+			myMenu.add(new WebFXMenuItem("登录用户监控"
+						,'showFunction("')"));
+			myMenu.add(new WebFXMenuItem("退出系统"
+						,'showFunction("')"));
+			myBar.add(new WebFXMenuButton("主系统管理", null, null, myMenu));
+			*/
+			myBar.add(new WebFXMenuButton("退出", "window.close();", null, null));
+			myBar.generate();
+		}
+		prepare();
+
+
+</script>
+</head>
+<body>
+
+<script>
+//document.write(myBar);
+</script>
+<div class="menuBottom"></div>
+
+
+</body>
+</html>

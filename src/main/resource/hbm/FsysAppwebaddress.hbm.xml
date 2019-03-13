@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.app">
+	<class name="AppWebAddress" table="FSYS_APPWEBADDRESS">
+		<composite-id>
+			<key-property
+				column="APPID"
+				name="AppID"
+				type="integer"
+			 />
+			<key-property
+				column="WEBNAME"
+				name="WebName"
+				type="string"
+			 />
+		</composite-id>
+		<property
+			column="WEBURL"
+			length="254"
+			name="WebURL"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="ICON"
+			length="30"
+			name="Icon"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

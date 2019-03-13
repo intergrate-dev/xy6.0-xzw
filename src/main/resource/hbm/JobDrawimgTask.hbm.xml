@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.founder.e5.job.DrawImg" table="JOB_DRAWIMG_TASK">
+		<id
+			column="TASK_ID"
+			name="taskID"
+			type="integer">
+	      	<generator class="assigned"/>
+		</id>
+		<property
+			column="CONF_NAME"
+			length="128"
+			name="configName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="RECORD_TIME"
+			name="recordTime"
+			not-null="false"
+			type="date"
+		 />
+		<property
+			column="IMG_SRC_REFID"
+			name="imgSrcRefID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="IMG_INFO_REFID"
+			name="imgInfoRefID"
+			not-null="false"
+			type="integer"
+		 />
+		 <property
+			column="STATUS"
+			name="status"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="IMG_TGT_REFID"
+			length="255"
+			name="imgTgtRefID"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.scheduler.db">
+	<class name="com.founder.e5.scheduler.db.SysTrigger" table="FSYS_JOB_TRIGGERS">
+		<id
+			column="TRIGGER_ID"
+			name="triggerID"
+			type="integer"
+		>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="NAME"
+			length="40"
+			name="name"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="CRON_EXPRESSION"
+			length="100"
+			name="cronExpression"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="SERVER"
+			length="200"
+			name="server"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="JOB_ID"			
+			name="jobID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="ACTIVE"
+			length="1"
+			name="active"
+			not-null="false"
+			type="string"
+		 />		
+	</class>
+</hibernate-mapping>

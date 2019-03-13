@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.founder.e5.rel.model.RelTableDocLib" table="DOM_REL_DOCLIBS">
+		
+		<composite-id>
+			
+			<key-property name="docLibId" column="DOCLIBID" type="integer"/>		
+			<key-property name="catTypeId" column="CATTYPEID" type="integer"/>
+		
+		</composite-id>
+
+		<property name="relTableId" column="CATRELATION" type="integer"/>
+		<property name="categoryField" column="CATEGORYFIELD" type="string" not-null="false"/>
+		<property name="ignoreFlag" column="IGNOREFLAG" type="integer" not-null="false"/>
+
+	</class>
+	</hibernate-mapping>

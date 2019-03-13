@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app-config>
+	<!-- 主界面菜单 -->
+	<tabs>
+		<tab name="我的" id="my">
+			<sub-tab name="我的稿件" free="true" id="default" docType="ORIGINAL" url="xy/MainSelf.do" icon="images/menu/myarticle.png" list="原稿列表"
+				rule="a_siteID_EQ_@SITE@"/>
+			<sub-tab name="审核稿件" id="myaudit" docType="ARTICLE" url="xy/MainAudit.do" icon="images/menu/myaudit.png" list="审核列表"
+				rule="@AUDIT@" query="qArticleAudit"/>
+			<sub-tab name="我的工作量" free="true" id="mystat" docType="ARTICLE" url="xy/stat/MyStat.do" icon="images/menu/mystat.png"/>
+			<sub-tab name="修改密码" free="true" id="mypwd" url="e5workspace/e5profile/ChangePwd.jsp" icon="images/menu/mypwd.png"/>
+			<sub-tab name="我的H5" free="true" id="myH5" docType="ARTICLE" url="xy/h5/loginMugeda.do" icon="images/menu/myh5.png"/>
+		</tab>
+		<tab name="内容" id="c">
+			<sub-tab name="话题库" id="ctopic" docType="TOPICS" url="xy/MainTopic.do" icon="images/menu/ctopic.png" list="话题列表"
+				rule="a_siteID_EQ_@SITE@"/>
+			<sub-tab name="Web发布库" id="cweb" docType="ARTICLE" url="xy/Main.do?ch=0" icon="images/menu/cweb.png" list="稿件列表"/>
+			<sub-tab name="App发布库" id="capp" docType="ARTICLE" url="xy/Main.do?ch=1" icon="images/menu/capp.png" list="图文列表,文字列表"/>
+			<sub-tab name="源稿库" id="cori" docType="ORIGINAL" url="xy/MainOriginal.do" icon="images/menu/cori.png"
+				rule="a_siteID_EQ_@SITE@" list="原稿列表"/>
+			<sub-tab name="App广告" id="cad" docType="AD" url="xy/MainAd.do" icon="images/menu/resad.png" list="广告列表"/>
+			<sub-tab name="区块内容" id="cba" docType="BLOCKARTICLE" url="xy/MainBlock.do" icon="images/menu/cba.png"/>
+			<sub-tab name="H5作品库" id="h5" docType="ARTICLE" url="xy/h5/mugedaWorksLib.do" icon="images/menu/h5.png"/>
+			<sub-tab name="稿内投票" id="nisvote" docType="VOTE" url="xy/MainGroup.do" icon="images/menu/nisvote.png" list="投票列表"
+				rule="vote_siteID_EQ_@SITE@"/>
+			<sub-tab name="撤稿中心" id="crevoke" docType="ARTICLE" url="xy/MainRevoke.do" icon="images/menu/crevoke.png"
+				rule="a_siteID_EQ_@SITE@" list="撤稿中心列表" query="qRevoke"/>
+			<sub-tab name="回收站" id="cg" docType="ARTICLE" url="xy/MainGarbage.do" icon="images/menu/cg.png" 
+				rule="a_siteID_EQ_@SITE@_AND_SYS_DELETEFLAG_EQ_1" list="回收站列表" query="qArticleAudit"/>
+		</tab>
+		<tab name="资源" id="res">
+			<sub-tab name="模板" id="pagetpl" docType="TEMPLATE" url="xy/MainGroup.do" icon="images/menu/pagetpl.png" export="1"/>
+			<sub-tab name="页面区块" id="pageblock" docType="BLOCK" url="xy/MainGroup.do" icon="images/menu/pageblock.png" export="1"/>
+			<sub-tab name="专题" id="pagesp" docType="SPECIAL" url="xy/MainGroup.do" icon="images/menu/pagesp.png"
+				rule="s_siteID_EQ_@SITE@"/>
+			<sub-tab name="图片" id="resp" docType="PHOTO" url="xy/MainGroup.do" icon="images/menu/resp.png"/>
+			<sub-tab name="视频" id="resv" docType="VIDEO" url="xy/MainGroup.do" icon="images/menu/resv.png"/>
+			<sub-tab name="公共资源" id="resr" docType="RESOURCE" url="xy/MainGroup.do" icon="images/menu/resr.png"/>
+			<sub-tab name="来源" id="ssrc" docType="SOURCE" url="xy/MainGroup.do" icon="images/menu/ssrc.png" export="1"/>
+			<sub-tab name="人物" id="resl" docType="LEADER" url="xy/MainSimple.do" icon="images/menu/resl.png" 
+				rule="l_siteID_EQ_@SITE@"/>
+		</tab>
+		<tab name="互动" id="nis">
+			<sub-tab name="评论审核" id="nisdis" docType="DISCUSS" url="xy/MainNisAudit.do" icon="images/menu/nisdis.png"
+				rule="a_siteID_EQ_@SITE@"/>
+			<sub-tab name="直播" id="nislive" docType="LIVE" url="xy/MainNisAudit.do" icon="images/menu/nislive.png"
+				rule="a_siteID_EQ_@SITE@" list="直播话题列表"/>
+			<sub-tab name="活动" id="nisactivity" docType="ACTIVITY" url="xy/MainSimple.do" icon="images/menu/nisactivity.png"
+				rule="a_siteID_EQ_@SITE@"/>
+			<sub-tab name="问吧" id="nissubject" docType="SUBJECT" url="xy/MainNisSubject.do" icon="images/menu/nissubject.png"
+				rule="a_siteID_EQ_@SITE@"/>
+			<sub-tab name="问答" id="nisqa" docType="QA" url="xy/MainNisAudit.do" icon="images/menu/nisqa.png"
+				rule="a_siteID_EQ_@SITE@"/>
+			<!-- <sub-tab name="投票" id="nisvote" docType="VOTE" url="xy/MainGroupVote.do" icon="images/menu/nisvote.png" list="投票列表"
+				rule="vote_siteID_EQ_@SITE@"/> -->
+			<sub-tab name="投票" id="memvote" docType="MEMBERVOTE" url="amuc/MainSimple.do" icon="images/menu/memvote.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<!--<sub-tab name="报料" id="nistip" docType="TIPOFF" url="xy/MainNisAudit.do" icon="images/menu/nistip.png"
+				rule="a_siteID_EQ_@SITE@"/>-->
+			<sub-tab name="报料" id="nistip" docType="TIPOFF" url="xy/MainNisTipoff.do" icon="images/menu/nistip.png"
+					 rule="a_siteID_EQ_@SITE@"/>
+			<sub-tab name="意见反馈" id="nisfeed" docType="FEEDBACK" url="xy/MainNisAudit.do" icon="images/menu/nisfeed.png"
+				rule="feed_siteID_EQ_@SITE@"/>
+		</tab>
+		<tab name="数字报" id="epaper">
+			<sub-tab name="报纸版面" id="eplayout" docType="PAPERLAYOUT" url="xy/MainPaper.do" icon="images/menu/eplayout.png"/>
+			<sub-tab name="版面稿件" id="eparticle" docType="PAPERARTICLE" url="xy/MainPaperArticle.do" icon="images/menu/eparticle.png"/>
+			<sub-tab name="报纸" id="eppaper" docType="PAPER" url="xy/MainSimple.do" icon="images/menu/eppaper.png"
+				rule="pa_siteID_EQ_@SITE@"/>
+			<sub-tab name="期刊稿件" id="epmagarticle" docType="MAGAZINEARTICLE" url="xy/MainMagArticle.do" icon="images/menu/epmagarticle.png"/>
+			<sub-tab name="期刊" id="epmagazine" docType="MAGAZINE" url="xy/MainSimple.do" icon="images/menu/epmagazine.png"
+				rule="pa_siteID_EQ_@SITE@"/>
+			<sub-tab name="订单" id="memorder" docType="MEMBERORDERS" url="amuc/MainSimple.do" icon="images/menu/memorder.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="套餐" id="memsetmeal" docType="MEMBERSETMEAL" url="amuc/MainSimple.do" icon="images/menu/memsetmeal.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="报卡管理" id="memcard" docType="MEMBERPAPERCARD" url="amuc/MainPcard.do" icon="images/menu/memcard.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="报卡日志" id="memcardlog" docType="MEMBERPAPERCARDLOG" url="amuc/MainSimple.do" icon="images/menu/memcardlog.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="订单统计" id="memstat0" docType="MEMBERSTATIC" url="amuc/MainOrdersStatic.do" icon="images/menu/memstat0.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="报卡统计" id="memstat1" docType="MEMBERSTATIC" url="amuc/MainPcardStatic.do" icon="images/menu/memstat1.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="支付交易管理" id="paylog" docType="PAYLOG" url="amuc/MainSimple.do" icon="images/menu/memstat1.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+		</tab>
+		<tab name="微微" id="wbwx">
+			<sub-tab name="微信图文" id="wxgroup" docType="WXGROUP" url="xy/MainWXGroup.do" icon="images/menu/wxgroup.png"/>
+			<sub-tab name="微信菜单稿件" id="wxarticle" docType="WXARTICLE" url="xy/MainWXArticle.do" icon="images/menu/wxarticle.png"
+				list="微信稿件列表"/>
+			<sub-tab name="微信账号" id="wxaccount" docType="WXACCOUNT" url="xy/MainSimple.do" icon="images/menu/wx.png"
+				rule="wxa_siteID_EQ_@SITE@"/>
+			<sub-tab name="微博稿件" id="wbarticle" docType="WBARTICLE" url="xy/MainWB.do" icon="images/menu/wbarticle.png"/>
+			<sub-tab name="微博账号" id="wbaccount" docType="WBACCOUNT" url="xy/MainSimple.do" icon="images/menu/wbaccount.png"
+				rule="wba_siteID_EQ_@SITE@"/>
+		</tab>
+		<tab name="设置" id="set">
+			<sub-tab name="源稿分类" id="coricat" docType="ORIGINAL" url="xy/column/OriginalColumn.jsp" icon="images/menu/cori.png"/>
+			<sub-tab name="栏目" id="scol" docType="COLUMN" url="xy/column/Column.jsp" icon="images/menu/scol.png"/>
+			<sub-tab name="网站目录" id="sdir" docType="DOMAINDIR" url="xy/site/DomainDirTree.jsp" icon="images/menu/sdir.png"/>
+			<sub-tab name="发布规则" id="srule" docType="SITERULE" url="xy/MainSimple.do" icon="images/menu/srule.png"
+				rule="rule_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="稿件扩展字段" id="sext" docType="EXTFIELD" url="xy/MainGroup.do" icon="images/menu/sext.png" export="1"/>
+			<sub-tab name="敏感词" id="ssen" docType="SENSITIVE" url="xy/MainSimple.do" icon="images/menu/ssen.png"/>
+			<sub-tab name="移动平台设置" id="smo" docType="MOBILEOS" url="xy/MainSimple.do" icon="images/menu/smo.png"
+				rule="os_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="系统消息" id="smsg" docType="MESSAGE" url="xy/MainNisAudit.do" icon="images/menu/msg.png"
+				rule="a_siteID_EQ_@SITE@"/>
+		</tab>
+		<tab name="基础管理" id="set0">
+			<!-- sub-tab name="部门角色" id="sorg" url="e5sys/org/OrgTreeGenerate.do?invoke=index" icon="images/menu/sorg.png"/ -->
+			<sub-tab name="用户管理" id="suser" docType="USEREXT" url="xy/site/Users.jsp" icon="images/menu/suser.png"
+				rule="u_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="分类管理" id="scat" url="xy/system/CatManage.jsp" icon="images/menu/scat.png"/>
+			<sub-tab name="通讯员" id="sbatman" docType="BATMAN" url="xy/MainSimple.do" icon="images/menu/sbatman.png"
+				rule="bm_siteID_EQ_@SITE@"/>
+			<sub-tab name="单位" id="scorp" docType="CORPORATION" url="xy/MainSimple.do" icon="images/menu/scorp.png"
+				rule="corp_siteID_EQ_@SITE@"/>
+			<sub-tab name="话题组管理" id="topiccat" docType="COLUMNTOPIC" url="xy/column/TopicColumn.jsp"
+				icon="images/menu/topiccat.png"/>
+		</tab>
+		<tab name="会员" id="member">
+			<sub-tab name="邮件订阅" id="emailsubscribe" docType="EMAILSUBSCRIBE" url="xy/MainEmailSubscribe.do" icon="images/menu/mem.png"
+					 rule="a_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="会员" id="mem" docType="MEMBER" url="amuc/MainSimple.do" icon="images/menu/mem.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="会员等级定义" id="memlevel" docType="MEMBERLEVEL" url="amuc/MainSimple.do" icon="images/menu/mem.png"
+			rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="积分" id="memscore" docType="MEMBERSCORE" url="amuc/MainSimple.do" icon="images/menu/memscore.png"
+				rule="m_siteID_EQ_@SITE@" list="积分管理列表" export="1"/>
+			<sub-tab name="异常积分" id="memscore2" docType="MEMBERSCOREUNUSUAL" url="amuc/MainSimple.do" icon="images/menu/memscore2.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="积分规则" id="memscorerule" docType="MEMBERSCORERULE" url="amuc/MainSimple.do" icon="images/menu/memscorerule.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="邀请码" id="meminvite" docType="MEMBERINVITECODE" url="amuc/MainInvite.do" icon="images/menu/meminvite.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+			<sub-tab name="邀请码记录" id="meminviterecord" docType="MEMBERINVITECODELOG" url="amuc/MainSimple.do" icon="images/menu/meminviterecord.png"
+				rule="m_siteID_EQ_@SITE@" export="1"/>
+		</tab>
+		<tab name="统计" id="stat">
+			<sub-tab name="工作量统计" id="stat0" docType="ARTICLE" url="xy/stat/Workload.html" icon="images/menu/mon2.png"
+				rule="a_status_EQ_1_AND_a_siteID_EQ_@SITE@" list="稿件统计明细列表" export="1"/>
+			<sub-tab name="个人工作量" id="stat1" docType="ARTICLE" url="xy/stat/Individual.html" icon="images/menu/mystat.png"
+				rule="a_status_EQ_1_AND_a_siteID_EQ_@SITE@" list="稿件统计明细列表" export="1"/>
+			<sub-tab name="稿件总览" id="stat2" docType="ARTICLE" url="xy/stat/ArticleOverview.html" icon="images/menu/mon1.png"/>
+			<sub-tab name="稿件排行" id="stat3" docType="ARTICLE" url="xy/stat/ArticleBoard.html" icon="images/menu/mon4.png"/>
+			<sub-tab name="稿件明细" id="stat4" docType="ARTICLE" url="xy/StatArticles.do?type=0" icon="images/menu/mon0.png"
+				rule="a_status_EQ_1_AND_a_siteID_EQ_@SITE@" list="稿件统计明细列表" export="1"/>
+			<sub-tab name="栏目总览" id="stat5" docType="COLUMN" url="xy/stat/Columns.html" icon="images/menu/mon3.png"/>
+			<sub-tab name="通讯员统计" id="stat6" docType="BATMAN" url="xy/stat/Batman.html" icon="images/menu/mon5.png"/>
+		</tab>
+	</tabs>
+</app-config>

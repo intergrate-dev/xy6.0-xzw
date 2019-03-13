@@ -1,0 +1,115 @@
+body{
+	font-size:13px;
+	font-family: "microsoft yahei";
+}
+input.checkbox, input.radio{
+	border:0px;
+}
+hr{
+    color: #888888;
+    height: 1px;
+}
+a{cursor:hand;}
+a:hover {
+	color: #003399;
+	text-decoration: none;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+
+input,.field {
+     color: #333333;
+  	 border-radius:2px;
+  	 border: 1px solid #ddd;
+
+}
+
+.white {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.select {
+	list-style-type: disc;
+}
+textarea{
+	overflow: auto;
+}
+.textarea {
+	height: 100px;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+button, .button, .butt, .bluebutton{
+	text-decoration: none;
+	display:inline-block;
+	
+	height:30px;
+	background:#00a0e6;
+	color:#fff;
+	cursor: pointer;
+	font-family: 'microsoft yahei';
+	width:70px;
+	font-size: 12px;
+}
+.timebutton{
+	text-decoration: none;
+	background-attachment1: fixed;
+	background-image: url(../images/but-time.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	word-spacing: normal;
+	height: 19px;
+	width: 35px;
+	border: 0px none;
+	margin: 0px;
+	padding: 0px;
+}
+.blacktd{
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #333333;
+}
+.bottomlinetd{
+	border-bottom: 1px solid #E0E0E0;
+}
+.bluetd{
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(../images/t-bar.gif);
+}
+.bluetd2{
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(../images/t2-bar.gif);
+}
+#nameDiv{
+	background:url(../images/t-bar.gif);
+	text-align:center;
+	color:white;
+	height:32px;
+	padding-top:5px;
+}
+.select{
+	width:100%;
+	font-family: 'microsoft yahei'; 
+	color: #666;
+	border: 1px solid #ddd;
+}
+.select option{
+	  margin-top: 8px;
+  	  font-size: 12px;
+  	  padding-left: 61px;
+}
+.select1{
+	width:100%; 
+	font-family: 'microsoft yahei'; 
+	border: 1px solid #ddd;
+	color: #666;
+}
+.select1 option{
+	  margin-top: 8px;
+  	  font-size: 12px;
+  	  padding-left: 61px;
+}

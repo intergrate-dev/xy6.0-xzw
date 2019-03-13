@@ -1,0 +1,47 @@
+.mainBodyWrap{
+	padding-bottom:1px;
+}
+#TopDiv{
+	padding-left:0;
+}
+#TopDiv a{
+	color:#0066ff;
+}
+#TopDiv a:hover{
+	text-decoration: underline;
+}
+#TopDiv table th{
+	font-weight: bold;
+	height: 50px;
+	width:220px;
+	text-align: center;
+	padding:0 20px;
+}
+#TopDiv td{
+	height: 50px;
+}
+#TopDiv td span{
+	margin:0 10px;
+}
+
+#LeftDiv {
+	width:200px;
+	float: left;
+	margin-right:-200px;
+}
+
+#RightDiv {
+	margin-left:220px;
+}
+#exportFrame,
+#DocTypeRelationDiv,
+#CreateDocTypeDiv,
+#CreateFieldFormDIV{
+	display: none;
+}
+#CreateDocTypeRelationDialog label{
+	float: left;
+}
+a#createDocType,a#createDocTypeRelation{
+	color:gray;
+}

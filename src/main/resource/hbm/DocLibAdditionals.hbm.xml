@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.founder.e5.dom.DocLibAdditionals" 
+		table="DOM_DOCLIBADDITIONALS" >
+		<id name="id" type="integer" column="ID" >
+			<generator class="assigned"/>
+		</id>
+		<property name="libTypes" column="LIBTYPES" type="integer" 
+			not-null="true" />
+		<property name="libServer" column="LIBSERVER" type="string" 
+			not-null="true" length="32" />
+		<property name="libDB" column="LIBDB" type="string" not-null="true" 
+			length="32" />
+		<property name="libTable" column="LIBTABLE" type="string" 
+			not-null="true" length="40" />
+		<property name="docLibID" column="DOCLIBID" type="integer" 
+			not-null="true" length="30" />
+	</class>
+</hibernate-mapping>

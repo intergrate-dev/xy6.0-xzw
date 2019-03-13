@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="gbk">
+	<meta property="og:type" content="article">
+<FOUNDER-XY type="article" data="">
+	<title>${article.title?replace("<.*?>","","r")}|${article.keyword}|${article.column}</title>
+	<meta name="keywords" content="${article.keyword}">
+	<meta name="description" content="${article.summary}">
+	<meta name="tags" content="${article.tag}">
+	<meta property="og:title" content="${article.title?replace("<.*?>","","r")}">
+	<meta property="og:description" content="${article.summary?replace("<.*?>","","r")}">
+	<meta property="og:url" content="${article.url!}">
+</FOUNDER-XY>
+  <link rel="stylesheet" type="text/css" href="http://news.sina.com.cn/css/87/content2014/common.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://news.sina.com.cn/css/87/content2014/style_news.css" />
+	<style>
+		.pages{clear:both;display:block;}
+		.pages li {float:left; border:1px solid #0088cc;margin:5px;text-align:center;
+				padding:3px 20px; list-style:none;}
+		.pages li a {text-decoration:none;}
+		.page-next, .page-previous {background-color:#cccccc;}
+		.page-active {background-color: #0088cc}
+	</style>
+</head>
+<body>
+<link rel="stylesheet" href="http://n2.sinaimg.cn/ent/wsy/main-nav-20150429.css" type="text/css">
+<!--主导航-->
+<div class="sina15-top-bar-wrap" id="sina15-top-bar-wrap-astro">
+  <div class="sina15-top-bar-inner">
+    <div class="sina15-nav">
+		<ul class="sina15-nav-list">
+		<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'brother'}">
+			<#list columns as column>
+				<#if column_index < 6>
+				<li><a href="${column.url!}">${column.name}</a></li>
+				</#if>
+			</#list>
+		</FOUNDER-XY>
+		</ul>
+    </div>
+  </div>
+</div>
+<!--/主导航-->
+
+<div class="wrap-outer clearfix" id="wrapOuter">
+  <div class="wrap-inner">
+<FOUNDER-XY type="article" data="">
+    <div class="page-header">
+		<h1 id="artibodyTitle" pid="1" tid="1" did="32223732" fid="1666">${article.title}</h1>
+    </div>
+    <div class="page-content clearfix" id="articleContent">
+      <div class="left">
+		<#if (article.type == 1)>
+			<#list article.attPics as attachment>
+				<img src="${attachment.url}" style="max-width:100%"/><br/>
+				<center style="color:gray;">${attachment.content}</center>
+			</#list>
+		</#if>
+		<#if (article.type == 2)>
+			<div style="text-align:center;">
+				<#list article.attVideos as attachment>
+					<embed type="application/x-shockwave-flash"
+					class="edui-faked-video" 
+					pluginspage="http://www.macromedia.com/go/getflashplayer" 
+					wmode="transparent" play="true" loop="false" menu="false"
+					allowscriptaccess="never" allowfullscreen="true"
+					src="http://172.19.33.71:7001/VJTVPlayer.swf?src=${attachment.urlPad}&adurl=null/videoadfornode/301.xml" 
+					width="420" height="280"/>
+					<center>${attachment.content}</center><br/>
+				</#list>
+			</div>
+		</#if>
+        <div class="article article_16" id="artibody">
+			${article.content}
+        </div>
+        <div class="article-info clearfix">
+            <div class="article-keywords">
+              <span>文章关键词：</span>
+<a href="http://tags.news.sina.com.cn/${article.keyword}" target="_blank">${article.keyword}</a>
+            </div>
+		</div>
+	<div class="feed-wrap" id="relatedNewsWrap">
+		<div class="feed-title"><h3>相关阅读</h3></div>
+		<div class="feed-c">
+            <div id="feedCard" class="">
+				<div class="feed-card-content" id="feedCardContent" data-sudaclick="feed_list">
+					<div> 
+					<#list article.rels as rel>
+						<div class="feed-card-item">
+							<h2 suda-uatrack="key=index_feed&amp;value=news_click:-2000:0:0" class="undefined">
+								<a href="${rel.url}" target="_blank">${rel.title}</a></h2>
+								<div class="feed-card-c">
+									<div class="feed-card-txt">
+										<a href="${rel.url}" class="feed-card-txt-summary" rel="nofollow" suda-uatrack="key=index_feed&amp;value=news_click:-2000:0:0" target="_blank">${rel.summary}</a>
+										<a href="${rel.url}" class="feed-card-txt-detail" rel="nofollow" suda-uatrack="key=index_feed&amp;value=news_click:-2000:0:0" target="_blank">[详细]</a>
+									</div>
+								</div>
+								<div style="display:none; margin-top:10px;" class="feed-card-comment-w" data-id="feedCardComment_1-1-32226073_w">
+									<div class="feed-card-comment-top" data-id="feedCardCommentTop_1-1-32226073"><em>◆</em><span>◆</span></div>
+									<div class="feed-card-comment-c" data-id="feedCardComment_1-1-32226073_c"></div>
+									<a href="javascript:;" class="feed-card-comment-close" onclick="__SinaFeedCard__.hideComment(this, '1-1-32226073'); return false;"><span>╱╲</span> 收起</a>
+								</div>
+							</div> 
+					</#list>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div></div>
+</FOUNDER-XY>
+	</div>
+</div>
+ </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!-- release v4.3.9, copyright 2014 - 2017 Kartik Visweswaran -->
+
+<!--suppress JSUnresolvedLibraryURL -->
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8"/>
+
+    <title>图片上传</title>
+    <link href="../bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="../bootstrap-3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="upload_api.js" type="text/javascript"></script>
+    <style>
+    </style>
+</head>
+<body>
+
+<div class="container kv-main">
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <input id="uploadInput" type="file" name="file" multiple>
+        </div>
+        <hr>
+    </form>
+
+    <button class="btn btn-primary" onclick="go()">测试</button>
+</div>
+</body>
+<script>
+    //'{}';//
+    var param = '{}';//'{"uploadUrl":"../../../xy/upload/uploadFileF.do","deleteUrl":"../../../xy/upload/deletePreviewThumb.do","showContent":false,"showSort":true,"autoCommit":true,"showEditor":true,"initialPreview":["../../../xy/image.do?path=图片存储;xy/201704/11/66b9a453-6597-4bc6-94d4-c42bf58ff2c909034027-32dd-43a7-a49d-59c7a71c0f50.jpg","../../../xy/image.do?path=图片存储;xy/201704/14/c164abec-1fc9-4a89-afe2-0ef29922a7a7383149c4-71de-4b3d-9f70-75f2689128d8.jpg"],"initialPreviewConfig":[{"url":"../../../xy/upload/deletePreviewThumb.do","imagePath":"图片存储;xy/201704/11/66b9a453-6597-4bc6-94d4-c42bf58ff2c909034027-32dd-43a7-a49d-59c7a71c0f50.jpg","key":3},{"url":"../../../xy/upload/deletePreviewThumb.do","imagePath":"图片存储;xy/201704/14/c164abec-1fc9-4a89-afe2-0ef29922a7a7383149c4-71de-4b3d-9f70-75f2689128d8.jpg","key":4}]}';
+    param = JSON.parse(param);
+    param = $.extend({}, param, {
+        rootUrl: '../../../',
+        showSort: true,
+        showContent: false,
+        autoCommit: true,
+        showApplyAll: true,
+        showEditor: true,
+        allowedFileExtensions:['jpg', 'jpeg', 'gif', 'bmp', 'png', 'zip'],
+        maxFileCount: 10
+    });
+    param.sorted = function(stack, params){
+        console.info(stack, params)
+    }
+    param.fileSelected = function(){
+    }
+
+    param.modifyPicture = function(key, path, _upload){
+        var path = "%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8;xy/201704/12/t0_(4X98X288X308)38b5382f-a395-4eba-b923-e9b33ba80ba9b5922e2d-cb28-4fbd-b8f4-32fccffdec92.jpg";
+        var showPath = "../../../xy/image.do?path=%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8;xy/201704/12/t0_(4X98X288X308)38b5382f-a395-4eba-b923-e9b33ba80ba9b5922e2d-cb28-4fbd-b8f4-32fccffdec92.jpg";
+        _upload.doModifyPicture(key, path, showPath);
+    };
+
+    var upload = new Upload("#uploadInput", param);
+    /*upload.completed(function(newArr){
+     $(".form-group").children("div").addClass("tag-hide");
+     });*/
+
+
+    function go(){
+
+
+        //console.info(upload.getDataList());
+    }
+
+</script>
+</html>

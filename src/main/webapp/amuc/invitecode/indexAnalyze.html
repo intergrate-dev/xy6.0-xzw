@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta content="telephone=no" name="”format-detection”">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="format-detection" content="email=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
+	<link rel="stylesheet" type="text/css" href="css/layui.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="../exmall_x/js/share.js"></script>
+	<script type="text/javascript" src="../exmall_x/plugin/jquery.xdomainrequest.min.js"></script>
+</head>
+<style type="text/css">
+body,i,div,p,h4,span,button {
+	margin: 0;
+	padding: 0;
+	font-style: normal;
+	font-family: "微软雅黑";
+}
+body {	
+	/* background: #f5f4f3; */
+	font-size: .8rem;
+}
+.content{
+	height: 100%;
+	/* padding: 1rem 1rem 0 1rem; */
+	text-align: center;
+	color: #333333;
+}	
+.top{
+	border-bottom: solid 1px #666;
+	height: 12rem;
+}
+.top img{
+	width: 8rem;
+	margin-bottom: 1.5rem;
+}
+.bottom .codeP{
+	height: 3rem;
+	color: #000;
+	font-size: 1.2rem;
+    line-height: 3rem;
+}
+.bottom .codeP .code{
+	color: #f00;
+}
+.bottom .btn{
+	background-color: #fff;
+    color: #838383;
+    width: 100%;
+    height: 2.2rem;
+    font-size: 1rem;
+    line-height: 2.2rem;
+    border-radius: .2rem;
+    margin-top: .8rem;
+}
+.swiper-container1, .swiper-container2 {
+    width: 100%;
+    height: 100%;
+    margin: 20px auto;
+}
+.swiper-wrapper {
+	position: relative;
+}
+.menu {
+	width: 100%;
+    /*margin-left: -2rem;*/
+    margin-top: 0;
+	list-style-type: none;
+	background-color: #fff;
+}
+.menu li{
+	float: left;
+	width: 33%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	/* font-weight: bold; */
+	color: #666666;
+}
+.menu li.active {
+	color: #f22;
+	border-bottom: solid 1px #f22; 
+}
+/*清除浮动*/
+.clearfix:before,.clearfix:after{ 
+    content:""; 
+    display:table; 
+} 
+.clearfix:after{clear:both;} 
+.clearfix{ 
+    *zoom:1;/*IE/7/6*/
+}
+.content{
+    margin: 0 auto;
+    overflow: hidden;
+}
+canvas{
+	height:510px;
+}
+</style>
+<body>
+	<div id="swiper-container1" style="border-top: 1px solid #CCCCCC;border-bottom: 1px solid #CCCCCC;">
+		<!-- <div class="swiper-wrapper"> -->
+			<ul class="menu clearfix">
+				<li class="active" style="font-size:20px;" onclick="tets(1)" id="t1">邀请码分析</li>
+				<li style="font-size:20px;" onclick="tets(2)"  id="t2">企业邀请码</li>
+				<li style="font-size:20px;" onclick="tets(3)"  id="t3">个人邀请码</li>
+			</ul>
+	</div>
+	<div id="swiper-container2">
+	    <div class="swiper-wrapper" >
+	        <div id="tab1">
+	        	<div class="content">
+	        		<span>
+					<iframe id="frame1" class="iframe" frameborder=0 height=100% marginheight=0 marginwidth=0 scrolling=no src=""></iframe>
+					</span>
+				</div>
+	        </div>
+	        <div id="tab2">
+	        	<div class="content" style=" width: 60%;">
+						<span>
+						<iframe id="frame2" class="iframe" frameborder=0 width=170 height=100 marginheight=0 marginwidth=0 scrolling=no src=""></iframe>
+						</span>
+				</div>
+	        </div>
+	        <div id="tab3" style="overflow-y:scroll;overflow-x:hide;width:100%;height:100%">
+	        	<div class="content" style=" width: 60%;">
+	    			<span>
+					<iframe id="frame3" class="iframe" frameborder=0 height=100% marginheight=0 marginwidth=0 scrolling=no src=""></iframe>
+					</span>
+				</div>
+	        </div>
+	    </div>
+	</div>
+</body>
+<script type="text/javascript">
+var ready = function(){
+	var siteID = getUrlVars("siteID");
+	$("#tab3").hide();
+	$("#tab2").hide();
+	$("#frame1").attr("src","XInviteCodeAnalyze.jsp?siteID="+siteID);
+}
+$(document).ready(function () {
+	ready();
+});
+
+var tab=1;
+function tets(num){
+	var siteID = getUrlVars("siteID");
+	$("#t"+tab).attr("class","");
+	$("#t"+num).attr("class","active");
+	$("#tab"+tab).hide();
+	$("#tab"+num).show();
+	tab=num;
+	switch(num){
+  	case 1:
+  		ready();
+  		break;
+  	case 2:  		
+  		$("#frame2").attr("src","qInviteCodeAnalyze.html?siteID="+siteID);
+  		break;
+  	case 3:
+  		$("#frame3").attr("src","pInviteCodeAnalyze.html?siteID="+siteID);
+  		break;
+  }
+}
+
+//$("#siteID").val(siteID);
+//alert(siteID)
+function getUrlVars(name){
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+</script>
+<script type="text/javascript">
+	(function (doc, win) {
+	  var docEl = doc.documentElement,
+	    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	    recalc = function () {
+	      var clientWidth = docEl.clientWidth;
+	      var clientHeight = docEl.clientHeight;
+	      $(".iframe").attr("width",clientWidth);
+	      $(".iframe").attr("height",clientHeight-42);
+	      $("#table").css("width",clientWidth-40);
+	      /* $("#thead").css("width",clientWidth-40);
+	      $("#tbody").css("width",clientWidth-40); */
+	      $("#tab3").css("width",clientWidth);
+	      $("#tab3").css("height",clientHeight-60);
+	      if (!clientWidth) return;
+	      docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+	    };
+	  if (!doc.addEventListener) return;
+	  win.addEventListener(resizeEvt, recalc, false);
+	  doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+</script>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<header id="headerArea" class="container-fluid" style="display:none">
+    <div class="functionalArea overflHide left">
+        <ul class="Undo-Redo">
+            <li id="undoBtn" class="Undo Unre-do">
+                <div></div>
+                <span>撤销</span>
+            </li>
+            <li id="redoBtn" class="Redo Unre-do">
+                <div></div>
+                <span>恢复</span>
+            </li>
+            <li class="Unre-line"></li>
+            <li><img class="header1" src="export/images/header/header1.png" alt=""/></li>
+            <li class="mgl310">
+                <img src="export/images/header/header16.png"/>
+            </li>
+            <li class="mgl10">
+                <img src="export/images/header/header17.png"/>
+            </li>
+            <li class="mgl10 mgr15">
+                <img src="export/images/header/header18.png"/>
+            </li>
+
+
+            <!--<ul id="tFont" class="mgr20 mgl10">
+                <li class="left btn-hint selectHeight mgt13"><img src="export/images/header/header4.png" alt=""/></li>
+                <li class="left btn-hint selectHeight mgt13"><img src="export/images/header/header5.png" alt=""/></li>
+                <li class="left btn-hint selectHeight mgt13"><img src="export/images/header/header6.png" alt=""/></li>
+            </ul>-->
+            <ul id="alignUlhead" style="float: left;">
+                <li data-align="left" class="left mgl5 clearbg " style="line-height:24px;margin-top: 13px;">
+                    <img src="export/images/sliderPanel/textAlign1.png" alt=""/></li>
+                <li data-align="center" class="left mgl5 clearbg" style="line-height:24px;margin-top: 13px;">
+                    <img src="export/images/sliderPanel/textAlign2.png" alt=""/></li>
+                <li data-align="right" class="left mgl5 clearbg" style="line-height:24px;margin-top: 13px;">
+                    <img src="export/images/sliderPanel/textAlign3.png" alt=""/></li>
+            </ul>
+            <li class="mgr20"><!--<input id="headColorPick1" type="text" style="width: 20px; height: 16px;margin-top: 17px;border-radius: 0;"/>-->
+                <span><input id="headColorPickhead" type="text" unselectable="on" onselectstart="return false;" style="width: 20px; height: 16px;margin-top: 17px;-webkit-user-select: none;-moz-user-select: none;"/></span>
+            </li>
+
+            <li>
+                <!--<img class="btn-hint" src="export/images/header/header7.png" alt=""/>
+                <img class="btn-hint" src="export/images/header/header8.png" alt=""/>
+                <img class="btn-hint" src="export/images/header/header9.png" alt=""/>
+                <img class="btn-hint" src="export/images/header/header10.png" alt=""/>-->
+                <ul id="fontSthead" style="float: left;">
+                    <li id="fontBoldhead" data-kg="true" data-fontstyle="font-weight" data-value="700" data-reset="200" class="left" style="line-height:24px;margin-top: 13px;">
+                        <img src="export/images/header/header7.png" alt=""></li>
+                    <li id="fontItalichead" data-kg="true" data-fontstyle="font-style" data-value="italic" data-reset="normal" class="left" style="line-height:24px;margin-top: 13px;">
+                        <img src="export/images/header/header8.png" alt=""></li>
+                    <li id="fontUnderhead" data-kg="true" data-fontstyle="text-decoration" data-value="underline" data-reset="none" data-line="under" class="left throughFont" style="line-height:24px;margin-top: 13px;">
+                        <img src="export/images/header/header9.png" alt=""></li>
+                    <li id="fontThroughhead" data-kg="true" data-fontstyle="text-decoration" data-value="line-through" data-reset="none" data-line="through" class="left throughFont" style="line-height:24px;margin-top: 13px;">
+                        <img src="export/images/header/header10.png" alt=""></li>
+                </ul>
+            </li>
+            <li class="mgl20">
+                <img src="export/images/header/header14.png" alt=""/>
+                <img src="export/images/header/header15.png" alt=""/>
+            </li>
+            <li class="Unre-line"></li>
+            <li id="previewLi" class="preview see mgl10 mgr10">
+                <img src="export/images/header/header11.png" alt=""/>
+                <div>预览</div>
+            </li>
+            <!--<li id="checkBtn" class="netSee see mgl10">
+                <img src="export/images/header/header12.png" alt=""/>
+                <div>查看</div>
+            </li>-->
+            <li class="Unre-line"></li>
+        </ul>
+
+    </div>
+    <div class="text-right btnGroup">
+        <button id="saveButton" class="mgr10">保存</button>
+        <!--<button class="mgr10">发布</button>-->
+        <button id="existBtn" class="exit mgr10">退出</button>
+
+    </div>
+</header>
+<div class="electHeight fontFa divselect divSelectPos" id="fontFmhead" style="display:none">
+    <cite class="selectHeight pad5" unselectable="on" onselectstart="return false;" style="-webkit-user-select: none;-moz-user-select: none;">微软雅黑</cite>
+    <ul class="fontFa" id="fontFahead">
+        <li><a href="javascript:;" selectid="1" value="微软雅黑">微软雅黑</a></li>
+        <li><a href="javascript:;" selectid="2" value="宋体">宋体</a></li>
+        <li><a href="javascript:;" selectid="3" value="楷体">楷体</a></li>
+        <li><a href="javascript:;" selectid="4" value="隶书">隶书</a></li>
+        <li><a href="javascript:;" selectid="5" value="华文新魏">华文新魏</a></li>
+        <li><a href="javascript:;" selectid="6" value="新宋体">新宋体</a></li>
+        <li><a href="javascript:;" selectid="7" value="幼圆">幼圆</a></li>
+        <li><a href="javascript:;" selectid="8" value="仿宋">仿宋</a></li>
+        <li><a href="javascript:;" selectid="9" value="黑体">黑体</a></li>
+        <li><a href="javascript:;" selectid="10" value="Arial">Arial</a></li>
+        <li><a href="javascript:;" selectid="11" value="courier">courier</a></li>
+        <li><a href="javascript:;" selectid="12" value="forte">forte</a></li>
+        <li><a href="javascript:;" selectid="13" value="elephant">elephant</a></li>
+        <li><a href="javascript:;" selectid="14" value="fantasy">fantasy</a></li>
+
+    </ul>
+</div>
+<input class="" name="" type="hidden" value=""/>
+<div class="electHeight fontSt divselect divSelectPos" style="left: 425px;display:none" id="fontSizhead">
+    <cite class="selectHeight pad5" unselectable="on" onselectstart="return false;" style="-webkit-user-select: none;-moz-user-select: none;">12px</cite>
+    <!--<ul class="fontFa hide1 fontSz ">
+        <li><a href="javascript:;" selectid="1" value="56">初号</a></li>
+        <li><a href="javascript:;" selectid="2" value="48">小初</a></li>
+        <li><a href="javascript:;" selectid="3" value="34.7">一号</a></li>
+        <li><a href="javascript:;" selectid="4" value="32">小一</a></li>
+        <li><a href="javascript:;" selectid="5" value="29.3">二号</a></li>
+        <li><a href="javascript:;" selectid="6" value="24">小二</a></li>
+        <li><a href="javascript:;" selectid="7" value="21.3">三号</a></li>
+        <li><a href="javascript:;" selectid="8" value="20">小三</a></li>
+        <li><a href="javascript:;" selectid="9" value="18.7">四号</a></li>
+        <li><a href="javascript:;" selectid="10" value="16">小四</a></li>
+        <li><a href="javascript:;" selectid="11" value="14">五号</a></li>
+        <li><a href="javascript:;" selectid="12" value="12">小五</a></li>
+    </ul>-->
+    <!--<ul class="fontFa hide1 fontSz ">
+        <li><a href="javascript:;" selectid="1" value="56">56px</a></li>
+        <li><a href="javascript:;" selectid="2" value="48">48px</a></li>
+        <li><a href="javascript:;" selectid="3" value="34.7">34px</a></li>
+        <li><a href="javascript:;" selectid="4" value="32">32px</a></li>
+        <li><a href="javascript:;" selectid="5" value="29.3">29px</a></li>
+        <li><a href="javascript:;" selectid="6" value="24">24px</a></li>
+        <li><a href="javascript:;" selectid="7" value="21.3">21px</a></li>
+        <li><a href="javascript:;" selectid="8" value="20">20px</a></li>
+        <li><a href="javascript:;" selectid="9" value="18.7">18px</a></li>
+        <li><a href="javascript:;" selectid="10" value="16">16px</a></li>
+        <li><a href="javascript:;" selectid="11" value="14">14px</a></li>
+        <li><a href="javascript:;" selectid="12" value="12">12px</a></li>
+    </ul>-->
+    <ul class="fontFa hide1 fontSz ">
+        <li><a href="javascript:;" selectid="1" value="12">12px</a></li>
+        <li><a href="javascript:;" selectid="2" value="14">14px</a></li>
+        <li><a href="javascript:;" selectid="3" value="16">16px</a></li>
+        <li><a href="javascript:;" selectid="4" value="18">18px</a></li>
+        <li><a href="javascript:;" selectid="5" value="20">20px</a></li>
+        <li><a href="javascript:;" selectid="6" value="21">21px</a></li>
+        <li><a href="javascript:;" selectid="7" value="24">24px</a></li>
+        <li><a href="javascript:;" selectid="8" value="29">29px</a></li>
+        <li><a href="javascript:;" selectid="9" value="32">32px</a></li>
+        <li><a href="javascript:;" selectid="10" value="34">34px</a></li>
+        <li><a href="javascript:;" selectid="11" value="48">48px</a></li>
+        <li><a href="javascript:;" selectid="12" value="56">56px</a></li>
+    </ul>
+</div>
+<input class="" name="" type="hidden" value=""/>
+<!--<div class="electHeight fontSz divselect divSelectPos" style="left: 570px;">
+    <cite class="selectHeight pad5">14像素</cite>
+    <ul class="fontFa hide1 fontSz">
+        <li><a href="javascript:;" selectid="1">14像素</a></li>
+        <li><a href="javascript:;" selectid="2">13像素</a></li>
+        <li><a href="javascript:;" selectid="3">12像素</a></li>
+        <li><a href="javascript:;" selectid="4">11像素</a></li>
+    </ul>
+</div>-->
+<!--<input class="" name="" type="hidden" value=""/>
+<div class="electHeight fontWz divselect divSelectPos" style="left: 720px;">
+    <cite class="selectHeight pad5">浑厚</cite>
+    <ul class="fontFa hide1 fontWz">
+        <li><a href="javascript:;" selectid="1">浑厚</a></li>
+        <li><a href="javascript:;" selectid="2">浑厚</a></li>
+        <li><a href="javascript:;" selectid="3">浑厚</a></li>
+        <li><a href="javascript:;" selectid="4">浑厚</a></li>
+    </ul>
+</div>
+<input class="" name="" type="hidden" value=""/>-->
+</body>
+</html>

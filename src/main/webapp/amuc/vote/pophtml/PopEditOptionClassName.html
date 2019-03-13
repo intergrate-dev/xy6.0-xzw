@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>修改别名</title>
+<style type="text/css">
+	.pop_wrap{width:500px;height:560px;margin:0 auto;}
+	.pop_wrap .table td.left{text-align:right;color:#0088CC}
+	.pop_wrap .resimgbox{
+		text-align: center;
+		width:400px;
+		height:300px;
+		margin: 5px auto;
+		background:url("./image/imgboxbg.png") no-repeat scroll center center #CCCCCC;
+		border: 1px dotted #CCCCCC;
+	}
+	.pop_wrap .resimgbox img{}
+	.alert{margin-top:10px;margin-bottom: 10px;}
+	.swfupload{height: 38px;width: 145px;}
+	.loadingimg{margin-top:134px;float:left;margin-left:184px}
+	.pop_wrap .form-horizontal .control-label{width:120px;text-align:left;}
+	.pop_wrap .form-horizontal .controls{margin-left:120px;}
+	.pop_wrap  input.span3{width:80px;}
+</style>
+</head>
+<body>
+   <div class="pop_wrap">
+      <form class="form-horizontal" method="post" autocomplete="off">
+         <div class="control-group" id="inputTypeDiv" style="margin-top:30px;">
+            <label class="control-label" for="inputTypeDiv">修改别名：</label>
+            <div class="controls">
+               <input type="text" value="" id="displayclass" style="width:200px;"/>
+            </div>
+         </div>
+      </form>
+      <div class="alert alert1">请输入一个别名</div> 
+      <div style="margin-top:10px;">
+        <input type="button" id="optionclassdone" style="height:40px;width:120px;" class="btn" value="确定" />
+      </div>
+   </div>
+   <script type="text/javascript">
+   var opid = $("#temOpID").val();
+   $(function(){
+	   
+	   $(".modal-header .close").click(function(){
+  		 $("#temOpID").attr("value","");
+  	 });
+	  var _oldClassName = $("#table_"+opid+" #optionGroup").val();
+	  $("#displayclass").attr("value",_oldClassName);
+ 	  $("#optionclassdone").click(function(){ 
+ 		 if($("#displayclass").val().trim()!=""){
+ 		 params = {};
+ 		 params.opid =parseInt(opid);
+ 		 _newclass = $("#displayclass").val();
+ 		 params.newclass = _newclass;
+ 		 params.action = "updateoptionclass";
+ 		 $(".alert1").html("正在保存，请稍候...");
+ 		 $.ajax({
+ 			type:"POST",
+  			url:"updateoptionclass.do",
+  			data:params,
+  			dataType:"json",
+  			success:function(data){
+  				if(data.ret=="1"){
+  					$("#temOpID").attr("value","");
+  					$("#table_"+opid+" #optionGroup").attr("value",data.retinfo.opinfo.voClassification);
+  					$(".modal-header .close").click();
+  					$(".alert1").html("修改成功");
+  				}else{
+  					$(".alert1").html(data.retinfo.errormsg);
+  				}
+  			}
+ 		 });
+ 		}else{
+ 			$(".alert1").html("输入框不能为空");
+ 			$("#displayclass").attr("value",_oldInput);
+ 			$("#displayclass").focus();
+ 			return false;
+ 		}
+ 	  });
+   });
+   </script>
+</body>
+</html>

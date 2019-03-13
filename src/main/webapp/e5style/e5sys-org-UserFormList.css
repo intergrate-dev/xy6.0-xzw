@@ -1,0 +1,8 @@
+.titleTD{
+	text-align: right;
+	width:100px;
+}
+th.titleTD{
+	text-align: center;
+	width:100px;
+}

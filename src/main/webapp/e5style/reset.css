@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+/*Reset*/
+
+html{color: #000;background:#fff}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,button,p,blockquote,th,td{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0;empty-cells:show;}
+fieldset,img{border:0}
+address,button,caption,cite,code,dfn,em,input,optgroup,option,select,strong,textarea,th,var{font:inherit}
+del,ins{text-decoration:none}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+q:before,q:after{content:''}
+abbr,acronym{border:0;font-variant:normal}
+sup{vertical-align: baseline}
+sub{vertical-align: baseline}
+legend{color:#000}
+button{cursor:pointer;line-height:1.5}
+
+/*Form*/
+select{margin:0 0 0 5px;_margin:0 0 0 2px}
+textarea{margin:0 0 0 4px;*margin:-1px 0 0 4px;_margin:-1px 0 0 2px;padding:3px;border:1px solid #a7a6aa;background:#fff;resize:none}
+input[type="text"]{margin:0 5px 0 5px;*margin:-1px 5px 0 5px;padding:3px;height:13px;border:1px solid #ccc;background:#fff;  border-radius: 3px; width: 200px;}
+input[type="checkbox"]{margin: 2px 0 0 0px;*margin:-1px 0 1px 1px}
+input[type="radio"]{*margin:-1px 0 0 1px}
+input[type="file"]{height:18px;margin:0 0 0 4px;*margin:-1px 0 0 4px}
+input[type=text]:focus,input[type=password]:focus,textarea:focus{outline:0}
+/*for IE 6*/
+* html input.text{margin:-1px 5px 0 2px;padding:3px;height:12px;border:1px solid #a7a6aa;background:#fff}
+* html input.checkbox{margin:-1px 0 0 -2px}
+* html input.radio{margin:-1px 0 0 -2px}
+* html input.file{margin:-1px 0 0 1px}
+
+img,iframe{vertical-align:middle};
+
+/*firefox断裂图标*/
+img{-moz-force-broken-image-icon:1 !important;} 

@@ -1,0 +1,15 @@
+/*话题复制移动样式*/
+
+.MCcontainer .container-div .container-ul .container-details{
+    position: relative;
+    left:20px;
+}
+.MCcontainer .container-div .container-ul .choose-topic{
+    border:none;
+    width: 57px;
+    height: 28px;
+    border-radius: 3px;
+    position: relative;
+    left: 10px;
+    top: -5px;
+}

@@ -1,0 +1,34 @@
+#分级授权
+#Tab Page显示名称
+page.title=分级授权
+page.org=组织机构
+page.doc=文档管理
+page.workflow=流程管理
+page.category=分类管理
+page.module=子系统模块
+page.moduleperm=子系统权限模块
+page.other=其它
+form.submit=保存
+form.cancel=取消
+button.submit=确认
+button.clear=清除
+other.logger=日志管理
+other.cache=缓存刷新
+other.service=服务管理
+other.online=在线用户管理
+other.config=配置管理
+cat.hint= < 分类类型 >
+auth.doctype=文档类型
+auth.flowname=流程名称
+perm.manage=管理
+perm.perm=授权
+org.root=组织机构
+folder.select=请选择要配置权限的文档库：
+folder.allFolder=所有文档库
+folder.title=文件夹权限管理
+auth.hint=是否真的放弃保存?
+auth.operation=权限设置
+auth.success=操作成功!
+auth.failed=操作失败!
+auth.memo=提示：分级授权中的"确认"没有存盘，只是缓存到服务器，只有点击"保存"按钮才真正存储。
+auth.description=分级授权权限设置成功[管理员RoleID:{0},被设置RoleID:{1}]

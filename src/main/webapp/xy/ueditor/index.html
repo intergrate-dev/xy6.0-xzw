@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>百度编辑器</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="referrer" content="never">
+    <link rel="stylesheet" type="text/css" href="../ueditor/third-party/webuploader/webuploader.css">
+    <link href="../ueditor/themes/iframe.css" rel="stylesheet" />
+</head>
+<body>
+   <!-- 编辑器开始 -->
+    <div>
+    <!-- 实例化编辑器 -->
+			<div id="left" style="width:100%; height: 100%; margin: 3px 0;">
+				<script id="editor" type="text/plain" style="width:99.5%;margin:0px 5px 0px 5px;"></script>
+			</div>
+    </div>
+    <!-- 编辑器结束 -->
+ 
+</body>
+<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.js"> </script>-->
+<script type="text/javascript" charset="utf-8" src="../ueditor/editor_api.js"> </script>
+<script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.custom.js"></script>
+
+<!-- webuploader -->
+<script src="../ueditor/third-party/webuploader/webuploader.flashonly.min.js"></script>
+
+<script type="text/javascript">
+    var nowFontSize = 2;//当前字体大中小
+    var viewVersionContent;
+
+    $(function(){
+        var totalW = document.documentElement.clientWidth-20,
+                totalH = document.documentElement.clientHeight-20;
+
+        //实例化，获取稿件参数
+        var ue=UE.getEditor('editor',{
+            elementPathEnabled: false,
+            //initialContent:mainContent,
+            //initialFrameWidth: totalW-15,
+            initialFrameHeight: totalH-147,//001已调整
+            UUID: GetQueryString("UUID")==null?'':GetQueryString("UUID"),
+            DocLibID: GetQueryString("DocLibID")==null?'':GetQueryString("DocLibID"),
+            FVID: GetQueryString("FVID")==null?'':GetQueryString("FVID")
+        })
+
+        /*右侧目录——开始*/
+        ue.ready(function(){
+            //加载UEditor时，隐藏文章中的批注标签
+            ue.execCommand("showcomment");
+            //ue.setContent("123321");
+            ue.addListener('updateSections', resetHandler);
+            //001为ID为preview的div添加预览函数2015/04/7
+            ue.addListener('contentChange',function(){
+                $("#preview").html(ue.getContent()+'<div><a style="font-size:12px;color:#607fa6" href="javascript:void(0);" id="post-user">阅读原文</a> <em style="color:#8c8c8c;font-style:normal;font-size:12px;">阅读 100000+</em><span class="fr"><a style="font-size:12px;color:#607fa6" href="javascript:void(0);">举报</a></span></div>');
+                $("#iPad_preview").html(ue.getContent()+'<div><a style="font-size:12px;color:#607fa6" href="javascript:void(0);" id="post-user">阅读原文</a> <em style="color:#8c8c8c;font-style:normal;font-size:12px;">阅读 100000+</em><span class="fr"><a style="font-size:12px;color:#607fa6" href="javascript:void(0);">举报</a></span></div>');});
+            $(".itembox").on("click",function(a){
+                ue.execCommand("insertHtml","<div>"+$(this).html()+"</div><br />")});
+        });
+
+        var resetHandler = function(){
+            var dirmap = {}, dir = ue.execCommand('getsections');
+
+            // 更新目录树
+            $('#directionContainer').html(traversal(dir) || null);
+            // 删除章节按钮
+            $('.deleteIcon').click(function(e){
+                var $target = $(this),
+                        address = $target.parent().attr('data-address');
+                ue.execCommand('deletesection', dirmap[address]);
+            });
+            // 选中章节按钮
+            $('.selectIcon').click(function(e){
+                var $target = $(this),
+                        address = $target.parent().attr('data-address');
+                ue.execCommand('selectsection', dirmap[address], true);
+            });
+            // 章节上移
+            $('.moveUp,.moveDown').click(function(e){
+                var $target = $(this),
+                        address = $target.parent().attr('data-address'),
+                        moveUp = $target.hasClass('moveUp') ? true:false;
+                if($target.hasClass('moveUp')) {
+                    ue.execCommand('movesection', dirmap[address], dirmap[address].previousSection);
+                } else {
+                    ue.execCommand('movesection', dirmap[address], dirmap[address].nextSection, true);
+                }
+            });
+
+            function traversal(section) {
+                var $list, $item, $itemContent, child, childList;
+                if(section.children.length) {
+                    $list = $('<ul>');
+                    for(var i = 0; i< section.children.length; i++) {
+                        child = section.children[i];
+                        //设置目录节点内容标签
+                        var title = getSubStr(child['title'], 18);
+                        $itemContent = $('<div class="sectionItem"></div>').html($('<span class="itemTitle">' + title + '</span>'));
+                        $itemContent.attr('data-address', child['startAddress'].join(','));
+                        $itemContent.append($('<span class="deleteIcon">删</span>' +
+                        '<span class="selectIcon">选</span>' +
+                        '<span class="moveUp">↑</span>' +
+                        '<span class="moveDown">↓</span>'));
+                        dirmap[child['startAddress'].join(',')] = child;
+                        //设置目录节点容器标签
+                        $item = $('<li>');
+                        $item.append($itemContent);
+                        //继续遍历子节点
+                        if($item.children.length) {
+                            childList = traversal(child);
+                            childList && $item.append(childList);
+                        }
+                        $list.append($item);
+                    }
+                }
+                return $list;
+            }
+        }
+
+        function getSubStr(s,l){
+            var i=0,len=0;
+            for(i;i<s.length;i++){
+                if(s.charAt(i).match(/[^\x00-\xff]/g)!=null){
+                    len+=2;
+                }else{
+                    len++;
+                }
+                if(len>l){ break; }
+            }return s.substr(0,i);
+        };
+        /*右侧目录——结束*/
+
+        //renderUploader('uploadbtn',ue);
+
+
+    })
+
+    function doResizeFont(pucl,size,index){
+        //重复点击
+        var fontclass = $(".font_size").eq(index-1).attr("class");
+        if(fontclass.indexOf("select") > -1){
+            return ;
+        }
+        //去掉之前选中的样式
+        $(".font_size").each(function(i){
+            $(this).removeClass("font_size_select_"+(i+1)).addClass("font_size_"+(i+1));
+        })
+        $(".font_size").eq(index-1).removeClass("font_size_"+index).addClass("font_size_select_"+index);
+        if(nowFontSize == 1){
+            size -= 4;
+        }
+        if(nowFontSize == 3){
+            size += 4;
+        }
+        nowFontSize = index;
+
+        if(nowFontSize == 1){
+            $(pucl).css("font-size","20px");
+            //size -= 4;
+        }
+        if(nowFontSize == 2){
+            $(pucl).css("font-size","16px");
+            //size -= 4;
+        }
+        if(nowFontSize == 3){
+            $(pucl).css("font-size","12px");
+            //size += 4;
+        }
+        //doZoom(pucl,size);
+    }
+
+    //字体大中小
+    function doZoom(pucl,size){
+        var fontsize = $(pucl).css("font-size");
+        if( !isNaN(parseInt(fontsize)) ){
+            $(pucl).css("font-size",(parseInt(fontsize)+size)+"px");
+        }else{
+            $(pucl).css("font-size",(16+size)+"px");
+        }
+        for(var i=0;i<pucl.childNodes.length;i++){
+            doZoom(pucl.childNodes[i],size);
+        }
+    }
+
+
+</script>
+</html>

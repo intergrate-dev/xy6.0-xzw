@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title></title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+	<style type="text/css">		
+		body,h1,h2,h3,p,ul,ol,li,form,img,table,th,td,div,label{margin:0;padding:0;border:0;}
+		ul,ol,li{list-style:none;}
+		input,button{margin:0;font-size:12px;vertical-align:middle;}
+		body{font-size:12px;font-family:Arial, Helvetica, sans-serif;  text-align:center; margin:0 auto;}
+
+		.select {float: left; margin-top:1px; display:inline; margin-right:5px;}
+		span{float: left;display:inline-block;height:22px;line-height:28px;}
+		.selectbox-wrapper {border: #ccc 1px solid;margin-top:24px;width:88px;max-height:58px;overflow:auto; position: absolute; background-color: #fff;text-align: left;}
+		.selectbox-wrapper UL LI.selected {background-color: #f0f0f0;}
+		.selectbox-wrapper UL LI.current {color: #fff; background-color: #339af7;}
+		.selectbox-wrapper UL LI {padding:0px 3px;cursor: pointer; line-height: 20px; }
+		.selectbox {display: block;padding-left:3px;padding-right:25px; width:60px; cursor: pointer;height:22px;line-height:22px;border:1px solid #ccc; background:url(sel.png) center right no-repeat;float: left;margin-right:5px;}
+	</style>
+	<script type="text/javascript" src="../internal.js"></script>
+	<script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="jQselect.js"></script>
+</head>
+<body>
+	<div style="margin:15px 0 0 40px;">
+		<span>版本选择：</span><div class="select"><select id="v1"></select></div>
+		<span>版本选择：</span><div class="select"><select id="v2"></select></div>
+	</div>
+	<script type="text/javascript">	
+		var xmlDoc;
+		//加载XML对象
+		var loadXmlDOc = function (xmlString){
+			var xmlDoc; 
+			if (document.implementation.createDocument) {// Mozilla and Netscape browsers
+				var parser = new DOMParser();
+				xmlDoc = parser.parseFromString(xmlString, "application/xml"); 
+			} else if (window.ActiveXObject) {// MSIE    
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async="false";
+				xmlDoc.loadXML(xmlString);
+			}  
+			return xmlDoc;
+		}
+		
+		var getVersionList = function(){
+			var contents = xmlDoc.getElementsByTagName('content');
+			var v1 = document.getElementById("v1"), 
+				v2 = document.getElementById("v2");
+			
+			if (navigator.userAgent.indexOf("MSIE") > 0) {
+				v1.add(new Option('当前版本', contents[contents.length-1].text));
+				v2.add(new Option('当前版本', contents[contents.length-1].text));
+			}else{
+				v1.add(new Option('当前版本', contents[contents.length-1].textContent));
+				v2.add(new Option('当前版本', contents[contents.length-1].textContent));
+			}
+			
+			for (i = 0; i < contents.length-1; i++) {
+				var content = '';
+				if (navigator.userAgent.indexOf("MSIE") > 0) {
+					content = contents[i].text;
+				}else{
+					content = contents[i].textContent;
+				}
+				v1.add(new Option("版本" + i, content));
+				v2.add(new Option("版本" + i, content));
+			}
+			$("#v1").selectbox();
+			$("#v2").selectbox();
+		}
+		
+		var getVersionXml = function() {
+			var editor = UE.getEditor('editor');
+			$.ajax({
+				url : '../../getVersionXml.do',
+				type : 'POST',
+				async : true,
+				data : {
+					"docID" : editor.getOpt("DocID"),
+					"docLibID" : editor.getOpt("DocLibID")
+				},
+				success : function(data) {
+					xmlDoc = loadXmlDOc(data);
+					getVersionList();
+				},
+				error : function(xhr) {
+					alert('Ajax请求失败');
+				}
+			});
+		}
+		getVersionXml();
+	</script>
+</body>
+</html>

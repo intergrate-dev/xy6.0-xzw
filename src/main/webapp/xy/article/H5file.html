@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>H5File</title>
+    <link rel="stylesheet" href="../../xy/script/bootstrap-3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../xy/script/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <script src="../../e5script/jquery/jquery-1.9.1.min.js"></script>
+    <script src="../../xy/script/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../xy/script/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+    <script src="../../xy/script/bootstrap-paginator.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+        box-sizing: border-box;
+        font-family: "microsoft yahei";
+    }
+
+    ul li {
+        list-style: none
+    }
+
+    .fl {
+        float: left;
+    }
+
+    .fr {
+        float: right;
+    }
+
+    .container {
+        width: 970px;
+    }
+
+    .search-header {
+        margin-top: 5px;
+        overflow: hidden;
+    }
+
+    .search-header li {
+        height: 40px;
+        line-height: 22px;
+        margin-left: 20px;
+    }
+
+    .search-header li input {
+        width: 130px;
+        height: 22px;
+        margin-top: 8px;
+    }
+
+    .search-btn {
+        margin-top: 8px;
+        padding: 2px 15px;
+        border-radius: 3px;
+        border: none;
+    }
+
+    .confirm {
+        color: #fff;
+        background: #00a0e6;
+    }
+
+    .page-box {
+        width: 100%;
+        padding: 4px;
+        height: 40px;
+        line-height: 32px;
+        overflow: hidden;
+    }
+
+    .page-box .pagination > li > a {
+        padding: 2px 10px;
+        cursor: pointer;
+    }
+    .page-box .pagination > .active > a{
+        cursor: pointer;
+    }
+
+    .page-box nav {
+        margin-left: 10px;
+        margin-top: 6px;
+    }
+
+    .page-box .pagination {
+        margin: 0;
+    }
+
+    .page-num {
+        width: 40px;
+        height: 30px;
+        margin: 0 10px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    .page-selectBtn {
+        width: 60px;
+        height: 30px;
+        border: none;
+        margin-left: 8px;
+        border-radius: 3px;
+    }
+
+    .page-setBtn {
+        width: 23px;
+        height: 23px;
+        border: 1px solid #ddd;
+        margin-left: 8px;
+        margin-top: 6px;
+        border-radius: 3px;
+        background: none;
+        outline: none;
+    }
+
+    .page-setBtn span {
+        top: -4px;
+    }
+
+    .imglist-box li {
+        padding: 5px;
+        margin-top: 6px;
+        margin-right: 8px;
+    }
+
+    .imglist {
+        width: 167px;
+        height: 272px;
+        background: #dcdcdc;
+    }
+
+    .imglist-box li:hover {
+        box-shadow: 0 0 10px #666;
+    }
+
+    .imglist-msg {
+        border: 1px solid #ddd;
+    }
+
+    .imglist-msg span {
+        padding: 4px;
+        display: inline-block;
+    }
+
+    .imglist-time {
+        width: 90px;
+    }
+
+    .bdl {
+        border-left: 1px solid #ddd;
+    }
+
+    .imglist-title {
+        padding: 4px;
+        border-top: 1px solid #ddd;
+    }
+
+    .imglist-author {
+        padding: 4px;
+        border-top: 1px solid #ddd;
+    }
+
+    .selected {
+        box-shadow: 0 0 10px #666;
+    }
+
+    #pageUl {
+        margin-left: 10px;
+        margin-top:5px;
+    }
+</style>
+<body>
+<div class="container">
+    <ul class="clearfix search-header">
+        <li class="fl">
+            <label>标题：</label>
+            <input id="titleInput" type="text"/>
+        </li>
+        <li class="fl">
+            <label>时间：</label>
+            <input class="datetimeinput" id="startTime" readonly type="text"/> —
+            <input class="datetimeinput" id="endTime" readonly type="text"/>
+
+        </li>
+        <li class="fr">
+            <button class="search-btn" id="findBtn">查找</button>
+            <button class="search-btn" id="clearBtn">清空</button>
+            <button class="search-btn confirm" id="confirmBtn">确定</button>
+            <button class="search-btn" id="closeBtn">取消</button>
+        </li>
+    </ul>
+    <div class="page-box clearfix">
+        <span class="fl">总个数</span>
+        <span class="fl" id="totalSpan">[4]</span>
+        <!--<input class="fl page-num" type="text" value="4"/>-->
+        <!--<nav aria-label="Page navigation" class="fl">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&lt;&lt;</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&lt;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&gt;</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&gt;&gt;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>-->
+        <span style="font-size:12px;"><ul class="pagination" id="pageUl"> </ul></span>
+        <!--<button class="page-selectBtn">H5图册</button>
+        <button class="page-selectBtn">H5列表</button>-->
+        <!--<button class="page-setBtn"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button>-->
+        <!--<button class="page-setBtn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>-->
+    </div>
+    <div class="imglist-box">
+        <ul class="clearfix" id="worksListUl">
+
+            <!--<li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>
+            <li class="fl">
+                <div class="imglist">
+                    <img src="http://ww2.sinaimg.cn/cmw218/e71fa9bejw1eznev0h7q5j216o1s0b29.jpg" style="max-width: 167px; max-height: 272px;">
+                </div>
+                <div class="imglist-msg">
+                    <span class="imglist-time">00:00:33</span>
+                    <span class="bdl">已发布</span>
+                    <div class="imglist-title">标题</div>
+                    <div class="imglist-author">作者</div>
+                </div>
+            </li>-->
+
+        </ul>
+    </div>
+</div>
+</body>
+<script>
+    //    (function(window, $){
+    var MAXRESULT = 10;
+    var URL = null;
+    var map = {};
+
+    $(function(){
+        queryUrl();
+        initCalender();
+        initBtnEvent();
+        goPage(1);
+    });
+
+    function queryUrl(){
+        $.ajax({
+            async: false,
+            url: "../../xy/h5/queryUrl.do",
+            type: 'POST',
+            dataType: 'json',
+            success: function(json, status){
+                if(json.code == 0){
+                    URL = json.url;
+                    return true;
+                }else{
+                    alert(json.error);
+                    return false;
+                }
+            },
+            error: function(xhr, textStatus, errorThrown){
+                alert("对不起，无法初始化扩展字段！");
+            }
+        });
+    }
+
+    function initBtnEvent(){
+        $("#findBtn").click(function(){
+            goPage(1);
+        });
+
+        $("#confirmBtn").click(function(){
+            var _id = $(".imglist-box li.selected").attr("id");
+            var json = map[_id];
+            window.parent.h5.confirmDialog(json);
+        });
+
+        $("#clearBtn").click(function(){
+            $("#titleInput").val("");
+            $("#startTime").val("");
+            $("#endTime").val("");
+        });
+        $("#titleInput").on("keydown",function(event){
+            if(event.keyCode == 13) {
+                goPage(1);
+            }
+        });
+
+        $("#closeBtn").click(function(){
+            window.parent.h5.closeDialog();
+        });
+    }
+
+    function initCalender(){
+        jQuery('.datetimeinput').datetimepicker({
+            language: 'cn',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy-mm-dd' // hh:ii:ss
+        });
+
+        $(".imglist-box").on("click", "li", function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+        })
+    }
+
+    var LIHTML = '<li class="fl" id="#{id}">' +
+            '<div class="imglist">' +
+            '<img src="#{thumbUrl}" style="max-width: 167px; max-height: 272px;">' +
+            '</div>' +
+            '<div class="imglist-msg">' +
+            '<span class="imglist-time">#{time}</span>' +
+            '<span class="bdl">已发布</span>' +
+            '<div class="imglist-title">#{title}</div>' +
+            '<div class="imglist-author">#{authName}</div>' +
+            '</div>' +
+            '</li>';
+
+    function goPage(page){
+        var _data = {
+            page: page,
+            cpp: MAXRESULT
+        };
+        var _title = $("#titleInput").val();
+        if(_title && $.trim(_title) != ""){
+            _data.title = _title;
+        }
+
+        var _startDate = $("#startTime").val();
+        if(_startDate && $.trim(_startDate) != ""){
+            _data.startDate = _startDate;
+        }
+        var _endDate = $("#endTime").val();
+        if(_endDate && $.trim(_endDate) != ""){
+            _data.endDate = _endDate;
+        }
+
+        $.ajax({
+            async: false,
+            url: "../../xy/h5/mugedaPublishList.do",
+            type: 'POST',
+            data: _data,
+            dataType: 'json',
+            success: function(json, status){
+                if(json.msg){
+                    alert(json.msg);
+                } else{
+                    handleJSON(json);
+                }
+
+                var pages = Math.ceil(json.total / MAXRESULT);//这里data里面有数据总量
+                var element = $('#pageUl');//对应下面ul的ID
+                var options = {
+                    bootstrapMajorVersion: 3,
+                    currentPage: page,//当前页面
+                    numberOfPages: 5,//一页显示几个按钮（在ul里面生成5个li）
+                    totalPages: pages //总页数
+                };
+                element.bootstrapPaginator(options);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                alert("对不起，无法初始化扩展字段！");
+            }
+        });
+    }
+
+    function handleJSON(json){
+        if(json){
+            buildTotal(parseInt(json.total));
+            buildList(json.publish);
+        }
+    }
+
+    function buildTotal(totalRecord){
+        //if(totalRecord) totalRecord = totalRecord % MAXRESULT == 0 ? totalRecord / MAXRESULT : Math.ceil(totalRecord / MAXRESULT);
+        $("#totalSpan").html("[" + totalRecord + "]");
+    }
+
+    function buildList(worksList){
+        if(worksList && worksList instanceof Array){
+            var _html = [];
+            for(var i = 0, wi = null; wi = worksList[i++];){
+                _html.push(
+                        LIHTML.replace(/#\{id\}/g, "key" + wi.id).replace(/#\{thumbUrl\}/g, URL + wi.thumbUrl)
+                                .replace(/#\{time\}/g, wi.time.substring(0, 10))
+                                .replace(/#\{title\}/g, wi.title)
+                                .replace(/#\{authName\}/g, wi.authName)
+                );
+                map["key" + wi.id] = wi;
+            }
+            $("#worksListUl").html(_html.join(""));
+        }
+    }
+
+    function getQueryString(name){
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r != null)return unescape(r[2]);
+        return null;
+    }
+
+    //   })(window, jQuery, undefined);
+</script>
+
+</html>

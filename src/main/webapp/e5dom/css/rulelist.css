@@ -1,0 +1,13 @@
+#Content {
+
+	color:black;
+
+	MARGIN: 10px 10px 10px 10px;
+	PADDING:10px 10px 10px 10px;
+	BORDER-TOP: #CCC 1px solid;
+	BORDER-RIGHT: #CCC 1px solid;
+	BORDER-BOTTOM: #CCC 1px solid;
+	BORDER-LEFT: #CCC 1px solid;
+
+	HEIGHT: 90%;
+}

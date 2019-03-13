@@ -1,0 +1,89 @@
+CREATE OR REPLACE TRIGGER AUTO_SYN_%1_%2 AFTER
+INSERT 
+OR 
+DELETE 
+OR UPDATE OF %6 ON DOM_%1_DOCLIB FOR EACH ROW 
+declare
+  strCatIDs			varchar2(255);
+  strCatID			RelUtil.char_array;
+  strCatOrderID		RelUtil.int_array;
+  i number;
+  
+	type update_cur_type is ref cursor;
+	update_cur update_cur_type;
+	
+	type linkTitles_list is table of DOM_REL_%2.a_linkTitle%type;
+	type orders_list is table of DOM_REL_%2.a_order%type;
+	type priorities_list is table of DOM_REL_%2.a_priority%type;
+	type positions_list is table of DOM_REL_%2.a_position%type;
+	type attrs_list is table of DOM_REL_%2.a_attr%type;
+	
+	linkTitles linkTitles_list;
+	orders orders_list;
+	priorities priorities_list;
+	positions positions_list;
+	attrs attrs_list;
+	columnIDs RelUtil.int_array;
+begin
+  if (INSERTING) then
+    -- Parse String
+    strCatIDs := :New.%3;
+    RelUtil.parse_char(strCatIDs,strCatID,';');
+    -- Start loop
+    for i in 1..100 loop
+      if (strCatID(i) <> ' ') then
+         -- parse one
+         RelUtil.parse_int(strCatID(i),strCatOrderID,'_');
+         -- insert into 
+         insert into DOM_REL_%2(%4,CLASS_1,CLASS_2,CLASS_3,CLASS_4,CLASS_5,CLASS_6,CLASS_7,CLASS_8,CLASS_9,CLASS_10,solr_id)
+		 values(%5,strCatOrderID(1),strCatOrderID(2),strCatOrderID(3),strCatOrderID(4),strCatOrderID(5),strCatOrderID(6),strCatOrderID(7),strCatOrderID(8),strCatOrderID(9),strCatOrderID(10),:New.SYS_DOCUMENTID||'_'||strCatOrderID(1));
+      end if;
+    end loop;
+  elsif (UPDATING) then
+  	if (:New.a_columnAll<>:Old.a_columnAll) then
+		-- read old datas
+		open update_cur for select CLASS_1,a_linkTitle,a_order,a_priority,a_position,a_attr from DOM_REL_%2 where SYS_DOCUMENTID=:old.SYS_DOCUMENTID;
+			fetch update_cur bulk collect into columnIDs,linkTitles,orders,priorities,positions,attrs;
+		close update_cur;
+		
+	    -- first  delete
+	    delete from DOM_REL_%2 where SYS_DOCUMENTID = :old.SYS_DOCUMENTID;
+		-- second insert
+	    strCatIDs := :New.%3;
+		RelUtil.parse_char(strCatIDs,strCatID,';');
+	    -- Start loop
+	    for i in 1..100 loop
+	      if (strCatID(i) <> ' ') then
+	         RelUtil.parse_int(strCatID(i),strCatOrderID,'_');
+	         -- insert
+	         insert into DOM_REL_%2(%4,CLASS_1,CLASS_2,CLASS_3,CLASS_4,CLASS_5,CLASS_6,CLASS_7,CLASS_8,CLASS_9,CLASS_10,solr_id)
+			 values(%5,strCatOrderID(1),strCatOrderID(2),strCatOrderID(3),strCatOrderID(4),strCatOrderID(5),strCatOrderID(6),strCatOrderID(7),strCatOrderID(8),strCatOrderID(9),strCatOrderID(10),:New.SYS_DOCUMENTID||'_'||strCatOrderID(1));
+	      end if;
+	    end loop;
+    
+		-- fill old datas
+		for i  in columnIDs.first .. columnIDs.last
+		loop
+			update DOM_REL_%2
+				set a_linkTitle=linkTitles(i), a_order=orders(i), a_priority=priorities(i), a_position=positions(i), a_attr=attrs(i)
+				where SYS_DOCUMENTID=:old.SYS_DOCUMENTID and CLASS_1=columnIDs(i);
+		end loop;
+	elsif (:Old.a_status <> :New.a_status OR :Old.a_pubTime <> :New.a_pubTime 
+		OR :Old.SYS_DELETEFLAG <> :New.SYS_DELETEFLAG OR :Old.a_hasTitlePic <> :New.a_hasTitlePic
+		OR :Old.SYS_AUTHORS <> :New.SYS_AUTHORS) then
+		update DOM_REL_%2 set 
+				a_status=:New.a_status,
+				a_pubTime=:New.a_pubTime,
+				SYS_DELETEFLAG=:New.SYS_DELETEFLAG,
+				SYS_AUTHORS=:New.SYS_AUTHORS,
+				a_hasTitlePic=:New.a_hasTitlePic
+			where SYS_DOCUMENTID=:New.SYS_DOCUMENTID;
+	end if;
+  elsif (DELETING) then
+	-- delete
+	delete from DOM_REL_%2 where SYS_DOCUMENTID = :old.SYS_DOCUMENTID;
+  end if;
+end;
+
+--==--
+alter trigger AUTO_SYN_%1_%2 compile

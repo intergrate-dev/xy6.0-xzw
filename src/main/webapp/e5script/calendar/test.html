@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<link type="text/css" rel="stylesheet" href="./calendar.css"/>
+<script src="./usecalendar.js"></script>
+<script src="./calendar.js"></script>
+</HEAD>
+
+<BODY>
+	<input id="mytest" type="text" value="2005-02-10">
+		<button onclick="showCalendar(mytest, 'y-mm-dd');">点击出现日历</button>
+	<BR><BR><BR>
+	
+	下面这个是演示需要在窗口中直接显示日历的情况：
+	<div id="mycal"></div>
+<script>
+	//若希望自己响应日历点击，则改写这个方法
+	//用于不是往一个input写日历，而是做别的窗口事件等的情况
+	function selected(cal, date) {
+		alert("自己的日历事件响应，不需要时去掉seleted函数即可。时间是：" + date);
+		cal.callCloseHandler();
+	}
+
+	//若直接要在窗口中显示日历
+	showCalendar(mycal, 'y-mm-dd');
+</script>
+</BODY>
+</HTML>

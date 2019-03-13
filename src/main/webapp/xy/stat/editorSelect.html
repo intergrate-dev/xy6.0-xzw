@@ -1,0 +1,317 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script type="text/javascript" src="../../e5script/jquery/jquery-1.9.1.min.js"></script>
+    <script src="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.js"></script>
+    <link rel="stylesheet" href="../script/bootstrap-3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../e5script/jquery/jquery-autocomplete/jquery.autocomplete.css"/>
+    <link type="text/css" rel="stylesheet" href="./css/dataTables.bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="./css/statistics.css"/>
+    <style>
+        .modal-content{
+            border: none;
+            border-radius: 0;
+        }
+        .modal .modal-body{
+            height: 340px;
+        }
+        .modal-body>div{
+            position: relative;
+        }
+        .modal-footer{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- 模态框（Modal） -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="cancelBtn" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="exp_myModalLabel">
+                    编辑人员
+                </h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="fl">
+                    <div class="dept-search" id="departMent">
+                        <input id="departmentSearch" type="text" placeholder="输入部门信息查询">
+                        <ul>
+                            <!--<li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>
+                            <li>某个部门</li>-->
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-default search-btn">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="fl">
+                    <div class="dept-search" id="departMan">
+                        <input id="departmanSearch" type="text" placeholder="输入人员信息查询">
+                        <ul>
+                            <!--<li>某个人员</li>
+                            <li>某个人员</li>
+                            <li>某个人员</li>-->
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-default search-btn">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="exp_confirm">确定</button>
+                <button type="button" class="btn btn-default" id="exp_cancel" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+<script type="text/javascript">
+var Individual_stat = {
+    autocompleteData:[],
+    autocompleteData_Man:[],
+    init : function() {
+        //获取部门信息
+        $("#departmentSearch").val("");
+        $("#departmanSearch").val("");
+        $("#departMan").find("ul").html("");
+        Individual_stat.getDepartmentData();
+    },
+    saveDepartmentMsg:function(data){
+        var autocompleteData=[];
+        var len=data.departmentData.length;
+        if(len<1) return;
+        for (var i = 0; i < len; i++) {
+            autocompleteData.push(data.departmentData[i].departmentName);
+        }
+        Individual_stat.autocompleteData=autocompleteData;
+        Individual_stat.autoCompleter.init();
+    },
+    saveDepartmentMsg_Man:function(data){
+        var autocompleteData_Man=[];
+        var len=data.userData.length;
+        if(len<1) return;
+        for (var i = 0; i < len; i++) {
+            autocompleteData_Man.push(data.userData[i].userName);
+        }
+        Individual_stat.autocompleteData_Man=autocompleteData_Man;
+        Individual_stat.autoCompleter_Man.init();
+
+        //模糊查询
+        /* $( "#partmentSearch" ).autocomplete({
+         source: workload_stat.autocompleteData
+         });*/
+    },
+    getDepartmentData:function(){
+        var url = "../../xy/statisticsutil/FindDepartment.do";
+        var params = {
+            "channelCode": "channelAll",
+            "siteID": 1,
+            "dataParam": {
+                "departmentID": "",
+                "statisticsType": "WorkDepartment",
+                "beginTime": "2016-01-01 00:00:00",
+                "endTime": "2017-01-01 00:00:00",
+                "pageSize": 40,
+                "pageNum": 1
+            }
+        }
+
+        $.ajax({
+            url: url,
+            data: JSON.stringify(params),
+            type: "POST",
+            dataType: "json",
+            async: false,
+            contentType: "application/json;charset=utf-8",
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(errorThrown + ':' + textStatus); // 错误处理
+            },
+            success: function(data) {var len=data.departmentData.length;
+                var departmentMsg='';
+                for (var i = 0; i < len; i++) {
+                    departmentMsg +='<li departmentID="'+data.departmentData[i].departmentID+'">'+data.departmentData[i].departmentName+'</li>';
+                }
+
+                $("#departMent").find("ul").html(departmentMsg);
+
+                //缓存部门信息
+                Individual_stat.saveDepartmentMsg(data);
+            }
+        })
+
+    }
+};
+//---------部门名称查找框-------------
+Individual_stat.autoCompleter = {
+    url : null,
+    init : function(evt) {
+        Individual_stat.autoCompleter.url =Individual_stat.autocompleteData;
+        var s = $("#departmentSearch");
+        s.autocomplete(Individual_stat.autoCompleter.url, Individual_stat.autoCompleter.options).result(Individual_stat.autoCompleter.getSelectedID);
+        //s.focus();
+    },
+    options : {
+        minChars : 1,
+        delay : 400,
+        autoFill : true,
+        selectFirst : true,
+        matchContains: true,
+        cacheLength : 1,
+        dataType:'json',
+        noRecord:"",
+        //把data转换成json数据格式
+        /*parse: function(data) {
+         if (!data)
+         return [];
+
+         return $.map(eval(data), function(row) {
+         return {
+         data: row
+         }
+         });
+         },*/
+        //显示在下拉框中的值
+        formatItem: function(row, i,max) { return row[0];},
+        formatMatch: function(row, i,max) { return row[0];},
+        formatResult: function(row, i,max) { return row[0];}
+    },
+    getSelectedID : function(event, data, formatted){
+        var username=$("#departmentSearch").val();
+        $("#departMent").find("li").each(function(index){
+            if($(this).text()==username){
+                $(this).addClass("selected").siblings().removeClass("selected");
+                $(this).parent().scrollTop(index * $(this).outerHeight(true));
+                $(this).click();
+            }
+        })
+
+    }
+};
+
+//---------人员名称查找框-------------
+Individual_stat.autoCompleter_Man = {
+    url : null,
+    init : function(evt) {
+        Individual_stat.autoCompleter_Man.url =Individual_stat.autocompleteData_Man;
+        var s = $("#departmanSearch");
+        s.autocomplete(Individual_stat.autoCompleter_Man.url, Individual_stat.autoCompleter_Man.options).result(Individual_stat.autoCompleter_Man.getSelectedID);
+        //s.focus();
+    },
+    options : {
+        minChars : 1,
+        delay : 400,
+        autoFill : true,
+        selectFirst : true,
+        matchContains: true,
+        cacheLength : 1,
+        dataType:'json',
+        noRecord:"",
+        //把data转换成json数据格式
+        /*parse: function(data) {
+         if (!data)
+         return [];
+
+         return $.map(eval(data), function(row) {
+         return {
+         data: row
+         }
+         });
+         },*/
+        //显示在下拉框中的值
+        formatItem: function(row, i,max) { return row[0];},
+        formatMatch: function(row, i,max) { return row[0];},
+        formatResult: function(row, i,max) { return row[0];}
+    },
+    getSelectedID : function(event, data, formatted){
+        var username=$("#departmanSearch").val();
+        $("#departMan").find("li").each(function(index){
+            if($(this).text()==username){
+                $(this).addClass("selected").siblings().removeClass("selected");
+                $(this).parent().scrollTop(index * $(this).outerHeight(true));
+            }
+        })
+
+    }
+};
+    $(function(){
+        Individual_stat.init();
+        //部门点击
+        $("#departMent").on("click","li",function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+            var siteID=getQueryString("siteID");
+            var departmentID=$("#departMent").find(".selected").attr("departmentid");
+            var url = "../../xy/statisticsutil/FindUserByDepartmentID.do";
+            var params = {
+                siteID: siteID,
+                departmentID: departmentID
+            }
+
+            $.ajax({
+                url: url,
+                data: JSON.stringify(params),
+                type: "POST",
+                dataType: "json",
+                async: false,
+                contentType: "application/json;charset=utf-8",
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown + ':' + textStatus); // 错误处理
+                },
+                success: function(data) {
+                    var len=data.userData.length;
+                    var departmentMsg='';
+                    for (var i = 0; i < len; i++) {
+                        departmentMsg +='<li userid="'+data.userData[i].userID+'">'+data.userData[i].userName+'</li>';
+                    }
+
+                    $("#departMan").find("ul").html(departmentMsg);
+
+                    //缓存人员信息
+                    Individual_stat.saveDepartmentMsg_Man(data);
+                }
+            })
+        });
+
+        //人员点击
+        $("#departMan").on("click","li",function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+        });
+
+        //从url中获取参数值
+        function getQueryString(name){
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if(r != null)return unescape(r[2]);
+            return null;
+        }
+
+
+        function getChecks() {
+            var _part=$("#departMent").find(".selected").text();
+            var _man=$("#departMan").find(".selected").text();
+            var _userID=$("#departMan").find(".selected").attr("userid");
+            if(!_part || !_man){return}
+
+            parent.selectClose(_man,_userID);
+        }
+        function doCancel() {
+            parent.selectCancel();
+        }
+        $("#exp_confirm").click(getChecks);
+        $("#cancelBtn").click(doCancel);
+        $("#exp_cancel").click(doCancel);
+    })
+
+</script>
+</body>
+</html>

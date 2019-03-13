@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title></title>
+<script type="text/javascript" src="../xtree/xtree.js"></script>
+<script type="text/javascript" src="../xtree/xmlextras.js"></script>
+<script type="text/javascript" src="../xtree/xloadtree.js"></script>
+<link type="text/css" rel="stylesheet" href="../xtree/xtree.css">
+
+<link 	type="text/css" rel="StyleSheet" href="../xmenu/xmenu.css">
+<script type="text/javascript" src="../xmenu/cssexpr.js"></script>
+<script type="text/javascript" src="../xmenu/xmenu.js"></script>
+
+<style>
+	body { background: white; color: black; }
+	input { width: 120px; }
+</style>
+
+</head>
+<body>
+
+<script>
+	//tree 
+	webFXTreeConfig.rootPath = "../";
+	webFXTreeConfig.defaultTarget = "doclist";
+	webFXTreeConfig.multiple = true;
+
+	webFXTreeConfig.defaultContextAction = "return false;";
+	var tree = new WebFXTree('机构角色');
+	tree.setBehavior('classic');
+	
+	//menu
+	webfxMenuUseHover	= false;
+	webfxMenuImagePath	= "../xmenu/images/";
+	webfxMenuHideTime	= 200;
+	webfxMenuShowTime	= 0;
+
+	function showTree()
+	{
+		if (document.getElementById) 
+		{
+			var a = new WebFXLoadTreeItem("编辑室", "getFlows.jsp?Tag=1&DocTypeID=1");
+			a.click = "clickDocType(this);";
+			a.contextAction = "popmenu(1, this)";
+			a.setAttribute("DocTypeID", "1");
+			tree.add(a);
+
+			var b = new WebFXLoadTreeItem("录入室", "getFlows.jsp?Tag=1&DocTypeID=1");
+			tree.add(b);
+
+			var a1 = new WebFXLoadTreeItem("编辑", "getFlows.jsp?Tag=1&DocTypeID=1");
+			a1.contextAction = "popmenu(1, this)";
+			a1.setAttribute("DocTypeID", "1");
+			a.add(a1);
+
+			a1 = new WebFXLoadTreeItem("签发人", "getFlows.jsp?Tag=1&DocTypeID=1");
+			a1.contextAction = "popmenu(1, this)";
+			a1.setAttribute("DocTypeID", "1");
+			a.add(a1);
+			document.write(tree);
+		}
+	}
+	var docTypeMenu = null;
+	var flowMenu 	= null;
+	var flowNodeMenu = null;
+	var doMenu 		= null;
+	var goMenu 		= null;
+	var backMenu 	= null;
+	var jumpMenu 	= null;
+	
+	prepareMenu();
+	
+	function popmenu(flag, src)
+	{
+			docTypeMenu.DocTypeID = src.DocTypeID;
+			docTypeMenu.srcID = src.id;
+			webFXMenuHandler.showMenu(docTypeMenu, src);
+	}
+	var selID = null;
+	//当在右键菜单中用Href调用时，this表示的是当前frame，
+	//用onclick调用时，this才表示当前<A>
+	function clickDocType2(src)
+	{
+		//get the main menu
+		var p = webFXMenuHandler.getMainMenu(src);
+		var docTypeID = p.DocTypeID;
+		selID = p.srcID;
+		var frm = parent.frames("doclist");
+		frm.location.href= "./FlowAdd.jsp?DocTypeID=" + docTypeID;
+	}
+	function clickDocType(src)
+	{
+		var frm = parent.frames("doclist");
+		frm.location.href= "./FlowAdd.jsp?id=" + src.id + "&DocTypeID=" + src.docTypeID;
+	}
+	//下面两种方式都可以
+	function addFlow(docTypeID, flowID, name, id)
+	{
+		var node = webFXTreeHandler.getNode(selID);
+		if (node) node.reload();
+		//*/
+		/*
+		var node = tree.getSelected();//webFXTreeHandler.getNode(id);
+		var a = new WebFXLoadTreeItem(name);
+		a.click = "clickFlow(this);";
+		a.contextAction = "popmenu(2, this);return false;";
+		a.setAttribute("FlowID", flowID);
+		a.icon = webFXTreeConfig.getFolderIcon();
+		a.openIcon = webFXTreeConfig.getOpenFolderIcon();
+		node.add(a);
+		//*/
+	}
+	
+	showTree();
+
+	function prepareMenu()
+	{
+		if (docTypeMenu == null)
+		{
+			docTypeMenu = new WebFXMenu;
+			docTypeMenu.width = 150;
+			docTypeMenu.add(new WebFXMenuItem("设置权限", "clickDocType2(this);", "设置当前机构/角色的权限"));
+			docTypeMenu.add(new WebFXMenuItem("设置类似权限", "clickDocType2(this);", "设置当前机构/角色的权限"));
+			document.write(docTypeMenu);
+		}
+	}
+	
+</script>
+</html>

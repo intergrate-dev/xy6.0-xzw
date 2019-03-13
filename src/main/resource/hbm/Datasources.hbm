@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.context">
+	<class name="E5DataSource" table="E5FLOW_DATASOURCES">
+	    <id name="dsID" type="int" column="DSID">
+	      <generator class="assigned"/>
+	    </id>
+		<property
+			column="NAME"
+			length="40"
+			name="name"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DATASOURCE"
+			length="40"
+			name="dataSource"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DBTYPE"
+			length="40"
+			name="dbType"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DBSERVER"
+			length="40"
+			name="dbServer"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DB"
+			length="40"
+			name="db"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DBUSER"
+			length="40"
+			name="user"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="DBPASSWORD"
+			length="40"
+			name="password"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

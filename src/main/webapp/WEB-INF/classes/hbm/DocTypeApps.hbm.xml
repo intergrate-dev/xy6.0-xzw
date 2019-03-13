@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	
+	<class name="com.founder.e5.dom.DocTypeApps" table="DOM_DOCTYPEAPPS">
+		<composite-id>
+			<key-property column="DOCTYPEID" name="docTypeID" type="integer"/>
+			<key-property column="APPID" name="appID" type="integer"/>
+		</composite-id>
+	</class>
+	
+</hibernate-mapping>

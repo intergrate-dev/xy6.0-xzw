@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.founder.e5.dom.docView.DocView" table="FSYS_DOCVIEW">
+		<id
+			column="FORMID"
+			name="id"
+			type="integer">
+			<generator class="assigned" />
+		</id>
+		<property
+			column="DOCTYPEID"
+			name="docTypeID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="FORMNAME"
+			length="255"
+			name="name"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="FORMCODE"
+			length="255"
+			name="code"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="PATH_JS"
+			length="255"
+			name="pathJS"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="PATH_CSS"
+			length="255"
+			name="pathCSS"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FIELDS"
+			length="4096"
+			name="fields"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="SLICE"
+			length="4096"
+			name="slice"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

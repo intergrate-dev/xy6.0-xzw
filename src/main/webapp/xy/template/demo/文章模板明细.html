@@ -1,0 +1,187 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>文章页</title>
+<style>
+	.columns li, .position li{
+		float:left; padding:3px; list-style:none;
+	}
+	.position, .article{clear:both;}
+	
+	.pages li {float:left; border:1px solid #0088cc;margin:5px;text-align:center;
+			padding:3px 20px; list-style:none;}
+	.pages li a {text-decoration:none;}
+	.page-next, .page-previous {background-color:#cccccc;}
+	.page-active {background-color: #0088cc}
+	body{
+		overflow-x: hidden;
+	}
+</style>
+</head>
+
+<body>
+<div class="columns">
+	<FOUNDER-XY type="columnlist" data="{'columnid':[],'columntype':'son'}">
+	<#if columns?exists>
+	<ul>
+	<#list columns as column>
+		<li><a href=" ${column.url}">${column.name}</a></li>
+	</#list>
+	</ul>
+	</#if>
+	</FOUNDER-XY>
+</div>
+<div class="position">
+	<FOUNDER-XY type="position" data="">
+		<ul>
+		<#list columns as column>
+			<li><a href=" ${column.url}">${column.name}</a></li>
+			<li>-</li>
+		</#list>
+		<li>正文</li>
+		</ul>
+	</FOUNDER-XY>
+</div>
+<div class="article">
+	<FOUNDER-XY type="article" data="">
+	文章ID	${article.id?c}			<br/>
+	标题	${article.title}			<br/>
+	标题(去除html标签)	${article.title?replace("<.*?>","","r")}			<br/>
+	副题	${article.subTitle}			<br/>
+	副题(去除html标签)	${article.subTitle?replace("<.*?>","","r")}			<br/>
+	摘要	${article.summary}			<br/>
+	摘要(去除html标签)	${article.summary?replace("<.*?>","","r")}		<br/>	
+	作者	${article.author}			<br/>
+	来源	${article.source}			<br/>
+	关键字	${article.keyword}			<br/>
+	标签	${article.tag}			<br/>
+	编辑	${article.editor}			<br/>
+	责任编辑	${article.liability}			<br/>
+	发布时间	${article.pubTime?string("yyyy-MM-dd HH:mm:ss") }		<br/>	
+	文章链接	${article.url}			<br/>
+	标题图片(大)	${article.picBig}			<br/>
+	标题图片(中)	${article.picMiddle}			<br/>
+	标题图片(小)	${article.picSmall}	<br/>
+	正文	${article.content}			
+	-------------------------------------------------------------------------------------------------<br/>
+	附件：<br/>
+	图片/组图：<br/>
+	图片/组图数量 ${article.attPics?size}<br/>
+	<#list article.attPics as attachment><br/>
+		图片/组图序号    ${attachment_index}<br/>
+		图片/组图ID ${attachment.id?c}<br/>
+		图片/组图稿件ID   ${attachment.articleID?c}<br/>
+		图片/组图链接(web)    ${attachment.url}<br/>
+		图片/组图链接(触屏) ${attachment.urlPad}<br/>
+		图片/组图说明 ${attachment.content}<br/>
+		图片/组图顺序 ${attachment.order}<br/>
+		图片/组图文件名    ${attachment.fileName}<br/>
+
+		-------------------------------	<br/>
+	</#list>
+
+	视频：<br/>
+	视频数量    ${article.attVideos?size}<br/>
+	<#list article.attVideos as attachment>
+		视频序号    ${attachment_index}<br/>
+		视频ID    ${attachment.id?c}<br/>
+		视频稿件ID  ${attachment.articleID?c}<br/>
+		视频链接(web)   ${attachment.url}<br/>
+		视频链接(触屏)    ${attachment.urlPad}<br/>
+		视频说明    ${attachment.content}<br/>
+		视频顺序    ${attachment.order}<br/>
+		视频文件名   ${attachment.fileName}<br/>
+		------------------------------- <br/>
+	</#list>
+	-------------------------------------------------------------------------------------------------	<br/>
+	扩展字段 ：<br/>
+	<#if article.extFields?exists>
+		<#list article.extFields?keys as key>
+			${key}---${article.extFields[key]!}<br/>
+		</#list>
+	</#if>
+	-------------------------------------------------------------------------------------------------<br/>
+	<#if article.lastPage>
+		相关稿件:<br/>
+		相关稿件数量	${article.rels?size}<br/>
+		<#list article.rels as rel>
+			相关稿件序号	${rel_index}<br/>
+			文章ID	${rel.id?c}<br/>
+			标题	${rel.title}<br/>
+			标题(去除html标签)	${rel.title?replace("<.*?>","","r")}<br/>
+			副题	${rel.subTitle}<br/>
+			副题(去除html标签)	${rel.subTitle?replace("<.*?>","","r")}<br/>
+			摘要	${rel.summary}<br/>
+			摘要(去除html标签)	${rel.summary?replace("<.*?>","","r")}<br/>
+			作者	${rel.author}<br/>
+			来源	${rel.source}<br/>
+			关键字	${rel.keyword}<br/>
+			标签	${rel.tag}<br/>
+			编辑	${rel.editor}<br/>
+			责任编辑	${rel.liability}<br/>
+			正文	${rel.content}<br/>
+			发布时间	${rel.pubTime?string("yyyy-MM-dd HH:mm:ss") }<br/>
+			文章链接	${rel.url}<br/>
+			标题图片(大)	${rel.picBig}<br/>
+			标题图片(中)	${rel.picMiddle}<br/>
+			标题图片(小)	${rel.picSmall}<br/>
+			-------------------------------	<br/>
+		</#list>
+		-------------------------------------------------------------------------------------------------<br/>
+
+		挂件<br/>
+		组图挂件：<br/>
+		<#if article.widgets.pic?exists>
+			组图标题	${article.widgets.pic.title!}<br/>
+			组图内容	${article.widgets.pic.content!}<br/>
+			<#if article.widgets.pic.members?exists>
+				图片数量	${article.widgets.pic.members?size!}<br/>
+				<#list article.widgets.pic.members as pic>
+					图片序号	${pic_index}<br/>
+					组图说明	${pic.content!}<br/>
+					组图链接	${pic.url!}<br/>
+					-----------------	<br/>
+				</#list>
+				-------------------------------	<br/>
+			</#if>
+		</#if>
+		-------------------------------------------------<br/>
+		视频挂件:<br/>
+		<#if article.widgets.video?exists>
+			视频ID	${article.widgets.video.id?c}<br/>
+			视频标题	${article.widgets.video.title}<br/>
+			视频内容	${article.widgets.video.content}<br/>
+			视频链接	${article.widgets.video.url}<br/>
+			-------------------------------	<br/>
+		</#if>
+		-----------------------------------------------<br/>
+		附件挂件:<br/>
+		附件数量	${article.widgets.attachments?size}<br/>
+		<#list article.widgets.attachments as attachment>
+			附件序号	${attachment_index}<br/>
+			附件ID	${attachment.id?c}<br/>
+			附件描述	${attachment.content}<br/>
+			附件链接	${attachment.url}<br/>
+			-------------------------------	<br/>
+		</#list>
+		-----------------------------------------------------<br/>
+		投票挂件:<br/>
+		<#if article.widgets.vote?exists>
+			投票标题：${article.widgets.vote.title}<br/>
+			投票类型：${article.widgets.vote.type}<br/>
+			<#list article.widgets.vote.options as option>
+				${option_index + 1}. ${option.option!}<br/>
+				<#if option.picUrl?exists>
+					<img src="${option.picUrl!}"/>
+				</#if>
+				<br/>
+			</#list>
+		</#if>
+	</#if>
+	</FOUNDER-XY>
+</div>
+</body>
+</html>

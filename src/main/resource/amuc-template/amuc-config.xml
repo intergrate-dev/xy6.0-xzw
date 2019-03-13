@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<oms-config>
+	<!-- 主界面菜单 -->
+	<tabs>
+		<tab name="会员中心" id="1" icon="member">
+			<sub-tab name="会员信息管理" id="11" docType="MEMBER" url="/amuc/Main.do" list="会员列表"
+						rule="mPotential_EQ_0"/>
+			<!-- <sub-tab name="潜在会员管理" id="12" docType="MEMBER" url="/amuc/Main.do" list="潜在会员列表"
+						rule="mPotential_EQ_1_AND_@DEPTS@_AND_@MEMBERTYPES@"/> -->
+			<sub-tab id="separator"/>
+			<sub-tab name="群组管理" id="13" docType="GROUP" url="/amuc/Main.do" list="群组列表"/>
+			<sub-tab id="separator"/>
+			<sub-tab name="会员高级查询" id="15" docType="MEMBER" url="/amuc/MemberQuery.do" list="会员列表"/>
+		</tab>
+		<tab name="积分经验" id="3" icon="scorexp">
+			<sub-tab name="积分管理" id="31" docType="MEMBERSCORE" url="/amuc/Main.do" list="积分管理列表"/>
+			<sub-tab name="异常积分监控" id="34" docType="SCOREUNUSUAL" url="/amuc/Main.do"/>
+			<sub-tab id="separator"/>
+			<sub-tab name="积分规则管理" id="33" docType="SCORERULE" url="/amuc/Main.do"/>
+			<sub-tab id="separator"/>
+			<sub-tab name="服务特权" id="35" docType="RIGHTS" url="/amuc/Main.do"/>
+		</tab>
+		<tab name="数字报计费" id="9" icon="epaper">
+			<sub-tab name="报卡管理" id="91" docType="PAPERCARD" url="/amuc/PaperCardManager.do" list="报卡列表"/>
+			<sub-tab id="separator"/>
+			<sub-tab name="订单管理" id="92" docType="ORDERS" url="/amuc/Main.do" list="订单列表"/>
+			<sub-tab id="separator"/>
+			<sub-tab name="套餐管理" id="93" docType="SETMEAL" url="/amuc/Main.do" list="套餐列表"/>
+		</tab>
+		<tab name="短信邮件" id="6" icon="email">
+			<sub-tab name="短信管理" id="61" docType="MSG" url="/amuc/Main.do"/>
+			<sub-tab name="邮件管理" id="62" docType="EMAIL" url="/amuc/Main.do"/>
+			<sub-tab name="邮件服务器管理" id="63" docType="EMAILSERVER" url="/amuc/Main.do"/>
+		</tab>
+		<tab name="分析挖掘" id="4" icon="analysics">
+			<sub-tab name="会员统计" id="42" docType="SCORERULE" url="/amuc/dataMining/MemberStatic.do"/>
+			<sub-tab name="积分统计" id="43" docType="SCORERULE" url="/amuc/dataMining/Score.do"/>
+			<!-- <sub-tab name="积分产出统计" id="43" docType="SCORERULE" url="/amuc/dataMining/ScoreOutput.do"/>
+			<sub-tab name="积分消费统计" id="44" docType="SCORERULE" url="/amuc/dataMining/ScoreConsume.do"/> -->
+			<sub-tab name="活动统计" id="45" docType="SCORERULE" url="/amuc/dataMining/ActionReport.do"/>
+			<sub-tab name="会员分析" id="41" docType="SCORERULE" url="/amuc/dataMining/MemberAnalysis.do"/>
+			<sub-tab name="订单统计" id="46" docType="SCORERULE" url="/amuc/dataMining/OrderStatic.do"/>
+			<sub-tab name="报卡统计" id="47" docType="SCORERULE" url="/amuc/dataMining/PaperCardDocStatic.do"/>
+		</tab>
+		<tab name="查重合并" id="5" icon="repeat">
+			<sub-tab name="查重规则定义" id="51" docType="DUPLICATIONRULE" url="/amuc/Main.do"/>
+			<sub-tab id="separator"/>
+			<sub-tab name="待处理查重信息" id="53" docType="DUPLICATIONDATA" url="/amuc/Main.do"/>
+		</tab>
+		<tab name="设置" id="7" icon="setting">
+			<sub-tab name="个人设置" noPermission="true" id="default" url="/amuc/MyConfig.do"/>
+			<sub-tab name="基础数据管理" id="71" url="/amuc/MyTenant.do"/>
+			<sub-tab name="充值渠道" id="72" docType="XNBRECHARGECHANNEL" url="/amuc/Main.do" list="充值渠道列表"></sub-tab>
+		</tab>
+	</tabs>
+	<!-- 各细览菜单 -->
+	<views>
+		<docType name="MEMBER">
+			<sub-tab name="基本信息" id="10" url="/e5workspace/DocView.do"/>
+			<!-- <sub-tab name="交易类行为" id="13" url="/amuc/ViewRelative.do?flag=2"/> -->
+			<sub-tab name="非交易类行为" id="14" url="/amuc/ViewRelative.do?flag=3"/>
+			<sub-tab name="积分" id="15" url="/amuc/ViewRelative.do?flag=4"/>
+			<sub-tab name="兑换记录" id="17" url="/amuc/ViewRelative.do?flag=6"/> 
+			<sub-tab name="操作记录" id="19" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+			<sub-tab name="收藏列表" id="20" url="/amuc/ViewRelative.do?flag=8"/>
+		</docType>
+		<docType name="ACTION">
+			<sub-tab name="活动信息" id="21" url="/amuc/action/DocView.do"/>
+			<sub-tab name="费用明细" id="22" url="/amuc/ViewRelative.do?flag=22"/>
+			<sub-tab name="推广短信发送日志" id="23" url="/amuc/ViewRelative.do?flag=23"/>
+			<sub-tab name="推广邮件发送日志" id="24" url="/amuc/ViewRelative.do?flag=24"/>
+			<sub-tab name="报名短信发送日志" id="25" url="/amuc/ViewRelative.do?flag=25"/>
+			<sub-tab name="报名邮件发送日志" id="26" url="/amuc/ViewRelative.do?flag=26"/>
+			<sub-tab name="活动反馈" id="27" url="/amuc/ViewRelative.do?flag=27"/>
+			<sub-tab name="操作记录" id="27" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="ENROLLTEMPLATE">
+			<sub-tab name="操作记录" id="27" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="MSG">
+			<sub-tab name="短信" id="61" url="/e5workspace/DocView.do"/>
+			<sub-tab name="发送日志" id="62" url="/amuc/ViewRelative.do?flag=61"/>
+			<sub-tab name="操作记录" id="63" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="EMAIL">
+			<sub-tab name="邮件" id="71" url="/e5workspace/DocView.do"/>
+			<sub-tab name="发送日志" id="72" url="/amuc/ViewRelative.do?flag=71"/>
+			<sub-tab name="操作记录" id="73" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="EMAILSERVER">
+			<sub-tab name="邮件" id="81" url="/e5workspace/DocView.do"/>
+			<sub-tab name="操作记录" id="82" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="GROUP">
+			<sub-tab name="群成员" id="31" url="/amuc/ViewRelative.do?flag=31"/>
+			<sub-tab name="操作记录" id="32" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="SURVEY">
+			<sub-tab name="调查问卷信息" id="51" url="/amuc/action/Survey.do?a=view"/>
+			<sub-tab name="操作记录" id="52" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="MEMBERINVITECODE">
+			<sub-tab name="邀请码使用记录" id="91" url="amuc/ViewRelative.do?flag=91"/>
+			<sub-tab name="操作记录" id="92" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="GAME">
+			<sub-tab name="基本信息" id="5-1" url="/e5workspace/DocView.do"/>
+			<sub-tab name="操作记录" id="5-9" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="MSGASSORT">
+			<sub-tab name="基本信息" id="3-1" url="/e5workspace/DocView.do"/>
+			<sub-tab name="操作记录" id="3-9" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="GIVING">
+			<sub-tab name="基本信息" id="9-1" url="/amuc/giving.do?action=find"/>
+			<sub-tab name="参与记录" id="9-2" url="/amuc/ListRelative.jsp?flag=2"/>
+			<sub-tab name="中奖名单" id="9-3" url="/amuc/ListRelative.jsp?flag=3"/>
+			<sub-tab name="操作记录" id="9-4" url="/e5workspace/manoeuvre/FlowRecordList.do"/>
+		</docType>
+		<docType name="MEMBERORDERS">
+			<sub-tab name="订单详情" id="1-1" url="amuc/order/detail.jsp"/>
+		</docType>
+		<docType name="MEMBERPAPERCARDLOG">
+			<sub-tab name="报卡日志详情" id="2-1" url="amuc/papercard/papercardLog.do"/>
+		</docType>
+	</views>
+</oms-config>

@@ -1,0 +1,7 @@
+package com.founder.xy.nis.qcloud.Module;
+
+public class Market extends Base {
+	public Market(){
+		serverHost = "market.api.qcloud.com";
+	}
+}

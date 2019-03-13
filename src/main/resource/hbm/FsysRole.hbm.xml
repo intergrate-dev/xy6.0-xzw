@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.sys.org">
+	<class name="com.founder.e5.sys.org.Role" table="FSYS_ROLE">
+		<id
+			column="NROLEID"
+			name="RoleID"
+			type="integer"
+		>
+			<generator class="assigned" />
+		</id>	
+		<property
+			column="STRROLENAME"
+			length="255"
+			name="RoleName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="ORDERID"
+			length="22"
+			name="OrderID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="NNODEID"
+			length="22"
+			name="OrgID"
+			not-null="true"
+			type="integer"
+		 />
+	</class>
+</hibernate-mapping>

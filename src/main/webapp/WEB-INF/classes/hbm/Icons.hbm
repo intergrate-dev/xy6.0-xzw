@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.flow">
+	<class name="Icon" table="E5FLOW_ICONS">
+		<id
+			column="ICONID"
+			name="ID"
+			type="integer"
+		>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="FILENAME"
+			length="128"
+			name="fileName"
+			update="false"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="ICONSIZE"
+			length="20"
+			name="size"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="DESCRIPTION"
+			length="128"
+			name="description"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="FORMAT"
+			length="8"
+			name="format"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

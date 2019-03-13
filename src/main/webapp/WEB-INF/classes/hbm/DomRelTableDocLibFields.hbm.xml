@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.founder.e5.rel.model.RelTableDocLibFields" table="DOM_REL_FIELDS">
+		<composite-id>
+			<key-property name="docLibID" column="DOCLIBID" type="integer" />
+			<key-property name="catTypeID" column="CATTYPEID" type="integer" />
+			<key-property name="tableField" column="TABLE_FIELD" type="string" />
+			<key-property name="libField" column="LIB_FIELD" type="string" />
+		</composite-id>
+
+	</class>
+	</hibernate-mapping>

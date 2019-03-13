@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加选项视频地址</title>
+<style>
+	.modal-backdrop{
+		z-index:140;	
+	}
+	.modal {
+	    width: 580px;
+	    z-index: 150;
+	}
+	.pop_wrap{
+		height: 500px;
+	    margin: 0 auto;
+	    width: 560px;
+	}
+	.pop_wrap .table td.left{text-align:right;color:#0088CC}
+	.alert{margin:10px;}
+	
+</style>
+
+</head>
+<body>
+    <div class="pop_wrap" style=''>
+		<div class="alert alert1">
+		请添加要引用的视频地址
+		</div>
+		<div class="input-prepend" id="addopvideodiv">
+			<textarea style='width:525px;height:200px;margin-left:10px;' id="videourlinput"></textarea>
+		</div>
+		<div style="margin-top:10px;margin-left:10px;">
+		<form class="form-inline">
+	   	 	<input type="button" id="opvideourldone" style="height: 39px; width: 120px;" class="btn" value="保&nbsp;&nbsp;存"/>
+	    </form>
+		</div>
+	</div>
+<script type="text/javascript">
+     var _opid = $("#temOpID").val(); 
+     
+     $(function(){
+    	 initVideoInfoByOpId(_opid);
+    	 $(".modal-header .close").click(function(){
+    		 $("#temOpID").attr("value","");
+    	 });
+    	 
+    	 $("#opvideourldone").click(function(){
+    		_contentText = $("#videourlinput").val();
+    		if(_contentText.trim()==""){
+    			showOptionAlert(_opid,$("#addopvideodiv"),"请编辑选项要引用的视频地址","error",2);
+    			return false;
+    		}
+    		var params = {};
+    		params.action = "editoptionvideo";
+    		params.opid = _opid;
+    		params.voVideaAdd = _contentText;
+    		params.showimgonpage = 1;
+    		showOptionAlert(_opid,$("#addopvideodiv"),"正在保存，请稍候...",'warning',0);
+    		$.ajax({
+     			type:"POST",
+      			url:"updateVoteOptionVideo.do",
+      			data:params,
+      			dataType:"json",
+      			success:function(data){
+      				if(data.ret=="1"){
+      					$("#temOpID").attr("value","");
+      					$("#table_"+_opid).find(".addvideobtn").addClass("disabled");
+      					$(".modal-header .close").click();
+      					
+      					if($("#opmedias_"+_opid).find(".optionvideo").is("div")){
+      						showOptionAlert(_opid,$("#opmedias_"+_opid),"添加选项视频地址成功",'success',2);
+      					}else{
+      						_pagetextbox = getOptionVideoBox(_opid);
+      						$("#opmedias_"+_opid+" .clear").before(_pagetextbox);
+      		 				showOptionAlert(_opid,$("#opmedias_"+_opid),"添加选项视频地址成功",'success',2);
+      					}
+      				}else{
+      					jAlert(data.retinfo.errormsg,"提示");
+      				}
+      			}
+     		 });
+    	 })
+     });
+     
+     function initVideoInfoByOpId(_opid){
+  	   $.ajax({
+  			type:"POST",
+  			url:"getoption.do",
+  			data:{action:'getoption',opid:_opid},
+  			dataType:"json",
+  			success:function(data){
+  				if(data.ret=="1"){
+  					_textContent = data.retinfo.opinfo.voVideoAdd;
+  					$("#videourlinput").text(_textContent);
+  				}else{
+  					$(".alert1").html(data.retinfo.errormsg);
+  				}
+  			}
+  		});
+     }
+</script>
+</body>
+</html>

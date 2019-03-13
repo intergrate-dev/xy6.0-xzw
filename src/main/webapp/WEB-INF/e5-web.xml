@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- ========================= VIEW DEFINITIONS ========================= -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"><value>org.springframework.web.servlet.view.JstlView</value></property>
+		<property name="prefix"><value>/</value></property>
+		<property name="suffix"><value>.jsp</value></property>
+	</bean>
+
+	<!-- ========================= Parameter Define ========================= -->
+	<bean id="actionParaMethodResolver"
+        class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+        <property name="paramName"><value>invoke</value></property>
+        <property name="defaultMethodName"><value>handle</value></property>
+    </bean>
+
+	<!-- ========================= DEFINITIONS OF PUBLIC CONTROLLERS ========================= -->
+	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order"><value>0</value></property>
+		<property name="mappings">
+			<props>
+				<!-- ================================== 0. Sys ===============================-->
+				<prop key="/e5sys/sysAuth.do">sys.Auth</prop>
+				<prop key="/e5sys/sysLogin.do">sys.Login</prop>
+				<prop key="/e5sys/sysLogout.do">sys.Logout</prop>
+				<prop key="/e5sys/sysMenu.do">sys.SysMenu</prop>
+				<prop key="/e5sys/cache.do">sys.Cache</prop>
+				<prop key="/e5sys/cacheSubmit.do">sys.CacheSubmit</prop>
+				<prop key="/e5sys/syslog/logQuery.do">sys.SysLog</prop>
+				<prop key="/e5sys/log4j/loggersxml.do">sys.Log4j</prop>
+				<prop key="/e5sys/loginmonitor/loginArchive.do">sys.LoginArchive</prop>
+                <prop key="/e5sys/note/SysNote.do">sys.Note</prop>
+                <prop key="/e5sys/note/CreateNote.do">sys.CreateNote</prop>
+                <prop key="/e5sys/note/ReadNote.do">sys.ReadNote</prop>
+                <prop key="/e5sys/note/DeNote.do">sys.DeNote</prop>
+				<prop key="/e5sys/note/ClearNote.do">sys.ClearNote</prop>
+				<!-- 0.2 DataSource -->
+				<prop key="/e5sys/DataSourceEdit.do">sys.DataSourceEdit</prop>
+				<prop key="/e5sys/DataSource.do">sys.DataSource</prop>
+				<prop key="/e5sys/DataSourceBindEdit.do">sys.DataSourceBindEdit</prop>
+				<prop key="/e5sys/DataSourceBind.do">sys.DataSourceBind</prop>
+				<!-- ================================== 1. Permission =========================-->
+				<prop key="/e5permission/listPage.do">permission.Tab</prop>
+				<!-- 1.0 Permission FlowBundle-->
+				<prop key="/e5permission/permissionFlowBundle.do">permission.FlowBundle</prop>
+				<prop key="/e5permission/submitFlowBundle.do">permission.FlowBundleSubmit</prop>
+				<!-- 1.1 Permission Flow-->
+				<prop key="/e5permission/permissionFlow.do">permission.FlowList</prop>
+				<prop key="/e5permission/mainFlow.do">permission.FlowMain</prop>
+				<prop key="/e5permission/submitFlow.do">permission.FlowSubmit</prop>
+				<prop key="/e5permission/mainUnflow.do">permission.UnflowMain</prop>
+				<prop key="/e5permission/submitUnflow.do">permission.UnflowSubmit</prop>
+				<!-- 1.2 Permission Folder-->
+				<prop key="/e5permission/permissionFolder.do">permission.FolderList</prop>
+				<prop key="/e5permission/mainFolder.do">permission.FolderMain</prop>
+				<prop key="/e5permission/treeFolder.do">permission.FolderTree</prop>
+				<prop key="/e5permission/submitFolder.do">permission.FolderSubmit</prop>
+				<!-- 1.3 Permission Category-->
+				<prop key="/e5permission/listCatType.do">permission.CatTypeList</prop>
+				<prop key="/e5permission/treeCat.do">permission.CatTree</prop>
+				<prop key="/e5permission/submitCat.do">permission.CatSubmit</prop>
+				<!-- 1.4 Permission Resource Folder-->
+				<prop key="/e5permission/permissionFolderResource.do">permission.resource.FolderMain</prop>
+				<prop key="/e5permission/treeFolderResource.do"> permission.resource.FolderTree</prop>
+				<prop key="/e5permission/submitFolderResource.do">permission.resource.FolderSubmit</prop>
+				<!-- 1.5 Permission Resource Flow-->
+				<prop key="/e5permission/permissionFlowResource.do">permission.resource.FlowMain</prop>
+				<prop key="/e5permission/treeFlowResource.do">permission.resource.FlowTree</prop>
+				<prop key="/e5permission/submitFlowResource.do">permission.resource.FlowSubmit</prop>
+				<prop key="/e5permission/permissionUnflowResource.do">permission.resource.UnflowMain</prop>
+				<prop key="/e5permission/treeUnflowResource.do">permission.resource.UnflowTree</prop>
+				<prop key="/e5permission/submitUnflowResource.do">permission.resource.UnflowSubmit</prop>
+
+				<prop key="/e5permission/permissionFlowFVUserResource.do">permission.resource.FlowFVUserMain</prop>
+				<prop key="/e5permission/treeFlowFVUserResource.do">permission.resource.FlowFVUserTree</prop>
+				<prop key="/e5permission/submitFlowFVUserResource.do">permission.resource.FlowFVUserSubmit</prop>
+				<!-- 1.6 Permission Copy-->
+				<prop key="/e5permission/copy.do">permission.Copy</prop>
+				<!-- 1.7 Filter and Rule Permission -->
+				<prop key="/e5permission/permissionFilterRule.do">permission.FilterRule</prop>
+				<prop key="/e5permission/filterRuleSubmit.do">permission.FilterRuleSubmit</prop>
+				<!-- 1.8 Folder Proc Permission -->
+				<prop key="/e5permission/FVProcTree.do">permission.FVProcTree</prop>
+				<prop key="/e5permission/FVProcPermission.do">permission.FVProcPermission</prop>
+				<prop key="/e5permission/FVProcPermissionSubmit.do">permission.FVProcPermissionSubmit</prop>
+				<!-- 1.9 Multi Code Proc Permission -->
+				<prop key="/e5permission/MultiCodeProc.do">permission.MultiCodeProc</prop>
+				<prop key="/e5permission/MultiCodeProcSubmit.do">permission.MultiCodeProcSubmit</prop>
+				<!-- ================================== 2. DOM =========================-->
+				<prop key="/e5dom/showFolderTree.do">dom.showFolderTree</prop>
+				<prop key="/e5dom/showSubFolders.do">dom.showSubFolders</prop>
+				<prop key="/e5dom/exportDocType.do">dom.exportDocType</prop>
+				<prop key="/e5dom/FolderTree.do">dom.FolderTree</prop>
+				<prop key="/e5dom/DocTypeFieldsInfo.do">dom.DocTypeFieldsInfo</prop>
+				<!-- ================================== 3. Category =========================-->
+				<!-- 3.1 Category Tree -->
+				<prop key="/e5cat/CatTypeTreeView.do">cat.CatTypeTreeView</prop>
+				<prop key="/e5cat/CatTreeView.do">cat.CatTreeView</prop>
+				<prop key="/e5cat/CatTree.do">cat.CatTree</prop>
+				<!-- 3.2 Category -->
+				<prop key="/e5cat/Cat.do">cat.Cat</prop>
+				<prop key="/e5cat/CatList.do">cat.CatList</prop>
+				<prop key="/e5cat/CatSort.do">cat.CatSort</prop>
+				<prop key="/e5cat/CatDrag.do">cat.CatDrag</prop>
+				<prop key="/e5cat/CatEdit.do">cat.CatEdit</prop>
+				<prop key="/e5cat/CatPubEdit.do">cat.CatPubEdit</prop>
+				<prop key="/e5cat/CatLinkEdit.do">cat.CatLinkEdit</prop>
+				<prop key="/e5cat/CatView.do">cat.CatView</prop>
+				<prop key="/e5cat/CatExport.do">cat.CatExport</prop>
+				<prop key="/e5cat/CatRestore.do">cat.CatRestore</prop>
+				<prop key="/e5cat/CatImport.do">cat.CatImport</prop>
+				<prop key="/e5cat/CatCheck.do">cat.CatCheck</prop>
+				<!-- 3.3 Category Extend -->
+				<prop key="/e5cat/CatExt.do">cat.CatExt</prop>
+				<prop key="/e5cat/CatExtEdit.do">cat.CatExtEdit</prop>
+				<!-- 3.4 Category Type -->
+				<prop key="/e5cat/CatType.do">cat.CatType</prop>
+				<prop key="/e5cat/CatTypeEdit.do">cat.CatTypeEdit</prop>
+				<prop key="/e5cat/CatTypeList.do">cat.CatTypeList</prop>
+				<prop key="/e5cat/CatTypeSort.do">cat.CatTypeSort</prop>
+
+				<!-- ================================== 4. Organization =========================-->
+				<prop key="/e5sys/org/OrgTreeGenerate.do">OrgTreeGenerate.do</prop>
+				<prop key="/e5sys/org/FolderTreeGenerate.do">FolderTreeGenerate.do</prop>
+				<prop key="/e5sys/org/OrgMgrAction.do">OrgMgrAction.do</prop>
+				<prop key="/e5sys/org/RoleMgrAction.do">RoleMgrAction.do</prop>
+				<prop key="/e5sys/org/UserMgrAction.do">UserMgrAction.do</prop>
+				<prop key="/e5sys/org/RoleMgrUserAction.do">RoleMgrUserAction.do</prop>
+				<prop key="/e5sys/org/UserMgrFolderAction.do">UserMgrFolderAction.do</prop>
+				<prop key="/e5sys/org/SortAction.do">SortAction.do</prop>
+				<prop key="/e5sys/storage/StorageDeviceMgrAction.do">StorageDeviceMgrAction.do</prop>
+				<prop key="/e5sys/sysconfig/SysConfigureMgrAction.do">SysConfigureMgrAction.do</prop>
+				<prop key="/e5sys/loginmonitor/LoginMonitorAction.do">LoginMonitorAction.do</prop>
+				<prop key="/e5sys/org/QueryOrgAction.do">QueryOrgAction.do</prop>
+				<prop key="/e5sys/org/OrgExchangeAction.do">OrgExchangeAction.do</prop>
+
+				<prop key="/e5sys/org/UserMgrFormAction.do">org.UserMgrFormAction</prop>
+				<prop key="/e5sys/org/RoleValidAction.do">org.RoleValidAction</prop>
+				<prop key="/e5sys/storage/StorgeDeviceFormAction.do">storage.StorgeDeviceFormAction</prop>
+				<prop key="/app/ApplicationSystemAction.do">app.ApplicationSystemAction</prop>
+				
+				<prop key="/e5sys/org/DefaultFolder.do">org.DefaultFolder</prop>
+				<prop key="/e5sys/org/DefaultFolderAction.do">DefaultFolderAction.do</prop>
+				
+				<prop key="/e5sys/org/FolderMapping.do">org.FolderMapping</prop>
+
+				<prop key="/e5sys/org/LDAPUser.do">org.LDAPUser</prop>
+				<!-- ================================== 5. Scheduler =========================-->
+				<prop key="/e5scheduler/SysJob.do">scheduler.SysJob</prop>
+				<prop key="/e5scheduler/SysJobEdit.do">scheduler.SysJobEdit</prop>
+				<prop key="/e5scheduler/SysTrigger.do">scheduler.SysTrigger</prop>
+				<prop key="/e5scheduler/SysTriggerEdit.do">scheduler.SysTriggerEdit</prop>
+				<prop key="/e5scheduler/Scheduler.do">scheduler.Scheduler</prop>
+				<prop key="/e5scheduler/SchedulerCommand.do">scheduler.SchedulerCommand</prop>
+				<prop key="/e5scheduler/SchedulerRemoteCommand.do">scheduler.SchedulerRemoteCommand</prop>
+
+				<!--======= V3.0 ======= -->
+				<prop key="/e5listpage/cust_typeReader.do">listpage.custom.DocType</prop>
+				<prop key="/e5listpage/cust_customBuilderReader.do">listpage.custom.DocCustomBuilder</prop>
+				<prop key="/e5listpage/cust_iconViewReader.do">listpage.custom.IconView</prop>
+				<prop key="/e5listpage/ListSubmit.do">listpage.custom.ListSubmit</prop>
+				<prop key="/e5flow/cust_FlowNodeReader.do">flow.custom.FlowNode</prop>
+				<prop key="/e5flow/cust_submit.do">flow.custom.Submit</prop>
+				<prop key="/e5flow/cust_flowIconGroup.do">flow.custom.FlowIconGroup</prop>
+				<!-- sysConfig -->
+				<prop key="/e5app/ApplicationSystemAction.do">app.ApplicationSystemAction</prop>
+				<prop key="/e5sys/sysconfig/UrlValidate.do">UrlValidate.do</prop>
+				<prop key="/e5sys/storage/StorgeDeviceController.do">storage.StorgeDeviceController</prop>
+				<!-- DocType -->
+				<prop key="/e5dom/DocTypeFieldRestore.do">dom.DocTypeFieldRestore</prop>
+				<prop key="/e5dom/DocTypeController.do">dom.DocTypeController</prop>
+				<prop key="/e5dom/DocLibController.do">dom.DocLibController</prop>
+				<prop key="/e5dom/FolderController.do">dom.FolderController</prop>
+				<prop key="/e5dom/ViewController.do">dom.ViewController</prop>
+				<prop key="/e5dom/FilterController.do">dom.FilterController</prop>
+				<prop key="/e5dom/RuleController.do">dom.RuleController</prop>
+				<prop key="/e5dom/DocTypeFieldController.do">dom.DocTypeFieldController</prop>
+				<prop key="/e5dom/FormController.do">dom.FormController</prop>
+				<prop key="/e5dom/form/Preview.do">dom.FormController</prop>
+				<prop key="/e5dom/DetailViewController.do">dom.DetailViewController</prop>
+				<prop key="/e5rel/RelTableController.do">rel.RelTableController</prop>		
+				<prop key="/e5rel/RelTableDocLibController.do">rel.RelTableDocLibController</prop>
+				
+				<prop key="/e5dom/QueryFormController.do">dom.QueryFormController</prop>
+				<prop key="/e5dom/QueryFormPreview.do">dom.QueryFormController</prop>
+				<prop key="/e5dom/FieldGroup.do">dom.FieldGroup</prop>
+				<prop key="/e5permission/CatOne.do">permission.CatOne</prop>
+				
+				<prop key="/e5sys/DataMain.do">sys.DataMain</prop>
+			</props>
+		</property>
+		<property name="urlMap">
+			<map>
+				<entry key="e5flow/listDocTypeOp.do"><ref bean="flow.OpDocTypeList"/></entry>
+				<entry key="e5flow/listOp.do"><ref bean="flow.OpList"/></entry>
+				<entry key="e5flow/Operation.do"><ref bean="flow.Operation"/></entry>
+				<entry key="e5flow/OpSubmit.do"><ref bean="flow.OpSubmit"/> </entry>
+
+				<entry key="e5flow/listIcon.do"><ref bean="flow.IconList"/></entry>
+				<entry key="e5flow/IconSubmit.do"><ref bean="flow.IconSubmit"/></entry>
+
+				<entry key="e5flow/listDocType.do"><ref bean="flow.DocTypeList"/></entry>
+				<entry key="e5flow/listFlow.do"><ref bean="flow.FlowList"/></entry>
+				<entry key="e5flow/listNodes.do"><ref bean="flow.FlowNodeList"/></entry>
+				<entry key="e5flow/listProc.do"><ref bean="flow.ProcList"/></entry>
+
+				<entry key="e5flow/Flow.do"><ref bean="flow.Flow"/></entry>
+				<entry key="e5flow/FlowSubmit.do"><ref bean="flow.FlowSubmit"/></entry>
+
+				<entry key="e5flow/FlowNode.do"><ref bean="flow.FlowNode"/></entry>
+				<entry key="e5flow/FlowNodeSubmit.do"><ref bean="flow.FlowNodeSubmit"/></entry>
+
+				<entry key="e5flow/Proc.do"><ref bean="flow.Proc"/></entry>
+				<entry key="e5flow/addProc.do"><ref bean="flow.ProcSubmit"/></entry>
+				<entry key="e5flow/deleteProc.do"><ref bean="flow.ProcDelete"/></entry>
+
+				<entry key="e5flow/ProcOrder.do"><ref bean="flow.ProcOrder"/></entry>
+
+				<entry key="e5flow/procGroup.do"><ref bean="flow.ProcGroup"/></entry>
+				<entry key="e5flow/procGroupSubmit.do"><ref bean="flow.ProcGroupSubmit"/></entry>
+				<entry key="e5flow/procSuit.do"><ref bean="flow.ProcSuit"/></entry>
+				<entry key="e5flow/procSuitSubmit.do"><ref bean="flow.ProcSuitSubmit"/></entry>
+
+			</map>
+		</property>
+	</bean>
+	<bean id="defaultHandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order"><value>1</value></property>
+	</bean>
+</beans>

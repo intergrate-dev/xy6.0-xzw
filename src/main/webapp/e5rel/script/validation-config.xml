@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "validation-config.dtd">
+<validation-config lang="auto">
+	<!--RelTable.CreateTable-->
+	<form id="RelTableNameForm" show-error="errorDiv" onfail="" show-type="first">
+		<field name="Name" display-name="Name" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="30" />			
+		</field>
+		<field name="NewTableName" display-name="NewTableName" onfail="">
+			<depend name="required" />
+			<depend name="commonChar" />
+			<depend name="maxLength" param0="10" />		
+		</field>
+	</form>
+
+	<!--RelTable.CreateField-->
+	<form id="AddFieldForm" show-error="errorDiv1" onfail="" show-type="first">
+		<field name="fieldName" display-name="fieldName" onfail="">
+			<depend name="required" />
+			<depend name="commonChar" />
+			<depend name="maxLength" param0="30" />			
+		</field>
+	</form>
+
+	<form id="ModifyRelTableForm" show-error="errorDiv2" onfail="" show-type="first">
+		<field name="newRelTableName" display-name="Name" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="30" />			
+		</field>
+	</form>
+
+</validation-config>

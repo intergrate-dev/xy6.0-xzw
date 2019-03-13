@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>插入代码</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+    <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="code.css" />
+    <!--<script src="../../src/adapter/editorui.js"></script>-->
+    <!--<script src="code_1.js"></script>-->
+
+</head>
+<body >
+ <div class="wrapper" >
+    <div id="codeTab">
+        <!-- 标题 -->
+        <div id="tabHeads" class="tabhead">
+            <!--<span tabSrc="code" data-content-id="code"><var id="lang_tab_code"></var></span>-->
+            <span tabSrc="codelib" class="tab-span" data-content-id="codelib">代码内容</span>
+        </div><!-- END 标题 -->
+        <div id="tabBodys" class="tabbody">
+            <div id="code-content">
+                <textarea name="code" id="code-textarea" ></textarea>
+            </div>
+        </div>
+    </div>
+ </div>
+ <script type="text/javascript">
+
+     dialog.onok = function (){
+         var str=$("#code-textarea").val(),
+             strReg;
+
+         //加入居中显示代码---星洲。
+         //var strRex = /(<\s*blockquote)([^>]*>+.*?<\s*path[^>]*>.*?<\s*\/blockquote\s*>)/gim;
+         if(str.indexOf('blockquote') != -1 && str.indexOf('path') != -1){
+             strReg = $(str).css('margin', '0px auto')[0].outerHTML + '<br/>';
+         }else{
+             strReg = str;
+         }
+
+         editor.execCommand('inserthtml',strReg);
+     }
+
+
+ </script>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.founder.e5.app">
+	<class name="App" table="FSYS_APP">
+		
+		<composite-id>
+			<key-property
+				column="APPVERSION"
+				name="Version"
+				type="string"
+			 />
+			<key-property
+				column="APPNAME"
+				name="Name"
+				type="string"
+			 />
+		</composite-id>
+		<property
+			column="APPPROVIDER"
+			length="30"
+			name="Provider"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="APPABSVERSION"
+			length="30"
+			name="AbsVersion"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="INITINFO"
+			length="255"
+			name="InitInfo"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="APPID"
+			length="22"
+			name="AppID"
+			not-null="true"
+			type="integer"
+		 />
+	</class>
+</hibernate-mapping>

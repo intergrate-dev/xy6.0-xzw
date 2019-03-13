@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+
+
+    <!--*******************************************************************************************************  -->
+    <!--****************************  ********Redis集群配置开始************************************************  -->
+    <!--*******************************************************************************************************  -->
+
+    <bean id="hostAndPort1" class="redis.clients.jedis.HostAndPort">
+        <constructor-arg name="host" value="${REDIS1_ADDR:47.97.75.226}"/>
+        <constructor-arg name="port" value="7000"/>
+    </bean>
+    <bean id="hostAndPort2" class="redis.clients.jedis.HostAndPort">
+        <constructor-arg name="host" value="${REDIS2_ADDR:47.97.75.226}"/>
+        <constructor-arg name="port" value="7001"/>
+    </bean>
+    <bean id="hostAndPort3" class="redis.clients.jedis.HostAndPort">
+        <constructor-arg name="host" value="${REDIS3_ADDR:47.97.75.226}"/>
+        <constructor-arg name="port" value="7002"/>
+    </bean>
+    <bean id="hostAndPort4" class="redis.clients.jedis.HostAndPort">
+        <constructor-arg name="host" value="${REDIS3_ADDR:47.97.75.226}"/>
+        <constructor-arg name="port" value="7003"/>
+    </bean>
+    <bean id="hostAndPort5" class="redis.clients.jedis.HostAndPort">
+        <constructor-arg name="host" value="${REDIS1_ADDR:47.97.75.226}"/>
+        <constructor-arg name="port" value="7004"/>
+    </bean>
+    <bean id="hostAndPort6" class="redis.clients.jedis.HostAndPort">
+        <constructor-arg name="host" value="${REDIS2_ADDR:47.97.75.226}"/>
+        <constructor-arg name="port" value="7005"/>
+    </bean>
+    <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster" scope="singleton">
+        <constructor-arg index="0" name="jedisClusterNode">
+            <set>
+                <ref bean="hostAndPort1"/>
+                <ref bean="hostAndPort2"/>
+                <ref bean="hostAndPort3"/>
+                <ref bean="hostAndPort4"/>
+                <ref bean="hostAndPort5"/>
+                <ref bean="hostAndPort6"/>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="1" name="connectionTimeout" value="3000"/>
+        <constructor-arg index="2" name="soTimeout" value="3000"/>
+        <constructor-arg index="3" name="maxAttempts" value="3"/>
+        <constructor-arg index="4" name="poolConfig" ref="redisPoolConfig"/>
+
+        <!--<constructor-arg index="4" name="password" value="abcd" />
+        <constructor-arg index="5" name="poolConfig" ref="redisPoolConfig" />-->
+
+    </bean>
+
+    <bean id="JedisClientCluster" class="com.founder.amuc.commons.JedisClientCluster"/>
+
+    <bean id="redisPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+        <property name="maxTotal" value="500"/>
+        <property name="maxIdle" value="50"/>
+        <property name="maxWaitMillis" value="3000"/>
+        <property name="testOnBorrow" value="true"/>
+    </bean>
+
+
+    <!--*******************************************************************************************************  -->
+    <!--****************************  ********Redis集群配置结束************************************************  -->
+    <!--*******************************************************************************************************  -->
+    <!--************================================================================================================================================================***********  -->
+
+    <!--*******************************************************************************************************  -->
+    <!--************************************Redis单节点配置开始************************************************  -->
+    <!--*******************************************************************************************************  -->
+    <!--
+
+       <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+           <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+           <constructor-arg name="host" value="${REDIS_HOST:127.0.0.1}"/>
+           <constructor-arg name="port" value="${REDIS_PORT:6379}" type="int"/>
+           <constructor-arg name="timeout" value="3000" type="int"/>
+           <constructor-arg name="password" value="${REDIS_PASSWORD:Founder@123}"/>
+       </bean>
+
+       <bean id="JedisClientSingle" class="com.founder.amuc.commons.JedisClientSingle"/>
+       <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+           <property name="maxIdle" value="50"/>
+           <property name="maxWaitMillis" value="3000"/>
+           <property name="testOnBorrow" value="true"/>
+       </bean>
+
+    -->
+    <!--*******************************************************************************************************  -->
+    <!--************************************Redis单节点配置结束************************************************  -->
+    <!--*******************************************************************************************************  -->
+
+</beans>

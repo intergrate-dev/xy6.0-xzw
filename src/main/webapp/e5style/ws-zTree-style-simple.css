@@ -1,0 +1,38 @@
+﻿.ztree{
+	overflow: auto;
+	padding-top: 10px;
+	position: absolute;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	z-index:1;
+}
+.ztree li{
+	margin:2px 0;
+}
+.ztree li a{
+	color: #666;
+	padding:2px 5px;
+}
+.ztree li a:hover{
+	background:#f5f5f5;
+}
+.ztree li a.curSelectedNode{
+	background:#0284E2;
+	color:#fff;
+	border:0 none;
+}
+.ztree li span.button.switch {
+	height: 12px;
+	width: 12px;
+	overflow: hidden;
+	background: #fff url('../images/simple/icon_skin.gif') repeat-x 0 0;
+	margin-top:3px;
+}
+.ztree li span.button.noline_docu{
+	background:none;
+}
+.ztree li span.button.noline_close{
+	background-position: -15px 0;
+}

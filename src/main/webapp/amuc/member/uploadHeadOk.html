@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+var uploadUrl=window.location .href;
+var aa=uploadUrl.indexOf('=');
+if (aa != -1){
+	uploadUrl=uploadUrl.substring(aa+1);
+	var v=uploadUrl.split(",");
+	var url = v[0];
+	var width = v[1];
+	var height = v[2];
+	parent.callback(url,width,height);
+}
+</script>
+</body>
+</html>

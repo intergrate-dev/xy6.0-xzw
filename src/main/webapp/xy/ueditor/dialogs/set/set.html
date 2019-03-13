@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title></title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+	<script type="text/javascript" src="../internal.js"></script>
+	 <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+ 
+	<link rel="stylesheet" type="text/css" href="set.css"/>
+   
+</head>
+<body>
+	<div id="warpper" class="warpper" >
+		
+        <div id="main">
+         <div id="menu_list">
+                  <ul>
+                    <li id="style_set " class="select">编辑样式设置</li>
+                    <li id="font_set" class="">编辑文种设置</li>
+                    <li id="picture_set" class="">图片操作选项</li>
+                    <li id="coner_set" class="">全半角转换设置</li>
+                    <li id="other_set" class="">其他选项设置</li>
+                  </ul>
+                </div>
+	</div>
+    <div id="contents">
+        <div id="content_1" class="content" style="display:block">
+            <h3>编辑样式设置</h3>
+           <div class="style_font_select menu">
+            
+            <span title="the_title" style="margin-left:32px;" >在编辑视图中运用编辑样式</span> 
+             </div>
+            <div class="row">
+            <label class="">正文字体：</label>
+                                <select id="fontType" style="width:40%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="宋体" selected></option>
+			                           <option value="仿宋"></option>
+			                           <option value="微软雅黑"></option>
+			                           <option value="楷体"></option>
+                                       <option value="黑体"></option>
+                                       <option value="隶书"></option>
+                                       <option value="幼圆"></option>
+                                       <option value="方正博雅宋_GBK"></option>
+                                       <option value="新宋体"></option>
+                                       <option value="andale mono"></option>
+                                       <option value="arial"></option>
+                                       <option value="arial black"></option>
+                                       <option value="comic sans ms"></option>
+                                       <option value="impact"></option>
+                                       <option value="times new roman"></option>
+		</select>
+        </div>
+       <div class="row">
+            <label class="">字体大小：</label>
+                                <select id="fontSize" style="width:20%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="48px"></option>
+			                           <option value="36px"></option>
+			                           <option value="28px"></option>
+			                           <option value="26px"></option>
+                                       <option value="24px"></option>
+                                       <option value="22px"></option>
+                                       <option value="20px"></option>
+                                       <option value="18px"></option>
+                                       <option value="16px"></option>
+                                       <option value="14px" selected></option>
+                                       <option value="12px"></option>
+                                       <option value="11px"></option>
+                                       <option value="10.5px"></option>
+                                       <option value="10px"></option>
+		</select>
+        </div>
+         <div class="row">
+            <label class="">段落对齐方式：</label>
+                                <select id="ParagraphType" style="width:40%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="left" selected></option>
+			                           <option value="center"></option>
+			                           <option value="right"></option>
+                                       <option value="justify"></option>
+                                      
+		</select>
+        </div> 
+        <div class="style_index menu">
+        <span title="the_title" style="margin-left:32px;">段首缩进设置</span> 
+        <div class="row">
+         <label><input id="indent_set" class="" type="checkbox" name="" value="2em">首行缩进两个中文字符</label>
+        </div>
+        </div>
+        </div>
+        <div id="content_2" class="content" style="display:none">
+        <h3>编辑文种设置</h3>
+        <div id="writing-type">
+        <ul>
+                    <li id="request" class="select">中文</li>
+                    <li id="report" class="">英文</li>
+                  </ul>
+        </div>
+        <div class="type-set" style="display:block;">
+        <h4>中文</h4>
+        <div class="row-t">
+            <label class="">正文字体：</label>
+                                <select id="cnfontType" style="width:40%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="宋体" selected></option>
+			                           <option value="仿宋"></option>
+			                           <option value="微软雅黑"></option>
+			                           <option value="楷体"></option>
+                                       <option value="黑体"></option>
+                                       <option value="隶书"></option>
+                                       <option value="幼圆"></option>
+                                       <option value="方正博雅宋_GBK"></option>
+                                       <option value="新宋体"></option>
+                                       <option value="andale mono"></option>
+                                       <option value="arial"></option>
+                                       <option value="arial black"></option>
+                                       <option value="comic sans ms"></option>
+                                       <option value="impact"></option>
+                                       <option value="times new roman"></option>
+		</select>
+        </div>
+         <div class="row-t">
+            <label class="">字体大小：</label>
+                                <select id="cnfontSize" style="width:20%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="48px"></option>
+			                           <option value="36px"></option>
+			                           <option value="28px"></option>
+			                           <option value="26px"></option>
+                                       <option value="24px"></option>
+                                       <option value="22px"></option>
+                                       <option value="20px"></option>
+                                       <option value="18px"></option>
+                                       <option value="16px"></option>
+                                       <option value="14px" selected></option>
+                                       <option value="12px"></option>
+                                       <option value="11px"></option>
+                                       <option value="10.5px"></option>
+                                       <option value="10px"></option>
+		</select>
+        </div>
+        <div class="row-t">
+            <label class="">段落对齐方式：</label>
+                                <select id="cnParagraphType" style="width:40%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="left" selected></option>
+			                           <option value="center"></option>
+			                           <option value="right"></option>
+                                       <option value="justify"></option>
+		</select>
+        </div>
+        <div class="row-t">
+        <label class="">文字输入方向：</label>
+          <label><input id="cn_insert_left" class="" type="radio" name="cn" value="ltr" checked="checked">左</label>
+                <label><input id="cn_insert_right" class="" type="radio" name="cn" value="rtl">右</label>
+        </div>
+        </div>
+       
+        <div class="type-set" style="display:none;">
+         <h4>英文</h4>
+        <div class="row-t">
+            <label class="">正文字体：</label>
+                                <select id="enfontType" style="width:40%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="宋体"></option>
+			                           <option value="仿宋"></option>
+			                           <option value="微软雅黑"></option>
+			                           <option value="楷体"></option>
+                                       <option value="黑体"></option>
+                                       <option value="隶书"></option>
+                                       <option value="幼圆"></option>
+                                       <option value="方正博雅宋_GBK"></option>
+                                       <option value="新宋体"></option>
+                                       <option value="andale mono"></option>
+                                       <option value="arial"></option>
+                                       <option value="arial black"></option>
+                                       <option value="comic sans ms"></option>
+                                       <option value="impact"></option>
+                                       <option value="times new roman"></option>
+		</select>
+        </div>
+         <div class="row-t">
+            <label class="">字体大小：</label>
+                                <select id="enfontSize" style="width:25%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="48px"></option>
+			                           <option value="36px"></option>
+			                           <option value="28px"></option>
+			                           <option value="26px"></option>
+                                       <option value="24px"></option>
+                                       <option value="22px"></option>
+                                       <option value="20px"></option>
+                                       <option value="18px"></option>
+                                       <option value="16px"></option>
+                                       <option value="14px"></option>
+                                       <option value="12px"></option>
+                                       <option value="11px"></option>
+                                       <option value="10.5px"></option>
+                                       <option value="10px"></option>
+		</select>
+        </div>
+        <div class="row-t">
+            <label class="">段落对齐方式：</label>
+                                <select id="enParagraphType" style="width:40%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="default"></option>
+			                           <option value="justifyleft"></option>
+			                           <option value="justifycenter"></option>
+			                           <option value="justifyright"></option>
+		</select>
+        </div>
+        <div class="row-t">
+        <label class="">文字输入方向：</label>
+         <label><input id="en_insert_left" class="" type="radio" name="en" value="directionalityltr" checked="checked">左</label>
+                <label><input id="en_insert_right" class="" type="radio" name="en" value="directionalityrtl">右</label>
+        </div>
+        </div>
+        </div>
+        <div id="content_3" class="content" style="display:none">
+        <h3>图片操作选项</h3>
+        <div class="menu">
+        <span style="margin-left:32px;">图片简单设置</span>
+        </div>
+         <div class="row">
+            <label class="">图片对齐方式：</label>
+                                <select id="enimageFloat" style="width:40%;height:20px;line-height:20px;;margin-left:5px;">
+			                           <option value="none"></option>
+			                           <option value="left"></option>
+			                           <option value="center" selected></option>
+			                           <option value="right"></option>
+		</select>
+        </div>
+        
+        </div>
+        <div id="content_4" class="content" style="display:none">
+            <h3>全半角转换选项</h3>
+            <div class="menu">
+                <span class="" style="margin-left:32px;">标点符号：</span>
+            </div>
+            <div class="row">
+                <label><input id="fulltohalf_char" class="" type="radio" name="t" value="fulltohalf_char" checked="checked">全角转半角</label>
+                <label><input id="halftofull_char" class="" type="radio" name="t" value="halftofull_char">半角转全角</label>
+            </div>
+
+            <div class="menu">
+                <span class="" style="margin-left:32px;">数字：</span>
+            </div>
+            <div class="row">
+                <label><input id="fulltohalf_num" class="" type="radio" name="t1" value="fulltohalf_num" checked="checked">全角转半角</label>
+                <label><input id="halftofull_num" class="" type="radio" name="t1" value="halftofull_num">半角转全角</label>
+            </div>
+
+        </div>
+
+
+
+        <div id="content_5" class="content" style="display:none">
+        <h3>其他选项设置</h3>
+        
+        
+        </div>
+    </div>
+	</div>
+     <script type="text/javascript" src="set.js"></script>
+</body>
+</html>

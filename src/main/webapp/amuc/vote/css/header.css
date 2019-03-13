@@ -1,0 +1,587 @@
+/*  
+*@Description: 顶栏  
+*@Author:      Smily  
+*@Update:      Smily(2012-10-19)  
+*/ 
+.logo{
+	margin-left:20px;
+	margin-top:7px;
+	float:left;
+	display: block;
+	cursor: pointer;
+}
+.list_left li, .search, .user{
+	float:left;
+	position:relative;
+	display:inline;
+}
+.list_left{
+	margin-left:40px;
+	float:left;
+}
+.list_left li{
+	width:82px;
+	height:40px;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-delay: 0;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-delay: 0;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-property: all;
+    -moz-transition-duration: 200ms;
+    -moz-transition-delay: 0;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-property: all;
+    -o-transition-duration: 200ms;
+    -o-transition-delay: 0;
+    -o-transition-timing-function: ease-in-out;
+}
+.list_left li.active, #header .active{
+	background:#222222;
+	border-left:1px solid #000000;
+	border-right:1px solid #000000;
+}
+.list_left li a, .user a, .icon_userSurvey{
+	display: inline-block;
+	width: 52px;
+    height: 40px;
+	line-height: 40px;
+	color:#bbbbbb;
+	font-size:12px;
+	text-decoration: none;
+	padding-left: 40px;
+}
+.list_left li a{
+    overflow: hidden;
+}
+.list_left li.active a{
+	color: #fff;
+}
+.list_left li:first-child a{
+	padding-left: 30px;
+}
+.user a{
+	width: auto;
+	padding-left: 10px;
+}
+.icon_contacter{
+	background: url(../images/application/icons.png?m=20160122) 4px 7px no-repeat;
+}
+.list_left li:hover .icon_contacter, .list_left li.active .icon_contacter{
+	background-position: -117px 7px;
+}
+.icon_group{
+	background: url(../images/application/icons.png?m=20160122) 12px -41px no-repeat;
+}
+.list_left li:hover .icon_group, .list_left li.active .icon_group{
+	background-position: -109px -41px;
+}
+.icon_mail{
+	background: url(../images/application/icons.png?m=20160122) 12px -136px no-repeat;
+}
+.list_left li:hover .icon_mail, .list_left li.active .icon_mail{
+	background-position: -108px -136px;
+}
+.icon_sms{
+	background: url(../images/application/icons.png?m=20160122) 12px -183px no-repeat;
+}
+.list_left li:hover .icon_sms, .list_left li.active .icon_sms{
+	background-position: -108px -183px;
+}
+.icon_form{
+	background: url(../images/application/icons.png?m=20160122) 12px -88px no-repeat;
+}
+.list_left li:hover .icon_form, .list_left li.active .icon_form{
+	background-position: -109px -88px;
+}
+.list_left li a:hover,.user a:hover, .user_set li a:hover{
+	color:#eeeeee;
+}
+.user.active .user>a{
+	color: #fff;
+}
+.list_left li:hover, .wechatQRcode:hover, .gift:hover{
+	background:#222222;
+	border-left:1px solid #000000;
+	border-right:1px solid #000000;
+}
+.list_left li:hover a{
+	color:#ffffff;
+}
+.list_left li.beta {
+    width: 106px;
+}
+.list_left li.beta .beta_ico{
+    width: 29px;
+    height: 21px;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: url("../images/icon/beta.png") center no-repeat;
+    background-size: 100%;
+}
+/*搜索*/
+.search{
+	z-index: 510;
+	margin-left:20px;
+}
+.search_input {
+	float:left;
+	width:242px;
+	height:20px;
+	background: #eeeeee;
+	border-radius: 2px;
+	margin-top:5px;
+	padding:5px;
+	_display: inline; 
+	overflow: hidden;
+	position: absolute;
+    transition-property: all;
+    transition-duration: 100ms;
+    transition-delay: 0;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 100ms;
+    -webkit-transition-delay: 0;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-property: all;
+    -moz-transition-duration: 100ms;
+    -moz-transition-delay: 0;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-property: all;
+    -o-transition-duration: 100ms;
+    -o-transition-delay: 0;
+    -o-transition-timing-function: ease-in-out;
+}
+.input_text{
+	outline:0 none;
+	width:210px;
+	height:20px;
+	background: transparent;
+	border:none; 
+	padding:0;
+}
+.search_btn{
+	position: absolute;
+	right: 2px;
+	top: 5px;
+	width: 25px;
+	height: 25px;
+	margin-top: -2px;
+	background:url(../images/search.png) 0 center no-repeat;
+}
+
+/*公告栏*/
+.userSurvey{
+	float: right;
+}
+.icon_userSurvey{
+	color: #899E6A;
+	padding-left: 25px;
+	width: 61px;
+	background: url(../images/icon/userSurvey.png) no-repeat;
+}
+.icon_userSurvey:visited{
+	color: #899E6A;
+}
+
+.account{
+	float: right;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+	position: relative;
+	cursor: default;
+}
+.icon_account{
+	width: 56px;
+	background: url(../images/icon/account.png) 8px 9px no-repeat;
+	height:26px;
+	padding: 7px;
+	padding-left: 30px;
+	display: block;
+}
+.account_box {
+	color: #bbbbbb;
+	padding: 2px 10px 2px 15px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #1B1E20;
+	border-radius: 3px;
+	background: #272B2E;
+	box-shadow: 0px 1px 3px #1B1E20 inset,0 1px 0px #585858;
+	transition-property: all;
+	transition-duration: 200ms;
+	transition-delay: 0;
+	transition-timing-function: ease-in-out;
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 200ms;
+	-webkit-transition-delay: 0;
+	-webkit-transition-timing-function: ease-in-out;
+}
+.account:hover .account_box{
+	color: #ffffff;
+}
+.gift{
+	float: right;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+	position: relative;
+	cursor: pointer;
+}
+.icon_gift{
+	width: 56px;
+	background: url(../images/icon/gift.png) 12px 4px no-repeat;
+	height: 40px;
+	display: block;
+}
+
+.wechatQRcode{
+	float: right;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+	position: relative;
+    z-index:999;
+}
+
+.icon_wechatQRcode{
+	width: 56px;
+	background: url(../images/icon/wechat_icon.png) 18px 11px no-repeat;
+	height: 40px;
+	display: block;
+}
+.wechat_showplace{
+	position: absolute;
+	top: 30px;
+	right: -52px;
+    width: 147px;
+    height: 209px;
+	background: url(../images/indexImg/wechatQRcodeTop.png) no-repeat;
+	z-index: 200;
+	display: none;
+	opacity: 0;
+}
+
+.user{
+	width: auto;
+	height:40px;
+	cursor:pointer;
+	float:right;
+	padding-right: 26px;
+	margin-right: 10px;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+	z-index: 510;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-delay: 0;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-delay: 0;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-property: all;
+    -moz-transition-duration: 200ms;
+    -moz-transition-delay: 0;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-property: all;
+    -o-transition-duration: 200ms;
+    -o-transition-delay: 0;
+    -o-transition-timing-function: ease-in-out;
+}
+.icon_user{
+	width:17px;
+	height:17px;
+	margin-left:12px;
+	margin-top:12px;
+	float:left;
+	background: url(../images/application/icons.png?m=20160122) -4px -245px no-repeat;
+}
+.icon_pulldown{
+	position: absolute;
+	right: 0;
+	width:8px;
+	height:6px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:16px;
+	background: url(../images/icon/pulldown.png) no-repeat;
+}
+.user:hover{
+	background:#222222;
+	border-left:1px solid #000000;
+	border-right:1px solid #000000;
+}
+.user:hover .a_user{
+	color:#ffffff;
+}
+.user:hover .icon_user, .user.active .icon_user{
+	background-position: -124px -245px;
+}
+.user:hover .icon_pulldown, .user.active .icon_pulldown{
+	background: url(../images/icon/arrowWhite.png) no-repeat;
+}
+.user:hover .user_set,.user_hover .user_set{
+	display: block;
+	text-align: left;
+	position: relative;
+	right: -1px;
+	top:40px;
+	z-index: 510;
+	display: block;
+	position: absolute;
+}
+.user_set{
+	display:none;
+	width: 100px;
+	background: #ffffff;
+	border: 1px solid #C2C2C2;
+	border-top: 0;
+	border-bottom: 0;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+	border-bottom-right-radius:2px;
+	border-bottom-left-radius:2px;
+	z-index:510;
+}
+.user.active .user_set{
+	color: #fff;
+}
+.user_set li{
+	height:32px;
+	border-bottom: 1px solid #D4D9DF;
+}
+.user_set li a{
+	padding: 0 10px;
+	height: 32px;
+	color: #333333;
+}
+.user_set li:hover{
+	background: #3586C1;
+}
+.user_set li:hover a{
+	color: #ffffff;
+}
+
+/*搜索框css*/
+.frame_searchIng{
+	position: absolute;
+	top: 37px;
+	left: 0;
+	width: 250px;
+	height: 20px;
+	padding: 10px 0;
+	z-index: 510;
+	text-align: center;
+	color: #949494;
+	background: #FFF;
+	border: 1px solid  #AFAFB0;
+	border-radius: 2px;
+}
+.frame_search{
+	background: #F3F5F7;
+	width:  353px;
+	position: absolute;
+	top: 37px;
+	left: 0;
+	border: 1px solid  #AFAFB0;
+	border-top: 0;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	z-index: 510;
+}
+.search_contact {
+	display: none;
+}
+.search_group {
+	display: none;
+}
+.search_resultType{
+	width: 59px;
+}
+.search_resultType p{
+	margin-top: 10px;
+	text-align: center;
+	color: #929292;
+}
+.search_result{
+	max-height: 230px;
+	border-left: 1px solid #D5D5D5;
+	border-bottom: 1px solid #D5D5D5;
+	background: white;
+}
+.search_group .search_result{
+	border-bottom: 0;
+}
+.search_result li{
+	width: 272px;
+	height: 18px;
+	padding: 10px;
+	color: #4E4E4E;
+	cursor: pointer;
+}
+.search_result li img{	
+	margin-right: 10px;
+	margin-top: 2px;
+}
+.search_img_contact{
+	background: url(../images/application/icons.png?m=20160122) -436px -4px no-repeat;
+	float: left;
+	width: 16px;
+	height: 15px;
+	margin-right: 5px;
+}
+.search_img_group{
+	background: url(../images/application/icons.png?m=20160122) -436px -52px no-repeat;
+	float: left;
+	width: 14px;
+	height: 16px;
+	margin-right: 10px;
+}
+.contactR_name{
+	width: 80px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	float: left;
+}
+.Corange{
+	color: #F87900;
+}
+.contactR_matchTag{
+	width: 170px;
+	text-align: right;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	float: left;
+}
+.contactR_matchTag>span{
+	color: #638420;
+	line-height: 21px;
+	background: #CDE69C;
+	border-radius: 3px;
+	border: 1px solid #A5D24B;
+	padding: 0 5px;
+}
+.contactR_matchInfo{
+	width: 170px;
+	text-align: right;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	color:#878787; 
+}
+.groupResult_name{
+	float: left;
+	width: 180px;
+	text-align: left;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+.groupResult_count{
+	float: right;
+	text-align: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	color:#ffffff; 
+	padding: 0 5px;
+	background: #81B2CF;
+	border-radius: 3px;
+}
+.search_tag{
+	background: #CDE69C;
+	border: 1px solid #A6D24C;
+	border-radius: 3px;
+	padding: 0 5px;
+}
+
+.searchHover{
+	background: #3586C1;
+	color: #ffffff;
+}
+.searchHover p{
+	color: #ffffff;
+}
+.searchHover .search_img_contact{
+	background-position: -125px -4px;
+}
+.searchHover .search_img_group{
+	background-position: -125px -52px;
+}
+.search_result .contactsMore, .search_result .groupsMore{
+	color: #878787;
+	text-align: center;
+	cursor: default;
+}
+.contactsMore.searchHover, .groupsMore.searchHover{
+	background: #FFF;
+	color: #878787;
+}
+
+
+/*合并联系人*/
+.popwin_mergeTitle{
+	text-align:left;
+	font-size:14px;
+	line-height:40px;
+}
+.mergeItem>li{
+	line-height: 25px;
+	border-bottom: 1px solid #D0D0D0;
+}
+.mergeItem_message{
+	color: #2676A4;
+	width: 60px;
+	text-align: right;
+	margin-right: 10px;
+	float: left;
+}
+.mergeItem_list{
+	line-height: 25px;
+	text-align: left;
+	float: left;
+}
+
+@media screen and (max-width: 1147px) {
+    .list_left{
+        min-width: 320px;
+    }
+    .list_left li,
+    .list_left li.beta{
+        width: 40px;
+    }
+    .list_left li.beta .beta_ico{
+        display: none;
+    }
+    .list_left li a{
+        width: 0;
+    }
+    /* active & hover */
+    .list_left li.active,
+    .list_left li:hover{
+        width:82px;
+    }
+    .list_left li.beta.active,
+    .list_left li.beta:hover{
+        width:106px;
+    }
+    .list_left li.beta.active .beta_ico,
+    .list_left li.beta:hover .beta_ico{
+        display: block;
+    }
+    .list_left li.active a,
+    .list_left li:hover a{
+        width: 52px;
+    }
+}

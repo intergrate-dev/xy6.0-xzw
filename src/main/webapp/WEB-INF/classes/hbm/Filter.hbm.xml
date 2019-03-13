@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.founder.e5.dom.Filter" table="DOM_FILTERS" >
+		<id name="filterID" type="integer" column="FILTERID" >
+			<generator class="assigned"/>
+		</id>
+		<property name="filterName" column="FILTERNAME" type="string" 
+			not-null="false" length="60" />
+		<property name="docTypeID" column="DOCTYPEID" type="integer" 
+			not-null="false" />
+		<property name="formula" column="FORMULA" type="string" 
+			not-null="false" length="255" />
+		<property name="description" column="DESCRIPTION" type="string" 
+			not-null="false" length="64" />
+	</class>
+</hibernate-mapping>

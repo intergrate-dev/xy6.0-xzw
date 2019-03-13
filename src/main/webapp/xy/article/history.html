@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>历史版本</title>
+	</head>
+
+	<body>
+		<link rel="stylesheet" href="../../xy/script/bootstrap-3.3.4/css/bootstrap.min.css">
+		<script src="../../xy/script/jquery/jquery.min.js"></script>
+
+		<style>
+			body {
+				background: #f5f5f5;
+				overflow-y: hidden;
+			}
+			
+			.history_container {
+				width: 1200px;
+				margin: 0px auto 0;
+				box-sizing: border-box;
+			}
+			
+			.history_container:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			#previewHistory_con {
+				width: 352px;
+				height: 720px;
+				background: #fff;
+				float: left;
+				padding: 15px;
+				position: relative;
+			}
+			
+			#previewHistorydes {
+				float: left;
+				height: 720px;
+				width: 383px;
+				background: url(/xy/article/image/bg.png) no-repeat;
+				padding: 36px 23px;
+				background-position-y: -57px;
+			}
+			#previewHistorydes img {
+				max-width: 100%;
+			}
+			#previewHistorydes_con {
+				overflow: auto;
+				height: 588px;
+				padding: 10px;
+			}
+			
+			#previewHistorydes_con::-webkit-scrollbar {/*滚动条整体样式*/
+	            width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+	            height: 4px;
+	        }
+	        #previewHistorydes_con::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	            border-radius: 5px;
+	            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	            background: rgba(0,0,0,0.2);
+	        }
+	        #previewHistorydes_con::-webkit-scrollbar-track {/*滚动条里面轨道*/
+	            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	            border-radius: 0;
+	            background: rgba(0,0,0,0.1);
+	        }
+			
+			/*#drawHistoryTable{*/
+			/*height: 300px;*/
+			/*}*/
+			/*分页*/
+			
+			.pagebtn_border {
+				border: 1px solid #ddd;
+				padding: 5px 10px;
+				cursor: pointer;
+				background: #f5f5f5;
+			}
+			
+			.pagebtn {
+				/*display: none;*/
+			}
+			
+			#pageleft, #pageright {
+				padding: 5px 3px;
+				cursor: pointer;
+				display: inline-block;
+				width: 18px;
+				height: 32px;
+			}
+			
+			#pageleft img, #pageright img {
+				width: 10px;
+				height: 10px;
+			}
+			
+			#pagejumpval {
+				margin-right: 10px;
+			}
+			
+			#pagejumpval input {
+				padding: 0 5px;
+				display: inline-block;
+				width: 50px;
+				height: 27px;
+				outline: none;
+				border: 1px solid #ddd;
+			}
+			
+			#pagecotainner {
+				float: right;
+				/*margin-top: 120px;*/
+			}
+			
+			#pageright {
+				/*padding: 5px;*/
+				margin-right: 10px;
+			}
+			
+			#pageright img {
+				position: relative;
+				left: 1px;
+				top: 0px;
+				cursor: pointer;
+				width: 10px;
+			}
+			/*敏感词*/
+			
+			#proof_tip span {
+				font-size: 12px;
+				padding: 6px 5px;
+			}
+			
+			.wx_tip {
+				color: #323232;
+				background: #F1F2F1;
+			}
+			
+			.wx_check {
+				color: #fff;
+			}
+			
+			.history_head {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				padding: 15px;
+				background: #e97a32;
+				z-index: 222;
+				height: 49px;
+				display: none;
+			}
+			/*表格*/
+			#drawHistoryTable {
+				height: 490px;
+				margin-bottom: 20px;
+			}
+			.operatRecord {
+				float: left;
+				background: #fff;
+				width: 395px;
+				height: 720px;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				padding: 20px;
+				margin: 0 0 0 10px;
+				overflow-y: auto;
+			}
+			
+			/*滚动条样式*/
+	        .operatRecord::-webkit-scrollbar {/*滚动条整体样式*/
+	            width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+	            height: 4px;
+	        }
+	        .operatRecord::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	            border-radius: 5px;
+	            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	            background: rgba(0,0,0,0.2);
+	        }
+	        .operatRecord::-webkit-scrollbar-track {/*滚动条里面轨道*/
+	            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	            border-radius: 0;
+	            background: rgba(0,0,0,0.1);
+	        }
+			
+			.by {
+				margin-right: 20px;
+			}
+			
+			.pzContent {
+				background: #f6f6f6;
+				padding: 10px;
+			}
+			
+			.dataText {
+				min-height: 30px;
+				margin-top: 10px;
+			}
+			
+			.opTxt {
+				width: 300px;
+			}
+			
+			.signlePz {
+				margin-top: 20px;
+			}
+			
+			.wrap {
+				width: 1200px;
+				margin: 0 auto;
+				display: none;
+			}
+			
+			.tip_word {
+				text-align: center;
+				background: #fff;
+				margin-right: 10px;
+				color: #e97a32;
+				letter-spacing: 1px;
+				border: 1px solid #ececec;
+				box-sizing: border-box;
+			}
+			
+			.mContent {
+				background: #fff;
+				float: left;
+				margin-left: 10px;
+				padding: 0 20px;
+			}
+			
+			.operat-title {
+				border-left: 3px solid #e97a32;
+				height: 14px;
+				line-height: 14px;
+				padding-left: 5px;
+				font-weight: bold;
+				font-size: 14px;
+			}
+		</style>
+		<div class="history_head">
+			<div class='wrap'>
+				<div id="proof_tip">
+					<span class="wx_check" style="font-size: 13px;">校对提示：</span>
+					<span class="wx_tip tip_word">校对敏感词</span>
+					<span class="wx_sensitiveWord tip_word">敏感词</span>
+					<span class="wx_illegalWord tip_word">非法词</span>
+					<span class="wx_spellError tip_word">拼写错误</span>
+				</div>
+			</div>
+		</div>
+		<div class="history_container">
+			<div id="previewHistory_con">
+				<div id="drawHistoryTable"></div>
+				<div class="pagebtn" id="pagecotainner">
+					<span style="margin-right: 10px">
+						<span id="currentpagenum">1</span>/
+						<span id="pagenum">1</span>
+					</span>
+					<span id="pageleft" class="pagebtn_border">
+						<img src="../img/pageleft.png" alt="">    
+					</span> <span id="pageright" class="pagebtn_border">
+						<img src="../img/pageright.png" alt="">
+					</span> 
+					<span id="pagejumpval">
+						<input id="pageinput" type="text" name="text1">
+					</span>
+					<span id="pagejump" class="pagebtn_border">跳转</span>
+				</div>
+			</div>
+			<div class="mContent">
+				<div id="previewHistorydes">
+					<div id="previewHistorydes_con">
+
+					</div>
+				</div>
+			</div>
+			<div class="operatRecord">
+				<div class="operat-title">批注</div>
+				<div class="operat_step">
+
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// 获取url参数
+			var currenturl = window.location.href;
+			var history_comment = [];
+			var getParam = function(key) {
+				var lot = location.search;
+				if(lot.indexOf(key) != -1) {
+					var reg = new RegExp(".*" + key + "\\s*=([^=&#]*)(?=&|#|).*", "g");
+					return decodeURIComponent(lot.replace(reg, "$1"));
+				}else {
+					return false;					
+				}
+			};
+
+			var checkID = getParam("checkID");
+			var checkLibID = getParam("checkLibID");
+			var wx_groupid = getParam("wx_groupid");
+			var wx_type = getParam("type");
+			previewHistory(1);
+			// 分页
+			pageF();
+			function previewHistory(HistoryInfopage) {
+                // if(wx_groupid != null && wx_groupid!=0 &&wx_groupid!="" ) {
+					var theURL = "../../xy/article/HistoryInfo.do?DocIDs=" + checkID +
+					"&DocLibID=" + checkLibID +"&wx_groupId="+wx_groupid+"&type="+wx_type+ "&PageCount=8&Page=" + HistoryInfopage;
+				// }else {
+				// 	var theURL = "../../xy/article/HistoryInfo.do?DocIDs=" + checkID +
+				// 	"&DocLibID=" + checkLibID + "&PageCount=8&Page=" + HistoryInfopage;
+				// }
+				$.ajax({
+					url: theURL,
+					async: false,
+					success: function(data) {
+						//console.log(data)
+						if(data && data.list && data.list.length > 0) {
+							history_comment = data.list;
+							drawHistoryTable(data.list);
+							
+							$("#pagebtn").css("display", "block");
+							$("#pagenum").text(data.pagecount);
+							$("#pageinput").val("")
+						}
+						
+						// 总页数
+//						if(data.pagecount > 1) { //若果只有一页
+							
+//						}else {
+//							$("#pageright").hide();
+//							$("#pageinput").attr("disabled","disabled");
+//						}
+						
+					}
+				});
+			}
+			
+			//渲染历史版本
+			function drawHistoryTable(data) {
+				var logTableHtml = "<table class='table table-bordered' id='histotrytable' border='1'><thead><tr><td>历史版本时间</td>" +
+					"<td>操作人</td><td>操作</td></tr></thead><tbody>";
+				for(var i = 0; i < data.length; i++) {
+					logTableHtml += "<tr onclick='showArtDetail(this)' data-index='" + i + "' data-content='" + data[i].content + "'><td>" + data[i].created.replace(".0", "") + "</td>" +
+						"<td>" + data[i].operator + "</td>" +
+						"<td style='width:100px;color:#8D8D8D;font-weight: 600;'>" + data[i].operation + "</td>";
+				}
+				logTableHtml += "</tbody></table>";
+				$("#drawHistoryTable").html(logTableHtml);
+				$("#histotrytable tbody tr").eq(0).click();
+			}
+			// 分页
+			function pageF() {
+//				$("#pageleft").css("display", "none");
+				$("#pageright").click(function() {
+					
+					if($("#currentpagenum").text() == $("#pagenum").text()) {
+						return;
+					}
+					
+					var pagenum = parseInt($("#currentpagenum").text());
+					var pagecout = $("#pagenum").text();
+					if(parseInt(pagenum) + 1 >= pagecout) {
+//						$("#pageright").css("display", "none");
+						$("#pageleft").css("display", "inline-block");
+					}
+					$("#currentpagenum").text(parseInt(pagenum) + 1);
+					if(parseInt(pagenum)+1 > 1 && parseInt(pagenum)+1 < parseInt($("#pagenum").text())) {
+						$("#pageright").css("display", "inline-block");
+						$("#pageleft").css("display", "inline-block");
+					}
+
+					// 调用接口  parseInt(pagenum)+1;当前页数
+					previewHistory(parseInt(pagenum) + 1);
+
+				})
+				$("#pageleft").click(function() {
+					
+					if($("#currentpagenum").text() == 1) {
+						return;
+					}
+					
+					var pagenum = $("#currentpagenum").text();
+					var pagecout = $("#pagenum").text();
+					if(parseInt(pagenum) - 1 <= 1) {
+						$("#pageright").css("display", "inline-block");
+//						$("#pageleft").css("display", "none");
+					}
+					$("#currentpagenum").text(parseInt(pagenum) - 1);
+					if(parseInt(pagenum)-1 > 1 && parseInt(pagenum)-1 < parseInt($("#pagenum").text())) {
+						$("#pageright").css("display", "inline-block");
+						$("#pageleft").css("display", "inline-block");
+					}
+					// 调用接口  parseInt(pagenum)-1;
+					previewHistory(parseInt(pagenum) - 1);
+
+				})
+				$("#pagejump").click(function() {
+					var inputval = $("#pageinput").val();
+					if(inputval == "") {
+						alert("请输入页数");
+						$("#pageinput").val("");
+						return false;
+					}
+					if(!(/(^[1-9]\d*$)/.test(inputval))) {
+						alert("输入不合法");
+						$("#pageinput").val("");
+						return false;
+					} else {
+						if(inputval > $("#pagenum").text()) {
+							alert("请输入正确的页数")
+							$("#pageinput").val("");
+							return
+						}
+						var needjump = $("#pageinput").val();
+						$("#currentpagenum").text(needjump);
+						/*if(needjump == $("#pagenum").text()) {
+							$("#pageright").css("display", "none");
+							$("#pageleft").css("display", "inline-block");
+						}
+						if(needjump == 1) {
+							$("#pageright").css("display", "none");
+							$("#pageleft").css("display", "inline-block");
+						}
+						//调用接口
+						if(needjump == 1) {
+							$("#pageleft").css("display", "none");
+							$("#pageright").css("display", "inline-block");
+						}
+						if(parseInt(needjump) > 1 && parseInt(needjump) < parseInt($("#pagenum").text())) {
+							$("#pageright").css("display", "inline-block");
+							$("#pageleft").css("display", "inline-block");
+						}
+						if(needjump == $("#pagenum").text()) {
+							$("#pageright").css("display", "none");
+							$("#pageleft").css("display", "inline-block");
+						}*/
+						// 当前页数needjump
+						previewHistory(needjump);
+
+					}
+				})
+			}
+			// 历史版本详细信息
+			function showArtDetail(item) {
+				
+				$(".operat_step").html('');
+				var _index = $(item).attr("data-index");
+				var showJson = history_comment[_index];
+				
+				if(showJson) {
+					var commentContent = showJson.content;
+					var _comments = $(commentContent).find(".selected-comment");
+					var comlen = _comments.length;
+					var herfto_Arr=[];
+
+					_comments.each(function(){
+						herfto_Arr.push($(this).attr('herfto'))
+					});
+					for(var i = 0; i < comlen; i++) {
+						var dateTime = $(_comments[i]).attr("data-date");
+						var dataUser = $(_comments[i]).attr("data-user");
+						var dataCom = $(_comments[i]).attr("comment");
+						var herfto = $(_comments[i]).attr("herfto").replace("comment","");
+						var herftoFilter = $(_comments[i]).attr("herfto")
+						var dataText = $(_comments[i]).text();
+						if(herfto_Arr.indexOf(herftoFilter)!=i) continue; //过滤掉重复的批注
+						var oDiv = '<div class="clearfix signlePz" herfto='+herfto+'>' +
+							'<div class="pull-left by">' + (i + 1) + '</div>' +
+							'<div class="pull-left opTxt">' +
+							'<div>' + '<span>' + dataUser + '</span>' + '<span class="pull-right">' + dateTime + '</span>' + '</div>' +
+							'<div class="dataText">' + dataText + '</div>' +
+							'<div class="pzContent">' + dataCom + '</div>' +
+							'<div>' +
+							'</div>'
+						$(".operat_step").append(oDiv);
+						
+						if($(".pzContent").eq(i).html() == ''){
+							$(".pzContent").eq(i).hide();
+						}
+					}
+				}
+				$("#previewHistorydes_con").html($(item).attr("data-content"));
+				$("#histotrytable tbody tr").each(function(index, val) {
+					$(val).css({
+						background: '#fff'
+					})
+				});
+				$(item).css({
+					background: '#F9F9F9'
+				});
+				$("embed").attr('width', '100%');
+				
+			}
+			window.onload = function() {
+//				$("#histotrytable tbody tr").eq(0).click();
+				$("embed").attr('width', '100%')
+				
+				//绑定批注面板和标签的联动事件(点击批注面板同时选中批注标签)
+		        $(".operat_step").delegate(".signlePz", "click", function(){
+		            var $commentList = $(".operat_step");
+		            $commentList.find(".pzContent").css("background-color", "");
+		            var id = $(this).attr("herfto").substr(1);
+		            $(this).find(".pzContent").css("background-color", "rgb(249, 181, 82)");
+		            $(this).find(".pzContent").css("color", "#333");
+//		            var $ueBody = $(ue.body);
+		            var $ueBody = $("#previewHistorydes");
+		            $ueBody.find(".selected-comment").css("background-color", "rgb(197, 191, 191)");
+		            $ueBody.find(".selected-comment-img").css("background-color", "rgb(197, 191, 191)").css("border", "5px solid rgb(197, 191, 191)");
+		            if($ueBody.find("." + id).hasClass("selected-comment-img")){
+		                $ueBody.find("." + id).css("background-color", "rgb(249, 181, 82)").css("border", "5px solid rgb(249, 181, 82)");
+		            }else{
+		                $ueBody.find("." + id).css("background-color", "rgb(249, 181, 82)");
+		            }
+		            /*	
+		            $("#previewHistorydes_con").animate({scrollTop: 200}, 100,function () {
+		            	alert(222)
+		            })*/
+		            $("#previewHistorydes_con").stop().animate({scrollTop: 143}, 0,function(){
+		                if($ueBody.find("." + id) && $ueBody.find("." + id).offset() && $ueBody.find("." + id).offset().top){
+		                    $("#previewHistorydes_con").stop().animate({scrollTop: $ueBody.find("." + id).offset().top},0);
+		                }
+		            });
+		        });
+				
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,96 @@
+
+.webfx-menu {
+    position: absolute;
+    z-index: 100;
+    visibility: hidden;
+    width: 150px;
+    border: 1px solid #797979;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    padding: 1px;
+    background: #fff;
+    /* filter: progid:DXImageTransform.Microsoft.Shadow(color="#777777", Direction=135, Strength=4) alpha(Opacity=95); */
+    opacity: 0.95;
+    font-size: 14px;
+}
+
+.webfx-menu-empty {
+    display: block;
+    border: 1px solid white;
+    padding: 2px 5px 2px 5px;
+    font-family: Tahoma, Verdan, Helvetica, Sans-Serfif;
+    color: black;
+}
+
+.webfx-menu a {
+    display: block;
+    width:100%;
+    font-family: Tahoma, Verdan, Helvetica, Sans-Serfif;
+    text-decoration: none;
+    color: #595959;
+    *font-family: SimSun;
+}
+.webfx-menu a span{
+    display: block;
+    padding: 7px 10px;
+}
+.webfx-menu a:hover {
+    background-color: #E8E9EA;
+}
+
+.webfx-menu a .arrow{
+    float: right;
+    border: 0;
+    width: 3px;
+    margin-right: 3px;
+    margin-top: 4px;
+}
+
+/* separtor */
+.webfx-menu div {
+    height: 0;
+    border-top: 1px solid #797979;
+    overflow: hidden;
+    margin: 5px auto;
+    font-size: 0;
+    width:120px;
+}
+
+.webfx-menu-bar {
+	font-size: 14px;
+}
+
+.webfx-menu-bar a,
+.webfx-menu-bar a:visited {
+    display: inline-block;
+    padding: 9px 9px 8px;
+    height: 16px;
+    line-height: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+	color:	#fff;
+}
+
+.webfx-menu-bar a:hover {
+    background: #1c1c1c;
+    white-space: nowrap;
+}
+
+.webfx-menu-bar a .arrow {
+    border: 0;
+    float: none;
+}
+
+.webfx-menu-bar a:active, .webfx-menu-bar a:focus {
+    -moz-outline: none;
+    outline: none;
+    ie-dummy: expression(this.hideFocus=true);
+}
+

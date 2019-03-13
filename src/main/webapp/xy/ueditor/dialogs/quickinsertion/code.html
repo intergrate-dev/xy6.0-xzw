@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>插入代码0003</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+    <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="code.css" />
+    <link rel="stylesheet" href="../../../script/bootstrap-3.3.4/css/bootstrap.min.css">
+
+</head>
+<body >
+ <div class="wrapper" >
+     <div id="quickNotesOne"><span class="stringText">插入字符串1</span>
+         <input id="quickNotesOneCon"  type="text" placeholder="请输入插入字符串1的值">
+     </div>
+     <div id="quickNotesTwo"><span class="stringText">插入字符串2</span>
+       <input id="quickNotesTwoCon"  type="text" placeholder="请输入插入字符串2的值">
+     </div>
+     <div id="quickNotesTrd"><span class="stringText">插入字符串3</span>
+        <input id="quickNotesTrdCon"  type="text" placeholder="请输入插入字符串3的值">
+     </div>
+     <div id="quickNotesFou"><span class="stringText">插入字符串4</span>
+        <input id="quickNotesFouCon"  type="text" placeholder="请输入插入字符串4的值">
+     </div>
+     <div id="quickNotesFiv"><span class="stringText">插入字符串5</span>
+        <input id="quickNotesFivCon"  type="text" placeholder="请输入插入字符串5的值">
+     </div>
+ </div>
+ <script type="text/javascript">
+     $("#quickNotesOneCon").val(localStorage.getItem("quickNotesOneK"));
+     $("#quickNotesTwoCon").val(localStorage.getItem("quickNotesTwoK"));
+     $("#quickNotesTrdCon").val(localStorage.getItem("quickNotesTrdK"));
+     $("#quickNotesFouCon").val(localStorage.getItem("quickNotesFouK"));
+     $("#quickNotesFivCon").val(localStorage.getItem("quickNotesFivK"));
+
+     dialog.onok = function (){
+         localStorage.setItem("quickNotesOneK",$("#quickNotesOneCon").val());
+         localStorage.setItem("quickNotesTwoK",$("#quickNotesTwoCon").val());
+         localStorage.setItem("quickNotesTrdK",$("#quickNotesTrdCon").val());
+         localStorage.setItem("quickNotesFouK",$("#quickNotesFouCon").val());
+         localStorage.setItem("quickNotesFivK",$("#quickNotesFivCon").val());
+
+//         var str=$("#quickNotesOne").val();
+//         editor.execCommand('inserthtml',str);
+     }
+
+ </script>
+
+
+</body>
+</html>

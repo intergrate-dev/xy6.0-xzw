@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.founder.e5.dom.FVFilters" table="DOM_FVFILTERS">
+		
+		<composite-id>
+			
+			<key-property name="fvID" column="FVID" type="integer"/>			
+			<key-property name="filterID" column="FILTERID" type="integer"/>
+			<key-property name="defaultFlag" column="DEFAULTFLAG" type="integer"/>			
+		</composite-id>
+		
+		<property name="docTypeID" column="DOCTYPEID" type="integer"
+			not-null="false"/>		
+		<property name="index" column="NINDEX" type="integer" not-null="false"/>
+		
+	</class>
+</hibernate-mapping>

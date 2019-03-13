@@ -1,0 +1,307 @@
+﻿/* 定义模态对话框外面的覆盖层样式 */
+body{
+	font-family: "microsoft yahei";
+}
+#modal-overlay {
+	visibility: hidden;
+	position: absolute; /* 使用绝对定位或固定定位  */
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	z-index: 3200;
+	background-color: #f8f8f8;
+}
+/* 模态框样式 */
+.modal-data {
+	margin: 1px auto auto auto;
+	background-color: #f8f8f8;
+	padding: 15px;
+	text-align: center;
+	box-sizing: content-box;
+}
+.indexPic {
+	font-size: 13px;
+	
+	color: #666;
+	margin-right: 50px;
+	display: none;
+}
+.imgsize {
+	max-width: 200px;
+    max-height: 150px;
+}
+.imgsize1 {
+	width: 202px;
+    height: 183px;
+    margin-bottom: 10px;
+}
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none
+}
+#ul1 li {
+	float: left;
+	list-style: none;
+	height: 183px;
+	/*margin: 10px;*/
+	text-align: center;
+	width:200px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+#ul1 li:hover {
+	border-color: #9a9fa4;
+	/*box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.85);*/
+}
+#ul1 .active {
+	border: 1px dashed red;
+}
+.cancelbtn {
+	float: left;
+}
+.headline {
+	display: none;
+	color: #666;
+}
+.picintroduce {
+	float: left;
+	margin-top:7px;
+	margin-left:10px;
+	margin-right:20px ;
+}
+.topicintro {
+	font-family:'微软雅黑';
+	color:#666;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	width: 543px;
+	height:40px;
+	margin-top: 10px;
+	resize: none;
+}
+.confirmbtn {
+	
+	color:#666;
+	display: block;
+	float: left;
+	margin-left: 165px;
+	margin-right: 20px;
+	width: 50px;
+	height:25px;
+}
+.editCancelbtn {
+	
+	color:#666;
+	width: 50px;
+	height:25px;
+}
+.overallbtn {
+	margin-left: 60px;
+	display: none !important;
+}
+.linkli_ {
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 13px;
+}
+.linkli {
+	cursor:pointer;
+	float: left;
+	margin-left: 0px;
+	/*margin-top: 20px;*/
+	position: absolute;
+}
+.picDiv {
+	text-align:center;
+	background-color: #fff;
+	position: absolute;
+	width: 100%;
+	opacity: 0.5;
+}
+.radio_ {
+	margin-bottom:5px;
+	display:none;
+}
+.synBtn_ {
+	width: 30px !important;
+	opacity:0;
+	float: left;
+	background:#fff;
+	color:#666;
+	border:none;
+}
+.transPic {
+	position:absolute;
+	left: 4px;
+	top: 4px;
+	z-index: -100;
+}
+.delBtn_ {
+	border:none;
+	background:#fff;
+	color:#666;
+	float: right;
+	opacity: 0;
+}
+.icon-trash{
+	position: absolute;
+	right: 0;
+	z-index: -100;
+	top: 3px;
+	right: 8px;
+}
+.icon-retweet{
+	position: absolute;
+	right: 0;
+	z-index: -100;
+	top: 3px;
+	left: 3px;
+}
+.text_ {
+	resize: none;
+    width: 99%;
+    border-radius: 0px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 0;
+    margin-right: 7px;
+    color: #666;
+    overflow: hidden;
+    height: 33px;
+    font-family: "microsoft yahei";
+	
+}
+#ul2 li img
+{
+	width: 199px;
+	height:160px;
+	margin: 5px;
+}
+.channels {
+    list-style: outside none none;
+    margin: 0;
+    overflow: hidden;
+    margin-bottom: -7px;
+}
+
+.channels li.select {
+    background-color: #00a0e6;
+    border-radius: 3px;
+    color: white;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+.channels li {
+    cursor: pointer;
+    float: left;
+    font-family: "微软雅黑";
+    margin-bottom: 5px;
+    padding: 3px;
+    text-align: center;
+    width: 70px;
+    background-color: #b1b1b1;
+    border-radius: 3px;
+    color: #fff;
+}
+/* 图片管理样式 */
+#online {
+    width: 899px;
+    min-height: 500px;
+    padding: 10px 0 0 0;
+    background-color: #fff;
+    border-radius: 3px;
+    margin: 2px auto;
+}
+.icon-picture {
+	position: absolute;
+	left: 40px;
+	top: 2px;
+	z-index: -100;
+}
+
+.title {
+	border: none;
+	background: #fff;
+	color: #666;
+	float: left;
+	opacity: 0;
+	width: 30px !important;
+}
+.icon-retweet {
+	position: absolute;
+	right: 36px;
+	top: 2px;
+	z-index: -100;
+}
+.cut {
+	border: none;
+	background: #fff;
+	color: #666;
+	float: right;
+	opacity: 0;
+	width: 30px !important;
+}
+.icon-pencil {
+    position: absolute;
+    right: 41px;
+    top: 2px;
+    z-index: -99;
+}
+#cancel{
+    float: right;
+}
+.imgvideo1{
+	margin-top: 40px;
+}
+#linklivideo{
+	width: 202px;
+}
+#linklivideo img{
+	cursor: pointer;
+}
+
+* {
+	box-sizing: inherit;
+}
+.uploadpic{
+	width: 200px;
+	height:178px;
+	border: 1px solid #ddd;
+	display: block;
+}
+.uploadpic span{
+	font-size: 40px;
+	margin-top: 60px;
+	color: #323232;
+	display: block;
+}
+.pics{
+	font-size: 14px !important;
+	color: #666 !important;
+	margin-top: 15px !important;
+}
+.picfather{
+	width: 200px;
+	height: 150px;
+	background-color: #efefef;
+}
+.editCancelbtn{
+	background-color: #b1b1b1;
+	border: none;
+	color: #fff;
+	width: 70px !important;
+	border-radius: 3px;
+	font-family: "microsoft yahei";
+}
+.confirmbtn{
+	background-color: #00a0e6;
+	border: none;
+	color: #fff;
+	width: 70px !important;
+	border-radius: 3px;
+	font-family: "microsoft yahei";
+}

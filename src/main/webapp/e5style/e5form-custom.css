@@ -1,0 +1,131 @@
+.mainBodyWrap{
+	margin:10px;
+	font-family: "microsoft yahei";
+	color: #666;
+}
+.tablecontent{
+	width:100%;
+	font-size:12px;
+	
+}
+.tablecontent td {
+	border-bottom: 1px solid #B9CFE4;
+	padding:3px;
+}
+.custform-span{
+	display: block;
+	clear:both;
+}
+input.custform-input,
+input.custform-input-address,
+input.custform-input-date,
+.custform-select,
+.custform-select-multi,
+.custform-textarea,
+.custform-button,
+.button,
+.custform-label,
+.custform-label-address,
+.custform-label-date,
+.custform-label-checkbox,
+.custform-postfix{
+	margin-top:5px;
+	margin-bottom:5px;
+	height:24px;
+}
+.custform-label{
+	width:90px;
+	float: left;
+	margin-right:-90px;
+}
+.custform-label-require{
+	background:url("../images/require.png") left no-repeat;
+	padding-left:10px;
+}
+.custform-label,
+.custform-label-checkbox,
+.custform-label-address,
+.custform-label-date,
+.custform-postfix{
+	line-height: 24px;
+}
+.custform-from-wrap{
+	margin-left:90px;
+}
+input.custform-input,input.custform-input-address,input.custform-input-date{
+	border:1px solid #a7a6aa;
+	height:16px;
+}
+
+@-moz-document url-prefix() { .custform-select { margin-top:8px; } }
+.custform-select-multi option{
+	padding:3px;
+	text-indent:3px;
+}
+.custform-textarea{
+	border:1px solid #ddd;
+	border-radius: 3px;
+	margin-left: 0;
+	font-family:"microsoft yahei";
+}
+input.custform-checkbox{
+	margin:0 5px 0 100px;
+	/*float:left;*/
+}
+@-moz-document url-prefix() { input.custform-checkbox { margin-top:5px; } }
+.custform-select-multi option{
+	padding:3px;
+	text-indent:3px;
+}
+.button,.custform-button{
+	text-decoration: none;
+	display:inline-block;
+	border:1px solid #97b7d7;
+	padding:3px 20px;
+	height:24px;
+	background:#f6fafd;
+	color:#444;
+	cursor: pointer;
+ 
+/*	float: left;*/
+}
+.otherInfo {
+	font: 18px/1.11 'Microsoft Yahei',Tahoma, Arial, Helvetica, STHeiti;
+	line-height: 24px;
+	color: #5F5F5F;
+	font-weight: 600;
+	padding:0;
+	margin:0;
+	margin-bottom:-15px;
+  	margin-left: 200px;
+    display: block;
+}
+
+/*realtime finder--on*/
+#divRealtimeHints{
+	position: absolute;
+	z-index: 100;
+	border: 1px solid #817F82;
+    background: #fff;
+	height:auto;
+	max-height:200px;
+    width:200px;
+    overflow: auto;
+	display: none;
+}
+#divRealtimeHints li{
+    font: 14px/25px arial;
+    height: 25px;
+    padding: 0 8px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+#divRealtimeHints li.hover{
+	background:#ebebeb;
+}
+#col_description{
+	margin-left: 0 !important;
+	border: 1px solid #ddd;
+}
+
+/*realtime finder--x*/

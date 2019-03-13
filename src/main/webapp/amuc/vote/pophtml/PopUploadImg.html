@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>添加图片</title>
+		<link rel="stylesheet" type="text/css" href="../vote/js/upload/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="../vote/js/upload/style.css">
+		
+	    <style type="text/css">
+	       .bodycontainerones{
+	         height: 500px;
+	      } 
+	      #dndArea p{
+	        font-family: "Microsoft YaHei","微软雅黑",Arial,Tahoma; 
+	        font-size: 15px;
+	      }
+	      .queueList .filelist{
+	       width:90%;
+	       padding-left:5%;
+	       margin-right:5%;
+	      }
+	      #dndArea{
+	      margin-left:30px;
+	      }
+	    </style>
+		
+	</head>
+	
+	<body>
+	  <div class="bodycontainerones">
+	   	<div id="wrapper">
+	        <div id="containerimg">
+	            <!--头部，相册选择和格式选择-->
+	
+	            <div id="uploader" style="height:320px;">
+	                <div class="queueList">
+	                    <div id="dndArea" class="placeholder"
+	                     style="width:80%;height:320px;margin-left:10%;margin-right:10%;padding-top:10px;">
+	                        <div id="filePicker" style="padding-top:160px"></div>
+	                        <p>（建议图片尺寸为380*220,大小不超过1M）</p>
+	                    </div>
+	                </div>
+	                <div class="statusBar" style="display:none;">
+	                    <div class="progress" >
+	                        <span class="text">0%</span>
+	                        <span class="percentage"></span>
+	                    </div>
+	                    <div class="info" style="width:100%;"></div>
+	                    <div class="btns">
+	                        <div id="filePicker2"></div>
+	                        <div class="uploadBtn" style="float:left;">开始上传</div>
+	                    </div>
+	                </div>
+	            </div>
+	           
+	        </div>
+	    </div>
+	    <div class="alert" id="uploadOptionImgSuccess" style="margin:20px 5% 0 5%;">
+		             注意：点击"开始上传"后，才会真正保存。
+	    </div>
+	    <div style="margin-top:10px;">
+			<input type="button" id="optionimgdone" style="height:42px; width:95px;margin-right:5%;float:right;" class="btn" value="确定">
+		</div>
+	  </div>
+	  <script type="text/javascript" src="../vote/js/upload/webuploader.js"></script>
+	  <script type="text/javascript">
+	   var voteId = voteID;
+	   var optionId ="";
+	   var imgAddress ="";
+	   var retFlag = "";
+	   var imageId ="";
+	  </script>
+	  <script type="text/javascript" src="../vote/js/upload/uploadOptionsImg.js"></script>
+	  <script type="text/javascript">
+	  $(function(){
+		  
+		  $(".modal-header .close").click(function(){
+	    		 $("#temOpID").attr("value","");
+	    	 });
+		  
+		 $("#optionimgdone").click(function(){
+			if(imageId>0){
+				_imgbox = getOptionImageBox(imgAddress,optionId,imageId);
+				$("#opmedias_"+optionId+" .clear").before(_imgbox);
+			} 
+			if(retFlag=="1"){
+				$("#table_"+optionId).find(".addpicbtn").addClass("disabled");
+				$(".modal-header .close").click();
+				_alertHtml = getAlertDiv(optionId,"","图片添加成功","success");
+				$("#opmedias_"+optionId).after(_alertHtml);
+				removeAlertDivByTime(optionId,2);
+			}else{
+				$("#uploadOptionImgSuccess").addClass("alert-warning");
+        		$("#uploadOptionImgSuccess").html("上传失败，请重新上传！");
+			}
+		 });
+	  });
+	  </script>
+	</body>
+</html>

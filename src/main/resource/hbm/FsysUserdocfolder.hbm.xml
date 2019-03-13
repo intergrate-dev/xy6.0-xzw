@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.sys.org">
+	<class name="com.founder.e5.sys.org.UserFolder" table="FSYS_USERDOCFOLDER">
+		<composite-id>
+			<key-property
+				column="USERID"
+				name="UserID"
+				type="integer"
+			 />
+			<key-property
+				column="LIBID"
+				name="LibID"
+				type="integer"
+			 />
+		</composite-id>
+		<property
+			column="DOCTYPEID"
+			length="22"
+			name="DocTypeID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="FOLDERID"
+			length="22"
+			name="FolderID"
+			not-null="true"
+			type="integer"
+		 />
+	</class>
+</hibernate-mapping>

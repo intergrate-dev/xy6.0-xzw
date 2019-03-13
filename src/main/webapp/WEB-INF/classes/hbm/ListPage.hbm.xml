@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.founder.e5.listpage.ListPage" table="FSYS_LISTPAGE">
+		<id
+			column="LISTID"
+			name="listID"
+			type="integer">
+			<generator class="assigned" />
+		</id>
+		<property
+			column="DOCTYPEID"
+			name="docTypeID"
+			not-null="true"
+			type="integer"
+		 />
+		<property
+			column="LISTNAME"
+			length="64"
+			name="listName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="LISTBUILDERNAME"
+			length="64"
+			name="listBuilderName"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="PATH_XSL"
+			length="255"
+			name="pathXSL"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="PATH_JS"
+			length="255"
+			name="pathJS"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="PATH_CSS"
+			length="255"
+			name="pathCSS"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="LISTXML"
+			length="2048"
+			name="listXML"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="TEMPLATESLICE"
+			length="2048"
+			name="templateSlice"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

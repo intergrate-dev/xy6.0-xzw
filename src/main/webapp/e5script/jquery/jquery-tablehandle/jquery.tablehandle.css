@@ -1,0 +1,181 @@
+
+/*table{
+    table-layout:fixed;
+    empty-cells:show; 
+    border-collapse: collapse;
+    margin:0 auto;
+    width:253px;
+    font-size:12px;
+    height: 52px;
+}
+td
+{
+    border:1px solid #9db3c5;
+    color:#666;
+}*/
+.select-td
+{
+    background-color: #9CAAC1;
+}
+
+.tablehandleClass .ui-selecting { background: #B8BFBF; }
+.tablehandleClass .ui-selected { background: #B8BFBF; color: #0078B6; }
+
+.contextMenu {
+	position: absolute;
+	width: 180px;
+	border: solid 1px #CCC;
+	background: #EEE;
+	padding: 0px;
+	margin: 0px;
+	display: none;
+	
+
+}
+
+.contextMenu li 
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	height: 20px;
+
+}
+
+.ke-inline-block {
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+}
+
+.ke-toolbar-icon-url {
+	background-image: url(table-context-menu.png);
+	margin:0 5px;
+}
+
+.ke-icon-table {
+	background-position: 0px -784px;
+
+}
+.ke-icon-tablemenu {
+	background-position: 0px -768px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tableinsert {
+	background-position: 0px -784px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tabledelete {
+	background-position: 0px -800px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablecolinsertleft 
+{
+	background-position: 0px -816px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablecolinsertright {
+	background-position: 0px -832px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablerowinsertabove {
+	background-position: 0px -848px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablerowinsertbelow {
+	background-position: 0px -864px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablecoldelete {
+	background-position: 0px -880px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablerowdelete {
+	background-position: 0px -896px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablecellprop {
+	background-position: 0px -912px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tableprop {
+	background-position: 0px -928px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablecellsplit {
+	background-position: 0px -1088px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablerowmerge {
+	background-position: 0px -1104px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablerowsplit {
+	background-position: 0px -1120px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablecolmerge {
+	background-position: 0px -1136px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-tablecolsplit {
+	background-position: 0px -1152px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-image {
+	background-position: 0px -496px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-removeformat {
+	background-position: 0px -480px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-source {
+	background-position: 0px 0px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-removefield {
+    background-position: 0px -688px;
+	width: 16px;
+	height: 16px;
+}
+.ke-icon-undo {
+	background-position: 0px -48px;
+	width: 16px;
+	height: 16px;
+}
+
+#grid-custom .tablehandle-imgformat {
+    width:150px;
+    height:170px;
+    text-align:center;
+    vertical-align:middle;
+    background-image: url(default_img.png);
+    background-position: center center; 
+    background-repeat: no-repeat;
+    padding: 0px;
+    margin: 0px;
+    table-layout: fixed;
+
+}

@@ -1,0 +1,76 @@
+package com.founder.xy.weibo.html.xpath.model;
+/*
+   Copyright 2014 Wang Haomiao<et.tw@163.com>
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
+import com.founder.xy.weibo.html.xpath.core.XpathEvaluator;
+import com.founder.xy.weibo.html.xpath.exception.NoSuchAxisException;
+import com.founder.xy.weibo.html.xpath.exception.NoSuchFunctionException;
+import com.founder.xy.weibo.html.xpath.exception.XpathSyntaxErrorException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * @author ����� [ et.tw@163.com ]
+ */
+public class JXDocument {
+    private Elements elements;
+    private XpathEvaluator xpathEva = new XpathEvaluator();
+    public JXDocument(Document doc){
+        elements = doc.children();
+    }
+    public JXDocument(String html){
+        elements = Jsoup.parse(html).children();
+    }
+    public JXDocument(Elements els){
+        elements = els;
+    }
+    
+    public List<Object> sel(String xpath) throws XpathSyntaxErrorException {
+        List<Object> res = new LinkedList<Object>();
+        try {
+             List<JXNode> jns = xpathEva.xpathParser(xpath,elements);
+             for (JXNode j:jns){
+                 if (j.isText()){
+                     res.add(j.getTextVal());
+                 }else {
+                     res.add(j.getElement());
+                 }
+             }
+        } catch (Exception e){
+            String msg = "please check the xpath syntax";
+            if (e instanceof NoSuchAxisException||e instanceof NoSuchFunctionException){
+                msg = e.getMessage();
+            }
+            throw new XpathSyntaxErrorException(msg);
+        }
+        return res;
+    }
+
+    public List<JXNode> selN(String xpath) throws XpathSyntaxErrorException{
+        try {
+            return xpathEva.xpathParser(xpath,elements);
+        }catch (Exception e){
+            String msg = "please check the xpath syntax";
+            if (e instanceof NoSuchAxisException||e instanceof NoSuchFunctionException){
+                msg = e.getMessage();
+            }
+            throw new XpathSyntaxErrorException(msg);
+        }
+    }
+}

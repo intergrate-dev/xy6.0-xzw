@@ -1,0 +1,165 @@
+e5rel.Author=张凯峰
+
+e5rel.RelTable.title=文档分类关联表管理
+e5rel.RelTable.DeleteRelTable=删除分类关联表
+e5rel.RelTable.confirmDeleteRelTable=您确认删除分类关联表
+e5rel.RelTable.confirmDeleteRelTableEnd=吗？
+
+e5rel.RelTable.PleaseChooseDocType=请选择参考文档类型
+e5rel.RelTable.PleaseChooseDataSource=请选择数据源
+e5rel.RelTable.RightClick = 右键点击可以删除该分类关联表
+e5rel.RelTable.createRelTable=创建分类关联表
+
+e5rel.RelTable.RelTableList=分类关联表
+e5rel.RelTable.RelTableName=名称
+e5rel.RelTable.RelTableListName=分类关联表名称
+
+e5rel.RelTable.RelTableTableName=关联表名
+e5rel.RelTable.DataSource=数据源
+e5rel.RelTable.RelTableDocType=参照文档类型
+
+e5rel.RelTable.ClickToModify=点击名称可以修改(*)
+
+e5rel.RelTable.BeginCreate= 开始创建
+e5rel.RelTable.ChooseFields=选择完字段
+e5rel.RelTable.Create=创建关联表
+
+e5rel.RelTable.CreateTableOK=创建成功
+e5rel.RelTable.CreateTableNo=创建失败
+
+e5rel.RelTable.ModifyTableOK=修改成功
+e5rel.RelTable.ModifyTableNo=修改失败
+
+e5rel.RelTable.DeleteTableOK=删除关联表成功
+e5rel.RelTable.DeleteTableFailed=删除关联表失败
+
+e5rel.RelTable.AddNewField=添加表字段
+
+e5rel.RelTable.FieldNameName=字段名称
+e5rel.RelTable.FieldType=字段数据类型
+e5rel.RelTable.CreateField=添加字段
+
+e5rel.RelTable.CreateField.DataType.CHAR = 字符型
+e5rel.RelTable.CreateField.DataType.VARCHAR = 变长字符型
+e5rel.RelTable.CreateField.DataType.INTEGER = 整数
+e5rel.RelTable.CreateField.DataType.BIGINT = 长整数
+e5rel.RelTable.CreateField.DataType.REAL = 实数
+e5rel.RelTable.CreateField.DataType.NUMERIC = 双精度实数
+e5rel.RelTable.CreateField.DataType.BLOB = 二进制大字段
+e5rel.RelTable.CreateField.DataType.CLOB = 文本大字段
+e5rel.RelTable.CreateField.DataType.DATE = 日期
+e5rel.RelTable.CreateField.DataType.TIME = 时间
+e5rel.RelTable.CreateField.DataType.TIMESTAMP = 日期时间
+
+e5rel.RelTable.CreateField.FieldLength=字段长度
+e5rel.RelTable.CreateField.Nullable=可空
+
+e5rel.RelTable.modifyRelTable=修改关联表
+
+e5rel.RelTable.Modify=修改
+e5rel.RelTable.Reset=清除
+
+e5rel.RelTable.Checked=选择
+e5rel.RelTable.ColumnName=显示名
+e5rel.RelTable.ColumnCode=英文名
+e5rel.RelTable.DataType=数据类型
+
+e5rel.RelTable.SameNameTableExisted = 相同表名的分类关联表已经存在
+
+e5rel.RelTable.DataTypeMismatch=选择的字段的数据类型不匹配！
+e5rel.RelTable.FieldsRelationAlreadyExisted=选择的字段间的对应已经建立！
+
+e5rel.RelTable.relationExisted = 该分类关联表已经作了跟文档库的对应。在添加新字段前请删除该对应。
+
+e5rel.RelTable.sameNameFieldExisted=已经存在相同名称的字段！
+e5rel.RelTable.deleteRelationFirst=该分类关联表已经作了跟文档库的对应。在删除该分类关联表前请先删除对应。
+
+e5rel.RelTable.RelTableProps=分类关联表属性
+e5rel.RelTable.CreateStep1=创建第一步：输入关联表名称
+e5rel.RelTable.CreateStep2=创建第二步：选择需要关联的字段
+e5rel.RelTable.CreateStep3=创建第三步：修改创建DDL
+
+##########################################
+e5rel.RelTableDocLib.title=文档分类关联表与文档库的对应管理
+e5rel.RelTable.CreateRelTableDocLib=创建对应
+
+e5rel.RelTable.DocLibName=文档库名称
+e5rel.RelTable.CatType=分类类型
+
+e5rel.RelTable.deleteRelation=删除对应
+e5rel.RelTable.addNewRelation=添加对应
+
+e5rel.RelTable.confirmDeleteRelation=你确定删除这条对应吗？
+
+e5rel.RelTable.ChooseCatType=请指定分类类型：
+e5rel.RelTable.ChooseRelTable=相对应的分类关联表：
+e5rel.RelTable.ChooseDocLib=相对应的文档库：
+
+e5rel.RelTable.Step1=第一步：选择分类类型
+e5rel.RelTable.Step2=第二步：选择文档库和分类类型对应的文档库分类字段
+e5rel.RelTable.Step3=第三步：选择分类关联表
+e5rel.RelTable.Step4=第四步：进行文档库与分类关联表的字段对应
+
+e5rel.RelTable.hint=一个文档库，在一个分类类型下，只能与一个分类关联表对应。
+
+e5rel.RelTable.ChooseRelTableFields=请选择关联表字段：
+e5rel.RelTable.ChooseDocLibFields=请选择文档库字段：
+
+e5rel.RelTable.AutoLink=自动对应
+e5rel.RelTable.AutoLink.hint=自动把分类关联表和文档库的同名字段对应起来
+
+e5rel.RelTable.InsertRelation=字段对应
+e5rel.RelTable.InsertRelation.hint=把选定的关联表字段和选定的文档库字段对应起来
+
+e5rel.RelTable.InsertCategoryField=选择分类字段
+e5rel.RelTable.InsertCategoryField.hint=把选定的文档库字段作为本次对应使用的分类字段
+
+e5rel.RelTable.ConfirmRelations=创建对应
+e5rel.RelTable.Cancel = 取消
+e5rel.RelTable.ConfirmRelations.hint=确定当前的配置，并在数据库中建立起实际的对应关系
+e5rel.RelTable.ondblclick.title=双击查看详细信息
+
+e5rel.RelTable.BuiltRelation=字段的对应（文档库  <-> 分类关联表）
+
+e5rel.RelTable.CategoryField=文档库上表示相应分类的字段名称：
+
+e5rel.RelTable.CreateRelationOK=对应成功！
+e5rel.RelTable.CreateRelationFailed=对应失败！
+e5rel.RelTable.RelationExisted=失败！该文档库在该分类类型已有对应。
+
+e5rel.RelTable.IgnoreCategoryField=建立的对应关系中，自动忽略分类字段为空的情况
+
+e5rel.RelTable.NoCategoryField=没有设置分类字段！
+
+e5rel.RelTable.CatFieldMustVarchar=选择分类字段必须是字符串型
+
+e5rel.RelTable.SameNameFields=自动对应
+e5rel.RelTable.SameNameFields.hint=自动对应所有同名字段
+
+####################
+e5dom.RelTable.Report.addField=添加分类关联表字段
+e5dom.RelTable.Report.addFieldDesc=添加分类关联表字段 [FieldName:{0}]
+
+e5dom.RelTable.Report.createRelTable=创建分类关联表
+e5dom.RelTable.Report.createRelTableDesc=创建分类关联表 [TableId:{0}]
+
+e5dom.RelTable.Report.deleteRelTable=删除分类关联表
+e5dom.RelTable.Report.deleteRelTableDesc=删除分类关联表 [TableId:{0}]
+
+e5dom.RelTable.Report.updateRelTable=更新分类关联表
+e5dom.RelTable.Report.updateRelTableDesc=更新分类关联表 [TableId:{0},newName:{1}]
+
+e5dom.RelTable.Report.removeRelTableDocLib=删除分类关联表对应
+e5dom.RelTable.Report.removeRelTableDocLibDesc=更新分类关联表 [DocLibID:{0},CatTypeID:{1}]
+
+e5dom.RelTable.Report.createRelation=创建分类关联表对应
+e5dom.RelTable.Report.createRelationDesc=创建分类关联表对应 [DocLibId:{0},CatTypId:{1}]
+
+
+e5rel.RelTable.SelectDocLib=选择文档库
+e5rel.RelTable.SelectRelTable=选择分类关联表
+#e5rel.RelTable.InsertCategoryField=指定分类字段
+e5rel.RelTable.ToCatType=选择分类类型
+e5rel.RelTable.DocLibFields=文档库字段
+e5rel.RelTable.RelTableFields=分类关联表字段
+e5rel.RelTable.CreateDocLibRelTable=分类关联表对应

@@ -1,0 +1,208 @@
+body {
+	margin: 0;
+	padding: 0;
+	top:0,
+	height: 700px
+}
+
+td {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-stretch: 100%;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	vertical-align: top;
+}
+
+img {
+	vertical-align: middle;
+	border: 0;
+	cursor: pointer;
+	height: auto;
+	max-width: 100%;
+}
+
+.header {
+	width: 100%;
+	height: 50px;
+	border-bottom: solid 2px #CCC;	
+}
+
+.channels{
+    width: 2000px;
+    overflow: hidden;
+    white-space:nowrap;
+    padding-top:10px;
+}
+.channel{
+    list-style: none;
+    float: left;
+    margin-left: 15px;
+    width: 90px;
+    height:46px;
+    line-height: 40px;
+    font-size:16px;
+}
+.channel.select{
+	border-bottom:#00a0e6 solid 4px;
+}
+
+.leftSide {
+	width: 200px;
+	float: left;
+	margin-left: 10px;
+}
+
+.rightSide {
+	width: 700px;
+	float: right;
+}
+
+.step1,.step2 {
+	padding: 5px;
+	margin-left: 5px;
+}
+
+.columnTree {
+	width: 200px;
+	height: 800px;
+	overflow-y: auto;
+	border: solid 1px #CCC;
+}
+
+.ztree * {
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+#colSearch {
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	width: 122px;
+	height: 24px;
+	padding-left: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+#colSearchById {
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	width: 122px;
+	height: 24px;
+	padding-left: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+#rs_tree {
+	min-height: 250px;
+}
+
+.lab {
+	width: 80px;
+	font-size: 14px;
+	padding: 5px 0 0 5px;
+	]
+}
+
+#topicPicSmallDiv {
+	width: 160px;
+	float: left;
+	float: left;
+}
+
+#topicPicMidDiv {
+	width: 240px;
+	float: left;
+}
+
+#topicPicBigDiv {
+	width: 306px;
+	clear: both;
+}
+
+#topicPicBigDiv,
+#topicPicMidDiv,
+#topicPicSmallDiv {
+	position: relative;
+	margin-top: 10px;
+}
+
+.picTopic {
+	width: 100%;
+	min-height: 100px;
+	margin: 0px 5px 10px 0px;
+	border: 1px dashed #dedede;
+	text-align: left;
+	vertical-align: middle;
+	color: #dedede;
+	font-size: 40px;
+	cursor: pointer;
+}
+
+.picTopic:hover {
+	border: 1px dashed #666;
+}
+
+.picTopic .plus {
+	color: #666;
+	margin-top: 13px;
+	text-align: center;
+}
+
+.picTopic .word {
+	font-size: 14px;
+	margin-top: -5px;
+	text-align: center;
+}
+
+.picTopic .icon-remove {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 100;
+	display: none;
+}
+/*标题图的伪类*/
+.selectImg::after {
+	position: absolute;
+	display: inline-block;
+	vertical-align: 0.2em;
+	width: 0.8em;
+	height: 0.8em;
+	margin-right: .1em;
+	line-height: 0.65;
+	content: url(../image/imageIs.png);
+}
+
+.title-text {
+	width: 520px;
+}
+
+.long-text {
+	width: 560px;
+}
+
+#a_ltwc_p,#a_stwc_p {
+	color: #cecece;
+	z-index: 100;
+	display: inline-block;
+	width: 50px;
+	margin-left: -55px;
+	text-align: right;
+}
+
+.smallTextarea {
+	width: 560px;
+	height: 75px;
+}
+
+#btnSubmit,#btnCancel {
+	margin: -10px 0 20px 211px;
+	width: 100px;
+}

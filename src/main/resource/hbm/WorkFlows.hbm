@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.founder.e5.flow">
+	<class name="Flow" table="E5FLOW_WORKFLOWS">
+		<id
+			column="FLOWID"
+			name="ID"
+			type="integer"
+			>
+			<generator class="assigned" />
+		</id>
+		<property
+			column="FLOWNAME"
+			length="30"
+			name="name"
+			not-null="true"
+			type="string"
+		 />
+		<property
+			column="DOCTYPEID"
+			length="22"
+			name="docTypeID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="FIRSTFLOWNODEID"
+			length="22"
+			name="firstFlowNodeID"
+			not-null="false"
+			type="integer"
+		 />
+		<property
+			column="DESCRIPTION"
+			length="128"
+			name="description"
+			not-null="false"
+			type="string"
+		 />
+	</class>
+</hibernate-mapping>

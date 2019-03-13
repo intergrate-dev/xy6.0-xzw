@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>ueditor图片对话框</title>
+    <link type="text/css" rel="stylesheet" href="../../../script/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../../../../e5script/jquery/dialog.style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../e5script/jquery/uploadify/uploadify.css">
+    <link type="text/css" rel="stylesheet" href="../../../../xy/article/css/article.css"/>
+    <script type="text/javascript" src="../../../../e5script/jquery/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="../../../../e5script/jquery/jQuery-Validation-Engine/js/languages/jquery.validationEngine-zh_CN.js"></script>
+    <script type="text/javascript"
+            src="../../../../e5script/jquery/jQuery-Validation-Engine/js/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="../../../script/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../e5script/jquery/jquery.dialog.js"></script>
+    <script type="text/javascript" src="../../../../e5script/jquery/uploadify/jquery.uploadify-3.2.min.js"></script>
+    <script type="text/javascript">var article = window.parent.article;</script>
+
+</head>
+<body>
+
+<style type="text/css">
+	body {
+        margin: 0 auto !important;
+    }
+
+    .editContainer {
+        margin-left: 73px !important;
+        margin-top: 20px;
+        height: 270px !important;
+    }
+
+    .btn-default {
+        padding: 1px 6px;
+        font-size: 12px;
+    }
+
+    .kv-zoom-actions button {
+        display: none;
+    }
+
+    .kv-zoom-actions button:last-child {
+        display: block;
+    }
+
+    #kvFileinputModal {
+        display: none;
+    }
+
+    #simpleEditor {
+        margin-top: 15px !important;
+    }
+	#form{
+		margin: 0;
+	}
+	.underTop {
+	    margin: 0;
+	}
+    #divMain{
+    	width:950px;
+    	margin: 0;
+    	min-height:540px;
+    }
+    #picUploadDiv{
+    	width:940px;
+    }
+    .file-preview {
+    	min-height:540px;
+    }
+    .file-drop-zone{
+    	min-height:500px;
+    }
+</style>
+<form id="form">
+    <div class="underTop">
+        <div id="divMain">
+            <div id="picUploadDiv">
+                <div class="container kv-main">
+                    <form enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input id="picUploadInput" type="file" name="file" style="height: 30px;" multiple>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</form>
+<div>
+       
+</div>
+
+<script type="text/javascript" src="../../../script/picupload/upload_api.js"></script>
+<script type="text/javascript" src="upload.js"></script>
+<script type="text/javascript" src="article-form.js"></script>
+<script type="text/javascript" src="channel.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        var tonotes = getQueryString("tonotes");
+        if (tonotes == "sure") {
+            $("#headerButton").hide();
+            setTimeout(function () {
+                $("#tabComment").trigger('click');
+                $("#edui1_toolbarbox").remove();
+                $("input").attr("disabled", true);
+                $("#ueditor_0").contents().find("body").attr("contenteditable", "false");
+                $(".tabs li").unbind("click");
+                $(".tabs li").hide();
+                $("#tabComment").show();
+                $("#divRight>.li1").hide();
+                $("#divRight>div").css("margin-top", "-20px");
+            }, 300)
+
+        }
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)return unescape(r[2]);
+        return null;
+    }
+</script>
+    
+<div id="hideLayer" style="display:none;position:fixed;top:0;left:0;width:960px;height:3000px;z-index:1111;background:red;opacity:0"></div>
+
+<script>
+    function pageImg(){
+        if($('input[name="inputImg"]').prop("checked")){
+            localStorage.setItem('page_img',true)
+        }else{
+            localStorage.setItem('page_img',false)
+        }
+    }
+
+    localStorage.setItem('uploadPicAll','')
+</script>
+
+</body>
+</html>
